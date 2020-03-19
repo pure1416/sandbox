@@ -23,14 +23,14 @@ public class Camera_Control : MonoBehaviour
         if (Input.GetKey(KeyCode.Q))
         {
             // targetの位置のY軸を中心に、回転（公転）する
-            transform.RotateAround(targetPos, Vector3.up, Time.deltaTime * 50f);
+            transform.RotateAround(targetPos, Vector3.up, Time.deltaTime * -50f);
         }
         // 右に移動
 
         if (Input.GetKey(KeyCode.E))
         {
             // targetの位置のY軸を中心に、回転（公転）する
-            transform.RotateAround(targetPos, Vector3.up, Time.deltaTime * -50f);
+            transform.RotateAround(targetPos, Vector3.up, Time.deltaTime * 50f);
         }
 
         // マウスの右クリックを押している間
