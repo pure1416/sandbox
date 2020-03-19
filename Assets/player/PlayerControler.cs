@@ -132,6 +132,8 @@ public class PlayerControler : MonoBehaviour
 
     }
 
+    //テスト
+
     //プレイヤーが反転しているかどうかの変数Getter
     public bool GetPlayerTurn()
     {
