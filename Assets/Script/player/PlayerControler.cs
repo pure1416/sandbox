@@ -20,7 +20,7 @@ public class PlayerControler : MonoBehaviour
     float inputVertical;
     Rigidbody rb;                //当たり判定
 
-
+    [TextAreaAttribute, SerializeField] string ReadMe; 
 
     // Start is called before the first frame update
     void Start()
