@@ -141,17 +141,10 @@ public class PlayerControler : MonoBehaviour
             SandMoveSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
 
             //上に乗っている場合はyを無視する
-<<<<<<< HEAD
-            //if (collision.gameObject.transform.position.y * 2.0f <= this.transform.position.y)
-            //{
-            //    SandMoveSp.y = 0.0f;
-            //}
-=======
             if (collision.gameObject.transform.position.y * 2.0f <= this.transform.position.y)
             {
                 SandMoveSp.y = 0.0f;
             }
->>>>>>> 6b3656d21eab731112b0e2c838ec7b6515b20ac4
         }
     }
 
