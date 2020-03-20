@@ -40,7 +40,16 @@ public class PlayerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (PlayerTurn == false)
+        {
+            Debug.Log("中砂通常の時間　" + PlayerTime);
+            PlayerTime = (int)PlayerSandNomalTime;
+        }
+        if (PlayerTurn == true)
+        {
+            Debug.Log("中砂逆行の時間　" + PlayerTime);
+            PlayerTime = (int)PlayerSandBackTime;
+        }
         //入力処理
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
@@ -53,7 +62,9 @@ public class PlayerControler : MonoBehaviour
 
         Debug.Log("逆行の中砂の時間" + PlayerSandBackTime);
         Debug.Log("通常の中砂の時間" + PlayerSandNomalTime);
-        Debug.Log("中砂の時間" + PlayerTime);
+        // Debug.Log("逆行の中砂の時間" + PlayerSandBackTime);
+        // Debug.Log("通常の中砂の時間" + PlayerSandNomalTime);
+        //Debug.Log("中砂の時間" + PlayerTime);
 
         //=========================================================================================
         //移動処理
@@ -77,7 +88,7 @@ public class PlayerControler : MonoBehaviour
         //=========================================================================================
         //回転処理
         //=========================================================================================
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             //時間逆行から通常へ変換
             if (PlayerTurn == true)
@@ -140,14 +151,14 @@ public class PlayerControler : MonoBehaviour
             SandMoveSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
 
             //上に乗っている場合はyを無視する
-            if (collision.gameObject.transform.position.y * 2.0f <= this.transform.position.y)
-            {
-                SandMoveSp.y = 0.0f;
-            }
-            if (collision.gameObject.transform.position.y * 2.0f <= this.transform.position.y)
-            {
-                SandMoveSp.y = 0.0f;
-            }
+            //if (collision.gameObject.transform.position.y * 2.0f <= this.transform.position.y)
+            //{
+            //    SandMoveSp.y = 0.0f;
+            //}
+            //if (collision.gameObject.transform.position.y * 2.0f <= this.transform.position.y)
+            //{
+            //    SandMoveSp.y = 0.0f;
+            //}
         }
     }
 
