@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Weight;
 
 public class PlayerControler : MonoBehaviour
 {
@@ -11,9 +12,12 @@ public class PlayerControler : MonoBehaviour
     int          PlayerTime;     //中砂の時間
     public float PlayerTotalTime;//中砂の合計の時間
     bool PlayerEnptyFlg;         //中砂が落ちきっているか判定
+    Vector3 PlayerDir;   //プレイヤーの方向
+    Vector3 SandMoveSp;  //流砂の移動力(のちにセッターとなる)
 
     float PlayerSandNomalTime;   //通常に流れるほうの砂の時間
     float PlayerSandBackTime;    //逆行して流れる砂の時間
+
 
     //入力変数
     float inputHorizontal;
@@ -29,16 +33,14 @@ public class PlayerControler : MonoBehaviour
         PlayerEnptyFlg = true;
         PlayerSandNomalTime = PlayerTotalTime;
         PlayerSandBackTime = 0.0f;
-
+        PlayerDir = new Vector3(0.0f, 0.0f, 0.0f);
+        SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
         rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //変数宣言
-        var PlayerDir = new Vector3(0.0f, 0.0f, 0.0f);   //プレイヤーの方向
-        var SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);  //流砂の移動力(のちにセッターとなる)
 
         //入力処理
         inputHorizontal = Input.GetAxisRaw("Horizontal");
@@ -48,8 +50,10 @@ public class PlayerControler : MonoBehaviour
         PlayerTime = (int)PlayerSandNomalTime;
         //Debug.Log(PlayerTurn);
         Debug.Log("中砂の上が空かどうか" + PlayerEnptyFlg);
-        Debug.Log("逆行の中砂の時間" + PlayerSandBackTime);
-        Debug.Log("通常の中砂の時間" + PlayerSandNomalTime);
+        Debug.Log(SandMoveSp);
+
+        // Debug.Log("逆行の中砂の時間" + PlayerSandBackTime);
+        // Debug.Log("通常の中砂の時間" + PlayerSandNomalTime);
         //Debug.Log("中砂の時間" + PlayerTime);
 
         //=========================================================================================
@@ -63,16 +67,13 @@ public class PlayerControler : MonoBehaviour
         Vector3 moveForward = cameraForward * inputVertical + Camera.main.transform.right * inputHorizontal;
 
         // 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
-        rb.velocity = moveForward * PlayerSp + new Vector3(0, rb.velocity.y, 0);
+        rb.velocity = moveForward * PlayerSp + SandMoveSp + new Vector3(0, rb.velocity.y, 0);
 
         // キャラクターの向きを進行方向に
         if (moveForward != Vector3.zero)
         {
             transform.rotation = Quaternion.LookRotation(moveForward);
         }
-        Debug.DrawLine(new Vector3(2.0f, 0.0f, 0.0f),
-                new Vector3(2.0f, 5.0f, 5.0f),
-                Color.green);
 
         //=========================================================================================
         //回転処理
@@ -132,7 +133,37 @@ public class PlayerControler : MonoBehaviour
 
     }
 
-    //テスト
+    //流砂の上にいるときに流砂の移動力を受け取る
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "QuickSand")
+        {
+            this.GetComponent<Rigidbody>().useGravity = false;
+            SandMoveSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
+
+            //上に乗っている場合はyを無視する
+            if (collision.gameObject.transform.position.y * 2.0f <= this.transform.position.y)
+            {
+                SandMoveSp.y = 0.0f;
+            }
+            else if (collision.gameObject.transform.position.y * 2.0f >= this.transform.position.y)
+            {
+                SandMoveSp.x = 0.0f;
+                SandMoveSp.z = 0.0f;
+            }
+        }
+    }
+
+    //流砂から離れるときに流砂の影響を消す
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "QuickSand")
+        {
+            this.GetComponent<Rigidbody>().useGravity = true;
+            SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
+        }
+    }
+
 
     //プレイヤーが反転しているかどうかの変数Getter
     public bool GetPlayerTurn()
