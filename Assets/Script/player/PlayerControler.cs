@@ -47,7 +47,7 @@ public class PlayerControler : MonoBehaviour
 
         //デバッグ
         PlayerTime = (int)PlayerSandNomalTime;
-        Debug.Log(PlayerTurn);
+        //Debug.Log(PlayerTurn);
         Debug.Log("中砂の上が空かどうか" + PlayerEnptyFlg);
         //Debug.Log(SandMoveSp);
         Debug.Log("プレーヤーの方向" + PlayerDir);
