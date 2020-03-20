@@ -146,11 +146,6 @@ public class PlayerControler : MonoBehaviour
             {
                 SandMoveSp.y = 0.0f;
             }
-            else if (collision.gameObject.transform.position.y * 2.0f >= this.transform.position.y)
-            {
-                SandMoveSp.x = 0.0f;
-                SandMoveSp.z = 0.0f;
-            }
         }
     }
 
