@@ -14,7 +14,6 @@ public class PlayerControler : MonoBehaviour
     bool PlayerEnptyFlg;         //中砂が落ちきっているか判定
     Vector3 PlayerDir;   //プレイヤーの方向
     Vector3 SandMoveSp;  //流砂の移動力
-
     float PlayerSandNomalTime;   //通常に流れるほうの砂の時間
     float PlayerSandBackTime;    //逆行して流れる砂の時間
 
@@ -50,7 +49,8 @@ public class PlayerControler : MonoBehaviour
         PlayerTime = (int)PlayerSandNomalTime;
         Debug.Log(PlayerTurn);
         Debug.Log("中砂の上が空かどうか" + PlayerEnptyFlg);
-        Debug.Log(SandMoveSp);
+        //Debug.Log(SandMoveSp);
+        Debug.Log(PlayerDir);
 
         // Debug.Log("逆行の中砂の時間" + PlayerSandBackTime);
         // Debug.Log("通常の中砂の時間" + PlayerSandNomalTime);
@@ -64,15 +64,15 @@ public class PlayerControler : MonoBehaviour
         Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
 
         // 方向キーの入力値とカメラの向きから、移動方向を決定
-        Vector3 moveForward = cameraForward * inputVertical + Camera.main.transform.right * inputHorizontal;
+        PlayerDir = cameraForward * inputVertical + Camera.main.transform.right * inputHorizontal;
 
         // 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
-        rb.velocity = moveForward * PlayerSp + SandMoveSp + new Vector3(0, rb.velocity.y, 0);
+        rb.velocity = PlayerDir * PlayerSp + SandMoveSp + new Vector3(0, rb.velocity.y, 0);
 
         // キャラクターの向きを進行方向に
-        if (moveForward != Vector3.zero)
+        if (PlayerDir != Vector3.zero)
         {
-            transform.rotation = Quaternion.LookRotation(moveForward);
+            transform.rotation = Quaternion.LookRotation(PlayerDir);
         }
 
         //=========================================================================================
@@ -130,7 +130,6 @@ public class PlayerControler : MonoBehaviour
                 PlayerEnptyFlg = true;
             }
         }
-
     }
 
     //流砂の上にいるときに流砂の移動力を受け取る
@@ -142,10 +141,17 @@ public class PlayerControler : MonoBehaviour
             SandMoveSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
 
             //上に乗っている場合はyを無視する
+<<<<<<< HEAD
             //if (collision.gameObject.transform.position.y * 2.0f <= this.transform.position.y)
             //{
             //    SandMoveSp.y = 0.0f;
             //}
+=======
+            if (collision.gameObject.transform.position.y * 2.0f <= this.transform.position.y)
+            {
+                SandMoveSp.y = 0.0f;
+            }
+>>>>>>> 6b3656d21eab731112b0e2c838ec7b6515b20ac4
         }
     }
 
@@ -170,5 +176,11 @@ public class PlayerControler : MonoBehaviour
     public bool GetPlayerEnpty()
     {
         return PlayerEnptyFlg;
-    }   
+    }
+
+    //プレイヤーの中砂が流れ落ちているかどうかの変数のGetter
+    public Vector3 GetPlayerDir()
+    {
+        return PlayerDir;
+    }
 }
