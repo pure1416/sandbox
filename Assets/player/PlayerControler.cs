@@ -48,9 +48,9 @@ public class PlayerControler : MonoBehaviour
         PlayerTime = (int)PlayerSandNomalTime;
         //Debug.Log(PlayerTurn);
         Debug.Log("中砂の上が空かどうか" + PlayerEnptyFlg);
-        //Debug.Log("逆行の中砂の時間" + PlayerSandBackTime);
-        //Debug.Log("通常の中砂の時間" + PlayerSandNomalTime);
-        Debug.Log("中砂の時間" + PlayerTime);
+        Debug.Log("逆行の中砂の時間" + PlayerSandBackTime);
+        Debug.Log("通常の中砂の時間" + PlayerSandNomalTime);
+        //Debug.Log("中砂の時間" + PlayerTime);
 
         //=========================================================================================
         //移動処理
