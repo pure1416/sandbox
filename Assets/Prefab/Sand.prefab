@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 574102880003103804}
   - component: {fileID: 574102880003103807}
   - component: {fileID: 574102880003103806}
-  - component: {fileID: 574102880003103794}
+  - component: {fileID: 1927953177627734959}
   m_Layer: 0
   m_Name: Sand
   m_TagString: QuickSand
@@ -94,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &574102880003103794
+--- !u!114 &1927953177627734959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,12 +103,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 574102880003103800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5379e7f57e1c29e409d63a7ae94c5101, type: 3}
+  m_Script: {fileID: 11500000, guid: ea49dd7a46d1dbe4a8c7558ca83339fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SandDir: {x: 0.1, y: 0, z: 0}
+  SandDir: {x: 0, y: 0, z: 0}
   InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 100
+  SandSpd: 0.1
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0, z: 0}
+  playerControler: {fileID: 0}

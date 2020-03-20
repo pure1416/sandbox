@@ -305,6 +305,7 @@ MonoBehaviour:
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0, z: 0}
+  playerControler: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +492,7 @@ MonoBehaviour:
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0.31, z: 0}
+  playerControler: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +606,7 @@ GameObject:
   - component: {fileID: 1064066519}
   m_Layer: 0
   m_Name: playerModel
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -876,6 +878,7 @@ MonoBehaviour:
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0.31, z: 0}
+  playerControler: {fileID: 0}
 --- !u!1001 &1628585732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -970,6 +973,7 @@ MonoBehaviour:
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0.31, z: 0}
+  playerControler: {fileID: 0}
 --- !u!1 &1667254449 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 574102880003103800, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
@@ -994,6 +998,7 @@ MonoBehaviour:
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0.31, z: 0}
+  playerControler: {fileID: 0}
 --- !u!1001 &1780824353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1093,6 +1098,7 @@ MonoBehaviour:
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0.31, z: 0}
+  playerControler: {fileID: 0}
 --- !u!1 &1842963955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,6 +1286,7 @@ MonoBehaviour:
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0.31, z: 0}
+  playerControler: {fileID: 0}
 --- !u!1001 &1920063500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1374,6 +1381,7 @@ MonoBehaviour:
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0.31, z: 0}
+  playerControler: {fileID: 0}
 --- !u!1 &2074805924
 GameObject:
   m_ObjectHideFlags: 0

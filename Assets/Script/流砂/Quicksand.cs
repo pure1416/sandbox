@@ -21,6 +21,8 @@ public class Quicksand : MonoBehaviour
     [SerializeField] private Vector3 SandMove;  //流砂の移動力(方向 * 速度)
     public static WEIGHT  SandWeight;           //重さ
 
+    public GameObject playerControler;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,36 +32,19 @@ public class Quicksand : MonoBehaviour
         IsInverse = false;
         //停止判定をfalse
         IsStop = false;
+
+        playerControler = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+        //プレイヤーの正逆、停止と同期する
+        IsInverse = playerControler.GetComponent<PlayerControler>().GetPlayerTurn();
+        IsStop = playerControler.GetComponent<PlayerControler>().GetPlayerEnpty();
+
         //毎フレーム移動力を計算する
         SandMove = MoveCal(IsInverse, IsStop);
-
-        //デバッグ・テスト用
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                //移動力見る
-                Debug.Log("SandMove：" + SandMove);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                //IsInverseを切り替え
-                IsInverse = IsInverse == false ? true : false;
-                Debug.Log("IsInverse：" + IsInverse);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                //IsStopを切り替え
-                IsStop = IsStop == false ? true : false;
-                Debug.Log("IsStop：" + IsStop);
-            }
-        }
     }
 
     //移動力の計算をする関数
