@@ -47,14 +47,14 @@ public class PlayerControler : MonoBehaviour
 
         //デバッグ
         PlayerTime = (int)PlayerSandNomalTime;
-        //Debug.Log(PlayerTurn);
+        Debug.Log(PlayerTurn);
         Debug.Log("中砂の上が空かどうか" + PlayerEnptyFlg);
         //Debug.Log(SandMoveSp);
         Debug.Log("プレーヤーの方向" + PlayerDir);
 
         // Debug.Log("逆行の中砂の時間" + PlayerSandBackTime);
         // Debug.Log("通常の中砂の時間" + PlayerSandNomalTime);
-        //Debug.Log("中砂の時間" + PlayerTime);
+        Debug.Log("中砂の時間" + PlayerTime);
 
         //=========================================================================================
         //移動処理
@@ -141,10 +141,17 @@ public class PlayerControler : MonoBehaviour
             SandMoveSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
 
             //上に乗っている場合はyを無視する
+<<<<<<< HEAD
+            //if (collision.gameObject.transform.position.y * 2.0f <= this.transform.position.y)
+            //{
+            //    SandMoveSp.y = 0.0f;
+            //}
+=======
             if (collision.gameObject.transform.position.y * 2.0f <= this.transform.position.y)
             {
                 SandMoveSp.y = 0.0f;
             }
+>>>>>>> 6b3656d21eab731112b0e2c838ec7b6515b20ac4
         }
     }
 
