@@ -46,11 +46,10 @@ public class PlayerControler : MonoBehaviour
         inputVertical = Input.GetAxisRaw("Vertical");
 
         //デバッグ
-        PlayerTime = (int)PlayerSandNomalTime;
-        Debug.Log(PlayerTurn);
+        //Debug.Log(PlayerTurn);
         Debug.Log("中砂の上が空かどうか" + PlayerEnptyFlg);
         //Debug.Log(SandMoveSp);
-        Debug.Log("プレーヤーの方向" + PlayerDir);
+        //Debug.Log("プレーヤーの方向" + PlayerDir);
 
         // Debug.Log("逆行の中砂の時間" + PlayerSandBackTime);
         // Debug.Log("通常の中砂の時間" + PlayerSandNomalTime);
