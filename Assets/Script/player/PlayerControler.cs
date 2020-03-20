@@ -130,7 +130,6 @@ public class PlayerControler : MonoBehaviour
                 PlayerEnptyFlg = true;
             }
         }
-
     }
 
     //流砂の上にいるときに流砂の移動力を受け取る
@@ -142,7 +141,7 @@ public class PlayerControler : MonoBehaviour
             SandMoveSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
 
             //上に乗っている場合はyを無視する
-            if (collision.gameObject.transform.position.y <= this.transform.position.y)
+            if (collision.gameObject.transform.position.y * 2.0f <= this.transform.position.y)
             {
                 SandMoveSp.y = 0.0f;
             }
