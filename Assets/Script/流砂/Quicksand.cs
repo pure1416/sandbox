@@ -88,7 +88,7 @@ public class Quicksand : MonoBehaviour
     //移動力のGetter
     public Vector3 GetSandMove()
     {
-        return (SandMove / SandSpd) * 0.1f; ;
+        return (SandMove / SandSpd);
     }
 
     //インスペクタで値が変更された時に発動する関数
@@ -125,6 +125,12 @@ public class Quicksand : MonoBehaviour
             {
                 SandDir.z = -1.0f;
             }
+        }
+
+        //SandSpdの値が０以下にならないようにする
+        if(SandSpd <= 0)
+        {
+            SandSpd = 0.1f;
         }
     }
 }
