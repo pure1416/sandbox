@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -281,6 +281,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
+        type: 3}
+      propertyPath: SandDir.z
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 574102880003103794, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
@@ -371,34 +376,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
+        type: 3}
+      propertyPath: SandDir.z
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 574102880003103794, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
---- !u!1 &571371212 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 574102880003103800, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
-    type: 3}
-  m_PrefabInstance: {fileID: 571371211}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &571371213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571371212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea49dd7a46d1dbe4a8c7558ca83339fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SandDir: {x: 0.1, y: 0.1, z: 0.1}
-  InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 4
-  IsInverse: 0
-  IsStop: 0
-  SandMove: {x: 0, y: 0, z: 0}
-  playerControler: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,34 +543,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
+        type: 3}
+      propertyPath: SandDir.z
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 574102880003103794, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
---- !u!1 &775900798 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 574102880003103800, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
-    type: 3}
-  m_PrefabInstance: {fileID: 775900797}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &775900799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775900798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea49dd7a46d1dbe4a8c7558ca83339fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SandDir: {x: 0, y: 0, z: 0.72}
-  InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 0.1
-  IsInverse: 0
-  IsStop: 0
-  SandMove: {x: 0, y: 0.31, z: 0}
-  playerControler: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,34 +913,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
+        type: 3}
+      propertyPath: SandDir.z
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 574102880003103794, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
---- !u!1 &1241718619 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 574102880003103800, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1241718618}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1241718620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1241718619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea49dd7a46d1dbe4a8c7558ca83339fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SandDir: {x: 0, y: 0, z: 0.72}
-  InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 0.1
-  IsInverse: 0
-  IsStop: 0
-  SandMove: {x: 0, y: 0.31, z: 0}
-  playerControler: {fileID: 0}
 --- !u!1001 &1628585732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1043,34 +988,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
+        type: 3}
+      propertyPath: SandDir.z
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 574102880003103794, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
---- !u!1 &1628585733 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 574102880003103800, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1628585732}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1628585734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1628585733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea49dd7a46d1dbe4a8c7558ca83339fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SandDir: {x: 0, y: 0, z: 0.72}
-  InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 0.1
-  IsInverse: 0
-  IsStop: 0
-  SandMove: {x: 0, y: 0.31, z: 0}
-  playerControler: {fileID: 0}
 --- !u!1001 &1780824353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1143,34 +1068,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 98637284dfbabf143a5c3feec548321d, type: 2}
+    - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
+        type: 3}
+      propertyPath: SandDir.z
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 574102880003103794, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
---- !u!1 &1780824354 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 574102880003103800, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1780824353}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1780824355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1780824354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea49dd7a46d1dbe4a8c7558ca83339fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SandDir: {x: 0, y: 0, z: 0.72}
-  InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 0.1
-  IsInverse: 0
-  IsStop: 0
-  SandMove: {x: 0, y: 0.31, z: 0}
-  playerControler: {fileID: 0}
 --- !u!1 &1842963955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,34 +1236,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
+        type: 3}
+      propertyPath: SandDir.z
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 574102880003103794, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
---- !u!1 &1897904372 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 574102880003103800, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1897904371}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1897904373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1897904372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea49dd7a46d1dbe4a8c7558ca83339fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SandDir: {x: 0, y: 0, z: 0.72}
-  InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 0.1
-  IsInverse: 0
-  IsStop: 0
-  SandMove: {x: 0, y: 0.31, z: 0}
-  playerControler: {fileID: 0}
 --- !u!1001 &1920063500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1426,34 +1311,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
+        type: 3}
+      propertyPath: SandDir.z
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 574102880003103794, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
---- !u!1 &1920063501 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 574102880003103800, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1920063500}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1920063502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1920063501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea49dd7a46d1dbe4a8c7558ca83339fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SandDir: {x: 0, y: 0, z: 0.72}
-  InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 0.1
-  IsInverse: 0
-  IsStop: 0
-  SandMove: {x: 0, y: 0.31, z: 0}
-  playerControler: {fileID: 0}
 --- !u!1 &2074805924
 GameObject:
   m_ObjectHideFlags: 0

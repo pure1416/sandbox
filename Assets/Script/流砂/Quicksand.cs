@@ -113,7 +113,7 @@ public class Quicksand : MonoBehaviour
         }
 
         //SandSpdの値が０以下にならないようにする
-        if(SandSpd <= 0)
+        if(SandSpd <= 1.0f)
         {
             SandSpd = 1.0f;
         }
