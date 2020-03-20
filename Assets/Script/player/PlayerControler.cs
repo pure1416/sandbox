@@ -13,7 +13,7 @@ public class PlayerControler : MonoBehaviour
     public float PlayerTotalTime;//中砂の合計の時間
     bool PlayerEnptyFlg;         //中砂が落ちきっているか判定
     Vector3 PlayerDir;   //プレイヤーの方向
-    Vector3 SandMoveSp;  //流砂の移動力(のちにセッターとなる)
+    Vector3 SandMoveSp;  //流砂の移動力
 
     float PlayerSandNomalTime;   //通常に流れるほうの砂の時間
     float PlayerSandBackTime;    //逆行して流れる砂の時間
