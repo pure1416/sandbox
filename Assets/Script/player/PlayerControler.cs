@@ -77,7 +77,7 @@ public class PlayerControler : MonoBehaviour
         //=========================================================================================
         //回転処理
         //=========================================================================================
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.G))
         {
             //時間逆行から通常へ変換
             if (PlayerTurn == true)
