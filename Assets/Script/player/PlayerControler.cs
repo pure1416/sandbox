@@ -11,11 +11,13 @@ public class PlayerControler : MonoBehaviour
     public bool  PlayerTurn;     //プレイヤーの反転 trueなら反転 falseなら通常
     int          PlayerTime;     //中砂の時間
     public float PlayerTotalTime;//中砂の合計の時間
-    bool PlayerEnptyFlg;         //中砂が落ちきっているか判定
     Vector3 PlayerDir;   //プレイヤーの方向
     Vector3 SandMoveSp;  //流砂の移動力
-    float PlayerSandNomalTime;   //通常に流れるほうの砂の時間
-    float PlayerSandBackTime;    //逆行して流れる砂の時間
+
+    [Header("時間")]
+    [SerializeField] private float PlayerSandNomalTime;   //通常に流れるほうの砂の時間
+    [SerializeField] private float PlayerSandBackTime;    //逆行して流れる砂の時間
+    [SerializeField] private bool PlayerEnptyFlg;         //中砂が落ちきっているか判定
 
 
     //入力変数
@@ -23,15 +25,19 @@ public class PlayerControler : MonoBehaviour
     float inputVertical;
     Rigidbody rb;                //当たり判定
 
-    [TextAreaAttribute, SerializeField] string ReadMe; 
+    [TextAreaAttribute, SerializeField] string ReadMe;
+
+    //[Header("時間")]
+    //[SerializeField]float PlayerSandNomalTime;  //通常に流れる中砂
+    //[SerializeField]float PlayerSandBackTime;  //逆に流れる中砂
 
     // Start is called before the first frame update
     void Start()
     {
         //変数初期化
         PlayerEnptyFlg = true;
-        PlayerSandNomalTime = PlayerTotalTime;
-        PlayerSandBackTime = 0.0f;
+        PlayerSandBackTime = PlayerTotalTime;
+        PlayerSandNomalTime = 0.0f;
         PlayerDir = new Vector3(0.0f, 0.0f, 0.0f);
         SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
         rb = GetComponent<Rigidbody>();
@@ -40,31 +46,14 @@ public class PlayerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerTurn == false)
-        {
-            Debug.Log("中砂通常の時間　" + PlayerTime);
-            PlayerTime = (int)PlayerSandNomalTime;
-        }
-        if (PlayerTurn == true)
-        {
-            Debug.Log("中砂逆行の時間　" + PlayerTime);
-            PlayerTime = (int)PlayerSandBackTime;
-        }
         //入力処理
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
 
         //デバッグ
         //Debug.Log(PlayerTurn);
-        Debug.Log("中砂の上が空かどうか" + PlayerEnptyFlg);
         //Debug.Log(SandMoveSp);
         //Debug.Log("プレーヤーの方向" + PlayerDir);
-
-        Debug.Log("逆行の中砂の時間" + PlayerSandBackTime);
-        Debug.Log("通常の中砂の時間" + PlayerSandNomalTime);
-        // Debug.Log("逆行の中砂の時間" + PlayerSandBackTime);
-        // Debug.Log("通常の中砂の時間" + PlayerSandNomalTime);
-        //Debug.Log("中砂の時間" + PlayerTime);
 
         //=========================================================================================
         //移動処理
