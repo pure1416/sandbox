@@ -795,6 +795,9 @@ MonoBehaviour:
   PlayerSp: 3
   PlayerTurn: 0
   PlayerTotalTime: 5
+  PlayerSandNomalTime: 0
+  PlayerSandBackTime: 0
+  PlayerEnptyFlg: 0
   ReadMe: "\u3058\u3085\u3093\n\u307A\u307A\u307A\n\u306B\u306B\u306B\n\u304D\u304D\u304D"
 --- !u!54 &1064066520
 Rigidbody:
@@ -1064,31 +1067,6 @@ MonoBehaviour:
   SandDir: {x: 0, y: 0, z: 0.72}
   InvSandDir: {x: 0, y: 0, z: 0}
   SandSpd: 0.1
-  IsInverse: 0
-  IsStop: 0
-  SandMove: {x: 0, y: 0.31, z: 0}
-  playerControler: {fileID: 0}
---- !u!1 &1667254449 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 574102880003103800, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
-    type: 3}
-  m_PrefabInstance: {fileID: 457467612}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1667254450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1667254449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea49dd7a46d1dbe4a8c7558ca83339fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SandDir: {x: 0, y: 0, z: 0.7}
-  InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 2
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0.31, z: 0}
