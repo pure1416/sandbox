@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -294,11 +294,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea49dd7a46d1dbe4a8c7558ca83339fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SandDir: {x: 0, y: 0, z: 0.72}
+  SandDir: {x: 0.1, y: 0.1, z: 0.1}
   InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 0
+  SandSpd: 4
   IsInverse: 0
-  IsStop: 0
+  IsStop: 1
   SandMove: {x: 0, y: 0.31, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -482,7 +482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SandDir: {x: 0, y: 0, z: 0.72}
   InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 0
+  SandSpd: 0.1
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0.31, z: 0}
@@ -581,7 +581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SandDir: {x: 0, y: 0, z: 0.72}
   InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 0
+  SandSpd: 0.1
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0.31, z: 0}
@@ -966,7 +966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SandDir: {x: 0, y: 0, z: 0.72}
   InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 0
+  SandSpd: 0.1
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0.31, z: 0}
@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SandDir: {x: 0, y: 0, z: 0.72}
   InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 0
+  SandSpd: 0.1
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0.31, z: 0}
@@ -1157,9 +1157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea49dd7a46d1dbe4a8c7558ca83339fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SandDir: {x: 0, y: 0, z: 0.72}
+  SandDir: {x: 0, y: 0, z: 0.7}
   InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 0
+  SandSpd: 2
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0.31, z: 0}
@@ -1183,7 +1183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SandDir: {x: 0, y: 0, z: 0.72}
   InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 0
+  SandSpd: 0.1
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0.31, z: 0}
@@ -1282,7 +1282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SandDir: {x: 0, y: 0, z: 0.72}
   InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 0
+  SandSpd: 0.1
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0.31, z: 0}
@@ -1469,7 +1469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SandDir: {x: 0, y: 0, z: 0.72}
   InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 0
+  SandSpd: 0.1
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0.31, z: 0}
@@ -1563,7 +1563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SandDir: {x: 0, y: 0, z: 0.72}
   InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 0
+  SandSpd: 0.1
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0.31, z: 0}
