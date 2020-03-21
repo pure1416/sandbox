@@ -60,12 +60,12 @@ public class Quicksand : MonoBehaviour
             //正
             if(!inv)
             {
-                return SandDir * SandSpd;
+                return (SandDir * SandSpd);
             }
             //逆
             else
             {
-                return InvSandDir * SandSpd;
+                return (InvSandDir * SandSpd);
             }
         }
     }

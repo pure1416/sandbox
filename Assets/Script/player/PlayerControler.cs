@@ -12,7 +12,7 @@ public class PlayerControler : MonoBehaviour
     int          PlayerTime;     //中砂の時間
     public float PlayerTotalTime;//中砂の合計の時間
     Vector3 PlayerDir;   //プレイヤーの方向
-    Vector3 SandMoveSp;  //流砂の移動力
+    [SerializeField] Vector3 SandMoveSp;  //流砂の移動力
 
     [Header("時間")]
     [SerializeField] private float PlayerSandNomalTime;   //通常に流れるほうの砂の時間
@@ -66,7 +66,7 @@ public class PlayerControler : MonoBehaviour
         PlayerDir = cameraForward * inputVertical + Camera.main.transform.right * inputHorizontal;
 
         // 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
-        rb.velocity = PlayerDir * PlayerSp + SandMoveSp + new Vector3(0, rb.velocity.y, 0);
+        rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
 
         // キャラクターの向きを進行方向に
         if (PlayerDir != Vector3.zero)
@@ -136,18 +136,9 @@ public class PlayerControler : MonoBehaviour
     {
         if (collision.gameObject.tag == "QuickSand")
         {
-            this.GetComponent<Rigidbody>().useGravity = false;
+            //不要説
+            //this.GetComponent<Rigidbody>().useGravity = false;
             SandMoveSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
-
-            //上に乗っている場合はyを無視する
-            //if (collision.gameObject.transform.position.y * 2.0f <= this.transform.position.y)
-            //{
-            //    SandMoveSp.y = 0.0f;
-            //}
-            //if (collision.gameObject.transform.position.y * 2.0f <= this.transform.position.y)
-            //{
-            //    SandMoveSp.y = 0.0f;
-            //}
         }
     }
 
@@ -156,7 +147,8 @@ public class PlayerControler : MonoBehaviour
     {
         if (collision.gameObject.tag == "QuickSand")
         {
-            this.GetComponent<Rigidbody>().useGravity = true;
+            //不要説
+            //this.GetComponent<Rigidbody>().useGravity = true;
             SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
         }
     }
