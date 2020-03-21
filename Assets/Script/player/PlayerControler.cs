@@ -25,8 +25,6 @@ public class PlayerControler : MonoBehaviour
     float inputVertical;
     Rigidbody rb;                //当たり判定
 
-    [TextAreaAttribute, SerializeField] string ReadMe;
-
     //[Header("時間")]
     //[SerializeField]float PlayerSandNomalTime;  //通常に流れる中砂
     //[SerializeField]float PlayerSandBackTime;  //逆に流れる中砂
