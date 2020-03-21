@@ -397,12 +397,17 @@ PrefabInstance:
     - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
         type: 3}
       propertyPath: SandDir.z
-      value: 0.1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
         type: 3}
       propertyPath: SandDir.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
+        type: 3}
+      propertyPath: SandSpd
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 574102880003103794, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
@@ -569,7 +574,22 @@ PrefabInstance:
     - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
         type: 3}
       propertyPath: SandDir.z
-      value: 0.1
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
+        type: 3}
+      propertyPath: SandSpd
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
+        type: 3}
+      propertyPath: SandDir.x
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
+        type: 3}
+      propertyPath: IsInverse
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 574102880003103794, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
@@ -783,6 +803,7 @@ MonoBehaviour:
   PlayerSp: 3
   PlayerTurn: 0
   PlayerTotalTime: 5
+  SandMoveSp: {x: 0, y: 0, z: 0}
   PlayerSandNomalTime: 0
   PlayerSandBackTime: 0
   PlayerEnptyFlg: 0
@@ -795,9 +816,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064066514}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.01
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1032,7 +1053,12 @@ PrefabInstance:
     - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
         type: 3}
       propertyPath: SandDir.z
-      value: 0.1
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
+        type: 3}
+      propertyPath: SandSpd
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 574102880003103794, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
@@ -1117,12 +1143,12 @@ PrefabInstance:
     - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
         type: 3}
       propertyPath: SandSpd
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
         type: 3}
       propertyPath: SandDir.y
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 574102880003103794, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
@@ -1202,7 +1228,17 @@ PrefabInstance:
     - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
         type: 3}
       propertyPath: SandDir.z
-      value: 0.1
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
+        type: 3}
+      propertyPath: SandSpd
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
+        type: 3}
+      propertyPath: SandDir.x
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 574102880003103794, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
@@ -1370,7 +1406,12 @@ PrefabInstance:
     - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
         type: 3}
       propertyPath: SandDir.z
-      value: 0.1
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
+        type: 3}
+      propertyPath: SandSpd
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 574102880003103794, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
@@ -1445,7 +1486,17 @@ PrefabInstance:
     - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
         type: 3}
       propertyPath: SandDir.z
-      value: 0.1
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
+        type: 3}
+      propertyPath: SandSpd
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
+        type: 3}
+      propertyPath: SandDir.y
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 574102880003103794, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
