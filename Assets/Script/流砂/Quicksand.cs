@@ -20,6 +20,7 @@ public class Quicksand : MonoBehaviour
     [Header("その他")]
     [SerializeField] private Vector3 SandMove;  //流砂の移動力(方向 * 速度)
     public static WEIGHT  SandWeight;           //重さ
+    [SerializeField] private bool IsTriggerFlg; //プレイヤのトリガーに当たっていたらtrue
 
     public GameObject playerControler;
 
@@ -70,9 +71,47 @@ public class Quicksand : MonoBehaviour
         }
     }
 
+    //プレイヤのトリガーに当たった時
+    private void OnTriggerEnter(Collider other)
+    {
+        //プレイヤのトリガーに反応
+        if(other.gameObject.tag == "Player")
+        {
+            IsTriggerFlg = true;
+        }
+    }
+
+    //プレイヤのトリガーから離れた時
+    private void OnTriggerExit(Collider other)
+    {
+        //プレイヤのトリガーに反応
+        if(other.gameObject.tag == "Player")
+        {
+            IsTriggerFlg = false;
+        }
+    }
+
     //移動力のGetter
     public Vector3 GetSandMove()
     {
+        if(IsTriggerFlg)
+        {
+            //+のy成分を与えない
+            if(SandMove.y >= 0.0f)
+            {
+                return new Vector3(SandMove.x, 0.0f, SandMove.z);
+            }
+            else if(SandMove.y < 0.0f)
+            {
+                //yが-でも、角度が付いてなければy成分を与えない
+                if(this.transform.eulerAngles.x == 0.0f && 
+                   this.transform.eulerAngles.z == 0.0f)
+                {
+                    return new Vector3(SandMove.x, 0.0f, SandMove.z);
+                }
+            }
+        }
+
         return SandMove;
     }
 

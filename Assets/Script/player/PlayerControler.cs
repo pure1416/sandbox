@@ -134,7 +134,6 @@ public class PlayerControler : MonoBehaviour
     {
         if (collision.gameObject.tag == "QuickSand")
         {
-            //不要説
             //this.GetComponent<Rigidbody>().useGravity = false;
             SandMoveSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
         }
@@ -145,7 +144,6 @@ public class PlayerControler : MonoBehaviour
     {
         if (collision.gameObject.tag == "QuickSand")
         {
-            //不要説
             //this.GetComponent<Rigidbody>().useGravity = true;
             SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
         }
