@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574102880003103800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 10}
+  m_LocalPosition: {x: 0, y: 6.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -108,8 +108,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SandDir: {x: 0, y: 0, z: 0}
   InvSandDir: {x: 0, y: 0, z: 0}
-  SandSpd: 0.1
+  SandSpd: 1
   IsInverse: 0
   IsStop: 0
   SandMove: {x: 0, y: 0, z: 0}
+  IsTriggerFlg: 0
   playerControler: {fileID: 0}
