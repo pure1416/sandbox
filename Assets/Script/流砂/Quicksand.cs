@@ -46,6 +46,9 @@ public class Quicksand : MonoBehaviour
 
         //毎フレーム移動力を計算する
         SandMove = MoveCal(IsInverse, IsStop);
+
+        //Shader用にworld座標を送る
+        this.GetComponent<Renderer>().material.SetVector("ObjWorldPos", this.gameObject.transform.position + (this.gameObject.transform.localScale / 2));
     }
 
     //移動力の計算をする関数

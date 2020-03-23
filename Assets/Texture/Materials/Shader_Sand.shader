@@ -2,7 +2,7 @@
 {
     Properties
     {
-		_MainTex ("Sand Texture", 2D) = "white" {}
+		_MainTex("Sand Texture", 2D) = "white" {}
     }
     SubShader
     {
@@ -15,17 +15,20 @@
 
         sampler2D _MainTex;	//メインテクスチャ
 		
-
         struct Input
         {
             float2 uv_MainTex;
         };
 
+		float2 _Test;		//テクスチャのオフセット
+
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
-			fixed2 uv = IN.uv_MainTex;
-			uv.x += 0.4f * _Time;	//X
-			uv.y += 0.4f * _Time;	//Z
+			float2 uv = IN.uv_MainTex;
+
+			//受け取ったオフセットに時間をかける
+			uv.x += _Test.x * _Time.y;
+			uv.y += _Test.y * _Time.y;
 
 			o.Albedo = tex2D(_MainTex, uv);
         }
