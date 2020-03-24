@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -730,7 +730,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.01
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1078,7 +1078,7 @@ PrefabInstance:
     - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
         type: 3}
       propertyPath: SandDir.z
-      value: -0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
         type: 3}
@@ -1088,7 +1088,7 @@ PrefabInstance:
     - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
         type: 3}
       propertyPath: SandDir.y
-      value: -0.2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 574102880003103794, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
@@ -1178,7 +1178,7 @@ PrefabInstance:
     - target: {fileID: 1927953177627734959, guid: 6837b5c4378846d40b6f5b6a1e177a70,
         type: 3}
       propertyPath: SandDir.y
-      value: 0.15
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1927953177627734959, guid: 6837b5c4378846d40b6f5b6a1e177a70,
         type: 3}
@@ -1236,7 +1236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FragmentSp: 5
-  SandMoveSp: {x: 0, y: 0, z: 0}
+  SandMoveFtSp: {x: 0, y: 0, z: 0}
 --- !u!65 &1555928065
 BoxCollider:
   m_ObjectHideFlags: 0
