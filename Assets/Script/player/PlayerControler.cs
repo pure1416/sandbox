@@ -11,7 +11,7 @@ public class PlayerControler : MonoBehaviour
     public bool  PlayerTurn;     //プレイヤーの反転 trueなら反転 falseなら通常
     int          PlayerTime;     //中砂の時間
     public float PlayerTotalTime;//中砂の合計の時間
-    Vector3 PlayerDir;   //プレイヤーの方向
+    public Vector3 PlayerDir;   //プレイヤーの方向
     [SerializeField] Vector3 SandMoveSp;  //流砂の移動力
 
     [Header("時間")]
