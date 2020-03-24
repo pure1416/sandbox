@@ -12,7 +12,7 @@ public class PlayerControler : MonoBehaviour
     int          PlayerTime;     //中砂の時間
     public float PlayerTotalTime;//中砂の合計の時間
     public Vector3 PlayerDir;   //プレイヤーの方向
-    bool CollisionSand;         //流砂に触れているかどうか
+    [SerializeField] bool CollisionSand;         //流砂に触れているかどうか
 
     [SerializeField] Vector3 SandMoveSp;  //流砂の移動力
 
@@ -53,7 +53,7 @@ public class PlayerControler : MonoBehaviour
 
         //デバッグ
         //Debug.Log(PlayerTurn);
-        Debug.Log(SandMoveSp);
+        //Debug.Log(SandMoveSp);
         //Debug.Log("プレーヤーの方向" + PlayerDir);
 
         //=========================================================================================
@@ -67,13 +67,8 @@ public class PlayerControler : MonoBehaviour
         PlayerDir = cameraForward * inputVertical + Camera.main.transform.right * inputHorizontal;
 
         // 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
-        if (CollisionSand == false)
-        {
-            this.GetComponent<Rigidbody>().useGravity = true;
-            rb.velocity = PlayerDir * PlayerSp  + SandMoveSp;
-        }
         //流砂に触れている時
-        else
+        if (CollisionSand == true)
         {
             //y軸に力がかかっていないとき
             if (SandMoveSp.y == 0.0f)
@@ -85,11 +80,17 @@ public class PlayerControler : MonoBehaviour
             else
             {
                 this.GetComponent<Rigidbody>().useGravity = false;
-                rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
+                rb.velocity = new Vector3(0.0f, PlayerDir.y * PlayerSp + SandMoveSp.y, 0.0f);
             }
-        }
 
-        rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
+            rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
+        }
+        //流砂に触れていない時
+        else  //CollisionSand == false
+        {
+            this.GetComponent<Rigidbody>().useGravity = true;
+            rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0);
+        }
 
         // キャラクターの向きを進行方向に
         if (PlayerDir != Vector3.zero)
@@ -159,8 +160,8 @@ public class PlayerControler : MonoBehaviour
     {
         if (collision.gameObject.tag == "QuickSand")
         {
-            this.GetComponent<Rigidbody>().useGravity = false;
-            CollisionSand = false;
+            //this.GetComponent<Rigidbody>().useGravity = false;
+            CollisionSand = true;
             SandMoveSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
         }
     }
@@ -170,9 +171,8 @@ public class PlayerControler : MonoBehaviour
     {
         if (collision.gameObject.tag == "QuickSand")
         {
-            CollisionSand = true;
-
-            this.GetComponent<Rigidbody>().useGravity = true;
+            //this.GetComponent<Rigidbody>().useGravity = true;
+            CollisionSand = false;
             SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
         }
     }

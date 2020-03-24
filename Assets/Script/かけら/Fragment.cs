@@ -28,7 +28,7 @@ public class Fragment : MonoBehaviour
         FragmentSp = 5.0f;
         SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
 
-        rb = GetComponent<Rigidbody>();
+        rb = this.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
