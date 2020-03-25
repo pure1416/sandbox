@@ -175,6 +175,27 @@ public class PlayerControler : MonoBehaviour
         }
     }
 
+    //流砂の処理(板ver)
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "QuickSand_B")
+        {
+            CollisionSand = true;
+            SandMoveSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
+        }
+    }
+
+    //流砂から離れるときに流砂の影響を消す
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "QuickSand_B")
+        {
+            CollisionSand = false;
+            SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
+        }
+    }
+
+
 
     //プレイヤーが反転しているかどうかの変数Getter
     public bool GetPlayerTurn()

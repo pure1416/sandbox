@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - QuickSand
+  - QuickSand_B
+  - Player_Leg
   layers:
   - Default
   - TransparentFX

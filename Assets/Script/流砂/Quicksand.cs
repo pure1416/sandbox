@@ -75,40 +75,77 @@ public class Quicksand : MonoBehaviour
     }
 
     //プレイヤのトリガーに当たった時
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        //プレイヤのトリガーに反応
-        if(other.gameObject.tag == "Player")
+        //流砂(板以外)
+        if (this.tag == "QuickSand")
         {
-            IsTriggerFlg = true;
+            //プレイヤのトリガーに反応
+            if (other.gameObject.tag == "Player")
+            {
+                IsTriggerFlg = true;
+            }
         }
     }
 
     //プレイヤのトリガーから離れた時
     private void OnTriggerExit(Collider other)
     {
-        //プレイヤのトリガーに反応
-        if(other.gameObject.tag == "Player")
+        //流砂(板以外)
+        if (this.tag == "QuickSand")
         {
-            IsTriggerFlg = false;
+            //プレイヤのトリガーに反応
+            if (other.gameObject.tag == "Player")
+            {
+                IsTriggerFlg = false;
+            }
         }
     }
 
     //移動力のGetter
     public Vector3 GetSandMove()
     {
-        if(IsTriggerFlg)
+        //流砂(板以外)
+        if (this.tag == "QuickSand")
         {
-            //+のy成分を与えない
-            if(SandMove.y >= 0.0f)
+            if (IsTriggerFlg)
+            {
+                //+のy成分を与えない
+                if (SandMove.y >= 0.0f)
+                {
+                    return new Vector3(SandMove.x, 0.0f, SandMove.z);
+                }
+                else if (SandMove.y < 0.0f)
+                {
+                    //yが-でも、角度が付いてなければy成分を与えない
+                    if (this.transform.eulerAngles.x == 0.0f &&
+                       this.transform.eulerAngles.z == 0.0f)
+                    {
+                        return new Vector3(SandMove.x, 0.0f, SandMove.z);
+                    }
+                }
+            }
+            else if (!IsTriggerFlg)
+            {
+                //yが+の場合だけyを与える
+                if (SandMove.y < 0.0f)
+                {
+                    return new Vector3(SandMove.x, 0.0f, SandMove.z);
+                }
+            }
+        }
+        //流砂(板)
+        else if (this.tag == "QuickSand_B")
+        {
+            //角度で判断する
+            if (this.transform.eulerAngles.x % 180.0f == 0.0f &&
+            this.transform.eulerAngles.z % 180.0f == 0.0f)
             {
                 return new Vector3(SandMove.x, 0.0f, SandMove.z);
             }
-            else if(SandMove.y < 0.0f)
+            else
             {
-                //yが-でも、角度が付いてなければy成分を与えない
-                if(this.transform.eulerAngles.x == 0.0f && 
-                   this.transform.eulerAngles.z == 0.0f)
+                if (SandMove.y < 0.0f)
                 {
                     return new Vector3(SandMove.x, 0.0f, SandMove.z);
                 }
