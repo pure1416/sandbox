@@ -160,7 +160,6 @@ public class PlayerControler : MonoBehaviour
     {
         if (collision.gameObject.tag == "QuickSand")
         {
-            //this.GetComponent<Rigidbody>().useGravity = false;
             CollisionSand = true;
             SandMoveSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
         }
@@ -171,11 +170,31 @@ public class PlayerControler : MonoBehaviour
     {
         if (collision.gameObject.tag == "QuickSand")
         {
-            //this.GetComponent<Rigidbody>().useGravity = true;
             CollisionSand = false;
             SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
         }
     }
+
+    //流砂の処理(板ver)
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "QuickSand_B")
+        {
+            CollisionSand = true;
+            SandMoveSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
+        }
+    }
+
+    //流砂から離れるときに流砂の影響を消す
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "QuickSand_B")
+        {
+            CollisionSand = false;
+            SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
+        }
+    }
+
 
 
     //プレイヤーが反転しているかどうかの変数Getter
