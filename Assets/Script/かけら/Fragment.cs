@@ -9,16 +9,20 @@ public class Fragment : MonoBehaviour
 {
 
     // プレイヤーのスクリプト
-    PlayerControler playercontroler = new PlayerControler();
+    //PlayerControler playercontroler = new PlayerControler();
     // ↓使い方よくわからんからコメント 【これに変えれば黄色の警告が消える】
-    //PlayerControler playercontroler =GameObject.Find("オブジェクト名").GetComponent<PlayerControler>();
+    // PlayerControler playercontroler = GameObject.Find("playerModel").GetComponent<PlayerControler>();
+
+    [SerializeField]PlayerControler playercontroler;
 
     // 変数宣言
     Vector3 FragmentDir;                  // かけらの方向
     public float FragmentSp;              // かけらの速度
     [SerializeField] Vector3 SandMoveFtSp;  // 流砂の移動力
 
-    Rigidbody rb;                         // 当たり判定
+    // 当たり判定
+    Collider FtCol;
+    Rigidbody rb;                        
 
     // Start is called before the first frame update
     void Start()
@@ -28,12 +32,15 @@ public class Fragment : MonoBehaviour
         FragmentSp = 5.0f;
         SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
 
+        FtCol = GetComponent<Collider>();
+        FtCol.isTrigger = false;
         rb = this.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //rb.velocity = FragmentDir * FragmentSp + new Vector3(0, rb.velocity.y, 0) + SandMoveFtSp;
 
     }
 
@@ -50,7 +57,30 @@ public class Fragment : MonoBehaviour
             rb.velocity = FragmentDir * FragmentSp + new Vector3(0, rb.velocity.y, 0) + SandMoveFtSp;
 
         }
+
+        //if (playercontroler.GetPlayerEnpty() == true)
+        //{
+
+        //    //流砂の上にいるときに流砂の移動力を受け取る
+        //    if (collision.gameObject.tag == "QuickSand")
+        //    {
+        //        FtCol.isTrigger = true;
+
+        //        //this.GetComponent<Rigidbody>().useGravity = false;
+        //        // CollisionSand = true;
+        //        // SandMoveFtSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
+        //    }
+        //}
     }
-
-
+ 
+    //流砂から離れるときに流砂の影響を消す
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "QuickSand")
+    //    {
+    //        //this.GetComponent<Rigidbody>().useGravity = true;
+    //        //CollisionSand = false;
+    //        SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
+    //    }
+    //}
 }
