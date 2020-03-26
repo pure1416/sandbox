@@ -35,6 +35,41 @@ public class Quicksand : MonoBehaviour
         IsStop = false;
 
         playerControler = GameObject.FindGameObjectWithTag("Player");
+
+        //ついでに実装してみる機能(設置がしやすいかも)
+        if (Mathf.Abs(this.transform.up.x) != 0.0f)
+        {
+            if (this.transform.up.x > 0.0f)
+            {
+                this.transform.position += new Vector3(0.01f, 0, 0);
+            }
+            else if (this.transform.up.x < 0.0f)
+            {
+                this.transform.position += new Vector3(-0.01f, 0, 0);
+            }
+        }
+        if (Mathf.Abs(this.transform.up.y) != 0.0f)
+        {
+            if (this.transform.up.y > 0.0f)
+            {
+                this.transform.position += new Vector3(0, 0.01f, 0);
+            }
+            else if (this.transform.up.y < 0.0f)
+            {
+                this.transform.position += new Vector3(0, -0.01f, 0);
+            }
+        }
+        if (Mathf.Abs(this.transform.up.z) != 0.0f)
+        {
+            if (this.transform.up.z > 0.0f)
+            {
+                this.transform.position += new Vector3(0, 0, 0.01f);
+            }
+            else if (this.transform.up.z < 0.0f)
+            {
+                this.transform.position += new Vector3(0, 0, -0.01f);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -192,7 +227,7 @@ public class Quicksand : MonoBehaviour
         }
 
         //SandSpdの値が０以下にならないようにする
-        if(SandSpd <= 1.0f)
+        if (SandSpd <= 1.0f)
         {
             SandSpd = 1.0f;
         }

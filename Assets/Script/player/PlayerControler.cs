@@ -55,7 +55,7 @@ public class PlayerControler : MonoBehaviour
         inputVertical = Input.GetAxisRaw("Vertical");
 
         //デバッグ
-        Debug.Log(ClearFlg);
+        //Debug.Log(ClearFlg);
         //Debug.Log(SandMoveSp);
         //Debug.Log("プレーヤーの方向" + PlayerDir);
 
@@ -158,28 +158,30 @@ public class PlayerControler : MonoBehaviour
         }
     }
 
-    //流砂の上にいるときに流砂の移動力を受け取る
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "QuickSand")
-        {
-            CollisionSand = true;
-            SandMoveSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
-        }
+        ////流砂の上にいるときに流砂の移動力を受け取る
+        //if (collision.gameObject.tag == "QuickSand")
+        //{
+        //    CollisionSand = true;
+        //    SandMoveSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
+        //}
+
         if (collision.gameObject.tag == "Clear")
         {
             ClearFlg = true;
         }
     }
 
-    //流砂から離れるときに流砂の影響を消す
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "QuickSand")
-        {
-            CollisionSand = false;
-            SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
-        }
+        ////流砂から離れるときに流砂の影響を消す
+        //if (collision.gameObject.tag == "QuickSand")
+        //{
+        //    CollisionSand = false;
+        //    SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
+        //}
+
         if (collision.gameObject.tag == "Clear")
         {
             ClearFlg = false;

@@ -66,14 +66,50 @@ public class Fragment : MonoBehaviour
         }
 
         // 流砂の上にいるときに流砂の移動力を受け取る
-        if (collision.gameObject.tag == "QuickSand")
+        //if (collision.gameObject.tag == "QuickSand")
+        //{
+        //    SandCol = true;
+        //    SandMoveFtSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
+        //    SandMoveFtSp /= 100;
+            
+        //    // 流砂がｙ方向に力がかかっていたら重力を切る
+        //    if(SandMoveFtSp.y > 0.0f)
+        //    {
+        //        this.GetComponent<Rigidbody>().useGravity = false;
+        //    }
+        //    Debug.Log(SandMoveFtSp);
+
+        //    // プレイヤーの中砂が落ちきっていたら埋まる処理（徐々に埋まっていく感じに変更予定）
+        //    if (PSandEnpflg == true)
+        //    {
+        //        //FtCol.center = new Vector3(0.0f,0.25f,0.0f);
+        //        //FtCol.size = new Vector3(1.0f,0.5f,1.0f);
+        //    }
+        //}
+    }
+
+    //流砂から離れるときに流砂の影響を消す
+    private void OnCollisionExit(Collision collision)
+    {
+        //if (collision.gameObject.tag == "QuickSand")
+        //{
+        //    this.GetComponent<Rigidbody>().useGravity = true;
+        //    SandCol = false;
+        //    SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
+        //}
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        // 流砂の上にいるときに流砂の移動力を受け取る
+        if (other.gameObject.tag == "QuickSand_B")
         {
             SandCol = true;
-            SandMoveFtSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
+            SandMoveFtSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
             SandMoveFtSp /= 100;
-            
+
             // 流砂がｙ方向に力がかかっていたら重力を切る
-            if(SandMoveFtSp.y > 0.0f)
+            if (SandMoveFtSp.y > 0.0f)
             {
                 this.GetComponent<Rigidbody>().useGravity = false;
             }
@@ -88,10 +124,9 @@ public class Fragment : MonoBehaviour
         }
     }
 
-    //流砂から離れるときに流砂の影響を消す
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.tag == "QuickSand")
+        if (other.gameObject.tag == "QuickSand_B")
         {
             this.GetComponent<Rigidbody>().useGravity = true;
             SandCol = false;
