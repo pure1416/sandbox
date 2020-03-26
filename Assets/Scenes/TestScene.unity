@@ -999,7 +999,7 @@ PrefabInstance:
     - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
         type: 3}
       propertyPath: SandDir.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 574102880003103794, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
@@ -1254,7 +1254,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.02, y: 1.02, z: 1.02}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1555928066
 MeshRenderer:
@@ -1708,7 +1708,7 @@ PrefabInstance:
     - target: {fileID: 1927953177627734959, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1,
         type: 3}
       propertyPath: SandDir.y
-      value: 0.3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 574102880003103794, guid: 947af8777aa5b2a4f9bd77a6ed7a73d1, type: 3}
