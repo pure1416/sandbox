@@ -70,20 +70,20 @@ public class Fragment : MonoBehaviour
         {
             SandCol = true;
             SandMoveFtSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
-            SandMoveFtSp /= 10;
+            SandMoveFtSp /= 100;
             
             // 流砂がｙ方向に力がかかっていたら重力を切る
             if(SandMoveFtSp.y > 0.0f)
             {
                 this.GetComponent<Rigidbody>().useGravity = false;
             }
-            //Debug.Log(SandMoveFtSp);
+            Debug.Log(SandMoveFtSp);
 
             // プレイヤーの中砂が落ちきっていたら埋まる処理（徐々に埋まっていく感じに変更予定）
             if (PSandEnpflg == true)
             {
-                FtCol.center = new Vector3(0.0f,0.25f,0.0f);
-                FtCol.size = new Vector3(1.0f,0.5f,1.0f);
+                //FtCol.center = new Vector3(0.0f,0.25f,0.0f);
+                //FtCol.size = new Vector3(1.0f,0.5f,1.0f);
             }
         }
     }
