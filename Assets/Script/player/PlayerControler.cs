@@ -12,6 +12,8 @@ public class PlayerControler : MonoBehaviour
     int          PlayerTime;     //中砂の時間
     public float PlayerTotalTime;//中砂の合計の時間
     public Vector3 PlayerDir;   //プレイヤーの方向
+    public bool ClearFlg;   //プレイヤーの方向
+
     [SerializeField] bool CollisionSand;         //流砂に触れているかどうか
 
     [SerializeField] Vector3 SandMoveSp;  //流砂の移動力
@@ -41,6 +43,7 @@ public class PlayerControler : MonoBehaviour
         PlayerDir = new Vector3(0.0f, 0.0f, 0.0f);
         SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
         CollisionSand = false;
+        ClearFlg = false;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -52,7 +55,7 @@ public class PlayerControler : MonoBehaviour
         inputVertical = Input.GetAxisRaw("Vertical");
 
         //デバッグ
-        //Debug.Log(PlayerTurn);
+        Debug.Log(ClearFlg);
         //Debug.Log(SandMoveSp);
         //Debug.Log("プレーヤーの方向" + PlayerDir);
 
@@ -163,6 +166,10 @@ public class PlayerControler : MonoBehaviour
             CollisionSand = true;
             SandMoveSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
         }
+        if (collision.gameObject.tag == "Clear")
+        {
+            ClearFlg = true;
+        }
     }
 
     //流砂から離れるときに流砂の影響を消す
@@ -172,6 +179,10 @@ public class PlayerControler : MonoBehaviour
         {
             CollisionSand = false;
             SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
+        }
+        if (collision.gameObject.tag == "Clear")
+        {
+            ClearFlg = false;
         }
     }
 
