@@ -13,6 +13,7 @@ public class PlayerControler : MonoBehaviour
     public float PlayerTotalTime;//中砂の合計の時間
     public Vector3 PlayerDir;   //プレイヤーの方向
     public bool ClearFlg;   //プレイヤーの方向
+    Vector3 StartPlayerPos; //プレイヤーの初期位置
 
     [SerializeField] bool CollisionSand;         //流砂に触れているかどうか
 
@@ -22,6 +23,8 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] private float PlayerSandNomalTime;   //通常に流れるほうの砂の時間
     [SerializeField] private float PlayerSandBackTime;    //逆行して流れる砂の時間
     [SerializeField] private bool PlayerEnptyFlg;         //中砂が落ちきっているか判定
+    [SerializeField] private Vector3 PlayerGameoverPos;         //ゲームオーバーの位置
+
 
 
     //入力変数
@@ -44,6 +47,9 @@ public class PlayerControler : MonoBehaviour
         SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
         CollisionSand = false;
         ClearFlg = false;
+        //初期位置設定
+        StartPlayerPos = GameObject.Find("StartPlace").transform.position;
+        this.transform.position = StartPlayerPos;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -99,6 +105,12 @@ public class PlayerControler : MonoBehaviour
         if (PlayerDir != Vector3.zero)
         {
             transform.rotation = Quaternion.LookRotation(PlayerDir);
+        }
+
+        //ゲームオーバーの位置
+        if (this.transform.position.y <= PlayerGameoverPos.y)
+        {
+            this.transform.position = StartPlayerPos;
         }
 
         //=========================================================================================
@@ -158,7 +170,7 @@ public class PlayerControler : MonoBehaviour
         }
     }
 
-    //流砂の上にいるときに流砂の移動力を受け取る
+    //流砂とクリアの上にいるときに流砂の移動力を受け取る
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.tag == "QuickSand")
