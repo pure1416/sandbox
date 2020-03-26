@@ -170,10 +170,6 @@ public class PlayerControler : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
-=======
-    //流砂とクリアの上にいるときに流砂の移動力を受け取る
->>>>>>> 628e2788c746141619e74129dec3c79cdc71b5a0
     private void OnCollisionStay(Collision collision)
     {
         ////流砂の上にいるときに流砂の移動力を受け取る
