@@ -190,6 +190,25 @@ public class Quicksand : MonoBehaviour
         return SandMove;
     }
 
+    //方向のGetter
+    public Vector3 GetSandDir()
+    {
+        if(IsInverse)
+        {
+            return SandDir;
+        }
+        else
+        {
+            return InvSandDir;
+        }
+    }
+
+    //スピードのGetter
+    public float GetSandSpeed()
+    {
+        return SandSpd;
+    }
+
     //インスペクタで値が変更された時に発動する関数
     private void OnValidate()
     {
