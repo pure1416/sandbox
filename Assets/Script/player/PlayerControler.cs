@@ -20,8 +20,8 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] Vector3 SandMoveSp;  //流砂の移動力
 
     [Header("時間")]
-    [SerializeField] private float PlayerSandNomalTime;   //通常に流れるほうの砂の時間
-    [SerializeField] private float PlayerSandBackTime;    //逆行して流れる砂の時間
+    [SerializeField] public float PlayerSandNomalTime;   //通常に流れるほうの砂の時間
+    [SerializeField] public float PlayerSandBackTime;    //逆行して流れる砂の時間
     [SerializeField] private bool PlayerEnptyFlg;         //中砂が落ちきっているか判定
     [SerializeField] private Vector3 PlayerGameoverPos;         //ゲームオーバーの位置
 
@@ -41,8 +41,8 @@ public class PlayerControler : MonoBehaviour
     {
         //変数初期化
         PlayerEnptyFlg = true;
-        PlayerSandBackTime = PlayerTotalTime;
-        PlayerSandNomalTime = 0.0f;
+        PlayerSandBackTime = 0.0f;
+        PlayerSandNomalTime = PlayerTotalTime;
         PlayerDir = new Vector3(0.0f, 0.0f, 0.0f);
         SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
         CollisionSand = false;
@@ -239,4 +239,16 @@ public class PlayerControler : MonoBehaviour
     {
         return PlayerDir;
     }
+
+    //プレイヤーの時間(α版用)
+    public float GetPlayerNormalTime()
+    {
+        return PlayerSandNomalTime;
+    }
+    //プレイヤーの時間(α版用)
+    public float GetPlayerBackTime()
+    {
+        return PlayerSandBackTime;
+    }
+
 }
