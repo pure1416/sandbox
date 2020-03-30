@@ -61,7 +61,7 @@ public class PlayerControler : MonoBehaviour
         inputVertical = Input.GetAxisRaw("Vertical");
 
         //デバッグ
-        //Debug.Log(ClearFlg);
+        Debug.Log(ClearFlg);
         //Debug.Log(SandMoveSp);
         //Debug.Log("プレーヤーの方向" + PlayerDir);
 
