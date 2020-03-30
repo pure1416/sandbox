@@ -8,6 +8,7 @@ TagManager:
   - QuickSand_B
   - Player_Leg
   - Clear
+  - NomalStage
   layers:
   - Default
   - TransparentFX

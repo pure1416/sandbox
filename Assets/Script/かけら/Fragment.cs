@@ -129,22 +129,15 @@ public class Fragment : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        //if (other.gameObject.tag == "Untagged")
-        //{
-        //    this.GetComponent<Rigidbody>().useGravity = true;
-        //    SinkCount = 0;
-        //    SandCol = false;
-        //    SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
-        //    B_Col_Center = new Vector3(0.0f, 0.0f, 0.0f);
-        //    B_Col_Size = new Vector3(1.0f, 1.0f, 1.0f);
-        //}
 
         // 流砂の上にいるときに流砂の移動力を受け取る
         if (other.gameObject.tag == "QuickSand_B")
         {
+            SandCol = true;
             SandMoveFtSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
             SandMoveFtSp /= 10;
             this.transform.Translate(SandMoveFtSp);
+
             // 流砂がｙ方向に力がかかっていなければ重力を付ける
             if (SandMoveFtSp.y == 0.0f)
             {
@@ -156,7 +149,7 @@ public class Fragment : MonoBehaviour
                 this.GetComponent<Rigidbody>().useGravity = false;
             }
 
-            // 大体10秒かけて半分埋まりきるイメージ？
+            // 大体17秒かけて半分埋まりきるイメージ？(仮)どのくらい埋まるのか、何秒かけて埋まるのか決まり次第で変更予定
             if (SinkCount < 170)
             {
                 SinkTime += Time.deltaTime;
@@ -176,21 +169,24 @@ public class Fragment : MonoBehaviour
 
 
         }
+
     }
+
+
 
     private void OnTriggerExit(Collider other)
     {
         //流砂から離れるときに流砂の影響を消す
         if (other.gameObject.tag == "QuickSand_B")
         {
-            B_Col_Center = new Vector3(0.0f, 0.0f, 0.0f);
-            B_Col_Size = new Vector3(1.0f, 1.0f, 1.0f);
-            SinkCount = 0;
-            SandCol = false;
             SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
-
             this.GetComponent<Rigidbody>().useGravity = true;
 
+
+            SinkCount = 0;
+            SandCol = false;
+            B_Col_Center = new Vector3(0.0f, 0.0f, 0.0f);
+            B_Col_Size = new Vector3(1.0f, 1.0f, 1.0f);
         }
     }
 }
