@@ -198,6 +198,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1207106313320878173, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: m_TagString
+      value: QuickSand_B
+      objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.z
@@ -484,6 +489,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1207106313320878173, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: m_TagString
+      value: QuickSand_B
+      objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: Set
@@ -583,6 +593,21 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1207106313320878173, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: m_TagString
+      value: QuickSand_B
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: SandSpd
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: SandDir.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcfcbb67a154fb4b9910d664a9f4961, type: 3}
 --- !u!1001 &293415109
@@ -656,6 +681,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207106313320878173, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: m_TagString
+      value: QuickSand_B
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcfcbb67a154fb4b9910d664a9f4961, type: 3}
@@ -917,10 +947,20 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1207106313320878173, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: m_TagString
+      value: QuickSand_B
+      objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.z
-      value: 0
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: SandSpd
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcfcbb67a154fb4b9910d664a9f4961, type: 3}
@@ -1100,6 +1140,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1207106313320878173, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: m_TagString
+      value: QuickSand_B
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcfcbb67a154fb4b9910d664a9f4961, type: 3}
 --- !u!1001 &815195033
@@ -1188,6 +1233,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207106313320878173, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: m_TagString
+      value: QuickSand_B
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcfcbb67a154fb4b9910d664a9f4961, type: 3}
@@ -1480,6 +1530,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207106313320878173, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: m_TagString
+      value: QuickSand_B
       objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
@@ -1916,7 +1971,7 @@ GameObject:
   - component: {fileID: 1284293995}
   m_Layer: 0
   m_Name: SandBox
-  m_TagString: Untagged
+  m_TagString: QuickSand_B
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1997,6 +2052,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playercontroler: {fileID: 0}
+  B_Col_Center: {x: 0, y: 0, z: 0}
+  B_Col_Size: {x: 0, y: 0, z: 0}
   SandMoveFtSp: {x: 0, y: 0, z: 0}
 --- !u!65 &1555928065
 BoxCollider:
@@ -2029,7 +2086,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3e9271ff3bbfc7e49bacb3bb870c1fd4, type: 2}
+  - {fileID: 2100000, guid: 60c06173e3f4a4d46af9af8fa9278574, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2750,6 +2807,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1207106313320878173, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: m_TagString
+      value: QuickSand_B
+      objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.y
@@ -2874,6 +2936,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1284293995}
     m_Modifications:
+    - target: {fileID: 1207106313320878168, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878171, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2938,6 +3005,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207106313320878173, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: m_TagString
+      value: QuickSand_B
       objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}

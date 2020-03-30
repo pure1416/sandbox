@@ -19,8 +19,8 @@ public class Fragment : MonoBehaviour
 
     float SinkTime;                 // 沈む時間
     int SinkCount;                  // 何秒かけて沈むか？
-    Vector3 B_Col_Center;           // BoxColliderのCenter
-    Vector3 B_Col_Size;             // BoxColliderのSize
+    [SerializeField] Vector3 B_Col_Center;           // BoxColliderのCenter
+    [SerializeField] Vector3 B_Col_Size;             // BoxColliderのSize
 
     // 当たり判定
     BoxCollider FtCol;
@@ -56,23 +56,9 @@ public class Fragment : MonoBehaviour
         // プレイヤーの中砂の有無を常にもってくる
         P_SandEnpflg = playercontroler.GetComponent<PlayerControler>().GetPlayerEnpty();
 
-        // 大体10秒かけて半分埋まりきるイメージ？
-        if (SinkCount < 100)
-        {
-            SinkTime += Time.deltaTime;
-        }
-
-        // プレイヤーの中砂がないとき徐々に埋まっていく(BoxColliderの位置と大きさを変えてます)
-        if (P_SandEnpflg == true)
-        {
-            if(SinkTime >= 0.1f)
-            {
-                SinkTime = 0.0f;
-                SinkCount += 1;
-                B_Col_Center.y += 0.0025f;
-                B_Col_Size.y -= 0.005f;
-            }
-        }
+        // プレイヤーの中砂が落ちきっていたら埋まる処理（徐々に埋まっていく感じに変更予定）
+        FtCol.center = new Vector3(B_Col_Center.x, B_Col_Center.y, B_Col_Center.z);
+        FtCol.size = new Vector3(B_Col_Size.x, B_Col_Size.y, B_Col_Size.z);
     }
 
 
@@ -128,16 +114,37 @@ public class Fragment : MonoBehaviour
     //    //    SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
     //    //}
     //}
+    //private void OntrrigerEnter(Collider collider)
+    //{
+    //    if(collider.gameObject.tag == "Untagged")
+    //    {
+    //        this.GetComponent<Rigidbody>().useGravity = true;
+    //        SinkCount = 0;
+    //        SandCol = false;
+    //        SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
+    //        B_Col_Center = new Vector3(0.0f, 0.0f, 0.0f);
+    //        B_Col_Size = new Vector3(1.0f, 1.0f, 1.0f);
+    //    }
+    //}
 
     private void OnTriggerStay(Collider other)
     {
+        //if (other.gameObject.tag == "Untagged")
+        //{
+        //    this.GetComponent<Rigidbody>().useGravity = true;
+        //    SinkCount = 0;
+        //    SandCol = false;
+        //    SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
+        //    B_Col_Center = new Vector3(0.0f, 0.0f, 0.0f);
+        //    B_Col_Size = new Vector3(1.0f, 1.0f, 1.0f);
+        //}
+
         // 流砂の上にいるときに流砂の移動力を受け取る
         if (other.gameObject.tag == "QuickSand_B")
         {
             SandMoveFtSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
             SandMoveFtSp /= 10;
             this.transform.Translate(SandMoveFtSp);
-
             // 流砂がｙ方向に力がかかっていなければ重力を付ける
             if (SandMoveFtSp.y == 0.0f)
             {
@@ -149,10 +156,24 @@ public class Fragment : MonoBehaviour
                 this.GetComponent<Rigidbody>().useGravity = false;
             }
 
-            // プレイヤーの中砂が落ちきっていたら埋まる処理（徐々に埋まっていく感じに変更予定）
+            // 大体10秒かけて半分埋まりきるイメージ？
+            if (SinkCount < 170)
+            {
+                SinkTime += Time.deltaTime;
+            }
 
-            FtCol.center = new Vector3(B_Col_Center.x, B_Col_Center.y, B_Col_Center.z);
-            FtCol.size = new Vector3(B_Col_Size.x, B_Col_Size.y, B_Col_Size.z);
+            // プレイヤーの中砂がないとき徐々に埋まっていく(BoxColliderの位置と大きさを変えてます)
+            if (P_SandEnpflg == true)
+            {
+                if (SinkTime >= 0.1f)
+                {
+                    SinkTime = 0.0f;
+                    SinkCount += 1;
+                    B_Col_Center.y += 0.0025f;
+                    B_Col_Size.y -= 0.005f;
+                }
+            }
+
 
         }
     }
@@ -162,9 +183,14 @@ public class Fragment : MonoBehaviour
         //流砂から離れるときに流砂の影響を消す
         if (other.gameObject.tag == "QuickSand_B")
         {
-            this.GetComponent<Rigidbody>().useGravity = true;
+            B_Col_Center = new Vector3(0.0f, 0.0f, 0.0f);
+            B_Col_Size = new Vector3(1.0f, 1.0f, 1.0f);
+            SinkCount = 0;
             SandCol = false;
             SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
+
+            this.GetComponent<Rigidbody>().useGravity = true;
+
         }
     }
 }
