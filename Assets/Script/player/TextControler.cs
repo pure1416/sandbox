@@ -11,11 +11,13 @@ public class TextControler : MonoBehaviour
     string strNowTime;          //string型にする変数
     int seconds; //表示する時間
     GameObject time; //ゲームオブジェクト
+    Color color;
 
     void Start()
     {
         time = GameObject.Find("timer");   // 時間計測用GameObjectの取得
         transform.localScale = new Vector3(-1, 1, 1);
+        color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
     }
 
     void Update()
@@ -29,12 +31,13 @@ public class TextControler : MonoBehaviour
         if (PlayerTurnFlg == false)
         {
             seconds = (int)NakasunaNormalTime;
-            time.GetComponent<Renderer>().material.color = Color.red;
+            time.GetComponent<TextMesh>().color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
         }
         if (PlayerTurnFlg == true)
         {
             seconds = (int)NakasunaBackTime;
-            time.GetComponent<Renderer>().material.color = Color.blue;
+            time.GetComponent<TextMesh>().color = new Color(0.0f, 0.0f, 1.0f, 1.0f);
+
 
         }
 
