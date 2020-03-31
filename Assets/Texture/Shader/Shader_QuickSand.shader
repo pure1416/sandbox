@@ -1,16 +1,19 @@
-﻿Shader "Unlit/Test"
+﻿Shader "Unlit/Shader_QuickSand"
 {
     Properties
     {
-		_MainTex("Albedo (RGB)", 2D) = "white" {}
-		_RotateSpeed("Rotate Speed", float) = 1.0
+		_MainTex("Albedo (RGB)" , 2D) = "white" {}
 		_Tiling("Tiling" , float) = 1.0
 		_Angle("Angle" , float) = 0.0
+		[MaterialToggle] _IsStop("Stop" , float) = 0
+		_Speed("Speed" , float) = 0.0
 	}
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
-        LOD 100
+		Tags { "RenderType" = "Transparent" "Opaque" = "Transparent"}
+		LOD 100
+		Cull off
+		Blend SrcAlpha OneMinusSrcAlpha
 
         Pass
         {
@@ -39,10 +42,11 @@
 
             sampler2D _MainTex;		//テクスチャ
             float4 _MainTex_ST;	//?
-			float _RotateSpeed;	//回転速度
 			float _Tiling;		//タイリング
 
-			float _Angle;		//角度(テスト用)
+			float _Angle;		//角度(ラジアン)
+			float _IsStop;		//停止フラグ
+			float _Speed;		//速度
 
             v2f vert (appdata v)
             {
@@ -55,11 +59,9 @@
 
             fixed4 frag (v2f i) : SV_Target
             {
-				//Timeを入力として、現在の回転角度(ラジアン)を作る
-				half angle = frac(_Time.x) * PI * 2;
 				//回転行列の素　回転量(引数)＝回転角度＊回転速度(回転角度はラジアン角)
-				half AngleCos = cos(_Angle * _RotateSpeed);
-				half AngleSin = sin(_Angle * _RotateSpeed);
+				half AngleCos = cos(_Angle);
+				half AngleSin = sin(_Angle);
 				//2次元の回転行列
 				half2x2 RotateMatrix = half2x2(AngleCos, -AngleSin, AngleSin, AngleCos);
 				//タイリング処理
@@ -72,7 +74,10 @@
 				//角度で向きを決め、スピードでスクロール速度を決めてy方向でスクロール
 				//あとは色。書くのも一つの手。
 
-				i.uv.y += 0.1f * _Time.y;
+				if (_IsStop == 0)
+				{
+					i.uv.y += (_Speed * 0.075f) * _Time.y;
+				}
 
                 fixed4 col = tex2D(_MainTex, i.uv);
                 // apply fog

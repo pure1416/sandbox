@@ -51,28 +51,40 @@ public class SandVecCal : MonoBehaviour
             }
         }
 
-        //ベクトルをラジアン角に変換
+        //ベクトルをラジアン角に変換して送る
         //yが0じゃない場合
         if(SandVec.y != 0.0f)
         {
             if(Mathf.Abs(SandVec.x) == Mathf.Abs(SandVec.z))
             {
-                Mathf.Atan2(SandVec.y, SandVec.x);
+                //テスト完了
+                this.GetComponent<Renderer>().material.SetFloat("_Angle", Mathf.Atan2(-SandVec.x, SandVec.y));
             }
             else
             {
+                //テスト完了
                 //大きい方を使う
-                Mathf.Atan2(SandVec.y, AbsMax(SandVec.x, SandVec.z));
+                this.GetComponent<Renderer>().material.SetFloat("_Angle", Mathf.Atan2(AbsMax(-SandVec.x, SandVec.z), SandVec.y));
             }
         }
         //yが0の場合
         else if(SandVec.y == 0.0f)
         {
-            Mathf.Atan2(SandVec.z, SandVec.x);
+            //テスト完了
+            this.GetComponent<Renderer>().material.SetFloat("_Angle", Mathf.Atan2(-SandVec.x, SandVec.z));
         }
 
         //スピードと停止フラグを設定
-        //ここに書く
+        this.GetComponent<Renderer>().material.SetFloat("_Speed", Speed);
+        
+        if(IsStop || (SandVec.x == 0.0f && SandVec.y == 0.0f && SandVec.z == 0.0f))
+        {
+            this.GetComponent<Renderer>().material.SetFloat("_IsStop", 1.0f);
+        }
+        else
+        {
+            this.GetComponent<Renderer>().material.SetFloat("_IsStop", 0.0f);
+        }
     }
 
     //絶対値が大きい方を返す関数
