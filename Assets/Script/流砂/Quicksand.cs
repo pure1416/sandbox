@@ -193,7 +193,7 @@ public class Quicksand : MonoBehaviour
     //方向のGetter
     public Vector3 GetSandDir()
     {
-        if(IsInverse)
+        if(!IsInverse)
         {
             return SandDir;
         }

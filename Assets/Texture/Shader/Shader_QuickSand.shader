@@ -1,4 +1,4 @@
-﻿Shader "Unlit/Test"
+﻿Shader "Unlit/Shader_QuickSand"
 {
     Properties
     {
@@ -10,8 +10,10 @@
 	}
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
-        LOD 100
+		Tags { "RenderType" = "Transparent" "Opaque" = "Transparent"}
+		LOD 100
+		Cull off
+		Blend SrcAlpha OneMinusSrcAlpha
 
         Pass
         {
@@ -74,7 +76,7 @@
 
 				if (_IsStop == 0)
 				{
-					i.uv.y += (_Speed * 0.1f) * _Time.y;
+					i.uv.y += (_Speed * 0.075f) * _Time.y;
 				}
 
                 fixed4 col = tex2D(_MainTex, i.uv);

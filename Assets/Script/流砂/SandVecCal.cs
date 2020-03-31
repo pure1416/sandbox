@@ -77,7 +77,7 @@ public class SandVecCal : MonoBehaviour
         //スピードと停止フラグを設定
         this.GetComponent<Renderer>().material.SetFloat("_Speed", Speed);
         
-        if(IsStop)
+        if(IsStop || (SandVec.x == 0.0f && SandVec.y == 0.0f && SandVec.z == 0.0f))
         {
             this.GetComponent<Renderer>().material.SetFloat("_IsStop", 1.0f);
         }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1207106313320878169}
   - component: {fileID: 1207106313320878168}
   - component: {fileID: 1207106313320878175}
+  - component: {fileID: 6562335151868926437}
   m_Layer: 0
   m_Name: Sand_Ver3
   m_TagString: QuickSand_B
@@ -60,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4f32f52cd4ab5ca41b21eebf25f74702, type: 2}
+  - {fileID: 2100000, guid: 8defdffccc1798e49852e222e24ef1f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,3 +115,20 @@ MonoBehaviour:
   SandMove: {x: 0, y: 0, z: 0}
   IsTriggerFlg: 0
   playerControler: {fileID: 0}
+--- !u!114 &6562335151868926437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207106313320878173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2d69f54e928ea4c823b62629e1d32d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SandVec: {x: 0, y: 0, z: 0}
+  Speed: 0
+  Player: {fileID: 0}
+  IsStop: 0
+  DebugMode: 0
