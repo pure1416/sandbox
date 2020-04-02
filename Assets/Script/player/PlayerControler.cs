@@ -40,7 +40,7 @@ public class PlayerControler : MonoBehaviour
     void Start()
     {
         //変数初期化
-        PlayerEnptyFlg = true;
+        PlayerEnptyFlg = false;
         PlayerSandBackTime = 0.0f;
         PlayerSandNomalTime = PlayerTotalTime;
         PlayerDir = new Vector3(0.0f, 0.0f, 0.0f);
@@ -50,6 +50,7 @@ public class PlayerControler : MonoBehaviour
         //初期位置設定
         StartPlayerPos = GameObject.Find("StartPlace").transform.position;
         this.transform.position = StartPlayerPos;
+        this.transform.position += new Vector3(0, 1.0f, 0);
         rb = GetComponent<Rigidbody>();
     }
 
