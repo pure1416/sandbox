@@ -14,10 +14,13 @@ public class PlayerControler : MonoBehaviour
     public Vector3 PlayerDir;   //プレイヤーの方向
     public bool ClearFlg;   //プレイヤーの方向
     Vector3 StartPlayerPos; //プレイヤーの初期位置
-
+    private Rigidbody _rigidbody; //物理判定の速度変数
+    bool GameOverFlg;           //ゲームオーバーフラグ、高いところから落ちたときやステージ外へ行ったときtrueとなる
+    　
     [SerializeField] bool CollisionSand;         //流砂に触れているかどうか
 
     [SerializeField] Vector3 SandMoveSp;  //流砂の移動力
+    [SerializeField] float FallDeathPos;  //どれだけ高いところから落ちたときか
 
     [Header("時間")]
     [SerializeField] public float PlayerSandNomalTime;   //通常に流れるほうの砂の時間
@@ -47,6 +50,9 @@ public class PlayerControler : MonoBehaviour
         SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
         CollisionSand = false;
         ClearFlg = false;
+        _rigidbody = this.GetComponent<Rigidbody>();
+        GameOverFlg = false;
+
         //初期位置設定
         StartPlayerPos = GameObject.Find("StartPlace").transform.position;
         this.transform.position = StartPlayerPos;
@@ -63,6 +69,7 @@ public class PlayerControler : MonoBehaviour
 
         //デバッグ
         Debug.Log(ClearFlg);
+        Debug.Log("速度ベクトル: " + _rigidbody.velocity);
         //Debug.Log(SandMoveSp);
         //Debug.Log("プレーヤーの方向" + PlayerDir);
 
@@ -98,8 +105,19 @@ public class PlayerControler : MonoBehaviour
         //流砂に触れていない時
         else  //CollisionSand == false
         {
+            //高いところから落ちたとき
+            if (_rigidbody.velocity.y <= FallDeathPos)
+            {
+                GameOverFlg = true;
+            }
+            else
+            {
+                GameOverFlg = false;
+            }
             this.GetComponent<Rigidbody>().useGravity = true;
             rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0);
+
+
         }
 
         // キャラクターの向きを進行方向に
@@ -109,7 +127,8 @@ public class PlayerControler : MonoBehaviour
         }
 
         //ゲームオーバーの位置
-        if (this.transform.position.y <= PlayerGameoverPos.y)
+        if (this.transform.position.y <= PlayerGameoverPos.y ||
+            GameOverFlg == true)
         {
             this.transform.position = StartPlayerPos;
         }
