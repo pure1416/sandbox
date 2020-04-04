@@ -9,6 +9,7 @@ TagManager:
   - Player_Leg
   - Clear
   - NotSand
+  - Gameover
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - 
   - Sand
   - Test
-  - 
+  - Block
   - 
   - 
   - 
