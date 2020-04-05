@@ -136,7 +136,8 @@ public class PlayerControler : MonoBehaviour
         //=========================================================================================
         //回転処理
         //=========================================================================================
-        if (Input.GetKeyDown(KeyCode.Space))
+        //スペースキーまたはAボタンを押したとき
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1"))
         {
             //時間逆行から通常へ変換
             if (PlayerTurn == true)
