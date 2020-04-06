@@ -10,6 +10,7 @@ TagManager:
   - Clear
   - NotSand
   - Gameover
+  - Block
   layers:
   - Default
   - TransparentFX
