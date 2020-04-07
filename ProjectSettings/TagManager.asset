@@ -8,7 +8,9 @@ TagManager:
   - QuickSand_B
   - Player_Leg
   - Clear
-  - NomalStage
+  - NotSand
+  - Gameover
+  - Block
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - 
   - Sand
   - Test
-  - 
+  - Block
   - 
   - 
   - 
