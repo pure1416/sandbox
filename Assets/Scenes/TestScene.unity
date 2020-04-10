@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1205,7 +1205,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.6993545, b: 0.18396229, a: 1}
+  m_Color: {r: 1, g: 0.97031474, b: 0.9198113, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -2392,7 +2392,7 @@ GameObject:
   - component: {fileID: 1459931079}
   - component: {fileID: 1459931080}
   m_Layer: 10
-  m_Name: Plane
+  m_Name: Seesaw
   m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
