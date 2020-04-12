@@ -89,7 +89,6 @@ public class PlayerControler : MonoBehaviour
         //{
         //    Debug.Log("左");
         //}
-
         //ポーズ画面
         if (Mathf.Approximately(Time.timeScale, 0f)) //時間が止まっていたら、Update処理をしない処理
         {

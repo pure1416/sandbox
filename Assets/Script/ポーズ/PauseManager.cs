@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
@@ -8,10 +9,11 @@ public class PauseManager : MonoBehaviour
     [SerializeField]
     private GameObject pauseUI;
 
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("r"))
+        if (Input.GetKeyDown("r") || Input.GetKeyDown("joystick button 9"))
         {
             //　ポーズUIのアクティブ、非アクティブを切り替え
             pauseUI.SetActive(!pauseUI.activeSelf);
@@ -28,4 +30,6 @@ public class PauseManager : MonoBehaviour
             }
         }
     }
+
+
 }
