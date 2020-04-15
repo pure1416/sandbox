@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class WorldSerectManager : MonoBehaviour
+public class WorldSelectManager : MonoBehaviour
 {
     [Header("ワールド")]
     public GameObject[] worlds; //ワールドの管理オブジェクトを入れる？
@@ -36,12 +36,23 @@ public class WorldSerectManager : MonoBehaviour
             worlds[0].GetComponent<WorldUnlock>().SetClearFlg(true);
             worlds[1].GetComponent<WorldUnlock>().SetUnlockFlg(true);
         }
+        else
+        {
+            worlds[0].GetComponent<WorldUnlock>().SetClearFlg(false);
+            worlds[0].GetComponent<WorldUnlock>().SetUnlockFlg(true);
+            worlds[1].GetComponent<WorldUnlock>().SetUnlockFlg(false);
+        }
 
         //World_2クリア済み
         if ((wf & WorldFlags.World_2) == WorldFlags.World_2)
         {
             worlds[1].GetComponent<WorldUnlock>().SetClearFlg(true);
             worlds[2].GetComponent<WorldUnlock>().SetUnlockFlg(true);
+        }
+        else
+        {
+            worlds[1].GetComponent<WorldUnlock>().SetClearFlg(false);
+            worlds[2].GetComponent<WorldUnlock>().SetUnlockFlg(false);
         }
 
         //World_3クリア済み
@@ -50,22 +61,22 @@ public class WorldSerectManager : MonoBehaviour
             worlds[2].GetComponent<WorldUnlock>().SetClearFlg(true);
             worlds[3].GetComponent<WorldUnlock>().SetUnlockFlg(true);
         }
+        else
+        {
+            worlds[2].GetComponent<WorldUnlock>().SetClearFlg(false);
+            worlds[3].GetComponent<WorldUnlock>().SetUnlockFlg(false);
+        }
 
         //World_4クリア済み
         if ((wf & WorldFlags.World_4) == WorldFlags.World_4)
         {
             worlds[3].GetComponent<WorldUnlock>().SetClearFlg(true);
         }
+        else
+        {
+            worlds[3].GetComponent<WorldUnlock>().SetClearFlg(false);
+        }
 
         //書置き。ロックアンロックに関してはメモりつつ仕組みを考えた方がいい
-    }
-
-    //一気にLockする関数
-    void Lock(int num)
-    {
-        for (; num < 4; num++)
-        {
-            worlds[4 - num].GetComponent<WorldUnlock>().SetUnlockFlg(false);
-        }
     }
 }
