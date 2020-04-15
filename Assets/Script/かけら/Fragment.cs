@@ -92,6 +92,43 @@ public class Fragment : MonoBehaviour
                 }
             }
         }
+
+        if (other.gameObject.tag == "Mud")
+        {
+            SandMoveFtSp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
+            SandMoveFtSp /= 50;
+            this.transform.Translate(SandMoveFtSp);
+
+            // 流砂がｙ方向に力がかかっていなければ重力を付ける
+            if (SandMoveFtSp.y == 0.0f)
+            {
+                this.GetComponent<Rigidbody>().useGravity = true;
+            }
+            // 流砂がｙ方向に力がかかっていたら重力を切る
+            else
+            {
+                this.GetComponent<Rigidbody>().useGravity = false;
+            }
+
+            // 大体17秒かけて半分埋まりきるイメージ？(仮)どのくらい埋まるのか、何秒かけて埋まるのか決まり次第で変更予定
+            if (SinkCount < 170)
+            {
+                SinkTime += Time.deltaTime;
+            }
+
+            // プレイヤーの中砂がないとき徐々に埋まっていく(BoxColliderの位置と大きさを変えてます)
+            if (P_SandEnpflg == true)
+            {
+                if (SinkTime >= 0.1f)
+                {
+                    SinkTime = 0.0f;
+                    SinkCount += 1;
+                    B_Col_Center.y += 0.0025f;
+                    B_Col_Size.y -= 0.005f;
+                }
+            }
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -108,6 +145,12 @@ public class Fragment : MonoBehaviour
     {
         //流砂から流砂へ移動するときに一旦SandMobeFtSpを初期化する
         if (other.gameObject.tag == "QuickSand_B")
+        {
+            SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
+            this.GetComponent<Rigidbody>().useGravity = true;
+        }
+        //流砂から流砂へ移動するときに一旦SandMobeFtSpを初期化する
+        if (other.gameObject.tag == "Mud")
         {
             SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
             this.GetComponent<Rigidbody>().useGravity = true;

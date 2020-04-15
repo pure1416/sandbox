@@ -21,14 +21,14 @@ public class Camera_Control : MonoBehaviour
         targetPos = targetObj.transform.position;
 
         //反時計回りに回転
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Q) || Input.GetKey("joystick button 4"))
         {
             // targetの位置のY軸を中心に、回転（公転）する
             transform.RotateAround(targetPos, Vector3.up, Time.deltaTime * -50f);
         }
         // 右に移動
 
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E) || Input.GetKey("joystick button 5"))
         {
             // targetの位置のY軸を中心に、回転（公転）する
             transform.RotateAround(targetPos, Vector3.up, Time.deltaTime * 50f);

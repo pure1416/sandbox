@@ -69,9 +69,31 @@ public class PlayerControler : MonoBehaviour
 
         //デバッグ
         Debug.Log(ClearFlg);
-        Debug.Log("速度ベクトル: " + _rigidbody.velocity);
+        //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
         //Debug.Log(SandMoveSp);
         //Debug.Log("プレーヤーの方向" + PlayerDir);
+
+        if(Input.GetButtonDown("Horizontal"))
+        {
+            Debug.Log("上");
+        }
+       if (Input.GetButtonDown("Vertical"))
+       {
+           Debug.Log("下");
+       }
+        //if (Input.GetButtonDown("Controler_Right"))
+        //{
+        //    Debug.Log("右");
+        //}
+        //if (Input.GetButtonDown("Controler_Left"))
+        //{
+        //    Debug.Log("左");
+        //}
+        //ポーズ画面
+        if (Mathf.Approximately(Time.timeScale, 0f)) //時間が止まっていたら、Update処理をしない処理
+        {
+            return;
+        }
 
         //=========================================================================================
         //移動処理
@@ -224,20 +246,35 @@ public class PlayerControler : MonoBehaviour
     //流砂の処理(板ver)
     private void OnTriggerStay(Collider other)
     {
+        //流砂
         if (other.gameObject.tag == "QuickSand_B")
         {
             CollisionSand = true;
             SandMoveSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
+        }
+        //ずっと流れる流砂
+        if (other.gameObject.tag == "Mud")
+        {
+            CollisionSand = true;
+            SandMoveSp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
         }
     }
 
     //流砂から離れるときに流砂の影響を消す
     private void OnTriggerExit(Collider other)
     {
+        //流砂
         if (other.gameObject.tag == "QuickSand_B")
         {
             CollisionSand = false;
             SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
+        }
+        //ずっと流れる流砂
+        if (other.gameObject.tag == "Mud")
+        {
+            CollisionSand = false;
+            SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
+
         }
     }
 
