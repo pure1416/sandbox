@@ -12,6 +12,7 @@ public class Fragment : MonoBehaviour
     public GameObject playercontroler;
 
     // 変数宣言
+    Vector3 SandDir;                // 流砂の向きを保存しておく変数
     bool P_SandEnpflg;              // プレイヤーの中砂の有無
     float SinkTime;                 // 沈む時間
     int SinkCount;                  // 何秒かけて沈むか？
@@ -31,6 +32,7 @@ public class Fragment : MonoBehaviour
         // 初期化
         playercontroler = GameObject.FindGameObjectWithTag("Player");
 
+        SandDir = new Vector3(0.0f, 0.0f,0.0f);
         SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
 
         SinkTime = 0.0f;
@@ -41,13 +43,15 @@ public class Fragment : MonoBehaviour
 
         FtCol = GetComponent<BoxCollider>();
         rb = this.GetComponent<Rigidbody>();
-    }
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
 
+    }
     // Update is called once per frame
     void Update()
     {
         // プレイヤーの中砂の有無を常にもってくる
         P_SandEnpflg = playercontroler.GetComponent<PlayerControler>().GetPlayerEnpty();
+
 
         // プレイヤーの中砂が落ちきっていたら埋まる処理（徐々に埋まっていく感じに変更予定）
         FtCol.center = new Vector3(B_Col_Center.x, B_Col_Center.y, B_Col_Center.z);
@@ -74,22 +78,41 @@ public class Fragment : MonoBehaviour
                 this.GetComponent<Rigidbody>().useGravity = false;
             }
 
-            // 大体17秒かけて半分埋まりきるイメージ？(仮)どのくらい埋まるのか、何秒かけて埋まるのか決まり次第で変更予定
-            if (SinkCount < 170)
+            // 大体8秒かけて9割方沈むイメージ？(仮)　「どのくらい埋まるのか、何秒かけて埋まるのか決まり次第で変更予定」
+            if (SinkCount < 80)
             {
                 SinkTime += Time.deltaTime;
             }
 
-            // プレイヤーの中砂がないとき徐々に埋まっていく(BoxColliderの位置と大きさを変えてます)
+            // プレイヤーの中砂がないときの処理
             if (P_SandEnpflg == true)
             {
-                if (SinkTime >= 0.1f)
+                // 流砂がｙ方向に力が入ってなければ沈んでいく処理
+                if (SandDir.y == 0.0f)
                 {
-                    SinkTime = 0.0f;
-                    SinkCount += 1;
-                    B_Col_Center.y += 0.0025f;
-                    B_Col_Size.y -= 0.005f;
+                    // BoxColliderの位置と大きさを変えてる（大きさやカタチで変わる可能性あり）
+                    if (SinkTime >= 0.1f)
+                    {
+                        SinkTime = 0.0f;
+                        SinkCount += 1;
+                        B_Col_Center.y += 0.0050f;
+                        B_Col_Size.y -= 0.010f;
+                    }
                 }
+                // 流砂がｙ方向に力が入っていたら位置を固定する
+                else
+                {
+                    rb.constraints = RigidbodyConstraints.FreezeAll;
+                }
+            }
+            // 中砂があるときの処理
+            else
+            {
+                // 流砂が動いてるときだけ流砂の向きを保存しておく
+                 SandDir = SandMoveFtSp;
+
+                // 位置固定を外して回転固定のみにする
+                 rb.constraints = RigidbodyConstraints.FreezeRotation;
             }
         }
 
@@ -156,5 +179,6 @@ public class Fragment : MonoBehaviour
             this.GetComponent<Rigidbody>().useGravity = true;
         }
     }
-  
+
+
 }
