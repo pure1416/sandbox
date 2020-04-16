@@ -6,11 +6,12 @@ public class Camera_Control : MonoBehaviour
 {
     public GameObject targetObj;
     Vector3 targetPos;
-    Vector3 Correct = new Vector3(0.0f, -1.5f, 0.5f);
+    Vector3 Correct;
 
     void Start()
     {
         //targetObj = GameObject.Find("playerModel");
+        Correct = new Vector3(0.0f, -1.5f, 0.5f);
         targetPos = targetObj.transform.position + Correct;
     }
 

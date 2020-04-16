@@ -16,7 +16,7 @@ public class PlayerControler : MonoBehaviour
     Vector3 StartPlayerPos; //プレイヤーの初期位置
     private Rigidbody _rigidbody; //物理判定の速度変数
     bool GameOverFlg;           //ゲームオーバーフラグ、高いところから落ちたときやステージ外へ行ったときtrueとなる
-    　
+    bool PlayerFloatFlg;        //プレイヤーが浮いているか
     [SerializeField] bool CollisionSand;         //流砂に触れているかどうか
 
     [SerializeField] Vector3 SandMoveSp;  //流砂の移動力
@@ -52,6 +52,7 @@ public class PlayerControler : MonoBehaviour
         ClearFlg = false;
         _rigidbody = this.GetComponent<Rigidbody>();
         GameOverFlg = false;
+        PlayerFloatFlg = false;
 
         //初期位置設定
         StartPlayerPos = GameObject.Find("StartPlace").transform.position;
@@ -70,7 +71,6 @@ public class PlayerControler : MonoBehaviour
         //デバッグ
         Debug.Log(ClearFlg);
         //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
-        //Debug.Log(SandMoveSp);
         //Debug.Log("プレーヤーの方向" + PlayerDir);
 
         if(Input.GetButtonDown("Horizontal"))

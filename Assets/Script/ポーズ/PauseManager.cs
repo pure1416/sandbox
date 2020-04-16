@@ -8,10 +8,14 @@ public class PauseManager : MonoBehaviour
     //　ポーズした時に表示するUI
     [SerializeField]
     private GameObject pauseUI;
+    void Start()
+    {
+        pauseUI.SetActive(false);
+        Time.timeScale = 1f;
+    }
 
-
-    // Update is called once per frame
-    void Update()
+        // Update is called once per frame
+        void Update()
     {
         if (Input.GetKeyDown("r") || Input.GetKeyDown("joystick button 9"))
         {

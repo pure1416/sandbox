@@ -17,25 +17,25 @@ public class WorldSelect : MonoBehaviour
     void Update()
     {
         //方向キーを押したら、方向に応じてUnlockFlgを取得して、trueなら移動する
-        if(Input.GetKeyDown(KeyCode.UpArrow))
+        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxisRaw("Horizontal") > 0)
         {
             CursorMove(0);
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Vertical") > 0)
         {
             CursorMove(1);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxisRaw("Horizontal") < 0)
         {
             CursorMove(2);
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxisRaw("Vertical") < 0)
         {
             CursorMove(3);
         }
 
         //スペースキーでシーン遷移
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1"))
         {
             NowWorld.GetComponent<WorldUnlock>().GoSceneChange();
         }
