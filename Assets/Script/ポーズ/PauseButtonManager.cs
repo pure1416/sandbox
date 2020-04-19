@@ -7,12 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class PauseButtonManager : MonoBehaviour
 {
-    GameObject FadeObj; //フェードのパネル
+    private GameObject FadeObj; //フェードのパネル
     public GameObject pauseObj;
-
+    public bool ReturnFlg;
     // Start is called before the first frame update
     void Start()
     {
+        //初期化
+        ReturnFlg = false;
         FadeObj = GameObject.Find("FadePanel");
         // 自分を選択状態にする
         Selectable sel = GetComponent<Selectable>();
@@ -23,13 +25,13 @@ public class PauseButtonManager : MonoBehaviour
     {
         Debug.Log("ゲームに戻る");
         pauseObj.SetActive(false);
-        Time.timeScale = 1f;
     }
     public void PushReturnStageSerectButton()
     {
         Debug.Log("ステージ選択に戻る");
-        //FadeObj.GetComponent<FadeManager>().FadeScene(0);
-        SceneManager.LoadScene("WorldSerect");
+        pauseObj.SetActive(false);
+        FadeObj.GetComponent<FadeManager>().FadeScene(0);
+        //SceneManager.LoadScene("WorldSerect");
 
     }
     public void PushOptionButton()

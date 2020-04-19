@@ -72,8 +72,15 @@ public class PlayerControler : MonoBehaviour
         Debug.Log(ClearFlg);
         //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
         //Debug.Log("プレーヤーの方向" + PlayerDir);
+        
+        //ポーズ画面処理
+        if (Mathf.Approximately(Time.timeScale, 0f)) //時間が止まっていたら、Update処理をしない処理
+        {
+            return;
+        }
 
-        if(Input.GetButtonDown("Horizontal"))
+
+        if (Input.GetButtonDown("Horizontal"))
         {
             Debug.Log("上");
         }
@@ -89,11 +96,7 @@ public class PlayerControler : MonoBehaviour
         //{
         //    Debug.Log("左");
         //}
-        //ポーズ画面
-        if (Mathf.Approximately(Time.timeScale, 0f)) //時間が止まっていたら、Update処理をしない処理
-        {
-            return;
-        }
+
 
         //=========================================================================================
         //移動処理

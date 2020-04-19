@@ -5,39 +5,47 @@ using UnityEngine;
 public class WorldSelect : MonoBehaviour
 {
     public GameObject NowWorld;     //今選択しているワールド
+    private GameObject FadePanel;     //フェードオブジェクト
 
     // Start is called before the first frame update
     void Start()
     {
         //初期位置にセット
         this.transform.position = NowWorld.transform.position;
+        //フェードオブジェクト取得
+        FadePanel = GameObject.Find("FadePanel");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //方向キーを押したら、方向に応じてUnlockFlgを取得して、trueなら移動する
-        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxisRaw("Horizontal") > 0)
+        //フェード中入力できなくする処理
+        if (FadePanel.GetComponent<FadeManager>().GetFadeInFlg() == false)
         {
-            CursorMove(0);
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Vertical") > 0)
-        {
-            CursorMove(1);
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxisRaw("Horizontal") < 0)
-        {
-            CursorMove(2);
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxisRaw("Vertical") < 0)
-        {
-            CursorMove(3);
-        }
+            //方向キーを押したら、方向に応じてUnlockFlgを取得して、trueなら移動する
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxisRaw("Horizontal") > 0)
+            {
+                CursorMove(0);
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Vertical") > 0)
+            {
+                CursorMove(1);
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxisRaw("Horizontal") < 0)
+            {
+                CursorMove(2);
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxisRaw("Vertical") < 0)
+            {
+                CursorMove(3);
+            }
 
-        //スペースキーでシーン遷移
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1"))
-        {
-            NowWorld.GetComponent<WorldUnlock>().GoSceneChange();
+            //スペースキーとAボタンでシーン遷移
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1"))
+            {
+                NowWorld.GetComponent<WorldUnlock>().GoSceneChange();
+            }
         }
     }
 

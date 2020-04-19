@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class FadeManager : MonoBehaviour
 {
-    public float speed = 0.01f;  //透明化の速さ
+    public float speed = 0.005f;  //透明化の速さ
     float alfa;    //A値を操作するための変数
     float red, green, blue;    //RGBを操作するための変数
     bool FadeInFlg;   //FadeInのフラグ
@@ -31,27 +31,29 @@ public class FadeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(FadeOutFlg);
-
+        //フェードイン
         if (FadeInFlg == true)
         {
             FadeIn();
         }
+        //フェードアウト
         if (FadeOutFlg == true)
         {
             FadeOut();
         }
     }
-
     //フェードイン
     public void FadeIn()
     {
-        GetComponent<Image>().color = new Color(red, green, blue, alfa);
+        //色反映
+        GetComponent<Image>().color = new Color(red, green, blue, alfa);//Imageのカラーを変更。Colorの引数は（ 赤, 緑, 青, 不透明度 ）の順で指定
+        //アルファ値が0以上の場合アルファ値を上げる
         if (alfa > 0.0f)
         {
             alfa -= speed;
         }
-        if (alfa == 0.0f)
+        //0以上になったらシーン遷移
+        if (alfa <= 0.0f)
         {
             FadeInFlg = false;
 
@@ -61,14 +63,16 @@ public class FadeManager : MonoBehaviour
     //フェードアウト
     public void FadeOut()
     {
-        GetComponent<Image>().color = new Color(red, green, blue, alfa);
-        if (alfa < 255.0f)
+        //色反映
+        GetComponent<Image>().color = new Color(red, green, blue, alfa);//Imageのカラーを変更。Colorの引数は（ 赤, 緑, 青, 不透明度 ）の順で指定
+        //アルファ値が1未満の場合アルファ値を下げる
+        if (alfa < 1.0f)
         {
             alfa += speed;
         }
-        if (alfa >= 255.0f)
+        //1以上になったらシーン遷移
+        if (alfa >= 1.0f)
         {
-            alfa = 1.0f;
             SceneManager.LoadScene(FadeSceneNo);
             FadeOutFlg = false;
         }
@@ -80,13 +84,20 @@ public class FadeManager : MonoBehaviour
         FadeInFlg = F1;
     }
 
+
+    //FadeInFlgフラグのGetter
+    public bool GetFadeInFlg()
+    {
+        return FadeInFlg;
+    }
+
     //FadeOutFlgフラグのSetter
     public void SetFadeOutFlg(bool F2)
     {
         FadeOutFlg = F2;
     }
 
-    //シーン遷移
+    //シーン遷移、引数にシーン遷移したいシーン番号を入れて呼び出したらフェードアウトしてシーン遷移をする
     public void FadeScene(int SceneNo)
     {
         FadeSceneNo = SceneNo;

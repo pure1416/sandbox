@@ -15,10 +15,13 @@ public class WorldUnlock : MonoBehaviour
 
     [Header("Scene")]
     [SerializeField] private string GoScene;   //行先のシーン
+    [SerializeField] private int GoSceneNo;   //行先のシーン番号
 
+    private GameObject FadeObj; //フェードのオブジェクト
     // Start is called before the first frame update
     void Start()
     {
+        FadeObj = GameObject.Find("FadePanel");
         UnlockFlg = ClearFlg = false;
     }
 
@@ -86,6 +89,9 @@ public class WorldUnlock : MonoBehaviour
     //シーン遷移
     public void GoSceneChange()
     {
-        SceneManager.LoadScene(GoScene);
+        //フェードしてシーン遷移
+        FadeObj.GetComponent<FadeManager>().FadeScene(GoSceneNo);
+
+        //SceneManager.LoadScene(GoScene);
     }
 }
