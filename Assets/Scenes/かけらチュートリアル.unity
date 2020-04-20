@@ -730,12 +730,12 @@ PrefabInstance:
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6562335151868926437, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
@@ -977,12 +977,12 @@ PrefabInstance:
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6562335151868926437, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
@@ -2962,12 +2962,12 @@ PrefabInstance:
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6562335151868926437, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
@@ -3788,12 +3788,12 @@ PrefabInstance:
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6562335151868926437, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
@@ -3966,12 +3966,12 @@ PrefabInstance:
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6562335151868926437, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
@@ -4070,12 +4070,12 @@ PrefabInstance:
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6562335151868926437, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
@@ -5404,6 +5404,11 @@ PrefabInstance:
       propertyPath: PlayerSp
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4574916484403983476, guid: 51c34ba8b3aabc34db055f753b240b7f,
+        type: 3}
+      propertyPath: PlayerGameoverPos.y
+      value: -30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51c34ba8b3aabc34db055f753b240b7f, type: 3}
 --- !u!1001 &1187042239
@@ -5571,12 +5576,12 @@ PrefabInstance:
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6562335151868926437, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
@@ -7567,12 +7572,12 @@ PrefabInstance:
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6562335151868926437, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
@@ -9200,12 +9205,12 @@ PrefabInstance:
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6562335151868926437, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
@@ -9600,12 +9605,12 @@ PrefabInstance:
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6562335151868926437, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
