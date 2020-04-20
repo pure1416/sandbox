@@ -151,13 +151,18 @@ public class PlayerControler : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(PlayerDir);
         }
 
-        //ゲームオーバーの位置
-        if (this.transform.position.y <= PlayerGameoverPos.y ||
-            GameOverFlg == true)
+        //==================================================
+        //ゲームオーバー処理
+        //==================================================
+        //高いところから落ちたときと画面外に落ちたとき
+        if (this.transform.position.y <= PlayerGameoverPos.y)
+        {
+            GameOverFlg = true;
+        }
+        if (GameOverFlg == true)
         {
             this.transform.position = StartPlayerPos;
         }
-
         //=========================================================================================
         //回転処理
         //=========================================================================================
