@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 603738898}
-  m_IndirectSpecularColor: {r: 0.44657892, g: 0.4964133, b: 0.57481736, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641263, b: 0.5748163, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -487,6 +487,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4574916484403983476, guid: 51c34ba8b3aabc34db055f753b240b7f,
+        type: 3}
+      propertyPath: PlayerGameoverPos.y
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 8868093925387174944, guid: 51c34ba8b3aabc34db055f753b240b7f,
         type: 3}
@@ -1276,7 +1281,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: 30, z: 0}
 --- !u!4 &626219892 stripped
 Transform:
@@ -2833,7 +2838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b932374e71a3edb45a167f5f374e5d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObj: {fileID: 1119536324}
+  targetObj: {fileID: 1678480905}
 --- !u!4 &994867636 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1207106313320878171, guid: dfcfcbb67a154fb4b9910d664a9f4961,
@@ -3264,12 +3269,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8118648859135580189, guid: 446c7e8a90257664cb51cf91290c3293,
     type: 3}
   m_PrefabInstance: {fileID: 1540128702}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1119536324 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2526413608959389584, guid: 51c34ba8b3aabc34db055f753b240b7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 163665772}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1135565588 stripped
 Transform:
@@ -9869,6 +9868,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 446c7e8a90257664cb51cf91290c3293, type: 3}
+--- !u!1 &1678480905 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3552496187709181091, guid: 51c34ba8b3aabc34db055f753b240b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 163665772}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1682007292
 GameObject:
   m_ObjectHideFlags: 0
