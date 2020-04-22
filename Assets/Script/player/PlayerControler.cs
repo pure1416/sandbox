@@ -237,12 +237,6 @@ public class PlayerControler : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        ////流砂の上にいるときに流砂の移動力を受け取る
-        //if (collision.gameObject.tag == "QuickSand")
-        //{
-        //    CollisionSand = true;
-        //    SandMoveSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
-        //}
         if (collision.gameObject.tag == "Clear")
         {
             ClearFlg = true;
@@ -251,26 +245,27 @@ public class PlayerControler : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        ////流砂から離れるときに流砂の影響を消す
-        //if (collision.gameObject.tag == "QuickSand")
-        //{
-        //    CollisionSand = false;
-        //    SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
-        //}
         if (collision.gameObject.tag == "Clear")
         {
             ClearFlg = false;
         }
     }
 
-    //流砂の処理(板ver)
+    //流砂の処理(板ver)とか
     private void OnTriggerStay(Collider other)
     {
         //流砂
         if (other.gameObject.tag == "QuickSand_B")
         {
             CollisionSand = true;
-            SandMoveSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
+
+            Vector3 tmp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
+            //yが大きい時に優先する
+            if (SandMoveSp.y < tmp.y)
+            {
+                SandMoveSp.y = tmp.y;
+            }
+            SandMoveSp = new Vector3(tmp.x, SandMoveSp.y, tmp.z);
         }
         //ずっと流れる流砂
         if (other.gameObject.tag == "Mud")
@@ -280,12 +275,13 @@ public class PlayerControler : MonoBehaviour
         }
     }
 
-    //流砂から離れるときに流砂の影響を消す
+    //流砂から離れるときに流砂の影響を消す　　とか
     private void OnTriggerExit(Collider other)
     {
         //流砂
         if (other.gameObject.tag == "QuickSand_B")
         {
+            //Debug.Log("流はなれ");
             CollisionSand = false;
             SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
         }
