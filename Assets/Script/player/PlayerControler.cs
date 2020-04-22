@@ -265,6 +265,11 @@ public class PlayerControler : MonoBehaviour
             {
                 SandMoveSp.y = tmp.y;
             }
+            //空っぽの時
+            else if (PlayerEnptyFlg)
+            {
+                SandMoveSp = tmp;
+            }
             SandMoveSp = new Vector3(tmp.x, SandMoveSp.y, tmp.z);
         }
         //ずっと流れる流砂
