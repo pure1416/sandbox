@@ -99,7 +99,7 @@ public class PlayerControler : MonoBehaviour
             //this.GetComponent<Rigidbody>().useGravity = false;
             //this.transform.position.y = PlayerGameoverPos.y;
 
-            this.transform.position = new Vector3(this.transform.position.x, PlayerGameoverPos.y, this.transform.position.z);
+            //this.transform.position = new Vector3(this.transform.position.x, PlayerGameoverPos.y, this.transform.position.z);
 
             return;
         }
@@ -151,7 +151,6 @@ public class PlayerControler : MonoBehaviour
                 this.GetComponent<Rigidbody>().useGravity = false;
                 rb.velocity = new Vector3(0.0f, PlayerDir.y * PlayerSp + SandMoveSp.y, 0.0f);
             }
-
             rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
         }
         //流砂に触れていない時
