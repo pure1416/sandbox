@@ -96,7 +96,11 @@ public class PlayerControler : MonoBehaviour
         if (GameOverFlg == true)
         {
             //this.transform.position = StartPlayerPos;
-            this.GetComponent<Rigidbody>().useGravity = false;
+            //this.GetComponent<Rigidbody>().useGravity = false;
+            //this.transform.position.y = PlayerGameoverPos.y;
+
+            this.transform.position = new Vector3(this.transform.position.x, PlayerGameoverPos.y, this.transform.position.z);
+
             return;
         }
 

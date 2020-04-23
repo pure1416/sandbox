@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8311631972932553752}
   - component: {fileID: 8311631972932553753}
   - component: {fileID: 8311631972932553754}
-  - component: {fileID: -5626812055792751693}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -67,20 +66,3 @@ MonoBehaviour:
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
---- !u!114 &-5626812055792751693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8311631972932553755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3428ba1d4049e2e4a930dfbb402a4b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerObj: {fileID: 3552496187709181091, guid: 51c34ba8b3aabc34db055f753b240b7f,
-    type: 3}
-  ClearUI: {fileID: 293610109554981259, guid: 50ccf715fab682148968ea60745771fb, type: 3}
-  FadeObject: {fileID: 7658590666245198217, guid: ceaaa7cd23bb0144abf3321a2f3aa993,
-    type: 3}

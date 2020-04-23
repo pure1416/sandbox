@@ -13,19 +13,18 @@ public class GameClearManager : MonoBehaviour
     GameObject FadeObject;
 
     bool GameClearFlg;
-    Button button;
-
+    public Button button;
+    bool ButtonSelectFlg;
     // Start is called before the first frame update
     void Start()
     {
         GameClearFlg = false;
         PlayerObj = GameObject.Find("player");
-        ClearUI = GameObject.Find("GameClear");
+        ClearUI = GameObject.Find("GameClearUI");
         FadeObject = GameObject.Find("FadePanel");
+        ButtonSelectFlg = false;
+        //button = GameObject.Find("NextStage").GetComponent<Button>();
 
-        button = GameObject.Find("NextStage").GetComponent<Button>();
-        //ボタンが選択された状態になる
-        button.Select();
 
     }
 
@@ -35,10 +34,18 @@ public class GameClearManager : MonoBehaviour
         GameClearFlg = PlayerObj.GetComponent<PlayerControler>().GetGameClearFlg();
         if(GameClearFlg == true)
         {
+            if (ButtonSelectFlg == false)
+            {
+                button.Select();
+                ButtonSelectFlg = true;
+
+            }
+
             ClearUI.SetActive(true);
         }
         else if (GameClearFlg == false)
         {
+            //ボタンが選択された状態になる
             ClearUI.SetActive(false);
         }
     }
@@ -47,7 +54,12 @@ public class GameClearManager : MonoBehaviour
     public void PushNextStageButton()
     {
         Debug.Log("次のステージへ");
+        // 現在のScene名を取得する
+        //Scene loadScene = SceneManager.GetActiveScene();
+        int NextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
+        // Sceneの読み直し
+        SceneManager.LoadScene(NextSceneIndex);
     }
     public void PushReturnStageSelectButton()
     {
