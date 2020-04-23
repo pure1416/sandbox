@@ -17,7 +17,7 @@ public class PauseManager : MonoBehaviour
         // Update is called once per frame
     void Update()
     {
-        Debug.Log(Time.timeScale);
+        //Debug.Log(Time.timeScale);
         if (Input.GetKeyDown("r") || Input.GetKeyDown("joystick button 9"))
         {
             //　ポーズUIのアクティブ、非アクティブを切り替え
