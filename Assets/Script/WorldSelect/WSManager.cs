@@ -2,11 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class WSManager : MonoBehaviour
 {
+    //定数宣言
+    private const int FIRST_WORLD = 0;
+    private const int LAST_WORLD = 3;
+
     [Header("ワールド")]
-    public GameObject[] worlds; //ワールドの管理オブジェクトを入れる？
+    public GameObject[] worlds; //ワールドオブジェクト
+
+    [Header("各種ボタン")]
+    public Button NextAllow;        //次へ
+    public Button PrevAllow;        //前へ
+    public Button OkButton;         //決定
+    public Button GoBackButton;     //戻る
+
+    private FadeManager FadeObj; //フェードオブジェクト
+    private GameObject UI;
 
     [Flags]
     private enum WorldFlags
@@ -20,14 +34,66 @@ public class WSManager : MonoBehaviour
 
     [SerializeField] WorldFlags wf;      //WorldFlag格納
 
+    [Header("現在選択されているワールド")]
+    [SerializeField] public int NowSelWorld;
+
     // Start is called before the first frame update
     void Start()
     {
+        //ワールドのクリアデータを取得
         wf = (WorldFlags)PlayerPrefs.GetInt("WORLD_FLAG", 0);
+
+        //フェードパネルとUIの親取得
+        FadeObj = GameObject.Find("FadePanel").GetComponent<FadeManager>();
+        UI = GameObject.Find("WorldSelectUI");
+
+        //無条件解放
+        worlds[0].GetComponent<WorUnl>().SetUnlockFlg(true);
     }
 
     // Update is called once per frame
     void Update()
+    {
+        //フェード中はUIを消す
+        if(FadeObj.GetFadeInFlg() ||
+            FadeObj.GetFadeOutFlg())
+        {
+            UI.SetActive(false);
+        }
+        else
+        {
+            UI.SetActive(true);
+        }
+
+        //フラグ解放
+        FlgCheck(wf);
+
+        //キー操作で操作できるようにする
+        if(Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            //次へ
+            NextAllow.onClick.Invoke();
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            //前へ
+            PrevAllow.onClick.Invoke();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            //決定
+            GoSceneChange();
+            //OkButton.onClick.Invoke();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            //戻る
+            PrevAllow.onClick.Invoke();
+        }
+    }
+
+    //クリアフラグとアンロックフラグのチェック
+    private void FlgCheck(WorldFlags wf)
     {
         //World_1クリア済み
         if ((wf & WorldFlags.World_1) == WorldFlags.World_1)
@@ -38,7 +104,6 @@ public class WSManager : MonoBehaviour
         else
         {
             worlds[0].GetComponent<WorUnl>().SetClearFlg(false);
-            worlds[0].GetComponent<WorUnl>().SetUnlockFlg(true);
             worlds[1].GetComponent<WorUnl>().SetUnlockFlg(false);
         }
 
@@ -75,7 +140,60 @@ public class WSManager : MonoBehaviour
         {
             worlds[3].GetComponent<WorUnl>().SetClearFlg(false);
         }
+    }
 
-        //書置き。ロックアンロックに関してはメモりつつ仕組みを考えた方がいい
+    //NowSelWorldの設定
+    public void SetNowSelWorld(int WorNo)
+    {
+        NowSelWorld = NowSelWorld + WorNo;
+    }
+
+    //次のワールドのGetter
+    public bool GetNextUnlock()
+    {
+        if (NowSelWorld == LAST_WORLD)
+        {
+            //最後のワールドを選択していたら移動させない
+            return false;
+        }
+
+        if (worlds[NowSelWorld + 1].GetComponent<WorUnl>().GetUnlockFlg())
+        {
+            //次のワールドが解放されてたら動かす
+            return true;
+        }
+        else
+        {
+            //ここに「まだ解放されていません」的なのを出す処理を書く予定
+            return false;
+        }
+    }
+
+    //前ワールドのGetter
+    public bool GetPrevUnlock()
+    {
+        if (NowSelWorld == FIRST_WORLD)
+        {
+            //最初のワールドを選択していたら移動させない
+            return false;
+        }
+
+        if (worlds[NowSelWorld - 1].GetComponent<WorUnl>().GetUnlockFlg())
+        {
+            //次のワールドが解放されてたら動かす
+            return true;
+        }
+        else
+        {
+            //ここには来ないはずなので。
+            Debug.Log("WSManagerでバグ吐いとるで。(GetPrevUnlock)");
+            return false;
+        }
+    }
+
+    //シーンチェンジ
+    public void GoSceneChange()
+    {
+        FadeObj.GetComponent<FadeManager>().FadeScene(worlds[NowSelWorld].GetComponent<WorUnl>().GetGoSceneNo());
     }
 }

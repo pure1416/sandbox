@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Liner : MonoBehaviour
 {
+    //定数宣言
+    private const int STAY = 0;
+    private const int NEXT = 1;
+    private const int PREV = -1;
+
     [Header("移動時間"), SerializeField, Range(0, 10)]
-    public float MoveTime = 1;
+    public float MoveTime;   //移動時間
 
     [SerializeField]
     public Vector3 MoveDist;        //移動距離
@@ -15,12 +20,16 @@ public class Liner : MonoBehaviour
     private Vector3 EndPos;         //終了位置
 
     private bool MoveEnd;           //移動終了フラグ
+    private int MoveNP;             //+1：Next　-1：Prev
+
+    public GameObject WSMObj;       //ワールドセレクトマネージャーのオブジェクト
 
     // Start is called before the first frame update
     void Start()
     {
         NowTime = 0.0f;
         MoveEnd = true;
+        WSMObj = GameObject.Find("WSManager");
     }
 
     // Update is called once per frame
@@ -39,6 +48,10 @@ public class Liner : MonoBehaviour
             else if (NowTime > MoveTime)
             {
                 this.transform.position = EndPos;
+                //選択ワールドの更新
+                WSMObj.GetComponent<WSManager>().SetNowSelWorld(MoveNP);
+                MoveNP = STAY;
+
                 MoveEnd = true;
             }
         }
@@ -47,12 +60,13 @@ public class Liner : MonoBehaviour
     //右に移動(Next)
     public void GoNext()
     {
-        if (MoveEnd)
+        if (MoveEnd && WSMObj.GetComponent<WSManager>().GetNextUnlock())
         {
             StartPos = this.transform.position;
             //終了位置計算
             EndPos = StartPos - MoveDist;
             NowTime = 0.0f;
+            MoveNP = NEXT;
             MoveEnd = false;
         }
     }
@@ -60,13 +74,23 @@ public class Liner : MonoBehaviour
     //左に移動(Prev)
     public void GoPrev()
     {
-        if (MoveEnd)
+        if (MoveEnd && WSMObj.GetComponent<WSManager>().GetPrevUnlock())
         {
             StartPos = this.transform.position;
             //終了位置計算
             EndPos = StartPos + MoveDist;
             NowTime = 0.0f;
+            MoveNP = PREV;
             MoveEnd = false;
+        }
+    }
+
+    //移動時間の最低値を決めとく
+    private void OnValidate()
+    {
+        if (MoveTime <= 0)
+        {
+            MoveTime = 0.5f;
         }
     }
 }

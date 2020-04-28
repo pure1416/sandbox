@@ -97,6 +97,12 @@ public class FadeManager : MonoBehaviour
         FadeOutFlg = F2;
     }
 
+    //FadeInFlgフラグのGetter
+    public bool GetFadeOutFlg()
+    {
+        return FadeOutFlg;
+    }
+
     //シーン遷移、引数にシーン遷移したいシーン番号を入れて呼び出したらフェードアウトしてシーン遷移をする
     public void FadeScene(int SceneNo)
     {
