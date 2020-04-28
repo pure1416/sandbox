@@ -32,10 +32,19 @@ public class PauseButtonManager : MonoBehaviour
         pauseObj.SetActive(false);
         FadeObj.GetComponent<FadeManager>().FadeScene(0);
         //SceneManager.LoadScene("WorldSerect");
-
     }
     public void PushOptionButton()
     {
         Debug.Log("オプションを開く");
+    }
+    public void ResetButton()
+    {
+        Debug.Log("リセットボタン");
+        pauseObj.SetActive(false);
+
+        // 現在のScene名を取得する
+        Scene loadScene = SceneManager.GetActiveScene();
+        // Sceneの読み直し
+        SceneManager.LoadScene(loadScene.name);
     }
 }

@@ -8,7 +8,7 @@ public class Camera_Control : MonoBehaviour
     Vector3 targetPos;
     Vector3 Correct;
     Vector3 PlayerDir;
-
+    Vector3 CameraVertical;
     void Start()
     {
         //targetObj = GameObject.Find("playerModel");
@@ -16,6 +16,7 @@ public class Camera_Control : MonoBehaviour
 
         Correct = new Vector3(0.0f, -1.5f, 0.5f);
         targetPos = targetObj.transform.position + Correct;
+        CameraVertical = new Vector3(0.0f, 0.0f, 0.0f);
     }
 
     void Update()
@@ -23,6 +24,11 @@ public class Camera_Control : MonoBehaviour
         // targetの移動量分、自分（カメラ）も移動する
         transform.position += targetObj.transform.position - targetPos;
         targetPos = targetObj.transform.position;
+        CameraVertical = targetObj.GetComponent<PlayerControler>().GetPlayerRot();
+        CameraVertical = new Vector3(1.0f, CameraVertical.y, 0.0f);
+
+        Debug.Log(CameraVertical);
+        //Debug.Log(transform.localEulerAngles);
 
         //右スティック（追加）
         if (Input.GetAxisRaw("Vertical2") < 0)
@@ -81,7 +87,7 @@ public class Camera_Control : MonoBehaviour
             if (0 == Input.GetAxisRaw("Horizontal2"))
             {
                 // targetの位置のX軸を中心に、回転（公転）する
-                transform.RotateAround(targetPos, Vector3.left, Time.deltaTime * 50f);
+                transform.RotateAround(targetPos, CameraVertical, Time.deltaTime * 50f);
             }
         }
 
@@ -92,7 +98,7 @@ public class Camera_Control : MonoBehaviour
             if (0 == Input.GetAxisRaw("Horizontal2"))
             {
                 // targetの位置のX軸を中心に、回転（公転）する
-                transform.RotateAround(targetPos, Vector3.left, Time.deltaTime * -50f);
+                transform.RotateAround(targetPos, CameraVertical, Time.deltaTime * -50f);
             }
         }
     }

@@ -42,7 +42,6 @@ public class GameOverManagement : MonoBehaviour
         }
         if (GameOverFlg == false)
         {
-
             GameOverUI.SetActive(false);
         }
     }
@@ -63,5 +62,4 @@ public class GameOverManagement : MonoBehaviour
 
         FadeObj.GetComponent<FadeManager>().FadeScene(0);
     }
-
 }
