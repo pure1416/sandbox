@@ -25,7 +25,7 @@ public class Camera_Control : MonoBehaviour
         transform.position += targetObj.transform.position - targetPos;
         targetPos = targetObj.transform.position;
         CameraVertical = targetObj.GetComponent<PlayerControler>().GetPlayerRot();
-        CameraVertical = new Vector3(1.0f, CameraVertical.y, 0.0f);
+        CameraVertical = new Vector3(1.0f, 0.0f, 0.0f);
 
         Debug.Log(CameraVertical);
         //Debug.Log(transform.localEulerAngles);

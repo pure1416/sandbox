@@ -14,7 +14,7 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-        // Update is called once per frame
+    // Update is called once per frame
     void Update()
     {
         //Debug.Log(Time.timeScale);
@@ -27,7 +27,7 @@ public class PauseManager : MonoBehaviour
         if (pauseUI.activeSelf)
         {
             Time.timeScale = 0f;
-            //　ポーズUIが表示されてなければ通常通り進行
+            //ポーズUIが表示されてなければ通常通り進行
         }
         else
         {

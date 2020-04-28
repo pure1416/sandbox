@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ReadyManager : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class ReadyManager : MonoBehaviour
     GameObject StartUI; //スタートのパネル
 
     bool GameStartFlg;  //ゲームスタートを表すフラグ
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,18 +28,18 @@ public class ReadyManager : MonoBehaviour
         ReadyUI = GameObject.Find("ReadyUI");
         StartUI = GameObject.Find("StartUI");
 
+
         FadeInFlg = false;
         ReadyFlg = false;
         StartFlg = false;
         GameStartFlg = false;
 
         ReadyCnt = 0.0f;
-        StartCnt = 0.0f;
 
+        StartCnt = 0.0f;
 
         ReadyUI.SetActive(false);
         StartUI.SetActive(false);
-
     }
 
     // Update is called once per frame
