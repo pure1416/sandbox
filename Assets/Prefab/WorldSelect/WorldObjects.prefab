@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2288691882212176516}
   m_LocalRotation: {x: -0.1041306, y: 0.08667833, z: 0.009110252, w: 0.9907375}
-  m_LocalPosition: {x: 240, y: 3, z: 20}
+  m_LocalPosition: {x: 240, y: 0.5, z: 20}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 2288691883171118071}
@@ -122,6 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnlockFlg: 0
   ClearFlg: 0
+  WorldName: "\u3055\u306C\u304D\u30B9\u30D5\u30A3\u30F3\u30AF\u30B9"
   GoSceneNo: 3
 --- !u!1 &2288691882385879246
 GameObject:
@@ -152,7 +153,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2288691882385879246}
   m_LocalRotation: {x: -0.1041306, y: 0.08667833, z: 0.009110252, w: 0.9907375}
-  m_LocalPosition: {x: 80, y: 3, z: 20}
+  m_LocalPosition: {x: 80, y: 0.5, z: 20}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 2288691883171118071}
@@ -245,6 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnlockFlg: 0
   ClearFlg: 0
+  WorldName: "\u5473\u564C\u30D0\u30BF\u30FC\u7802\u6F20"
   GoSceneNo: 1
 --- !u!1 &2288691883046712825
 GameObject:
@@ -275,7 +277,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2288691883046712825}
   m_LocalRotation: {x: -0.1041306, y: 0.08667833, z: 0.009110252, w: 0.9907375}
-  m_LocalPosition: {x: 0, y: 3, z: 20}
+  m_LocalPosition: {x: 0, y: 0.5, z: 20}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 2288691883171118071}
@@ -368,6 +370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnlockFlg: 0
   ClearFlg: 0
+  WorldName: "\u30D4\u30E9\u30DF\u30C3\u30C9\u98A8\u30D1\u30B9\u30BF"
   GoSceneNo: 0
 --- !u!1 &2288691883171118065
 GameObject:
@@ -448,7 +451,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2288691883255022754}
   m_LocalRotation: {x: -0.1041306, y: 0.08667833, z: 0.009110252, w: 0.9907375}
-  m_LocalPosition: {x: 160, y: 3, z: 20}
+  m_LocalPosition: {x: 160, y: 0.5, z: 20}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 2288691883171118071}
@@ -541,4 +544,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnlockFlg: 0
   ClearFlg: 0
+  WorldName: "\u5929\u3077\u3089\u30D5\u30A1\u30E9\u30AA"
   GoSceneNo: 2

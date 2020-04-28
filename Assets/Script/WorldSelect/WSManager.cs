@@ -10,14 +10,16 @@ public class WSManager : MonoBehaviour
     private const int FIRST_WORLD = 0;
     private const int LAST_WORLD = 3;
 
-    [Header("ワールド")]
+    [Header("World")]
     public GameObject[] worlds; //ワールドオブジェクト
 
-    [Header("各種ボタン")]
+    [Header("UI")]
     public Button NextAllow;        //次へ
     public Button PrevAllow;        //前へ
     public Button OkButton;         //決定
     public Button GoBackButton;     //戻る
+
+    public Text WorldNameText;      //ワールド名表示テキスト
 
     private FadeManager FadeObj; //フェードオブジェクト
     private GameObject UI;
@@ -49,6 +51,9 @@ public class WSManager : MonoBehaviour
 
         //無条件解放
         worlds[0].GetComponent<WorUnl>().SetUnlockFlg(true);
+
+        //ワールド名設定
+        WorldNameText.text = "World-" + (NowSelWorld + 1).ToString() + "\n" + worlds[NowSelWorld].GetComponent<WorUnl>().GetWorldName();
     }
 
     // Update is called once per frame
@@ -142,10 +147,11 @@ public class WSManager : MonoBehaviour
         }
     }
 
-    //NowSelWorldの設定
+    //NowSelWorldの設定、ワールド名の変更
     public void SetNowSelWorld(int WorNo)
     {
         NowSelWorld = NowSelWorld + WorNo;
+        WorldNameText.text = "World-" + (NowSelWorld + 1).ToString() + "\n" + worlds[NowSelWorld].GetComponent<WorUnl>().GetWorldName();
     }
 
     //次のワールドのGetter

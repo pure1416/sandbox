@@ -8,6 +8,9 @@ public class WorUnl : MonoBehaviour
     public bool UnlockFlg;    //アンロックフラグ
     public bool ClearFlg;     //クリアフラグ
 
+    [Header("Name")]
+    public string WorldName;
+
     [Header("Scene")]
     public int GoSceneNo;   //行先のシーン番号
 
@@ -65,8 +68,15 @@ public class WorUnl : MonoBehaviour
         return ClearFlg;
     }
 
+    //遷移先NoのGetter
     public int GetGoSceneNo()
     {
         return GoSceneNo;
+    }
+
+    //ワールド名のGetter
+    public string GetWorldName()
+    {
+        return WorldName;
     }
 }

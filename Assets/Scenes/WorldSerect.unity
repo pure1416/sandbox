@@ -1203,8 +1203,21 @@ MonoBehaviour:
   PrevAllow: {fileID: 1246390534}
   OkButton: {fileID: 663910776}
   GoBackButton: {fileID: 1690947901}
+  WorldNameText: {fileID: 1099682364}
   wf: 0
   NowSelWorld: 0
+--- !u!114 &1099682364 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6221973152403794082, guid: e54408bb1f1b5eb4f91bc3c616482b71,
+    type: 3}
+  m_PrefabInstance: {fileID: 1074606549272556030}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1112369319 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2288691882212176516, guid: 8fae7fab39c81454fbe94527cafa3011,
@@ -1599,6 +1612,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WorldSelectUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539263718470293707, guid: e54408bb1f1b5eb4f91bc3c616482b71,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539263718470293707, guid: e54408bb1f1b5eb4f91bc3c616482b71,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539263718470293707, guid: e54408bb1f1b5eb4f91bc3c616482b71,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539263718470293707, guid: e54408bb1f1b5eb4f91bc3c616482b71,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539263718470293707, guid: e54408bb1f1b5eb4f91bc3c616482b71,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e54408bb1f1b5eb4f91bc3c616482b71, type: 3}
