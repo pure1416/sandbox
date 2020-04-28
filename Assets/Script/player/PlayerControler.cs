@@ -144,6 +144,7 @@ public class PlayerControler : MonoBehaviour
             {
                 this.GetComponent<Rigidbody>().useGravity = true;
                 rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
+                //this.gameObject.transform.position = PlayerDir * PlayerSp + new Vector3(0, this.gameObject.transform.position.y, 0) + SandMoveSp;
             }
             //y軸に力がかかっている時
             else
@@ -152,6 +153,8 @@ public class PlayerControler : MonoBehaviour
                 rb.velocity = new Vector3(0.0f, PlayerDir.y * PlayerSp + SandMoveSp.y, 0.0f);
             }
             rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
+           // this.gameObject.transform.position = PlayerDir * PlayerSp + new Vector3(0, this.gameObject.transform.position.y, 0) + SandMoveSp;
+
         }
         //流砂に触れていない時
         else  //CollisionSand == false
@@ -281,6 +284,7 @@ public class PlayerControler : MonoBehaviour
             CollisionSand = true;
             SandMoveSp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
         }
+
     }
 
     //流砂から離れるときに流砂の影響を消す　　とか
@@ -324,12 +328,17 @@ public class PlayerControler : MonoBehaviour
         return PlayerEnptyFlg;
     }
 
-    //プレイヤーの中砂が流れ落ちているかどうかの変数のGetter
+    //プレイヤーのカメラに対する向き
     public Vector3 GetPlayerDir()
     {
         return PlayerDir;
     }
 
+    //プレイヤーのワールドでの向き
+    public Vector3 GetPlayerRot()
+    {
+        return transform.localEulerAngles;;
+    }
 
     //プレイヤーのゲームオーバー判定
     public bool GetGameOverFlg()
