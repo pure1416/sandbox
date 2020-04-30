@@ -12,6 +12,7 @@ public class Fragment : MonoBehaviour
     public GameObject playercontroler;
 
     // 変数宣言
+    public Vector3 FtStartPos;      // かけらの初期位置
     Vector3 SandDir;                // 流砂の向きを保存しておく変数
     bool P_SandEnpflg;              // プレイヤーの中砂の有無
     float SinkTime;                 // 沈む時間
@@ -32,6 +33,7 @@ public class Fragment : MonoBehaviour
         // 初期化
         playercontroler = GameObject.FindGameObjectWithTag("Player");
 
+        this.transform.position = FtStartPos;
         SandDir = new Vector3(0.0f, 0.0f,0.0f);
         SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
 
@@ -158,6 +160,15 @@ public class Fragment : MonoBehaviour
     {    //流砂から出たら埋まっているのを解除する
         if (other.gameObject.tag == "NotSand")
         { 
+            SinkCount = 0;
+            B_Col_Center = new Vector3(0.0f, 0.0f, 0.0f);
+            B_Col_Size = new Vector3(1.0f, 1.0f, 1.0f);
+        }
+
+        // かけらが落下したときに初期に戻る
+        if(other.gameObject.tag == "fallcol")
+        {
+            this.transform.position = FtStartPos;
             SinkCount = 0;
             B_Col_Center = new Vector3(0.0f, 0.0f, 0.0f);
             B_Col_Size = new Vector3(1.0f, 1.0f, 1.0f);

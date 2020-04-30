@@ -12,6 +12,7 @@ TagManager:
   - Gameover
   - Block
   - Mud
+  - fallcol
   layers:
   - Default
   - TransparentFX
