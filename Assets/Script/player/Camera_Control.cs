@@ -9,14 +9,18 @@ public class Camera_Control : MonoBehaviour
     Vector3 Correct;
     Vector3 PlayerDir;
     Vector3 CameraVertical;
+    float CameraRot;
+
     void Start()
     {
         //targetObj = GameObject.Find("playerModel");
-        PlayerDir = targetObj.GetComponent<PlayerControler>().GetPlayerDir();
+        //PlayerDir = targetObj.GetComponent<PlayerControler>().GetPlayerDir();
 
         Correct = new Vector3(0.0f, -1.5f, 0.5f);
         targetPos = targetObj.transform.position + Correct;
         CameraVertical = new Vector3(0.0f, 0.0f, 0.0f);
+
+        CameraRot = transform.localEulerAngles.y / 180;
     }
 
     void Update()
@@ -24,10 +28,8 @@ public class Camera_Control : MonoBehaviour
         // targetの移動量分、自分（カメラ）も移動する
         transform.position += targetObj.transform.position - targetPos;
         targetPos = targetObj.transform.position;
-        CameraVertical = targetObj.GetComponent<PlayerControler>().GetPlayerRot();
-        CameraVertical = new Vector3(1.0f, 0.0f, 0.0f);
 
-        Debug.Log(CameraVertical);
+        Debug.Log(transform.right);
         //Debug.Log(transform.localEulerAngles);
 
         //右スティック（追加）
@@ -38,17 +40,14 @@ public class Camera_Control : MonoBehaviour
         else if (0 < Input.GetAxisRaw("Vertical2"))
         {
             Debug.Log("下に傾いている");
-
         }
         else
         {
             Debug.Log("上下に傾いていない");
-
         }
         if (Input.GetAxisRaw("Horizontal2") < 0)
         {
             Debug.Log("左に傾いている");
-
         }
         else if (0 < Input.GetAxisRaw("Horizontal2"))
         {
@@ -69,8 +68,8 @@ public class Camera_Control : MonoBehaviour
                 transform.RotateAround(targetPos, Vector3.up, Time.deltaTime * -50f);
             }
         }
-        // 右に移動
 
+        //時計回りに回転
         if (Input.GetKey(KeyCode.E) || Input.GetKey("joystick button 5") || 0 < Input.GetAxisRaw("Horizontal2"))
         {
             if (0 == Input.GetAxisRaw("Vertical2"))
@@ -87,7 +86,7 @@ public class Camera_Control : MonoBehaviour
             if (0 == Input.GetAxisRaw("Horizontal2"))
             {
                 // targetの位置のX軸を中心に、回転（公転）する
-                transform.RotateAround(targetPos, CameraVertical, Time.deltaTime * 50f);
+                transform.RotateAround(targetPos, transform.right, Time.deltaTime * 50f);
             }
         }
 
@@ -98,7 +97,7 @@ public class Camera_Control : MonoBehaviour
             if (0 == Input.GetAxisRaw("Horizontal2"))
             {
                 // targetの位置のX軸を中心に、回転（公転）する
-                transform.RotateAround(targetPos, CameraVertical, Time.deltaTime * -50f);
+                transform.RotateAround(targetPos, transform.right, Time.deltaTime * -50f);
             }
         }
     }

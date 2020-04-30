@@ -337,7 +337,7 @@ public class PlayerControler : MonoBehaviour
     //プレイヤーのワールドでの向き
     public Vector3 GetPlayerRot()
     {
-        return transform.localEulerAngles;;
+        return transform.localEulerAngles;
     }
 
     //プレイヤーのゲームオーバー判定

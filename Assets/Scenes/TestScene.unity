@@ -1928,7 +1928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b932374e71a3edb45a167f5f374e5d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObj: {fileID: 8296172668959040543}
+  targetObj: {fileID: 1473370942}
 --- !u!4 &982709132 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1207106313320878171, guid: dfcfcbb67a154fb4b9910d664a9f4961,
@@ -2864,6 +2864,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 110
   m_CollisionDetection: 0
+--- !u!1 &1473370942 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2285814773580953631, guid: 51c34ba8b3aabc34db055f753b240b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4786461515975649468}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1520870623 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1207106313320878171, guid: dfcfcbb67a154fb4b9910d664a9f4961,
@@ -4918,6 +4924,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7816779722403428742, guid: b7736fce52851094ea3d221c9d99fdf5,
+        type: 3}
+      propertyPath: m_Name
+      value: ReadyText
+      objectReference: {fileID: 0}
+    - target: {fileID: 7816779724120565014, guid: b7736fce52851094ea3d221c9d99fdf5,
+        type: 3}
+      propertyPath: m_Name
+      value: StartText
+      objectReference: {fileID: 0}
     - target: {fileID: 7816779724232572087, guid: b7736fce52851094ea3d221c9d99fdf5,
         type: 3}
       propertyPath: m_LocalPosition.x
