@@ -8,15 +8,15 @@ public class WorUnl : MonoBehaviour
     public bool UnlockFlg;    //アンロックフラグ
     public bool ClearFlg;     //クリアフラグ
 
-    private GameObject FadeObj; //フェードオブジェクト
+    [Header("Name")]
+    public string WorldName;
 
     [Header("Scene")]
-    [SerializeField] private int GoSceneNo;   //行先のシーン番号
+    public int GoSceneNo;   //行先のシーン番号
 
     // Start is called before the first frame update
     void Start()
     {
-        FadeObj = GameObject.Find("FadePanel");
         UnlockFlg = ClearFlg = false;
     }
 
@@ -68,10 +68,15 @@ public class WorUnl : MonoBehaviour
         return ClearFlg;
     }
 
-    //シーン遷移
-    public void GoSceneChange()
+    //遷移先NoのGetter
+    public int GetGoSceneNo()
     {
-        //フェードしてシーン遷移
-        FadeObj.GetComponent<FadeManager>().FadeScene(GoSceneNo);
+        return GoSceneNo;
+    }
+
+    //ワールド名のGetter
+    public string GetWorldName()
+    {
+        return WorldName;
     }
 }
