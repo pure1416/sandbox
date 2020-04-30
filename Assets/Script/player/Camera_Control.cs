@@ -5,22 +5,22 @@ using UnityEngine;
 public class Camera_Control : MonoBehaviour
 {
     public GameObject targetObj;
-    Vector3 targetPos;
-    Vector3 Correct;
-    Vector3 PlayerDir;
+    Vector3 targetPos;          //ターゲットのオブジェクトの位置
+    Vector3 Correct;            //プレイヤーの離れている距離
     Vector3 CameraVertical;
-    float CameraRot;
+    float CameraMaxRot;         //カメラの最大角度
+    float CameraMinRot;         //カメラの最大角度
 
     void Start()
     {
         //targetObj = GameObject.Find("playerModel");
-        //PlayerDir = targetObj.GetComponent<PlayerControler>().GetPlayerDir();
 
         Correct = new Vector3(0.0f, -1.5f, 0.5f);
         targetPos = targetObj.transform.position + Correct;
         CameraVertical = new Vector3(0.0f, 0.0f, 0.0f);
 
-        CameraRot = transform.localEulerAngles.y / 180;
+        CameraMaxRot = 300;
+        CameraMinRot = 80;
     }
 
     void Update()
@@ -29,13 +29,13 @@ public class Camera_Control : MonoBehaviour
         transform.position += targetObj.transform.position - targetPos;
         targetPos = targetObj.transform.position;
 
-        Debug.Log(transform.right);
+        Debug.Log(transform.localEulerAngles);
         //Debug.Log(transform.localEulerAngles);
 
         //右スティック（追加）
         if (Input.GetAxisRaw("Vertical2") < 0)
         {
-            Debug.Log("上に傾いている"); 
+            Debug.Log("上に傾いている");
         }
         else if (0 < Input.GetAxisRaw("Vertical2"))
         {
