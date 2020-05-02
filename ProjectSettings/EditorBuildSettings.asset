@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: "Assets/Scenes/\u9802\u70B9\u3092\u76EE\u6307\u3059.unity"
     guid: 8bb8a1c9555e1cf45b0bad93f3933719
   - enabled: 1
+    path: "Assets/Scenes/10\xD710\u30B9\u30C6\u30FC\u30B8.unity"
+    guid: 96bf5d8bbeeb9e241b16f3ca9c2cc487
+  - enabled: 1
     path: Assets/Scenes/Amalgam_Lab.unity
     guid: 519680ddffb77f24d83f3b6180bd2f48
   m_configObjects: {}

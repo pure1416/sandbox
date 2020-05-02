@@ -25,7 +25,7 @@ public class Camera_Control : MonoBehaviour
 
     void Update()
     {
-        // targetの移動量分、自分（カメラ）も移動する
+        //targetの移動量分、自分（カメラ）も移動する
         transform.position += targetObj.transform.position - targetPos;
         targetPos = targetObj.transform.position;
 
@@ -60,7 +60,7 @@ public class Camera_Control : MonoBehaviour
 
 
         //反時計回りに回転
-        if (Input.GetKey(KeyCode.Q) || Input.GetKey("joystick button 4") || Input.GetAxisRaw("Horizontal2") < 0)
+        if (Input.GetKey(KeyCode.Q) || Input.GetKey("joystick button 4") || Input.GetAxisRaw("Horizontal2") < 0 || Input.GetKey(KeyCode.J))
         {
             if (0 == Input.GetAxisRaw("Vertical2"))
             {
@@ -70,7 +70,7 @@ public class Camera_Control : MonoBehaviour
         }
 
         //時計回りに回転
-        if (Input.GetKey(KeyCode.E) || Input.GetKey("joystick button 5") || 0 < Input.GetAxisRaw("Horizontal2"))
+        if (Input.GetKey(KeyCode.E) || Input.GetKey("joystick button 5") || 0 < Input.GetAxisRaw("Horizontal2") || Input.GetKey(KeyCode.L))
         {
             if (0 == Input.GetAxisRaw("Vertical2"))
             {
@@ -81,24 +81,37 @@ public class Camera_Control : MonoBehaviour
 
         //上に移動
         //上スティックを傾けている時
-        if (Input.GetAxisRaw("Vertical2") < 0)
-        {
-            if (0 == Input.GetAxisRaw("Horizontal2"))
+        //if (CameraMaxRot < this.transform.localEulerAngles.x && this.transform.localEulerAngles.x < 360 || 
+        //    CameraMinRot > this.transform.localEulerAngles.x && this.transform.localEulerAngles.x > 0)
+        //{
+            if (Input.GetAxisRaw("Vertical2") < 0 || Input.GetKey(KeyCode.I))
             {
-                // targetの位置のX軸を中心に、回転（公転）する
-                transform.RotateAround(targetPos, transform.right, Time.deltaTime * 50f);
+                if (0 == Input.GetAxisRaw("Horizontal2"))
+                {
+                    // targetの位置のX軸を中心に、回転（公転）する
+                    transform.RotateAround(targetPos, transform.right, Time.deltaTime * 50f);
+                }
             }
-        }
 
-        //下に移動
-        //下スティックを傾けている時
-        if (0 < Input.GetAxisRaw("Vertical2"))
-        {
-            if (0 == Input.GetAxisRaw("Horizontal2"))
+            //下に移動
+            //下スティックを傾けている時
+            if (0 < Input.GetAxisRaw("Vertical2") || Input.GetKey(KeyCode.K))
             {
-                // targetの位置のX軸を中心に、回転（公転）する
-                transform.RotateAround(targetPos, transform.right, Time.deltaTime * -50f);
+                if (0 == Input.GetAxisRaw("Horizontal2"))
+                {
+                    // targetの位置のX軸を中心に、回転（公転）する
+                    transform.RotateAround(targetPos, transform.right, Time.deltaTime * -50f);
+                }
             }
-        }
+        //}
+
+        //if(CameraMinRot == this.transform.localEulerAngles.x)
+        //{
+        //    this.transform.localEulerAngles = new Vector3(CameraMinRot, this.transform.localEulerAngles.y, this.transform.localEulerAngles.z);
+        //}
+        //if(CameraMaxRot == this.transform.localEulerAngles.x)
+        //{
+        //    this.transform.localEulerAngles = new Vector3(CameraMaxRot, this.transform.localEulerAngles.y, this.transform.localEulerAngles.z);
+        //}
     }
 }
