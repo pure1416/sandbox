@@ -18,6 +18,7 @@ public class PlayerControler : MonoBehaviour
     bool GameOverFlg;           //ゲームオーバーフラグ、高いところから落ちたときやステージ外へ行ったときtrueとなる
     bool PlayerFloatFlg;        //プレイヤーが浮いているか
     float PlayerOldVelocity;    //プレイヤーの1フレーム前の加速度
+    float PlayerGravity;        //プレイヤーの重力
 
     [SerializeField] bool CollisionSand;         //流砂に触れているかどうか
 
@@ -56,7 +57,7 @@ public class PlayerControler : MonoBehaviour
         GameOverFlg = false;
         PlayerFloatFlg = false;
         PlayerOldVelocity = 0.0f;
-
+        PlayerGravity = 0.098f;
         //初期位置設定
         StartPlayerPos = GameObject.Find("StartPlace").transform.position;
         this.transform.position = StartPlayerPos;
@@ -144,25 +145,28 @@ public class PlayerControler : MonoBehaviour
             {
                 this.GetComponent<Rigidbody>().useGravity = true;
                 rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
-                //this.gameObject.transform.position = PlayerDir * PlayerSp + new Vector3(0, this.gameObject.transform.position.y, 0) + SandMoveSp;
+                //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f + SandMoveSp * 0.007f;
             }
             //y軸に力がかかっている時
             else
             {
                 this.GetComponent<Rigidbody>().useGravity = false;
-                rb.velocity = new Vector3(0.0f, PlayerDir.y * PlayerSp + SandMoveSp.y, 0.0f);
+                //rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
+                rb.velocity = new Vector3(PlayerDir.x * PlayerSp, PlayerDir.y * PlayerSp + SandMoveSp.y, PlayerDir.z * PlayerSp);
+                //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f + SandMoveSp * 0.007f;
+
+
             }
             rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
-           // this.gameObject.transform.position = PlayerDir * PlayerSp + new Vector3(0, this.gameObject.transform.position.y, 0) + SandMoveSp;
+            // this.gameObject.transform.position = PlayerDir * PlayerSp + new Vector3(0, this.gameObject.transform.position.y, 0) + SandMoveSp;
 
         }
         //流砂に触れていない時
         else  //CollisionSand == false
         {
             this.GetComponent<Rigidbody>().useGravity = true;
+            //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f;
             rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0);
-
-
         }
 
         // キャラクターの向きを進行方向に
