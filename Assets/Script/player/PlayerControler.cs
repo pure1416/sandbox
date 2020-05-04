@@ -286,7 +286,7 @@ public class PlayerControler : MonoBehaviour
         if (other.gameObject.tag == "Mud")
         {
             CollisionSand = true;
-            SandMoveSp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
+           SandMoveSp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
         }
 
     }

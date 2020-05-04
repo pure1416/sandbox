@@ -495,6 +495,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FadePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 7658590666245198217, guid: ceaaa7cd23bb0144abf3321a2f3aa993,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7658590666245198222, guid: ceaaa7cd23bb0144abf3321a2f3aa993,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -912,6 +917,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gameover
+      objectReference: {fileID: 0}
+    - target: {fileID: 3824956482998163325, guid: 78f4522dabb38e749881b9541a24bd38,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78f4522dabb38e749881b9541a24bd38, type: 3}
@@ -1498,6 +1508,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ReadyStart
       objectReference: {fileID: 0}
+    - target: {fileID: 7816779724232572090, guid: b7736fce52851094ea3d221c9d99fdf5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7736fce52851094ea3d221c9d99fdf5, type: 3}
 --- !u!1001 &1494483436
@@ -1696,6 +1711,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fade
       objectReference: {fileID: 0}
+    - target: {fileID: 8809264327044097980, guid: 471efd5c870c05e428cdf6a23fae4f2e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471efd5c870c05e428cdf6a23fae4f2e, type: 3}
 --- !u!1001 &1579754682
@@ -1709,6 +1729,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameClear
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074453618946702370, guid: 50ccf715fab682148968ea60745771fb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6074453618946702374, guid: 50ccf715fab682148968ea60745771fb,
         type: 3}
@@ -2066,6 +2091,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EventSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 8311631972932553755, guid: ffbc900643be73249ab40de60f0c3e59,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffbc900643be73249ab40de60f0c3e59, type: 3}
 --- !u!1001 &1833614359
@@ -2179,6 +2209,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "\u30DD\u30FC\u30BA"
+      objectReference: {fileID: 0}
+    - target: {fileID: 889406351790488811, guid: 02d7a578664dfb54184ef0dc71652171,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 889406351790488815, guid: 02d7a578664dfb54184ef0dc71652171,
         type: 3}
