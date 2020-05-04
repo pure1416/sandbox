@@ -76,7 +76,7 @@ public class PlayerControler : MonoBehaviour
 
         //デバッグ
         //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
-        //Debug.Log("プレーヤーの方向" + PlayerDir);
+        Debug.Log(rb.velocity);
         
         //ポーズ画面処理
         if (Mathf.Approximately(Time.timeScale, 0f)) //時間が止まっていたら、Update処理をしない処理
@@ -111,11 +111,26 @@ public class PlayerControler : MonoBehaviour
         if (Input.GetButtonDown("Horizontal"))
         {
             Debug.Log("上");
+            //PlayerAnimation.SetBool("Run", true);
+
         }
-       if (Input.GetButtonDown("Vertical"))
-       {
-           Debug.Log("下");
-       }
+        else
+        {
+          //  PlayerAnimation.SetBool("Run", false);
+
+        }
+
+        if (Input.GetButtonDown("Vertical"))
+        {
+          //  PlayerAnimation.SetBool("Run", true);
+
+            Debug.Log("下");
+        }
+        else
+        {
+         //   PlayerAnimation.SetBool("Run", false);
+
+        }
         //if (Input.GetButtonDown("Controler_Right"))
         //{
         //    Debug.Log("右");
