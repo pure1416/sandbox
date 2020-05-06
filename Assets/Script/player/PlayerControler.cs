@@ -76,7 +76,7 @@ public class PlayerControler : MonoBehaviour
 
         //デバッグ
         //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
-        Debug.Log(rb.velocity);
+        //Debug.Log(rb.velocity);
         
         //ポーズ画面処理
         if (Mathf.Approximately(Time.timeScale, 0f)) //時間が止まっていたら、Update処理をしない処理
@@ -301,14 +301,7 @@ public class PlayerControler : MonoBehaviour
         if (other.gameObject.tag == "Mud")
         {
             CollisionSand = true;
-
-            Vector3 tmp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
-            //yが大きい時に優先する
-            if (SandMoveSp.y < tmp.y)
-            {
-                SandMoveSp.y = tmp.y;
-            }
-            SandMoveSp = new Vector3(tmp.x, SandMoveSp.y, tmp.z);
+            SandMoveSp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
         }
 
     }

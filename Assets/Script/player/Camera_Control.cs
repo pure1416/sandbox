@@ -18,7 +18,7 @@ public class Camera_Control : MonoBehaviour
     float CameraRotTime;//カメラの回転する時間カウント
     bool CameraUpFlg;
     bool CameraDownFlg;
-
+    int CameraInputRotCnt;
 
     void Start()
     {
@@ -30,12 +30,13 @@ public class Camera_Control : MonoBehaviour
 
         CameraMaxRot = 300;
         CameraMinRot = 80;
-        KeyInputTime = 1.0f;
+        KeyInputTime = 0.5f;
         KeyInputCnt = 0.0f;
         CameraRotCnt = 0.0f;
-        CameraRotTime = 1.0f;
+        CameraRotTime = 1.2f;
         CameraUpFlg = false;
         CameraDownFlg = false;
+        CameraInputRotCnt = 0;
     }
 
     void Update()
@@ -44,8 +45,8 @@ public class Camera_Control : MonoBehaviour
         transform.position += targetObj.transform.position - targetPos;
         targetPos = targetObj.transform.position;
 
-        //Debug.Log(KeyInputCnt);
-        Debug.Log(transform.localEulerAngles);
+        //Debug.Log(CameraInputRotCnt);
+        Debug.Log(CameraInputRotCnt);
 
         ////右スティック（追加）
         //if (Input.GetAxisRaw("Vertical2") < 0)
@@ -120,7 +121,7 @@ public class Camera_Control : MonoBehaviour
         //見上げ式
         //上に移動
         //上スティックを傾けている時
-        if (Input.GetAxisRaw("Vertical2") < 0 || Input.GetKey(KeyCode.I))
+        if ((Input.GetAxisRaw("Vertical2") < 0 || Input.GetKey(KeyCode.I) )&& CameraInputRotCnt < 1)
         {
             if (0 == Input.GetAxisRaw("Horizontal2"))
             {
@@ -129,13 +130,14 @@ public class Camera_Control : MonoBehaviour
 
                 if (KeyInputCnt >= KeyInputTime)
                 {
-                        CameraUpFlg = true;      
+                    CameraUpFlg = true;
+                    CameraInputRotCnt++;
                 }
             }
         }
         //下に移動
         //下スティックを傾けている時
-        if (0 < Input.GetAxisRaw("Vertical2") || Input.GetKey(KeyCode.K))
+        if ((0 < Input.GetAxisRaw("Vertical2") || Input.GetKey(KeyCode.K) )&& CameraInputRotCnt > -1)
         {
             if (0 == Input.GetAxisRaw("Horizontal2"))
             {
@@ -143,7 +145,8 @@ public class Camera_Control : MonoBehaviour
 
                 if (KeyInputCnt >= KeyInputTime)
                 {
-                    CameraDownFlg = true;                
+                    CameraDownFlg = true;
+                    CameraInputRotCnt--;
                 }
             }
         }
@@ -156,10 +159,7 @@ public class Camera_Control : MonoBehaviour
                 // targetの位置のX軸を中心に、回転（公転）する
                 transform.RotateAround(targetPos, transform.right, Time.deltaTime * 50f);
             }
-            else
-            {
-                CameraUpFlg = false;
-            }
+            KeyInputCnt = 0.0f;
         }
         if(CameraDownFlg == true)
         {
@@ -169,18 +169,14 @@ public class Camera_Control : MonoBehaviour
                 // targetの位置のX軸を中心に、回転（公転）する
                 transform.RotateAround(targetPos, transform.right, Time.deltaTime * -50f);
             }
-            else
-            {
-                CameraDownFlg = false;
-            }
+            KeyInputCnt = 0.0f;
+
         }
 
-
-        if (0 == Input.GetAxisRaw("Vertical2"))
+        if (CameraRotCnt > CameraRotTime && (CameraUpFlg == true || CameraDownFlg == true))
         {
-            //カウント初期化
-            KeyInputCnt = 0.0f;
             CameraRotCnt = 0.0f;
+            KeyInputCnt = 0.0f;
             CameraDownFlg = false;
             CameraUpFlg = false;
         }
