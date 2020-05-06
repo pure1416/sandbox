@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Liner : MonoBehaviour
+public class CursorMove : MonoBehaviour
 {
     //定数宣言
     private const int STAY = 0;
@@ -13,8 +13,6 @@ public class Liner : MonoBehaviour
     public float MoveTime;   //移動時間
 
     [SerializeField]
-    public Vector3 MoveDist;        //移動距離
-
     private float NowTime;          //経過時間
     private Vector3 StartPos;       //開始位置
     private Vector3 EndPos;         //終了位置
@@ -22,14 +20,14 @@ public class Liner : MonoBehaviour
     private bool MoveEnd;           //移動終了フラグ
     private int MoveNP;             //+1：Next　-1：Prev
 
-    public WSManager WSMObj;       //ワールドセレクトマネージャーのオブジェクト
+    public SSManager SSMObj;       //ステージセレクトマネージャーのオブジェクト
 
     // Start is called before the first frame update
     void Start()
     {
         NowTime = 0.0f;
         MoveEnd = true;
-        WSMObj = GameObject.Find("WSManager").GetComponent<WSManager>();
+        SSMObj = GameObject.Find("SSManager").GetComponent<SSManager>();
     }
 
     // Update is called once per frame
@@ -49,7 +47,7 @@ public class Liner : MonoBehaviour
             {
                 this.transform.position = EndPos;
                 //選択ワールドの更新
-                WSMObj.SetNowSelWorld(MoveNP);
+                SSMObj.SetNowSelStage(MoveNP);
                 MoveNP = STAY;
 
                 MoveEnd = true;
@@ -60,11 +58,11 @@ public class Liner : MonoBehaviour
     //右に移動(Next)
     public void GoNext()
     {
-        if (MoveEnd && WSMObj.GetNextUnlock())
+        if (MoveEnd && SSMObj.GetNextUnlock())
         {
             StartPos = this.transform.position;
             //終了位置計算
-            EndPos = StartPos - MoveDist;
+            EndPos = SSMObj.GetNextPos();
             NowTime = 0.0f;
             MoveNP = NEXT;
             MoveEnd = false;
@@ -74,15 +72,21 @@ public class Liner : MonoBehaviour
     //左に移動(Prev)
     public void GoPrev()
     {
-        if (MoveEnd && WSMObj.GetPrevUnlock())
+        if (MoveEnd && SSMObj.GetPrevUnlock())
         {
             StartPos = this.transform.position;
             //終了位置計算
-            EndPos = StartPos + MoveDist;
+            EndPos = SSMObj.GetPrevPos();
             NowTime = 0.0f;
             MoveNP = PREV;
             MoveEnd = false;
         }
+    }
+
+    //MoveEndのGetter
+    public bool GetMoveEnd()
+    {
+        return MoveEnd;
     }
 
     //移動時間の最低値を決めとく
@@ -90,7 +94,7 @@ public class Liner : MonoBehaviour
     {
         if (MoveTime <= 0)
         {
-            MoveTime = 0.5f;
+            MoveTime = 0.1f;
         }
     }
 }

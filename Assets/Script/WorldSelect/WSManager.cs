@@ -22,7 +22,6 @@ public class WSManager : MonoBehaviour
     public Text WorldNameText;      //ワールド名表示テキスト
 
     private FadeManager FadeObj; //フェードオブジェクト
-    private GameObject UI;
 
     [Flags]
     private enum WorldFlags
@@ -47,7 +46,6 @@ public class WSManager : MonoBehaviour
 
         //フェードパネルとUIの親取得
         FadeObj = GameObject.Find("FadePanel").GetComponent<FadeManager>();
-        UI = GameObject.Find("WorldSelectUI");
 
         //無条件解放
         worlds[0].GetComponent<WorUnl>().SetUnlockFlg(true);
@@ -59,17 +57,6 @@ public class WSManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ////フェード中はUIを消す
-        //if(FadeObj.GetFadeInFlg() ||
-        //    FadeObj.GetFadeOutFlg())
-        //{
-        //    UI.SetActive(false);
-        //}
-        //else
-        //{
-        //    UI.SetActive(true);
-        //}
-
         //フラグ解放
         FlgCheck(wf);
 
@@ -94,7 +81,7 @@ public class WSManager : MonoBehaviour
         {
             //戻る
             Debug.Log("b!");
-            PrevAllow.onClick.Invoke();
+            GoBackButton.onClick.Invoke();
         }
     }
 
