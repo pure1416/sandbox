@@ -74,25 +74,26 @@ public class WSManager : MonoBehaviour
         FlgCheck(wf);
 
         //キー操作で操作できるようにする
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+        if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") > 0)
         {
             //次へ
             NextAllow.onClick.Invoke();
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") < 0)
         {
             //前へ
             PrevAllow.onClick.Invoke();
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        else if (Input.GetKeyDown(KeyCode.Alpha1)|| Input.GetKeyDown("joystick button 1"))
         {
             //決定
             GoSceneChange();
             //OkButton.onClick.Invoke();
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 2"))
         {
             //戻る
+            Debug.Log("b!");
             PrevAllow.onClick.Invoke();
         }
     }
