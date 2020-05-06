@@ -59,16 +59,16 @@ public class WSManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //フェード中はUIを消す
-        if(FadeObj.GetFadeInFlg() ||
-            FadeObj.GetFadeOutFlg())
-        {
-            UI.SetActive(false);
-        }
-        else
-        {
-            UI.SetActive(true);
-        }
+        ////フェード中はUIを消す
+        //if(FadeObj.GetFadeInFlg() ||
+        //    FadeObj.GetFadeOutFlg())
+        //{
+        //    UI.SetActive(false);
+        //}
+        //else
+        //{
+        //    UI.SetActive(true);
+        //}
 
         //フラグ解放
         FlgCheck(wf);
