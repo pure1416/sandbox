@@ -8,8 +8,8 @@ public class PlayerControler : MonoBehaviour
 {
     //変数宣言
     public float PlayerSp;       //プレイヤーの速度
-    public bool  PlayerTurn;     //プレイヤーの反転 trueなら反転 falseなら通常
-    int          PlayerTime;     //中砂の時間
+    public bool PlayerTurn;     //プレイヤーの反転 trueなら反転 falseなら通常
+    int PlayerTime;     //中砂の時間
     public float PlayerTotalTime;//中砂の合計の時間
     public Vector3 PlayerDir;   //プレイヤーの方向
     public bool ClearFlg;   //クリアフラグ
@@ -19,6 +19,7 @@ public class PlayerControler : MonoBehaviour
     bool PlayerFloatFlg;        //プレイヤーが浮いているか
     float PlayerOldVelocity;    //プレイヤーの1フレーム前の加速度
     float PlayerGravity;        //プレイヤーの重力
+    Animator animator;
 
     [SerializeField] bool CollisionSand;         //流砂に触れているかどうか
 
@@ -58,6 +59,8 @@ public class PlayerControler : MonoBehaviour
         PlayerFloatFlg = false;
         PlayerOldVelocity = 0.0f;
         PlayerGravity = 0.098f;
+        animator = GetComponent<Animator>();
+
         //初期位置設定
         StartPlayerPos = GameObject.Find("StartPlace").transform.position;
         this.transform.position = StartPlayerPos;
@@ -77,7 +80,7 @@ public class PlayerControler : MonoBehaviour
         //デバッグ
         //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
         //Debug.Log(rb.velocity);
-        
+
         //ポーズ画面処理
         if (Mathf.Approximately(Time.timeScale, 0f)) //時間が止まっていたら、Update処理をしない処理
         {
@@ -85,8 +88,9 @@ public class PlayerControler : MonoBehaviour
         }
 
         //クリアしたら移動しないようにする
-        if (ClearFlg == true) 
+        if (ClearFlg == true)
         {
+            animator.SetBool("Run", false);
             return;
         }
 
@@ -101,35 +105,36 @@ public class PlayerControler : MonoBehaviour
             //this.transform.position.y = PlayerGameoverPos.y;
 
             //this.transform.position = new Vector3(this.transform.position.x, PlayerGameoverPos.y, this.transform.position.z);
-
+            animator.SetBool("Run", false);
             return;
         }
 
         //===================================================
         //入力処理
         //===================================================
-        if (Input.GetButtonDown("Horizontal"))
+        if (Input.GetAxisRaw("Horizontal") != 0)
         {
             Debug.Log("上");
             //PlayerAnimation.SetBool("Run", true);
-
+            animator.SetBool("Run", true);
         }
         else
         {
-          //  PlayerAnimation.SetBool("Run", false);
-
+            //  PlayerAnimation.SetBool("Run", false);
+            animator.SetBool("Run", false);
         }
+    
 
-        if (Input.GetButtonDown("Vertical"))
+        if (Input.GetAxisRaw("Vertical") != 0)
         {
-          //  PlayerAnimation.SetBool("Run", true);
-
+            //  PlayerAnimation.SetBool("Run", true);
+            animator.SetBool("Run", true);
             Debug.Log("下");
         }
         else
         {
-         //   PlayerAnimation.SetBool("Run", false);
-
+            //PlayerAnimation.SetBool("Run", false);
+            animator.SetBool("Run", false);
         }
         //if (Input.GetButtonDown("Controler_Right"))
         //{
@@ -158,7 +163,7 @@ public class PlayerControler : MonoBehaviour
             //y軸に力がかかっていないとき
             if (SandMoveSp.y == 0.0f)
             {
-                this.GetComponent<Rigidbody>().useGravity = true;
+                this.GetComponent<Rigidbody>().useGravity = false;
                 rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
                 //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f + SandMoveSp * 0.007f;
             }
