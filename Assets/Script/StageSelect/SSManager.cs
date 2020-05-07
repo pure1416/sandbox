@@ -149,26 +149,41 @@ public class SSManager : MonoBehaviour
             stages[3].GetComponent<StaUnl>().SetUnlockFlg(false);
         }
 
-        //Stage_4クリア済み
-        if ((sf & StageFlags.Stage_4) == StageFlags.Stage_4)
+        if (WorldNum != 1)
         {
-            stages[3].GetComponent<StaUnl>().SetClearFlg(true);
-            stages[4].GetComponent<StaUnl>().SetUnlockFlg(true);
-        }
-        else
-        {
-            stages[3].GetComponent<StaUnl>().SetClearFlg(false);
-            stages[4].GetComponent<StaUnl>().SetUnlockFlg(false);
-        }
+            //Stage_4クリア済み
+            if ((sf & StageFlags.Stage_4) == StageFlags.Stage_4)
+            {
+                stages[3].GetComponent<StaUnl>().SetClearFlg(true);
+                stages[4].GetComponent<StaUnl>().SetUnlockFlg(true);
+            }
+            else
+            {
+                stages[3].GetComponent<StaUnl>().SetClearFlg(false);
+                stages[4].GetComponent<StaUnl>().SetUnlockFlg(false);
+            }
 
-        //Stage_5クリア済み
-        if ((sf & StageFlags.Stage_5) == StageFlags.Stage_5)
-        {
-            stages[4].GetComponent<StaUnl>().SetClearFlg(true);
+            //Stage_5クリア済み
+            if ((sf & StageFlags.Stage_5) == StageFlags.Stage_5)
+            {
+                stages[4].GetComponent<StaUnl>().SetClearFlg(true);
+            }
+            else
+            {
+                stages[4].GetComponent<StaUnl>().SetClearFlg(false);
+            }
         }
         else
         {
-            stages[4].GetComponent<StaUnl>().SetClearFlg(false);
+            //ワールド１専用　Stage_4クリア済み
+            if ((sf & StageFlags.Stage_5) == StageFlags.Stage_5)
+            {
+                stages[3].GetComponent<StaUnl>().SetClearFlg(true);
+            }
+            else
+            {
+                stages[3].GetComponent<StaUnl>().SetClearFlg(false);
+            }
         }
     }
 
@@ -229,6 +244,7 @@ public class SSManager : MonoBehaviour
         return stages[NowSelStage + 1].transform.position;
     }
 
+    //前ステージの場所Getter
     public Vector3 GetPrevPos()
     {
         return stages[NowSelStage - 1].transform.position;
