@@ -565,6 +565,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 291297846533312479, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
+        type: 3}
+      propertyPath: sf
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 291297846533312479, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
+        type: 3}
+      propertyPath: DMSwitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 291297846933056649, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
+        type: 3}
+      propertyPath: GoSceneNo
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 291297847896095536, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
+        type: 3}
+      propertyPath: GoSceneNo
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 291297847907525573, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
+        type: 3}
+      propertyPath: GoSceneNo
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 291297848087318971, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

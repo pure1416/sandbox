@@ -32,6 +32,7 @@ public class SSManager : MonoBehaviour
         Stage_3 = 1 << 2,   //00100
         Stage_4 = 1 << 3,   //01000
         Stage_5 = 1 << 4,   //10000
+        AllSF = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3) | (1 << 4),  //全開放(デバッグ)用
     }
 
     [SerializeField] StageFlags sf;      //StageFlag格納
@@ -42,12 +43,23 @@ public class SSManager : MonoBehaviour
     [Header("ワールドNo")]
     public int WorldNum;
 
+    [Header("デバッグモードスイッチ")]
+    public bool DMSwitch;           //下のをなんやかんやするスイッチ
+    public static bool DebugMode;   //デバッグモードにするとワールドが全開放されます
+
     // Start is called before the first frame update
     void Start()
     {
-        //ワールドのクリアデータを取得
-        string data = "STAGE_FLAG" + WorldNum.ToString();
-        sf = (StageFlags)PlayerPrefs.GetInt(data, 0);
+        if (DebugMode)
+        {
+            sf = StageFlags.AllSF;
+        }
+        else
+        {
+            //ステージのクリアデータを取得
+            string data = "STAGE_FLAG" + WorldNum.ToString();
+            sf = (StageFlags)PlayerPrefs.GetInt(data, 0);
+        }
 
         //動かすコンポネ取得
         SSCM = SSCursor.GetComponent<CursorMove>();
@@ -66,31 +78,35 @@ public class SSManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //フラグ解放
-        FlgCheck(sf);
+        //フェード中入力できなくする処理
+        if (FadeObj.GetFadeInFlg() == false)
+        {
+            //フラグ解放
+            FlgCheck(sf);
 
-        //キー操作で操作できるようにする
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") > 0)
-        {
-            //次へ
-            SSCM.GoNext();
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") < 0)
-        {
-            //前へ
-            SSCM.GoPrev();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown("joystick button 1"))
-        {
-            //決定
-            SSGoSceneChange();
-            //OkButton.onClick.Invoke();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 2"))
-        {
-            //戻る
-            Debug.Log("b!");
-            WSBackButton.onClick.Invoke();
+            //キー操作で操作できるようにする
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") > 0)
+            {
+                //次へ
+                SSCM.GoNext();
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") < 0)
+            {
+                //前へ
+                SSCM.GoPrev();
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown("joystick button 1"))
+            {
+                //決定
+                SSGoSceneChange();
+                //OkButton.onClick.Invoke();
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 2"))
+            {
+                //戻る
+                Debug.Log("b!");
+                WSBackButton.onClick.Invoke();
+            }
         }
     }
 
@@ -133,26 +149,41 @@ public class SSManager : MonoBehaviour
             stages[3].GetComponent<StaUnl>().SetUnlockFlg(false);
         }
 
-        //Stage_4クリア済み
-        if ((sf & StageFlags.Stage_4) == StageFlags.Stage_4)
+        if (WorldNum != 1)
         {
-            stages[3].GetComponent<StaUnl>().SetClearFlg(true);
-            stages[4].GetComponent<StaUnl>().SetUnlockFlg(true);
-        }
-        else
-        {
-            stages[3].GetComponent<StaUnl>().SetClearFlg(false);
-            stages[4].GetComponent<StaUnl>().SetUnlockFlg(false);
-        }
+            //Stage_4クリア済み
+            if ((sf & StageFlags.Stage_4) == StageFlags.Stage_4)
+            {
+                stages[3].GetComponent<StaUnl>().SetClearFlg(true);
+                stages[4].GetComponent<StaUnl>().SetUnlockFlg(true);
+            }
+            else
+            {
+                stages[3].GetComponent<StaUnl>().SetClearFlg(false);
+                stages[4].GetComponent<StaUnl>().SetUnlockFlg(false);
+            }
 
-        //Stage_5クリア済み
-        if ((sf & StageFlags.Stage_5) == StageFlags.Stage_5)
-        {
-            stages[4].GetComponent<StaUnl>().SetClearFlg(true);
+            //Stage_5クリア済み
+            if ((sf & StageFlags.Stage_5) == StageFlags.Stage_5)
+            {
+                stages[4].GetComponent<StaUnl>().SetClearFlg(true);
+            }
+            else
+            {
+                stages[4].GetComponent<StaUnl>().SetClearFlg(false);
+            }
         }
         else
         {
-            stages[4].GetComponent<StaUnl>().SetClearFlg(false);
+            //ワールド１専用　Stage_4クリア済み
+            if ((sf & StageFlags.Stage_5) == StageFlags.Stage_5)
+            {
+                stages[3].GetComponent<StaUnl>().SetClearFlg(true);
+            }
+            else
+            {
+                stages[3].GetComponent<StaUnl>().SetClearFlg(false);
+            }
         }
     }
 
@@ -213,6 +244,7 @@ public class SSManager : MonoBehaviour
         return stages[NowSelStage + 1].transform.position;
     }
 
+    //前ステージの場所Getter
     public Vector3 GetPrevPos()
     {
         return stages[NowSelStage - 1].transform.position;
@@ -222,5 +254,18 @@ public class SSManager : MonoBehaviour
     public void SSGoSceneChange()
     {
         FadeObj.GetComponent<FadeManager>().FadeScene(stages[NowSelStage].GetComponent<StaUnl>().GetGoSceneNo());
+    }
+
+    //デバッグモード用
+    private void OnValidate()
+    {
+        if (DMSwitch)
+        {
+            DebugMode = true;
+        }
+        else
+        {
+            DebugMode = false;
+        }
     }
 }

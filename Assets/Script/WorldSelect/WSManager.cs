@@ -31,6 +31,7 @@ public class WSManager : MonoBehaviour
         World_2 = 1 << 1,   //0010
         World_3 = 1 << 2,   //0100
         World_4 = 1 << 3,   //1000
+        AllWF = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3),  //全開放(デバッグ)用
     }
 
     [SerializeField] WorldFlags wf;      //WorldFlag格納
@@ -38,11 +39,22 @@ public class WSManager : MonoBehaviour
     [Header("現在選択されているワールド")]
     [SerializeField] public int NowSelWorld;
 
+    [Header("デバッグモードスイッチ")]
+    public bool DMSwitch;           //下のをなんやかんやするスイッチ
+    public static bool DebugMode;   //デバッグモードにするとワールドが全開放されます
+
     // Start is called before the first frame update
     void Start()
     {
-        //ワールドのクリアデータを取得
-        wf = (WorldFlags)PlayerPrefs.GetInt("WORLD_FLAG", 0);
+        if (DebugMode)
+        {
+            wf = WorldFlags.AllWF;
+        }
+        else
+        {
+            //ワールドのクリアデータを取得
+            wf = (WorldFlags)PlayerPrefs.GetInt("WORLD_FLAG", 0);
+        }
 
         //フェードパネルとUIの親取得
         FadeObj = GameObject.Find("FadePanel").GetComponent<FadeManager>();
@@ -57,31 +69,35 @@ public class WSManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //フラグ解放
-        FlgCheck(wf);
+        //フェード中入力できなくする処理
+        if (FadeObj.GetFadeInFlg() == false)
+        {
+            //フラグ解放
+            FlgCheck(wf);
 
-        //キー操作で操作できるようにする
-        if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") > 0)
-        {
-            //次へ
-            NextAllow.onClick.Invoke();
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") < 0)
-        {
-            //前へ
-            PrevAllow.onClick.Invoke();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha1)|| Input.GetKeyDown("joystick button 1"))
-        {
-            //決定
-            GoSceneChange();
-            //OkButton.onClick.Invoke();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 2"))
-        {
-            //戻る
-            Debug.Log("b!");
-            GoBackButton.onClick.Invoke();
+            //キー操作で操作できるようにする
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") > 0)
+            {
+                //次へ
+                NextAllow.onClick.Invoke();
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") < 0)
+            {
+                //前へ
+                PrevAllow.onClick.Invoke();
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown("joystick button 1"))
+            {
+                //決定
+                GoSceneChange();
+                //OkButton.onClick.Invoke();
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 2"))
+            {
+                //戻る
+                Debug.Log("b!");
+                GoBackButton.onClick.Invoke();
+            }
         }
     }
 
@@ -189,5 +205,18 @@ public class WSManager : MonoBehaviour
     public void GoSceneChange()
     {
         FadeObj.GetComponent<FadeManager>().FadeScene(worlds[NowSelWorld].GetComponent<WorUnl>().GetGoSceneNo());
+    }
+
+    //デバッグモード用
+    private void OnValidate()
+    {
+        if(DMSwitch)
+        {
+            DebugMode = true;
+        }
+        else
+        {
+            DebugMode = false;
+        }
     }
 }
