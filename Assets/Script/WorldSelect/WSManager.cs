@@ -57,31 +57,35 @@ public class WSManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //フラグ解放
-        FlgCheck(wf);
+        //フェード中入力できなくする処理
+        if (FadeObj.GetFadeInFlg() == false)
+        {
+            //フラグ解放
+            FlgCheck(wf);
 
-        //キー操作で操作できるようにする
-        if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") > 0)
-        {
-            //次へ
-            NextAllow.onClick.Invoke();
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") < 0)
-        {
-            //前へ
-            PrevAllow.onClick.Invoke();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha1)|| Input.GetKeyDown("joystick button 1"))
-        {
-            //決定
-            GoSceneChange();
-            //OkButton.onClick.Invoke();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 2"))
-        {
-            //戻る
-            Debug.Log("b!");
-            GoBackButton.onClick.Invoke();
+            //キー操作で操作できるようにする
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") > 0)
+            {
+                //次へ
+                NextAllow.onClick.Invoke();
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") < 0)
+            {
+                //前へ
+                PrevAllow.onClick.Invoke();
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown("joystick button 1"))
+            {
+                //決定
+                GoSceneChange();
+                //OkButton.onClick.Invoke();
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 2"))
+            {
+                //戻る
+                Debug.Log("b!");
+                GoBackButton.onClick.Invoke();
+            }
         }
     }
 
