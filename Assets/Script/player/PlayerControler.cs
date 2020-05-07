@@ -163,7 +163,7 @@ public class PlayerControler : MonoBehaviour
             //y軸に力がかかっていないとき
             if (SandMoveSp.y == 0.0f)
             {
-                this.GetComponent<Rigidbody>().useGravity = false;
+                this.GetComponent<Rigidbody>().useGravity = true;
                 rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
                 //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f + SandMoveSp * 0.007f;
             }
