@@ -46,7 +46,7 @@ public class Camera_Control : MonoBehaviour
         targetPos = targetObj.transform.position;
 
         //Debug.Log(CameraInputRotCnt);
-        Debug.Log(CameraInputRotCnt);
+        Debug.Log(this.transform.localEulerAngles.x);
 
         ////右スティック（追加）
         //if (Input.GetAxisRaw("Vertical2") < 0)
@@ -95,28 +95,47 @@ public class Camera_Control : MonoBehaviour
             }
         }
 
-        //上に移動
-        //上スティックを傾けている時
+
+
+
+        ////上に移動
+        ////上スティックを傾けている時
         //if (Input.GetAxisRaw("Vertical2") < 0 || Input.GetKey(KeyCode.I))
         //{
-        //    if (0 == Input.GetAxisRaw("Horizontal2"))
-        //    {
-        //        // targetの位置のX軸を中心に、回転（公転）する
-        //        transform.RotateAround(targetPos, transform.right, Time.deltaTime * 50f);
-        //    }
+        //   // if (0 == Input.GetAxisRaw("Horizontal2"))
+        //  //  {
+        //        if ((this.transform.localEulerAngles.x <= 60.0f && this.transform.localEulerAngles.x >= 0) || (this.transform.localEulerAngles.x >= 300 && this.transform.localEulerAngles.x <= 360))
+        //        {
+        //            // targetの位置のX軸を中心に、回転（公転）する
+        //            transform.RotateAround(targetPos, transform.right, Time.deltaTime * 50f);
+        //        }
+        ////    }
         //}
 
         ////下に移動
         ////下スティックを傾けている時
         //if (0 < Input.GetAxisRaw("Vertical2") || Input.GetKey(KeyCode.K))
         //{
-        //    if (0 == Input.GetAxisRaw("Horizontal2"))
-        //    {
-        //        // targetの位置のX軸を中心に、回転（公転）する
-        //        transform.RotateAround(targetPos, transform.right, Time.deltaTime * -50f);
-        //    }
+        //    //if (0 == Input.GetAxisRaw("Horizontal2"))
+        //    //{
+        //        if ((this.transform.localEulerAngles.x <= 60.0f && this.transform.localEulerAngles.x >= 0) || (this.transform.localEulerAngles.x >= 300 && this.transform.localEulerAngles.x <= 360))
+        //        {
+        //            // targetの位置のX軸を中心に、回転（公転）する
+        //            transform.RotateAround(targetPos, transform.right, -Time.deltaTime * 50f);
+        //        }
+        //  //  }
+        
         //}
+
+        //if(this.transform.localEulerAngles.x > 60.0f && this.transform.localEulerAngles.x < 65)
+        //{
+        //    this.transform.localEulerAngles = new Vector3(60.0f, this.transform.localEulerAngles.y, this.transform.localEulerAngles.z);
         //}
+        //if (this.transform.localEulerAngles.x < 300.0f && this.transform.localEulerAngles.x > 298.0f)
+        //{
+        //    this.transform.localEulerAngles = new Vector3(300.0f, this.transform.localEulerAngles.y, this.transform.localEulerAngles.z);
+        //}
+
 
         //見上げ式
         //上に移動
@@ -127,7 +146,7 @@ public class Camera_Control : MonoBehaviour
             {
                 //時間をカウントする
                 KeyInputCnt += Time.deltaTime;
-
+        
                 if (KeyInputCnt >= KeyInputTime)
                 {
                     CameraUpFlg = true;
@@ -142,7 +161,7 @@ public class Camera_Control : MonoBehaviour
             if (0 == Input.GetAxisRaw("Horizontal2"))
             {
                 KeyInputCnt += Time.deltaTime;
-
+        
                 if (KeyInputCnt >= KeyInputTime)
                 {
                     CameraDownFlg = true;
@@ -170,9 +189,9 @@ public class Camera_Control : MonoBehaviour
                 transform.RotateAround(targetPos, transform.right, Time.deltaTime * -50f);
             }
             KeyInputCnt = 0.0f;
-
+        
         }
-
+        
         if (CameraRotCnt > CameraRotTime && (CameraUpFlg == true || CameraDownFlg == true))
         {
             CameraRotCnt = 0.0f;
