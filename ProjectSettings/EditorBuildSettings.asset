@@ -24,11 +24,8 @@ EditorBuildSettings:
     path: Assets/Scenes/TestScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/stage-A.unity
+    path: Assets/Scenes/1-1.unity
     guid: 6965c3ad1439a464d97cffd648d1419a
-  - enabled: 1
-    path: "Assets/Scenes/\u304B\u3051\u3089\u3067\u7A74\u3092\u57CB\u3081\u3066\u6E21\u308B\u3084\u3064.unity"
-    guid: d68d7e148a43f504687dcdf2a70f005a
   - enabled: 1
     path: Assets/Scenes/stage-B.unity
     guid: 127dd4a36f6fd45439012101b75c78b7
@@ -44,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Amalgam_Lab.unity
     guid: 519680ddffb77f24d83f3b6180bd2f48
+  - enabled: 1
+    path: "Assets/Scenes/\u304B\u3051\u3089\u3067\u7A74\u3092\u57CB\u3081\u3066\u6E21\u308B\u3084\u3064.unity"
+    guid: d68d7e148a43f504687dcdf2a70f005a
   m_configObjects: {}
