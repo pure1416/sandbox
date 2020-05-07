@@ -324,6 +324,11 @@ PrefabInstance:
       propertyPath: WorldNum
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 291297846533312479, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
+        type: 3}
+      propertyPath: DMSwitch
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 291297846933056649, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
         type: 3}
       propertyPath: StageName

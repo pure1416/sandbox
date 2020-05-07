@@ -32,6 +32,7 @@ public class SSManager : MonoBehaviour
         Stage_3 = 1 << 2,   //00100
         Stage_4 = 1 << 3,   //01000
         Stage_5 = 1 << 4,   //10000
+        AllSF = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3) | (1 << 4),  //全開放(デバッグ)用
     }
 
     [SerializeField] StageFlags sf;      //StageFlag格納
@@ -42,12 +43,23 @@ public class SSManager : MonoBehaviour
     [Header("ワールドNo")]
     public int WorldNum;
 
+    [Header("デバッグモードスイッチ")]
+    public bool DMSwitch;           //下のをなんやかんやするスイッチ
+    public static bool DebugMode;   //デバッグモードにするとワールドが全開放されます
+
     // Start is called before the first frame update
     void Start()
     {
-        //ワールドのクリアデータを取得
-        string data = "STAGE_FLAG" + WorldNum.ToString();
-        sf = (StageFlags)PlayerPrefs.GetInt(data, 0);
+        if (DebugMode)
+        {
+            sf = StageFlags.AllSF;
+        }
+        else
+        {
+            //ステージのクリアデータを取得
+            string data = "STAGE_FLAG" + WorldNum.ToString();
+            sf = (StageFlags)PlayerPrefs.GetInt(data, 0);
+        }
 
         //動かすコンポネ取得
         SSCM = SSCursor.GetComponent<CursorMove>();
@@ -226,5 +238,18 @@ public class SSManager : MonoBehaviour
     public void SSGoSceneChange()
     {
         FadeObj.GetComponent<FadeManager>().FadeScene(stages[NowSelStage].GetComponent<StaUnl>().GetGoSceneNo());
+    }
+
+    //デバッグモード用
+    private void OnValidate()
+    {
+        if (DMSwitch)
+        {
+            DebugMode = true;
+        }
+        else
+        {
+            DebugMode = false;
+        }
     }
 }
