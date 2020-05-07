@@ -31,6 +31,7 @@ public class WSManager : MonoBehaviour
         World_2 = 1 << 1,   //0010
         World_3 = 1 << 2,   //0100
         World_4 = 1 << 3,   //1000
+        AllWF = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3),  //全開放(デバッグ)用
     }
 
     [SerializeField] WorldFlags wf;      //WorldFlag格納
@@ -38,11 +39,22 @@ public class WSManager : MonoBehaviour
     [Header("現在選択されているワールド")]
     [SerializeField] public int NowSelWorld;
 
+    [Header("デバッグモードスイッチ")]
+    public bool DMSwitch;           //下のをなんやかんやするスイッチ
+    public static bool DebugMode;   //デバッグモードにするとワールドが全開放されます
+
     // Start is called before the first frame update
     void Start()
     {
-        //ワールドのクリアデータを取得
-        wf = (WorldFlags)PlayerPrefs.GetInt("WORLD_FLAG", 0);
+        if (DebugMode)
+        {
+            wf = WorldFlags.AllWF;
+        }
+        else
+        {
+            //ワールドのクリアデータを取得
+            wf = (WorldFlags)PlayerPrefs.GetInt("WORLD_FLAG", 0);
+        }
 
         //フェードパネルとUIの親取得
         FadeObj = GameObject.Find("FadePanel").GetComponent<FadeManager>();
@@ -193,5 +205,18 @@ public class WSManager : MonoBehaviour
     public void GoSceneChange()
     {
         FadeObj.GetComponent<FadeManager>().FadeScene(worlds[NowSelWorld].GetComponent<WorUnl>().GetGoSceneNo());
+    }
+
+    //デバッグモード用
+    private void OnValidate()
+    {
+        if(DMSwitch)
+        {
+            DebugMode = true;
+        }
+        else
+        {
+            DebugMode = false;
+        }
     }
 }
