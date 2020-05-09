@@ -15,7 +15,6 @@ public class TitleManager : MonoBehaviour
     void Start()
     {
         FadeObj = GameObject.Find("FadePanel");
-        button = GameObject.Find("Start").GetComponent<Button>();
         button.Select();
     }
 

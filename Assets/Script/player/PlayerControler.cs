@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Weight;
+using UnityEngine.SceneManagement;
 
 public class PlayerControler : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class PlayerControler : MonoBehaviour
     float PlayerOldVelocity;    //プレイヤーの1フレーム前の加速度
     float PlayerGravity;        //プレイヤーの重力
     Animator animator;
+
 
     [SerializeField] bool CollisionSand;         //流砂に触れているかどうか
 
@@ -61,6 +63,8 @@ public class PlayerControler : MonoBehaviour
         PlayerGravity = 0.098f;
         animator = GetComponent<Animator>();
 
+
+
         //初期位置設定
         StartPlayerPos = GameObject.Find("StartPlace").transform.position;
         this.transform.position = StartPlayerPos;
@@ -79,7 +83,14 @@ public class PlayerControler : MonoBehaviour
 
         //デバッグ
         //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
-        //Debug.Log(rb.velocity);
+
+        if (Input.GetKeyDown("joystick button 8"))
+        {
+            // 現在のScene名を取得する
+            Scene loadScene = SceneManager.GetActiveScene();
+            // Sceneの読み直し
+            SceneManager.LoadScene(loadScene.name);
+        }
 
         //ポーズ画面処理
         if (Mathf.Approximately(Time.timeScale, 0f)) //時間が止まっていたら、Update処理をしない処理

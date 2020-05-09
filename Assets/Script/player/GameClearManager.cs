@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameClearManager : MonoBehaviour
 {
