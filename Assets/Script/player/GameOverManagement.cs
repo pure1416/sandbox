@@ -60,6 +60,6 @@ public class GameOverManagement : MonoBehaviour
     {
         Debug.Log("ステージ選択へ");
 
-        FadeObj.GetComponent<FadeManager>().FadeScene(0);
+        FadeObj.GetComponent<FadeManager>().FadeScene(1);
     }
 }

@@ -30,7 +30,7 @@ public class PauseButtonManager : MonoBehaviour
     {
         Debug.Log("ステージ選択に戻る");
         pauseObj.SetActive(false);
-        FadeObj.GetComponent<FadeManager>().FadeScene(0);
+        FadeObj.GetComponent<FadeManager>().FadeScene(1);
         //SceneManager.LoadScene("WorldSerect");
     }
     public void PushOptionButton()

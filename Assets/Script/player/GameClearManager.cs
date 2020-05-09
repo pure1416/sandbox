@@ -65,6 +65,6 @@ public class GameClearManager : MonoBehaviour
     {
         Debug.Log("ステージ選択へ");
 
-        FadeObject.GetComponent<FadeManager>().FadeScene(0);
+        FadeObject.GetComponent<FadeManager>().FadeScene(1);
     }
 }
