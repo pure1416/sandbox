@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Weight;
 
 
-public class Fragment : MonoBehaviour
+public class SandFragment : MonoBehaviour
 {
 
     // プレイヤーのスクリプト
@@ -28,7 +28,7 @@ public class Fragment : MonoBehaviour
         playercontroler = GameObject.FindGameObjectWithTag("Player");
 
         FtStartPos = this.transform.position;
-        SandDir = new Vector3(0.0f, 0.0f,0.0f);
+        SandDir = new Vector3(0.0f, 0.0f, 0.0f);
         SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
 
         P_SandEnpflg = playercontroler.GetComponent<PlayerControler>().GetPlayerEnpty(); ;
@@ -42,7 +42,6 @@ public class Fragment : MonoBehaviour
     {
         // プレイヤーの中砂の有無を常にもってくる
         P_SandEnpflg = playercontroler.GetComponent<PlayerControler>().GetPlayerEnpty();
-
     }
 
     private void OnTriggerStay(Collider other)
@@ -65,32 +64,64 @@ public class Fragment : MonoBehaviour
                 this.GetComponent<Rigidbody>().useGravity = false;
             }
 
+
+
+
             // プレイヤーの中砂がないときの処理
             if (P_SandEnpflg == true)
             {
-                // 流砂がｙ方向に力が入ってなければ沈んでいく処理
-                if (SandDir.y != 0.0f)
-                {
-                    rb.constraints = RigidbodyConstraints.FreezeAll;
-                }
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+
+                //if (SandDir.y != 0.0f)
+                //// 流砂がｙ方向に力が入っていたら位置を固定する
+                //{
+                //    rb.constraints = RigidbodyConstraints.FreezeAll;
+                //}
             }
             // 中砂があるときの処理
             else
             {
                 // 流砂が動いてるときだけ流砂の向きを保存しておく
-                 SandDir = SandMoveFtSp;
+                SandDir = SandMoveFtSp;
 
                 // 位置固定を外して回転固定のみにする
-                 rb.constraints = RigidbodyConstraints.FreezeRotation;
+               // rb.constraints = RigidbodyConstraints.FreezeRotation;
+
+                 if (SandDir.x != 0.0f)
+                {
+                    rb.constraints =
+                    RigidbodyConstraints.FreezePositionY |
+                    RigidbodyConstraints.FreezePositionZ |
+                    RigidbodyConstraints.FreezeRotation;
+                }
+
+                if (SandDir.y != 0.0f)
+                {
+                    rb.constraints =
+                    RigidbodyConstraints.FreezePositionX |
+                    RigidbodyConstraints.FreezePositionZ |
+                    RigidbodyConstraints.FreezeRotation;
+                }
+                if (SandDir.z != 0.0f)
+                {
+                    rb.constraints =
+                    RigidbodyConstraints.FreezePositionY|
+                    RigidbodyConstraints.FreezePositionX|
+                    RigidbodyConstraints.FreezeRotation ;
+                }
+
+
             }
         }
 
+        // 無視砂の処理
         if (other.gameObject.tag == "Mud")
         {
             SandMoveFtSp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
             SandMoveFtSp /= 50;
+            SandDir = SandMoveFtSp;
             this.transform.Translate(SandMoveFtSp);
-
+    
             // 流砂がｙ方向に力がかかっていなければ重力を付ける
             if (SandMoveFtSp.y == 0.0f)
             {
@@ -101,14 +132,36 @@ public class Fragment : MonoBehaviour
             {
                 this.GetComponent<Rigidbody>().useGravity = false;
             }
-        }
 
+            if (SandDir.x != 0.0f)
+            {
+                rb.constraints =
+                RigidbodyConstraints.FreezePositionY |
+                RigidbodyConstraints.FreezePositionZ |
+                RigidbodyConstraints.FreezeRotation;
+            }
+
+            if (SandDir.y != 0.0f)
+            {
+                rb.constraints =
+                RigidbodyConstraints.FreezePositionX |
+                RigidbodyConstraints.FreezePositionZ |
+                RigidbodyConstraints.FreezeRotation;
+            }
+            if (SandDir.z != 0.0f)
+            {
+                rb.constraints =
+                RigidbodyConstraints.FreezePositionY |
+                RigidbodyConstraints.FreezePositionX |
+                RigidbodyConstraints.FreezeRotation;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
-    {    
+    {
         // かけらが落下したときに初期に戻る
-        if(other.gameObject.tag == "fallcol")
+        if (other.gameObject.tag == "fallcol")
         {
             this.transform.position = FtStartPos;
         }
@@ -121,14 +174,16 @@ public class Fragment : MonoBehaviour
         {
             SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
             this.GetComponent<Rigidbody>().useGravity = true;
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+
         }
         //流砂から流砂へ移動するときに一旦SandMobeFtSpを初期化する
         if (other.gameObject.tag == "Mud")
         {
             SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
             this.GetComponent<Rigidbody>().useGravity = true;
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+
         }
     }
-
-
 }
