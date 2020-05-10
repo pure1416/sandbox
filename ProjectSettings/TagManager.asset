@@ -13,6 +13,7 @@ TagManager:
   - Block
   - Mud
   - fallcol
+  - SSManager
   layers:
   - Default
   - TransparentFX

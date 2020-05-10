@@ -12,6 +12,10 @@ public class GameOverManagement : MonoBehaviour
     bool GameOverFlg;
     public Button button2;
     bool ButtonSelectFlg;
+
+    [Header("WorldID")]
+    public int WorldID;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +64,6 @@ public class GameOverManagement : MonoBehaviour
     {
         Debug.Log("ステージ選択へ");
 
-        FadeObj.GetComponent<FadeManager>().FadeScene(1);
+        FadeObj.GetComponent<FadeManager>().FadeScene(WorldID + 1);
     }
 }

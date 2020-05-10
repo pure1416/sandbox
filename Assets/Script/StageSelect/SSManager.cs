@@ -57,8 +57,9 @@ public class SSManager : MonoBehaviour
         else
         {
             //ステージのクリアデータを取得
-            string data = "STAGE_FLAG" + WorldNum.ToString();
+            string data = "STAGE_FLAG_" + WorldNum.ToString();
             sf = (StageFlags)PlayerPrefs.GetInt(data, 0);
+            Debug.Log("データ名：" + data);
         }
 
         //動かすコンポネ取得

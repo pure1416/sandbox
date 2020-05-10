@@ -27,7 +27,7 @@ public class CursorMove : MonoBehaviour
     {
         NowTime = 0.0f;
         MoveEnd = true;
-        SSMObj = GameObject.Find("SSManager").GetComponent<SSManager>();
+        SSMObj = GameObject.FindWithTag("SSManager").GetComponent<SSManager>();
     }
 
     // Update is called once per frame
