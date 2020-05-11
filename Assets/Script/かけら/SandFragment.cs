@@ -34,7 +34,9 @@ public class SandFragment : MonoBehaviour
         P_SandEnpflg = playercontroler.GetComponent<PlayerControler>().GetPlayerEnpty(); ;
 
         rb = this.GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.constraints = RigidbodyConstraints.FreezePositionX |
+                    RigidbodyConstraints.FreezePositionZ |
+                    RigidbodyConstraints.FreezeRotation;
 
     }
     // Update is called once per frame
