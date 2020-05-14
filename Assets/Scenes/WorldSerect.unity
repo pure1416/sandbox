@@ -618,7 +618,7 @@ MonoBehaviour:
   WorldNameText: {fileID: 1099682364}
   wf: 0
   NowSelWorld: 0
-  DMSwitch: 0
+  DMSwitch: 1
 --- !u!114 &1099682364 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6221973152403794082, guid: e54408bb1f1b5eb4f91bc3c616482b71,
