@@ -364,6 +364,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: FadeScene
       objectReference: {fileID: 0}
+    - target: {fileID: 291297848087318971, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29e55a0ddce06294c8f75b0e6ff8c71f, type: 3}
 --- !u!1 &1315350760

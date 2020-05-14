@@ -40,7 +40,6 @@ public class StaUnl : MonoBehaviour
                 ClearText.enabled = false;
             }
             MaskImage.enabled = false;
-            Debug.Log("ここ２");
         }
         else
         {

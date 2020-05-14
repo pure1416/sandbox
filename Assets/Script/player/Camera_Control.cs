@@ -46,7 +46,7 @@ public class Camera_Control : MonoBehaviour
         targetPos = targetObj.transform.position;
 
         //Debug.Log(CameraInputRotCnt);
-        Debug.Log(this.transform.localEulerAngles.x);
+        //Debug.Log(this.transform.localEulerAngles.x);
 
         ////右スティック（追加）
         //if (Input.GetAxisRaw("Vertical2") < 0)
