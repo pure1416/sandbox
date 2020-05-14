@@ -86,13 +86,13 @@ public class WSManager : MonoBehaviour
                 //前へ
                 PrevAllow.onClick.Invoke();
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown("joystick button 1"))
+            else if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown("joystick button 0"))
             {
                 //決定
                 GoSceneChange();
                 //OkButton.onClick.Invoke();
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 2"))
+            else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 1"))
             {
                 //戻る
                 Debug.Log("b!");
