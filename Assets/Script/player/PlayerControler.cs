@@ -123,6 +123,7 @@ public class PlayerControler : MonoBehaviour
         //===================================================
         //入力処理
         //===================================================
+        //上下移動
         if (Input.GetAxisRaw("Horizontal") != 0)
         {
             Debug.Log("上");
@@ -132,10 +133,9 @@ public class PlayerControler : MonoBehaviour
         else
         {
             //  PlayerAnimation.SetBool("Run", false);
-            animator.SetBool("Run", false);
         }
     
-
+        //左右移動
         if (Input.GetAxisRaw("Vertical") != 0)
         {
             //  PlayerAnimation.SetBool("Run", true);
@@ -145,8 +145,15 @@ public class PlayerControler : MonoBehaviour
         else
         {
             //PlayerAnimation.SetBool("Run", false);
-            animator.SetBool("Run", false);
         }
+        //何も入力してないとき
+        if (Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0)
+        {
+            animator.SetBool("Run", false);
+
+        }
+
+
         //if (Input.GetButtonDown("Controler_Right"))
         //{
         //    Debug.Log("右");
