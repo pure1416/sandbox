@@ -18,7 +18,7 @@ public class PauseManager : MonoBehaviour
     void Update()
     {
         //Debug.Log(Time.timeScale);
-        if (Input.GetKeyDown("r") || Input.GetKeyDown("joystick button 9"))
+        if (Input.GetKeyDown("r") || Input.GetKeyDown("joystick button 7"))
         {
             //　ポーズUIのアクティブ、非アクティブを切り替え
             pauseUI.SetActive(!pauseUI.activeSelf);

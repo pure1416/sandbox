@@ -21,26 +21,38 @@ public class TitleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     //初めからボタンを押したとき
     public void PushStartButton()
     {
-        Debug.Log("はじめから");
-        FadeObj.GetComponent<FadeManager>().FadeScene(1);
+        //フェード中入力できなくする処理
+        if (FadeObj.GetComponent<FadeManager>().GetFadeInFlg() == false)
+        {
+            Debug.Log("はじめから");
+            FadeObj.GetComponent<FadeManager>().FadeScene(1);
+        }
     }
 
     //続きからボタンを押したとき
     public void PushReStartButton()
     {
-        Debug.Log("つづきから");
-        FadeObj.GetComponent<FadeManager>().FadeScene(1);
+        //フェード中入力できなくする処理
+        if (FadeObj.GetComponent<FadeManager>().GetFadeInFlg() == false)
+        {
+            Debug.Log("つづきから");
+            FadeObj.GetComponent<FadeManager>().FadeScene(1);
+        }
     }
 
     //オプションを押したとき
     public void PushOptionButton()
     {
-        Debug.Log("オプションを開く");
+        //フェード中入力できなくする処理
+        if (FadeObj.GetComponent<FadeManager>().GetFadeInFlg() == false)
+        {
+            Debug.Log("オプションを開く");
+        }
     }
 }
