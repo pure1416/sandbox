@@ -84,12 +84,32 @@ public class PlayerControler : MonoBehaviour
         //デバッグ
         //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
 
-        if (Input.GetKeyDown("joystick button 8"))
+        if (Input.GetKeyDown("joystick button 6"))
         {
             // 現在のScene名を取得する
             Scene loadScene = SceneManager.GetActiveScene();
             // Sceneの読み直し
             SceneManager.LoadScene(loadScene.name);
+        }
+
+        if (Input.GetKeyDown("joystick button 3"))
+        {
+            animator.SetBool("break", true);
+        }
+
+        if (Input.GetKeyDown("joystick button 4"))
+        {
+            animator.SetBool("break", false);
+        }
+
+        if (Input.GetKeyDown("joystick button 5"))
+        {
+            animator.SetBool("test4", true);
+        }
+
+        if (Input.GetKeyDown("joystick button 6"))
+        {
+            animator.SetBool("test4", false);
         }
 
         //ポーズ画面処理
@@ -192,11 +212,9 @@ public class PlayerControler : MonoBehaviour
                 //rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
                 rb.velocity = new Vector3(PlayerDir.x * PlayerSp, PlayerDir.y * PlayerSp + SandMoveSp.y, PlayerDir.z * PlayerSp);
                 //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f + SandMoveSp * 0.007f;
-
-
             }
             rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
-            // this.gameObject.transform.position = PlayerDir * PlayerSp + new Vector3(0, this.gameObject.transform.position.y, 0) + SandMoveSp;
+            //this.gameObject.transform.position = PlayerDir * PlayerSp + new Vector3(0, this.gameObject.transform.position.y, 0) + SandMoveSp;
 
         }
         //流砂に触れていない時
@@ -223,7 +241,7 @@ public class PlayerControler : MonoBehaviour
         //回転処理
         //=========================================================================================
         //スペースキーまたはAボタンを押したとき
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1"))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"))
         {
 
             //時間逆行から通常へ変換

@@ -264,6 +264,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5741321097477299556, guid: 66f8502a9ac39d84fa5b4c0dd7fb3c94,
+        type: 3}
+      propertyPath: GoSceneNo
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5741321097556679746, guid: 66f8502a9ac39d84fa5b4c0dd7fb3c94,
+        type: 3}
+      propertyPath: GoSceneNo
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5741321097636205827, guid: 66f8502a9ac39d84fa5b4c0dd7fb3c94,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -279,10 +289,20 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5741321099056268921, guid: 66f8502a9ac39d84fa5b4c0dd7fb3c94,
+        type: 3}
+      propertyPath: GoSceneNo
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5741321099113263095, guid: 66f8502a9ac39d84fa5b4c0dd7fb3c94,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5741321099267369449, guid: 66f8502a9ac39d84fa5b4c0dd7fb3c94,
+        type: 3}
+      propertyPath: GoSceneNo
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5741321099332981852, guid: 66f8502a9ac39d84fa5b4c0dd7fb3c94,
         type: 3}
