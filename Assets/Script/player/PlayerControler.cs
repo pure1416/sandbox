@@ -123,6 +123,7 @@ public class PlayerControler : MonoBehaviour
         //===================================================
         //入力処理
         //===================================================
+        //上下移動
         if (Input.GetAxisRaw("Horizontal") != 0)
         {
             Debug.Log("上");
@@ -132,10 +133,9 @@ public class PlayerControler : MonoBehaviour
         else
         {
             //  PlayerAnimation.SetBool("Run", false);
-            animator.SetBool("Run", false);
         }
     
-
+        //左右移動
         if (Input.GetAxisRaw("Vertical") != 0)
         {
             //  PlayerAnimation.SetBool("Run", true);
@@ -145,8 +145,15 @@ public class PlayerControler : MonoBehaviour
         else
         {
             //PlayerAnimation.SetBool("Run", false);
-            animator.SetBool("Run", false);
         }
+        //何も入力してないとき
+        if (Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0)
+        {
+            animator.SetBool("Run", false);
+
+        }
+
+
         //if (Input.GetButtonDown("Controler_Right"))
         //{
         //    Debug.Log("右");
@@ -218,9 +225,11 @@ public class PlayerControler : MonoBehaviour
         //スペースキーまたはAボタンを押したとき
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1"))
         {
+
             //時間逆行から通常へ変換
             if (PlayerTurn == true)
             {
+                animator.SetBool("Rot", true);
                 PlayerEnptyFlg = false;
                 PlayerTurn = false;
                 PlayerSandNomalTime = PlayerTotalTime - PlayerSandBackTime; //通常の中砂 を すべての中砂 から 逆行の中砂 を引いた分にする
@@ -228,6 +237,8 @@ public class PlayerControler : MonoBehaviour
             //通常から時間逆行へ変換
             else
             {
+                animator.SetBool("Rot", true);
+
                 PlayerEnptyFlg = false;
                 PlayerTurn = true;
                 PlayerSandBackTime = PlayerTotalTime - PlayerSandNomalTime;  //逆行の中砂 を 全ての中砂 から 逆行の中砂 を引いた分にする

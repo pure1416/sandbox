@@ -9,6 +9,7 @@ public class PauseButtonManager : MonoBehaviour
 {
     private GameObject FadeObj; //フェードのパネル
     public GameObject pauseObj;
+    public GameObject ExplanationObj;
     public bool ReturnFlg;
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,8 @@ public class PauseButtonManager : MonoBehaviour
         //初期化
         ReturnFlg = false;
         FadeObj = GameObject.Find("FadePanel");
+        ExplanationObj.SetActive(false);
+
         // 自分を選択状態にする
         Selectable sel = GetComponent<Selectable>();
         sel.Select();
@@ -33,9 +36,11 @@ public class PauseButtonManager : MonoBehaviour
         FadeObj.GetComponent<FadeManager>().FadeScene(1);
         //SceneManager.LoadScene("WorldSerect");
     }
-    public void PushOptionButton()
+    public void PushExplanationButton()
     {
-        Debug.Log("オプションを開く");
+        Debug.Log("操作説明を開く");
+        ExplanationObj.SetActive(true);
+
     }
     public void ResetButton()
     {
