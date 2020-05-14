@@ -218,9 +218,11 @@ public class PlayerControler : MonoBehaviour
         //スペースキーまたはAボタンを押したとき
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1"))
         {
+
             //時間逆行から通常へ変換
             if (PlayerTurn == true)
             {
+                animator.SetBool("Rot", true);
                 PlayerEnptyFlg = false;
                 PlayerTurn = false;
                 PlayerSandNomalTime = PlayerTotalTime - PlayerSandBackTime; //通常の中砂 を すべての中砂 から 逆行の中砂 を引いた分にする
@@ -228,6 +230,8 @@ public class PlayerControler : MonoBehaviour
             //通常から時間逆行へ変換
             else
             {
+                animator.SetBool("Rot", true);
+
                 PlayerEnptyFlg = false;
                 PlayerTurn = true;
                 PlayerSandBackTime = PlayerTotalTime - PlayerSandNomalTime;  //逆行の中砂 を 全ての中砂 から 逆行の中砂 を引いた分にする
