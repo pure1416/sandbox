@@ -92,6 +92,26 @@ public class PlayerControler : MonoBehaviour
             SceneManager.LoadScene(loadScene.name);
         }
 
+        if (Input.GetKeyDown("joystick button 3"))
+        {
+            animator.SetBool("break", true);
+        }
+
+        if (Input.GetKeyDown("joystick button 4"))
+        {
+            animator.SetBool("break", false);
+        }
+
+        if (Input.GetKeyDown("joystick button 5"))
+        {
+            animator.SetBool("test4", true);
+        }
+
+        if (Input.GetKeyDown("joystick button 6"))
+        {
+            animator.SetBool("test4", false);
+        }
+
         //ポーズ画面処理
         if (Mathf.Approximately(Time.timeScale, 0f)) //時間が止まっていたら、Update処理をしない処理
         {
