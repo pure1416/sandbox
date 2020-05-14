@@ -15,8 +15,7 @@ public class ExplanationManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {    
         if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 1"))
         {
             Debug.Log("B!");
