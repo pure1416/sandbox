@@ -192,11 +192,9 @@ public class PlayerControler : MonoBehaviour
                 //rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
                 rb.velocity = new Vector3(PlayerDir.x * PlayerSp, PlayerDir.y * PlayerSp + SandMoveSp.y, PlayerDir.z * PlayerSp);
                 //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f + SandMoveSp * 0.007f;
-
-
             }
             rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
-            // this.gameObject.transform.position = PlayerDir * PlayerSp + new Vector3(0, this.gameObject.transform.position.y, 0) + SandMoveSp;
+            //this.gameObject.transform.position = PlayerDir * PlayerSp + new Vector3(0, this.gameObject.transform.position.y, 0) + SandMoveSp;
 
         }
         //流砂に触れていない時
