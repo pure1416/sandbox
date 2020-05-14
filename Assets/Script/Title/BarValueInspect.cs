@@ -18,7 +18,7 @@ public class BarValueInspect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //桁数そろえる
+        //桁数そろえる(正攻法だとゼロ埋めされる)
         if (InsSlider.value > 9)
         {
             SliValue.text = InsSlider.value.ToString();
