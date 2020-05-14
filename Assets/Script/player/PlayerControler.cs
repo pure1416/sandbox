@@ -84,7 +84,7 @@ public class PlayerControler : MonoBehaviour
         //デバッグ
         //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
 
-        if (Input.GetKeyDown("joystick button 8"))
+        if (Input.GetKeyDown("joystick button 6"))
         {
             // 現在のScene名を取得する
             Scene loadScene = SceneManager.GetActiveScene();
@@ -223,7 +223,7 @@ public class PlayerControler : MonoBehaviour
         //回転処理
         //=========================================================================================
         //スペースキーまたはAボタンを押したとき
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1"))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"))
         {
 
             //時間逆行から通常へ変換

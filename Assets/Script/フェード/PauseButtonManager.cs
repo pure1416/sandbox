@@ -26,30 +26,44 @@ public class PauseButtonManager : MonoBehaviour
 
     public void PushReStartButton()
     {
-        Debug.Log("ゲームに戻る");
-        pauseObj.SetActive(false);
+        //操作説明が出ていないとき
+        if (!ExplanationObj.activeSelf)
+        {
+            Debug.Log("ゲームに戻る");
+            pauseObj.SetActive(false);
+        }
     }
     public void PushReturnStageSerectButton()
     {
-        Debug.Log("ステージ選択に戻る");
-        pauseObj.SetActive(false);
-        FadeObj.GetComponent<FadeManager>().FadeScene(1);
-        //SceneManager.LoadScene("WorldSerect");
+        //操作説明が出ていないとき
+        if (!ExplanationObj.activeSelf)
+        {
+            Debug.Log("ステージ選択に戻る");
+            pauseObj.SetActive(false);
+            FadeObj.GetComponent<FadeManager>().FadeScene(1);
+            //SceneManager.LoadScene("WorldSerect");
+        }
     }
     public void PushExplanationButton()
     {
-        Debug.Log("操作説明を開く");
-        ExplanationObj.SetActive(true);
-
+        //操作説明が出ていないとき
+        if (!ExplanationObj.activeSelf)
+        {
+            Debug.Log("操作説明を開く");
+            ExplanationObj.SetActive(true);
+        }
     }
     public void ResetButton()
-    {
-        Debug.Log("リセットボタン");
-        pauseObj.SetActive(false);
+    {        //操作説明が出ていないとき
+        if (!ExplanationObj.activeSelf)
+        {
+            Debug.Log("リセットボタン");
+            pauseObj.SetActive(false);
 
-        // 現在のScene名を取得する
-        Scene loadScene = SceneManager.GetActiveScene();
-        // Sceneの読み直し
-        SceneManager.LoadScene(loadScene.name);
+            // 現在のScene名を取得する
+            Scene loadScene = SceneManager.GetActiveScene();
+            // Sceneの読み直し
+            SceneManager.LoadScene(loadScene.name);
+        }
     }
 }
