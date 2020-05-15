@@ -79,8 +79,8 @@ public class SSManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //フェード中とカーソル移動中に入力できなくする処理
-        if (FadeObj.GetFadeInFlg() == false && SSCM.GetMoveEnd())
+        //フェード中入力できなくする処理
+        if (FadeObj.GetFadeInFlg() == false)
         {
             //フラグ解放
             FlgCheck(sf);
