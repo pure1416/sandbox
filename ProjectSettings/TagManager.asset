@@ -15,6 +15,7 @@ TagManager:
   - fallcol
   - SSManager
   - Option
+  - WSManager
   layers:
   - Default
   - TransparentFX

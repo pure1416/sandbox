@@ -23,6 +23,8 @@ public class WSManager : MonoBehaviour
 
     private FadeManager FadeObj; //フェードオブジェクト
 
+    public bool MoveEndFlg;     //移動フラグ
+
     [Flags]
     private enum WorldFlags
     {
@@ -69,8 +71,8 @@ public class WSManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //フェード中入力できなくする処理
-        if (FadeObj.GetFadeInFlg() == false)
+        //フェード中と選択中入力できなくする処理
+        if (FadeObj.GetFadeInFlg() == false && MoveEndFlg)
         {
             //フラグ解放
             FlgCheck(wf);
@@ -201,10 +203,18 @@ public class WSManager : MonoBehaviour
         }
     }
 
+    //
+
     //シーンチェンジ
     public void GoSceneChange()
     {
         FadeObj.GetComponent<FadeManager>().FadeScene(worlds[NowSelWorld].GetComponent<WorUnl>().GetGoSceneNo());
+    }
+
+    //MoveEndFlgのSetter
+    public void SetMoveEndFlg(bool me)
+    {
+        MoveEndFlg = me;
     }
 
     //デバッグモード用
