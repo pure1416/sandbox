@@ -71,7 +71,7 @@ public class PlayerControler : MonoBehaviour
         //初期位置設定
         StartPlayerPos = GameObject.Find("StartPlace").transform.position;
         this.transform.position = StartPlayerPos;
-        this.transform.position += new Vector3(0, 1.0f, 0);
+        this.transform.position += new Vector3(0, 5.0f, 0);
         rb = GetComponent<Rigidbody>();
     }
 
