@@ -5594,6 +5594,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ReadyStart
       objectReference: {fileID: 0}
+    - target: {fileID: 7816779724232572091, guid: b7736fce52851094ea3d221c9d99fdf5,
+        type: 3}
+      propertyPath: ReadyTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7736fce52851094ea3d221c9d99fdf5, type: 3}
 --- !u!1001 &631454707
@@ -6798,12 +6803,12 @@ PrefabInstance:
     - target: {fileID: 6074453618946702371, guid: 50ccf715fab682148968ea60745771fb,
         type: 3}
       propertyPath: WorldID
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6074453618946702371, guid: 50ccf715fab682148968ea60745771fb,
         type: 3}
       propertyPath: StageID
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6074453618946702374, guid: 50ccf715fab682148968ea60745771fb,
         type: 3}
@@ -10777,7 +10782,7 @@ PrefabInstance:
     - target: {fileID: 3824956482998163322, guid: 78f4522dabb38e749881b9541a24bd38,
         type: 3}
       propertyPath: WorldID
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3824956482998163325, guid: 78f4522dabb38e749881b9541a24bd38,
         type: 3}

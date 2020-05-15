@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 8552013392953553607}
   - component: {fileID: 8552013392953553602}
   m_Layer: 0
-  m_Name: Ft(2)
-  m_TagString: Fragment
+  m_Name: Fragment
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,5 +124,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playercontroler: {fileID: 0}
-  FtStartPos: {x: 0, y: 0, z: 0}
+  B_Col_Center: {x: 0, y: 0, z: 0}
+  B_Col_Size: {x: 0, y: 0, z: 0}
   SandMoveFtSp: {x: 0, y: 0, z: 0}

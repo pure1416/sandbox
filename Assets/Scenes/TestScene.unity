@@ -2641,7 +2641,7 @@ GameObject:
   - component: {fileID: 1145307165}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Block
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5188,6 +5188,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: player
       objectReference: {fileID: 0}
+    - target: {fileID: 663628578512532196, guid: 9fc5b4cc4554a40488200f66f0bdfe4b,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: cbac8682993488941ad7e54167307540, type: 2}
     - target: {fileID: 663628578512532194, guid: 9fc5b4cc4554a40488200f66f0bdfe4b,
         type: 3}
       propertyPath: m_IsActive
