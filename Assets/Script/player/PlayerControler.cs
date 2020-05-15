@@ -21,6 +21,8 @@ public class PlayerControler : MonoBehaviour
     float PlayerOldVelocity;    //プレイヤーの1フレーム前の加速度
     float PlayerGravity;        //プレイヤーの重力
     Animator animator;
+    bool  PlayerTurnAnimFlg;
+    float PlayerTurnAnimTime;
 
 
     [SerializeField] bool CollisionSand;         //流砂に触れているかどうか
@@ -62,7 +64,8 @@ public class PlayerControler : MonoBehaviour
         PlayerOldVelocity = 0.0f;
         PlayerGravity = 0.098f;
         animator = GetComponent<Animator>();
-
+        PlayerTurnAnimFlg = false;
+        PlayerTurnAnimTime = 0.0f;
 
 
         //初期位置設定
@@ -135,7 +138,7 @@ public class PlayerControler : MonoBehaviour
         {
             //  PlayerAnimation.SetBool("Run", false);
         }
-    
+        
         //左右移動
         if (Input.GetAxisRaw("Vertical") != 0)
         {
@@ -224,11 +227,13 @@ public class PlayerControler : MonoBehaviour
         //スペースキーまたはAボタンを押したとき
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"))
         {
-
+            PlayerTurnAnimFlg = true;
             //時間逆行から通常へ変換
             if (PlayerTurn == true)
             {
                 animator.SetBool("Rot", true);
+                animator.SetBool("run", false);
+
                 PlayerEnptyFlg = false;
                 PlayerTurn = false;
                 PlayerSandNomalTime = PlayerTotalTime - PlayerSandBackTime; //通常の中砂 を すべての中砂 から 逆行の中砂 を引いた分にする
@@ -237,13 +242,25 @@ public class PlayerControler : MonoBehaviour
             else
             {
                 animator.SetBool("Rot", true);
+                animator.SetBool("run", false);
 
                 PlayerEnptyFlg = false;
                 PlayerTurn = true;
                 PlayerSandBackTime = PlayerTotalTime - PlayerSandNomalTime;  //逆行の中砂 を 全ての中砂 から 逆行の中砂 を引いた分にする
             }
+            
         }
 
+        if(PlayerTurnAnimFlg = true)
+        {
+            PlayerTurnAnimTime += Time.deltaTime;
+            if(PlayerTurnAnimTime >= 2.0f)
+            {
+                PlayerTurnAnimTime = 0.0f;
+                PlayerTurnAnimFlg = false;
+                animator.SetBool("Rot", false);
+            }
+        }
         //=========================================================================================
         //時間処理
         //=========================================================================================
