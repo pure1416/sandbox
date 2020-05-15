@@ -15,6 +15,7 @@ TagManager:
   - fallcol
   - SSManager
   - Option
+  - Fragment
   layers:
   - Default
   - TransparentFX
