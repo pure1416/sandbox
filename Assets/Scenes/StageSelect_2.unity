@@ -588,7 +588,7 @@ PrefabInstance:
     - target: {fileID: 291297846933056649, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
         type: 3}
       propertyPath: GoSceneNo
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 291297847086711004, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
         type: 3}
@@ -598,7 +598,7 @@ PrefabInstance:
     - target: {fileID: 291297847086711004, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
         type: 3}
       propertyPath: GoSceneNo
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 291297847272837958, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
         type: 3}
@@ -608,7 +608,7 @@ PrefabInstance:
     - target: {fileID: 291297847272837958, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
         type: 3}
       propertyPath: GoSceneNo
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 291297847896095536, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
         type: 3}
@@ -618,7 +618,7 @@ PrefabInstance:
     - target: {fileID: 291297847896095536, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
         type: 3}
       propertyPath: GoSceneNo
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 291297847907525573, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
         type: 3}
@@ -628,7 +628,7 @@ PrefabInstance:
     - target: {fileID: 291297847907525573, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
         type: 3}
       propertyPath: GoSceneNo
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 291297848087318971, guid: 29e55a0ddce06294c8f75b0e6ff8c71f,
         type: 3}
