@@ -80,7 +80,7 @@ public class SSManager : MonoBehaviour
     void Update()
     {
         //フェード中入力できなくする処理
-        if (FadeObj.GetFadeInFlg() == false)
+        if (FadeObj.GetFadeInFlg() == false && SSCM.GetMoveEnd())
         {
             //フラグ解放
             FlgCheck(sf);
