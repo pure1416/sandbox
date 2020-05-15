@@ -21,6 +21,8 @@ public class PlayerControler : MonoBehaviour
     float PlayerOldVelocity;    //プレイヤーの1フレーム前の加速度
     float PlayerGravity;        //プレイヤーの重力
     Animator animator;
+    bool  PlayerTurnAnimFlg;
+    float PlayerTurnAnimTime;
 
 
     [SerializeField] bool CollisionSand;         //流砂に触れているかどうか
@@ -62,13 +64,14 @@ public class PlayerControler : MonoBehaviour
         PlayerOldVelocity = 0.0f;
         PlayerGravity = 0.098f;
         animator = GetComponent<Animator>();
-
+        PlayerTurnAnimFlg = false;
+        PlayerTurnAnimTime = 0.0f;
 
 
         //初期位置設定
         StartPlayerPos = GameObject.Find("StartPlace").transform.position;
         this.transform.position = StartPlayerPos;
-        this.transform.position += new Vector3(0, 1.0f, 0);
+        this.transform.position += new Vector3(0, 5.0f, 0);
         rb = GetComponent<Rigidbody>();
     }
 
@@ -84,13 +87,14 @@ public class PlayerControler : MonoBehaviour
         //デバッグ
         //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
 
-        if (Input.GetKeyDown("joystick button 8"))
+        if (Input.GetKeyDown("joystick button 6"))
         {
             // 現在のScene名を取得する
             Scene loadScene = SceneManager.GetActiveScene();
             // Sceneの読み直し
             SceneManager.LoadScene(loadScene.name);
         }
+
 
         //ポーズ画面処理
         if (Mathf.Approximately(Time.timeScale, 0f)) //時間が止まっていたら、Update処理をしない処理
@@ -134,7 +138,7 @@ public class PlayerControler : MonoBehaviour
         {
             //  PlayerAnimation.SetBool("Run", false);
         }
-    
+        
         //左右移動
         if (Input.GetAxisRaw("Vertical") != 0)
         {
@@ -192,11 +196,9 @@ public class PlayerControler : MonoBehaviour
                 //rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
                 rb.velocity = new Vector3(PlayerDir.x * PlayerSp, PlayerDir.y * PlayerSp + SandMoveSp.y, PlayerDir.z * PlayerSp);
                 //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f + SandMoveSp * 0.007f;
-
-
             }
             rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
-            // this.gameObject.transform.position = PlayerDir * PlayerSp + new Vector3(0, this.gameObject.transform.position.y, 0) + SandMoveSp;
+            //this.gameObject.transform.position = PlayerDir * PlayerSp + new Vector3(0, this.gameObject.transform.position.y, 0) + SandMoveSp;
 
         }
         //流砂に触れていない時
@@ -223,13 +225,15 @@ public class PlayerControler : MonoBehaviour
         //回転処理
         //=========================================================================================
         //スペースキーまたはAボタンを押したとき
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1"))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"))
         {
-
+            PlayerTurnAnimFlg = true;
             //時間逆行から通常へ変換
             if (PlayerTurn == true)
             {
                 animator.SetBool("Rot", true);
+                animator.SetBool("run", false);
+
                 PlayerEnptyFlg = false;
                 PlayerTurn = false;
                 PlayerSandNomalTime = PlayerTotalTime - PlayerSandBackTime; //通常の中砂 を すべての中砂 から 逆行の中砂 を引いた分にする
@@ -238,13 +242,25 @@ public class PlayerControler : MonoBehaviour
             else
             {
                 animator.SetBool("Rot", true);
+                animator.SetBool("run", false);
 
                 PlayerEnptyFlg = false;
                 PlayerTurn = true;
                 PlayerSandBackTime = PlayerTotalTime - PlayerSandNomalTime;  //逆行の中砂 を 全ての中砂 から 逆行の中砂 を引いた分にする
             }
+            
         }
 
+        if(PlayerTurnAnimFlg = true)
+        {
+            PlayerTurnAnimTime += Time.deltaTime;
+            if(PlayerTurnAnimTime >= 2.0f)
+            {
+                PlayerTurnAnimTime = 0.0f;
+                PlayerTurnAnimFlg = false;
+                animator.SetBool("Rot", false);
+            }
+        }
         //=========================================================================================
         //時間処理
         //=========================================================================================

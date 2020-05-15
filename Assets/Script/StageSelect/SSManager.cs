@@ -96,13 +96,13 @@ public class SSManager : MonoBehaviour
                 //前へ
                 SSCM.GoPrev();
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown("joystick button 1"))
+            else if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown("joystick button 0"))
             {
                 //決定
                 SSGoSceneChange();
                 //OkButton.onClick.Invoke();
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 2"))
+            else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 1"))
             {
                 //戻る
                 Debug.Log("b!");
@@ -199,7 +199,8 @@ public class SSManager : MonoBehaviour
     //次のステージのGetter
     public bool GetNextUnlock()
     {
-        if (NowSelStage == LAST_STAGE)
+        if (NowSelStage == LAST_STAGE ||
+            (WorldNum == 1 && (NowSelStage == (LAST_STAGE - 1))))
         {
             //最後のステージを選択していたら移動させない
             return false;
