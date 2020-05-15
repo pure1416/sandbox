@@ -190,6 +190,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fc5b4cc4554a40488200f66f0bdfe4b, type: 3}
+--- !u!4 &64852056 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4570862757915623665, guid: 9fc5b4cc4554a40488200f66f0bdfe4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 64852055}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &96298377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -365,6 +371,16 @@ PrefabInstance:
       propertyPath: StageID
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6074453618946702371, guid: 50ccf715fab682148968ea60745771fb,
+        type: 3}
+      propertyPath: WorldID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074453618946702371, guid: 50ccf715fab682148968ea60745771fb,
+        type: 3}
+      propertyPath: StageID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6074453618946702374, guid: 50ccf715fab682148968ea60745771fb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -503,7 +519,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b932374e71a3edb45a167f5f374e5d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObj: {fileID: 151379414}
+  Target: {fileID: 64852056}
+  DistanceToPlayerM: 8
+  SlideDistanceM: 0
+  HeightM: 1.2
+  RotationSensitivity: 100
 --- !u!81 &134997424
 AudioListener:
   m_ObjectHideFlags: 0
@@ -569,12 +589,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 10, y: -90, z: 0}
---- !u!1 &151379414 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 663628578512532194, guid: 9fc5b4cc4554a40488200f66f0bdfe4b,
-    type: 3}
-  m_PrefabInstance: {fileID: 64852055}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &395918881
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1346,6 +1346,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6307932565259885210, guid: 49b6b8ca17337f04abd04fa0ab370efc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8401913049857319362, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2121,7 +2126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b932374e71a3edb45a167f5f374e5d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObj: {fileID: 2106842136}
+  Target: {fileID: 2106842137}
+  DistanceToPlayerM: 8
+  SlideDistanceM: 0
+  HeightM: 1.2
+  RotationSensitivity: 100
 --- !u!4 &627529632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1180596182330621196, guid: 50adfa63f35af764d9a3d708b438bb7d,
@@ -4793,7 +4802,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 1e-45, z: 0, w: -9.3132213e-10}
+  m_BoundingSphereOverride: {x: 0, y: 5.3e-44, z: 6.864e-42, w: 1.04e-43}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -7684,9 +7693,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcfcbb67a154fb4b9910d664a9f4961, type: 3}
---- !u!1 &2106842136 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 663628578512532194, guid: 9fc5b4cc4554a40488200f66f0bdfe4b,
+--- !u!4 &2106842137 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4570862757915623665, guid: 9fc5b4cc4554a40488200f66f0bdfe4b,
     type: 3}
   m_PrefabInstance: {fileID: 1701635799}
   m_PrefabAsset: {fileID: 0}
