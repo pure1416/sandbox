@@ -29,8 +29,7 @@ public class Liner : MonoBehaviour
     {
         NowTime = 0.0f;
         MoveEnd = true;
-        WSMObj = GameObject.FindWithTag("WSManager").GetComponent<WSManager>();
-        WSMObj.SetMoveEndFlg(MoveEnd);
+        WSMObj = GameObject.Find("WSManager").GetComponent<WSManager>();
     }
 
     // Update is called once per frame
@@ -54,7 +53,6 @@ public class Liner : MonoBehaviour
                 MoveNP = STAY;
 
                 MoveEnd = true;
-                WSMObj.SetMoveEndFlg(MoveEnd);
             }
         }
     }
@@ -70,7 +68,6 @@ public class Liner : MonoBehaviour
             NowTime = 0.0f;
             MoveNP = NEXT;
             MoveEnd = false;
-            WSMObj.SetMoveEndFlg(MoveEnd);
         }
     }
 
@@ -85,7 +82,6 @@ public class Liner : MonoBehaviour
             NowTime = 0.0f;
             MoveNP = PREV;
             MoveEnd = false;
-            WSMObj.SetMoveEndFlg(MoveEnd);
         }
     }
 
