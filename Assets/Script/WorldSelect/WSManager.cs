@@ -10,6 +10,8 @@ public class WSManager : MonoBehaviour
     private const int FIRST_WORLD = 0;
     private const int LAST_WORLD = 3;
 
+    private bool MoveEndFlg;
+
     [Header("World")]
     public GameObject[] worlds; //ワールドオブジェクト
 
@@ -71,7 +73,11 @@ public class WSManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD
         //フェード中と選択中入力できなくする処理
+=======
+        //フェード中入力できなくする処理
+>>>>>>> 1e20103d449ed10c2383a1b3f327a434258908d2
         if (FadeObj.GetFadeInFlg() == false && MoveEndFlg)
         {
             //フラグ解放
@@ -211,7 +217,10 @@ public class WSManager : MonoBehaviour
         FadeObj.GetComponent<FadeManager>().FadeScene(worlds[NowSelWorld].GetComponent<WorUnl>().GetGoSceneNo());
     }
 
+<<<<<<< HEAD
     //MoveEndFlgのSetter
+=======
+>>>>>>> 1e20103d449ed10c2383a1b3f327a434258908d2
     public void SetMoveEndFlg(bool me)
     {
         MoveEndFlg = me;
