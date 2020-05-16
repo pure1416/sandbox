@@ -183,9 +183,9 @@ GameObject:
   - component: {fileID: 4570862757915623665}
   - component: {fileID: 663628578512532198}
   - component: {fileID: 663628578512532197}
+  - component: {fileID: 663628578512532199}
   - component: {fileID: 663628578512532196}
   - component: {fileID: 663628578512532195}
-  - component: {fileID: 663628578512532199}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -246,6 +246,19 @@ CapsuleCollider:
   m_Height: 3.97
   m_Direction: 1
   m_Center: {x: 0, y: -0.59, z: 0}
+--- !u!65 &663628578512532199
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663628578512532194}
+  m_Material: {fileID: 13400000, guid: 67ca2b44866c73949bc5c265d06962d6, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.49, y: 3.65, z: 2.4}
+  m_Center: {x: 0, y: -0.55, z: 0.04}
 --- !u!95 &663628578512532196
 Animator:
   serializedVersion: 3
@@ -289,19 +302,6 @@ MonoBehaviour:
   PlayerSandBackTime: 0
   PlayerEnptyFlg: 0
   PlayerGameoverPos: {x: 0, y: -20, z: 0}
---- !u!65 &663628578512532199
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663628578512532194}
-  m_Material: {fileID: 13400000, guid: 67ca2b44866c73949bc5c265d06962d6, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.49, y: 3.65, z: 2.4}
-  m_Center: {x: 0, y: -0.55, z: 0.04}
 --- !u!1 &1076149303105783280
 GameObject:
   m_ObjectHideFlags: 0

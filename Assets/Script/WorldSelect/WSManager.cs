@@ -71,12 +71,12 @@ public class WSManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //フラグ解放
+        FlgCheck(wf);
+
         //フェード中入力できなくする処理
         if (FadeObj.GetFadeInFlg() == false && MoveEndFlg)
         {
-            //フラグ解放
-            FlgCheck(wf);
-
             //キー操作で操作できるようにする
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") > 0)
             {
