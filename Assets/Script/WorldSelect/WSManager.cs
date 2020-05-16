@@ -74,7 +74,7 @@ public class WSManager : MonoBehaviour
         //フラグ解放
         FlgCheck(wf);
 
-        //フェード中入力できなくする処理
+        //フェード中と選択中入力できなくする処理
         if (FadeObj.GetFadeInFlg() == false && MoveEndFlg)
         {
             //キー操作で操作できるようにする
@@ -203,12 +203,15 @@ public class WSManager : MonoBehaviour
         }
     }
 
+    //
+
     //シーンチェンジ
     public void GoSceneChange()
     {
         FadeObj.GetComponent<FadeManager>().FadeScene(worlds[NowSelWorld].GetComponent<WorUnl>().GetGoSceneNo());
     }
 
+    //MoveEndFlgのSetter
     public void SetMoveEndFlg(bool me)
     {
         MoveEndFlg = me;

@@ -82,7 +82,7 @@ public class SSManager : MonoBehaviour
         //フラグ解放
         FlgCheck(sf);
 
-        //フェード中入力できなくする処理
+        //フェード中とカーソル移動中に入力できなくする処理
         if (FadeObj.GetFadeInFlg() == false && SSCM.GetMoveEnd())
         {
             //キー操作で操作できるようにする
