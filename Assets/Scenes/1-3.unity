@@ -222,7 +222,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 9fc5b4cc4554a40488200f66f0bdfe4b, type: 3}
 --- !u!4 &86186056 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4570862757915623665, guid: 9fc5b4cc4554a40488200f66f0bdfe4b,
+  m_CorrespondingSourceObject: {fileID: 6159308280032527079, guid: 9fc5b4cc4554a40488200f66f0bdfe4b,
     type: 3}
   m_PrefabInstance: {fileID: 86186055}
   m_PrefabAsset: {fileID: 0}
@@ -315,7 +315,7 @@ PrefabInstance:
     - target: {fileID: 6074453618946702371, guid: 50ccf715fab682148968ea60745771fb,
         type: 3}
       propertyPath: StageID
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6074453618946702371, guid: 50ccf715fab682148968ea60745771fb,
         type: 3}

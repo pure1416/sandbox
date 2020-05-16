@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 1027644096}
   m_Layer: 0
   m_Name: WSManager
-  m_TagString: Untagged
+  m_TagString: WSManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -616,7 +616,8 @@ MonoBehaviour:
   OkButton: {fileID: 663910776}
   GoBackButton: {fileID: 1690947901}
   WorldNameText: {fileID: 1099682364}
-  wf: 0
+  MoveEndFlg: 0
+  wf: -1
   NowSelWorld: 0
   DMSwitch: 1
 --- !u!114 &1099682364 stripped

@@ -672,11 +672,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 663628578512532195, guid: 9fc5b4cc4554a40488200f66f0bdfe4b,
-        type: 3}
-      propertyPath: PlayerGameoverPos.y
-      value: -40
-      objectReference: {fileID: 0}
     - target: {fileID: 6859720813024255634, guid: 9fc5b4cc4554a40488200f66f0bdfe4b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7109,6 +7104,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameClear
       objectReference: {fileID: 0}
+    - target: {fileID: 6074453618946702371, guid: 50ccf715fab682148968ea60745771fb,
+        type: 3}
+      propertyPath: WorldID
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074453618946702371, guid: 50ccf715fab682148968ea60745771fb,
+        type: 3}
+      propertyPath: StageID
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6074453618946702374, guid: 50ccf715fab682148968ea60745771fb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8830,6 +8835,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3824956482998163322, guid: 78f4522dabb38e749881b9541a24bd38,
+        type: 3}
+      propertyPath: WorldID
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3824956482998163325, guid: 78f4522dabb38e749881b9541a24bd38,
         type: 3}
