@@ -79,16 +79,12 @@ public class SSManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-<<<<<<< HEAD
+        //フラグ解放
+        FlgCheck(sf);
+
         //フェード中とカーソル移動中に入力できなくする処理
-=======
-        //フェード中入力できなくする処理
->>>>>>> 1e20103d449ed10c2383a1b3f327a434258908d2
         if (FadeObj.GetFadeInFlg() == false && SSCM.GetMoveEnd())
         {
-            //フラグ解放
-            FlgCheck(sf);
-
             //キー操作で操作できるようにする
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") > 0)
             {

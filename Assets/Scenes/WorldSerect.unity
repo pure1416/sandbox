@@ -617,7 +617,7 @@ MonoBehaviour:
   GoBackButton: {fileID: 1690947901}
   WorldNameText: {fileID: 1099682364}
   MoveEndFlg: 0
-  wf: 0
+  wf: -1
   NowSelWorld: 0
   DMSwitch: 1
 --- !u!114 &1099682364 stripped
