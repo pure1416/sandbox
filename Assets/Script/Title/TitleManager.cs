@@ -30,7 +30,9 @@ public class TitleManager : MonoBehaviour
         //フェード中入力できなくする処理
         if (FadeObj.GetComponent<FadeManager>().GetFadeInFlg() == false)
         {
-            Debug.Log("はじめから");
+            Debug.Log("はじめから　データ初期化");
+            //始めからを選択した場合はデータを初期化する
+            PlayerPrefs.DeleteAll();
             FadeObj.GetComponent<FadeManager>().FadeScene(1);
         }
     }
