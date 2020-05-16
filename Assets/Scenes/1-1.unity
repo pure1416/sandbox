@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &42485841 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 14840795794604693, guid: f73d8f6e4e8c4b247bd72205cd490451,
+    type: 3}
+  m_PrefabInstance: {fileID: 2034031671}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &96298377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -510,7 +516,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2034031671}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 42485841}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 956612878dd93b4488ea0d2a8ef66ad5, type: 3}
@@ -884,6 +890,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78f4522dabb38e749881b9541a24bd38, type: 3}
+--- !u!1 &776918248 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3808964951158538292, guid: f73d8f6e4e8c4b247bd72205cd490451,
+    type: 3}
+  m_PrefabInstance: {fileID: 2034031671}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &776918251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776918248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004408b46f1f98248870f1d8d39370b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColRangeMAX: 1.6
+  SandColor: {r: 1, g: 1, b: 0, a: 0}
+  Player: {fileID: 42485841}
+  NowTime: 0
+  PLWorldPos: {x: 0, y: 0, z: 0}
+  TimeRate: 0
+  SandMat: {fileID: 0}
 --- !u!1001 &853162485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1577,6 +1608,11 @@ PrefabInstance:
       propertyPath: PlayerControler
       value: 
       objectReference: {fileID: 346901317}
+    - target: {fileID: 8898796672458242391, guid: f73d8f6e4e8c4b247bd72205cd490451,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f584f1fc85468e64e915d74eb492caaa, type: 2}
     - target: {fileID: 8946673909063336162, guid: f73d8f6e4e8c4b247bd72205cd490451,
         type: 3}
       propertyPath: m_Name
