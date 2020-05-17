@@ -232,7 +232,6 @@ public class PlayerControler : MonoBehaviour
             if (PlayerTurn == true)
             {
                 animator.SetBool("Rot", true);
-                animator.SetBool("run", false);
 
                 PlayerEnptyFlg = false;
                 PlayerTurn = false;
@@ -242,7 +241,6 @@ public class PlayerControler : MonoBehaviour
             else
             {
                 animator.SetBool("Rot", true);
-                animator.SetBool("run", false);
 
                 PlayerEnptyFlg = false;
                 PlayerTurn = true;

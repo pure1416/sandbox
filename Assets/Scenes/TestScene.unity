@@ -2139,7 +2139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 6490911115907031095}
-  DistanceToPlayerM: 8
+  DistanceToPlayerM: 20
   SlideDistanceM: 0
   HeightM: 1.2
   RotationSensitivity: 100
@@ -5363,6 +5363,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4148356433790475220, guid: f73d8f6e4e8c4b247bd72205cd490451,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: db898b8e69e96564b994b800ce6ca95a, type: 2}
     - target: {fileID: 5238025088699505482, guid: f73d8f6e4e8c4b247bd72205cd490451,
         type: 3}
       propertyPath: PlayerControler
