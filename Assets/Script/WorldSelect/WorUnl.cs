@@ -28,18 +28,18 @@ public class WorUnl : MonoBehaviour
             if (ClearFlg)
             {
                 //クリアしてたら緑にする
-                this.GetComponent<Renderer>().material.color = Color.green;
+                //this.GetComponent<Renderer>().material.color = Color.green;
             }
             else
             {
                 //アンロックだけなら青くする
-                this.GetComponent<Renderer>().material.color = Color.blue;
+                //this.GetComponent<Renderer>().material.color = Color.blue;
             }
         }
         else
         {
             //アンロックされていない場合は赤くしてクリアフラグを切る
-            this.GetComponent<Renderer>().material.color = Color.red;
+            //this.GetComponent<Renderer>().material.color = Color.red;
             ClearFlg = false;
         }
     }
