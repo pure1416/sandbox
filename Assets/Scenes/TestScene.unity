@@ -2139,7 +2139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 6490911115907031095}
-  DistanceToPlayerM: 8
+  DistanceToPlayerM: 20
   SlideDistanceM: 0
   HeightM: 1.2
   RotationSensitivity: 100
