@@ -25,6 +25,7 @@ public class PlayerControler : MonoBehaviour
     bool  PlayerTurnAnimFlg;
     float PlayerTurnAnimTime;
     GameObject obj; //壊れるモデル
+    public Vector3 PlayerMoveFt;        // かけらの上にいるときの変数
 
     [SerializeField] bool CollisionSand;         //流砂に触れているかどうか
 
@@ -68,7 +69,9 @@ public class PlayerControler : MonoBehaviour
         animator = GetComponent<Animator>();
         PlayerTurnAnimFlg = false;
         PlayerTurnAnimTime = 0.0f;
+
         obj = (GameObject)Resources.Load("Player_Broken");
+        PlayerMoveFt　= new Vector3(0.0f, 0.0f, 0.0f);
 
         //初期位置設定
         StartPlayerPos = GameObject.Find("StartPlace").transform.position;
@@ -88,6 +91,9 @@ public class PlayerControler : MonoBehaviour
 
         //デバッグ
         Debug.Log(GameOverAnimFlg);
+        //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
+
+        Debug.Log(PlayerTurnAnimFlg);
         //Debug.Log(PlayerTurnAnimTime);
 
      
@@ -223,6 +229,7 @@ public class PlayerControler : MonoBehaviour
             this.GetComponent<Rigidbody>().useGravity = true;
             //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f;
             rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0);
+
         }
 
         // キャラクターの向きを進行方向に
@@ -311,6 +318,7 @@ public class PlayerControler : MonoBehaviour
                 PlayerEnptyFlg = true;
             }
         }
+
     }
 
     //１F前の加速度を取得
