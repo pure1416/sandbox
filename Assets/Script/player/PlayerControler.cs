@@ -17,12 +17,14 @@ public class PlayerControler : MonoBehaviour
     Vector3 StartPlayerPos; //プレイヤーの初期位置
     private Rigidbody _rigidbody; //物理判定の速度変数
     bool GameOverFlg;           //ゲームオーバーフラグ、高いところから落ちたときやステージ外へ行ったときtrueとなる
+    bool GameOverAnimFlg;       //ゲームオーバーアニメーションフラグ
     bool PlayerFloatFlg;        //プレイヤーが浮いているか
     float PlayerOldVelocity;    //プレイヤーの1フレーム前の加速度
     float PlayerGravity;        //プレイヤーの重力
     Animator animator;
     bool  PlayerTurnAnimFlg;
     float PlayerTurnAnimTime;
+    GameObject obj; //壊れるモデル
     public Vector3 PlayerMoveFt;        // かけらの上にいるときの変数
 
     [SerializeField] bool CollisionSand;         //流砂に触れているかどうか
@@ -60,12 +62,15 @@ public class PlayerControler : MonoBehaviour
         ClearFlg = false;
         _rigidbody = this.GetComponent<Rigidbody>();
         GameOverFlg = false;
+        GameOverAnimFlg = false;
         PlayerFloatFlg = false;
         PlayerOldVelocity = 0.0f;
         PlayerGravity = 0.098f;
         animator = GetComponent<Animator>();
         PlayerTurnAnimFlg = false;
         PlayerTurnAnimTime = 0.0f;
+
+        obj = (GameObject)Resources.Load("Player_Broken");
         PlayerMoveFt　= new Vector3(0.0f, 0.0f, 0.0f);
 
         //初期位置設定
@@ -85,11 +90,14 @@ public class PlayerControler : MonoBehaviour
         inputVertical = Input.GetAxisRaw("Vertical");
 
         //デバッグ
+        Debug.Log(GameOverAnimFlg);
         //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
 
         Debug.Log(PlayerTurnAnimFlg);
         //Debug.Log(PlayerTurnAnimTime);
-        
+
+     
+
         if (Input.GetKeyDown("joystick button 6"))
         {
             // 現在のScene名を取得する
@@ -124,7 +132,18 @@ public class PlayerControler : MonoBehaviour
 
             //this.transform.position = new Vector3(this.transform.position.x, PlayerGameoverPos.y, this.transform.position.z);
             animator.SetBool("Run", false);
-            return;
+            animator.SetBool("Rot", false);
+
+            if (GameOverAnimFlg == true)
+            {
+                GameObject instance = (GameObject)Instantiate(obj,
+                                                        this.transform.position,
+                                                       Quaternion.identity);
+                GameOverAnimFlg = false;
+                //this.SetActive(false);
+                this.gameObject.SetActive(false);
+            }
+                return;
         }
 
         //===================================================
@@ -379,6 +398,7 @@ public class PlayerControler : MonoBehaviour
         //高いところから落ちたとき
         if (PlayerOldVelocity <= FallDeathPos)
         {
+            GameOverAnimFlg = true;
             GameOverFlg = true;
         }
     }
