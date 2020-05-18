@@ -15,6 +15,7 @@ TagManager:
   - fallcol
   - SSManager
   - Option
+  - Fragment
   - WSManager
   layers:
   - Default
