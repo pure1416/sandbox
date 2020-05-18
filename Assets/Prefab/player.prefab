@@ -495,6 +495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3385165323660219243}
   - component: {fileID: 8898796672458242391}
+  - component: {fileID: 6842697886737593079}
   m_Layer: 0
   m_Name: polySurface2
   m_TagString: Untagged
@@ -581,6 +582,25 @@ SkinnedMeshRenderer:
     m_Center: {x: 14.828766, y: 0.498497, z: 1.9857483}
     m_Extent: {x: 361.17056, y: 130.30823, z: 131.9462}
   m_DirtyAABB: 0
+--- !u!114 &6842697886737593079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3808964951158538292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004408b46f1f98248870f1d8d39370b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColRangeMAX: 1.6
+  SandColor: {r: 1, g: 0.84313726, b: 0, a: 0}
+  Player: {fileID: 14840795794604693}
+  NowTime: 0
+  PLWorldPos: {x: 0, y: 0, z: 0}
+  TimeRate: 0
+  SandMat: {fileID: 0}
 --- !u!1 &4052557747600018288
 GameObject:
   m_ObjectHideFlags: 0

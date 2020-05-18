@@ -368,9 +368,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471efd5c870c05e428cdf6a23fae4f2e, type: 3}
---- !u!1 &210726874 stripped
+--- !u!1 &281929896 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 2288691883046712825, guid: 8fae7fab39c81454fbe94527cafa3011,
+  m_CorrespondingSourceObject: {fileID: 7713595711874505849, guid: 8fae7fab39c81454fbe94527cafa3011,
     type: 3}
   m_PrefabInstance: {fileID: 2288691883257289251}
   m_PrefabAsset: {fileID: 0}
@@ -466,6 +466,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &497988103 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1626239076416736518, guid: 8fae7fab39c81454fbe94527cafa3011,
+    type: 3}
+  m_PrefabInstance: {fileID: 2288691883257289251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &663910776 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1074606549850163334, guid: e54408bb1f1b5eb4f91bc3c616482b71,
@@ -607,16 +613,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worlds:
-  - {fileID: 210726874}
-  - {fileID: 1412492013}
+  - {fileID: 2107356676}
+  - {fileID: 497988103}
   - {fileID: 6463105}
-  - {fileID: 1112369319}
+  - {fileID: 281929896}
   NextAllow: {fileID: 1290669468}
   PrevAllow: {fileID: 1246390534}
   OkButton: {fileID: 663910776}
   GoBackButton: {fileID: 1690947901}
   WorldNameText: {fileID: 1099682364}
-  MoveEndFlg: 0
   wf: -1
   NowSelWorld: 0
   DMSwitch: 1
@@ -632,12 +637,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1112369319 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2288691882212176516, guid: 8fae7fab39c81454fbe94527cafa3011,
-    type: 3}
-  m_PrefabInstance: {fileID: 2288691883257289251}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1154534256 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1074606550408116878, guid: e54408bb1f1b5eb4f91bc3c616482b71,
@@ -668,12 +667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1412492013 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2288691882385879246, guid: 8fae7fab39c81454fbe94527cafa3011,
-    type: 3}
-  m_PrefabInstance: {fileID: 2288691883257289251}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1690947901 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1074606550946619587, guid: e54408bb1f1b5eb4f91bc3c616482b71,
@@ -686,6 +679,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2107356676 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3986221368283755790, guid: 8fae7fab39c81454fbe94527cafa3011,
+    type: 3}
+  m_PrefabInstance: {fileID: 2288691883257289251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1074606549272556030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -976,6 +975,21 @@ PrefabInstance:
         type: 3}
       propertyPath: GoSceneNo
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8914766897737082190, guid: 8fae7fab39c81454fbe94527cafa3011,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 8914766897737082190, guid: 8fae7fab39c81454fbe94527cafa3011,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8914766897737082190, guid: 8fae7fab39c81454fbe94527cafa3011,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fae7fab39c81454fbe94527cafa3011, type: 3}
