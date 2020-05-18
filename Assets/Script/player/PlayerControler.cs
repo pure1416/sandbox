@@ -85,9 +85,15 @@ public class PlayerControler : MonoBehaviour
         inputVertical = Input.GetAxisRaw("Vertical");
 
         //デバッグ
+<<<<<<< HEAD
         //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
         Debug.Log("プレイヤーの向き: " + PlayerDir);
 
+=======
+        Debug.Log(PlayerTurnAnimFlg);
+        //Debug.Log(PlayerTurnAnimTime);
+        
+>>>>>>> 458c2a878ddc6b3689ff0ebf1606708809b19370
         if (Input.GetKeyDown("joystick button 6"))
         {
             // 現在のScene名を取得する
@@ -233,8 +239,8 @@ public class PlayerControler : MonoBehaviour
             //時間逆行から通常へ変換
             if (PlayerTurn == true)
             {
+
                 animator.SetBool("Rot", true);
-                animator.SetBool("run", false);
 
                 PlayerEnptyFlg = false;
                 PlayerTurn = false;
@@ -243,8 +249,8 @@ public class PlayerControler : MonoBehaviour
             //通常から時間逆行へ変換
             else
             {
+
                 animator.SetBool("Rot", true);
-                animator.SetBool("run", false);
 
                 PlayerEnptyFlg = false;
                 PlayerTurn = true;
@@ -253,10 +259,10 @@ public class PlayerControler : MonoBehaviour
             
         }
 
-        if(PlayerTurnAnimFlg = true)
+        if(PlayerTurnAnimFlg == true)
         {
             PlayerTurnAnimTime += Time.deltaTime;
-            if(PlayerTurnAnimTime >= 2.0f)
+            if(PlayerTurnAnimTime >= 0.8f)
             {
                 PlayerTurnAnimTime = 0.0f;
                 PlayerTurnAnimFlg = false;
