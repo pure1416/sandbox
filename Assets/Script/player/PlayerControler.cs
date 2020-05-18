@@ -85,15 +85,11 @@ public class PlayerControler : MonoBehaviour
         inputVertical = Input.GetAxisRaw("Vertical");
 
         //デバッグ
-<<<<<<< HEAD
         //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
-        Debug.Log("プレイヤーの向き: " + PlayerDir);
 
-=======
         Debug.Log(PlayerTurnAnimFlg);
         //Debug.Log(PlayerTurnAnimTime);
         
->>>>>>> 458c2a878ddc6b3689ff0ebf1606708809b19370
         if (Input.GetKeyDown("joystick button 6"))
         {
             // 現在のScene名を取得する
