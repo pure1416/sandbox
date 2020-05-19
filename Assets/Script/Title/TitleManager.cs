@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class TitleManager : MonoBehaviour
 {
     private GameObject FadeObj; //フェードのパネル
+    public GameObject OptionObj;    //オプションのウインドウ
     public Button button;
 
 
@@ -15,6 +16,7 @@ public class TitleManager : MonoBehaviour
     void Start()
     {
         FadeObj = GameObject.Find("FadePanel");
+        OptionObj.SetActive(false);
         button.Select();
     }
 
@@ -55,6 +57,7 @@ public class TitleManager : MonoBehaviour
         if (FadeObj.GetComponent<FadeManager>().GetFadeInFlg() == false)
         {
             Debug.Log("オプションを開く");
+            OptionObj.SetActive(true);
         }
     }
 }
