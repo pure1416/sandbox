@@ -24,6 +24,8 @@ public class PlayerControler : MonoBehaviour
     Animator animator;
     bool  PlayerTurnAnimFlg;
     float PlayerTurnAnimTime;
+    public float PlayerRotInvalidTime;//回転無効時間
+
     GameObject obj; //壊れるモデル
     public Vector3 PlayerMoveFt;        // かけらの上にいるときの変数
 
@@ -69,6 +71,7 @@ public class PlayerControler : MonoBehaviour
         animator = GetComponent<Animator>();
         PlayerTurnAnimFlg = false;
         PlayerTurnAnimTime = 0.0f;
+        PlayerRotInvalidTime = 1.0f;
 
         obj = (GameObject)Resources.Load("Player_Broken");
         PlayerMoveFt　= new Vector3(0.0f, 0.0f, 0.0f);
@@ -90,7 +93,7 @@ public class PlayerControler : MonoBehaviour
         inputVertical = Input.GetAxisRaw("Vertical");
 
         //デバッグ
-        Debug.Log(GameOverAnimFlg);
+        Debug.Log("時間"　+　PlayerTurnAnimTime);
         //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
 
         Debug.Log(PlayerTurnAnimFlg);
@@ -250,38 +253,41 @@ public class PlayerControler : MonoBehaviour
         //スペースキーまたはAボタンを押したとき
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"))
         {
-            PlayerTurnAnimFlg = true;
-            //時間逆行から通常へ変換
-            if (PlayerTurn == true)
+            if (PlayerTurnAnimFlg == false)
             {
+                PlayerTurnAnimFlg = true;
+                //時間逆行から通常へ変換
+                if (PlayerTurn == true)
+                {
 
-                animator.SetBool("Rot", true);
+                    animator.SetBool("Rot", true);
 
-                PlayerEnptyFlg = false;
-                PlayerTurn = false;
-                PlayerSandNomalTime = PlayerTotalTime - PlayerSandBackTime; //通常の中砂 を すべての中砂 から 逆行の中砂 を引いた分にする
+                    PlayerEnptyFlg = false;
+                    PlayerTurn = false;
+                    PlayerSandNomalTime = PlayerTotalTime - PlayerSandBackTime; //通常の中砂 を すべての中砂 から 逆行の中砂 を引いた分にする
+                }
+                //通常から時間逆行へ変換
+                else
+                {
+                    animator.SetBool("Rot", true);
+
+                    PlayerEnptyFlg = false;
+                    PlayerTurn = true;
+                    PlayerSandBackTime = PlayerTotalTime - PlayerSandNomalTime;  //逆行の中砂 を 全ての中砂 から 逆行の中砂 を引いた分にする
+                }
+
             }
-            //通常から時間逆行へ変換
-            else
-            {
-
-                animator.SetBool("Rot", true);
-
-                PlayerEnptyFlg = false;
-                PlayerTurn = true;
-                PlayerSandBackTime = PlayerTotalTime - PlayerSandNomalTime;  //逆行の中砂 を 全ての中砂 から 逆行の中砂 を引いた分にする
-            }
-            
         }
 
         if(PlayerTurnAnimFlg == true)
         {
             PlayerTurnAnimTime += Time.deltaTime;
-            if(PlayerTurnAnimTime >= 0.8f)
+            if(PlayerTurnAnimTime >= PlayerRotInvalidTime)
             {
                 PlayerTurnAnimTime = 0.0f;
-                PlayerTurnAnimFlg = false;
                 animator.SetBool("Rot", false);
+
+                PlayerTurnAnimFlg = false;
             }
         }
         //=========================================================================================
