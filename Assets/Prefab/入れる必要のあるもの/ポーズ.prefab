@@ -518,6 +518,7 @@ MonoBehaviour:
   pauseObj: {fileID: 6307932565434914665}
   ExplanationObj: {fileID: 6307932565227757242}
   ReturnFlg: 0
+  ReStartButton: {fileID: 6307932564615982255}
 --- !u!1 &6307932564725171187
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,6 +834,7 @@ MonoBehaviour:
   pauseObj: {fileID: 6307932565434914665}
   ExplanationObj: {fileID: 6307932565227757242}
   ReturnFlg: 0
+  ReStartButton: {fileID: 6307932564615982255}
 --- !u!1 &6307932564881763983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,6 +1800,7 @@ MonoBehaviour:
   pauseObj: {fileID: 6307932565434914665}
   ExplanationObj: {fileID: 6307932565227757242}
   ReturnFlg: 0
+  ReStartButton: {fileID: 6307932564615982255}
 --- !u!1 &6307932565672855608
 GameObject:
   m_ObjectHideFlags: 0
@@ -2387,3 +2390,4 @@ MonoBehaviour:
   pauseObj: {fileID: 6307932565434914665}
   ExplanationObj: {fileID: 6307932565227757242}
   ReturnFlg: 0
+  ReStartButton: {fileID: 6307932564615982255}

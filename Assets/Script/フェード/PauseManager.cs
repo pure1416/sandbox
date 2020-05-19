@@ -9,9 +9,18 @@ public class PauseManager : MonoBehaviour
     [SerializeField]
     private GameObject pauseUI;
     public GameObject ExplanationObj;
+    private GameObject ReadyObj;
+    private GameObject GameClearObj;
+    private GameObject GameOverObj;
+
+
+
     void Start()
     {
-        //ExplanationObj = GameObject.Find("操作説明");
+        ReadyObj = GameObject.Find("ReadyStart");
+        GameClearObj = GameObject.Find("GameClearUI"); 
+        GameOverObj = GameObject.Find("GameoverUI");
+
         pauseUI.SetActive(false);
         Time.timeScale = 1f;
     }
@@ -19,27 +28,31 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(Time.timeScale);
-        //操作説明が出ていないとき
-        if (!ExplanationObj.activeSelf)
+        if (!ReadyObj.activeSelf && !GameClearObj.activeSelf && !GameOverObj.activeSelf)
         {
-            if (Input.GetKeyDown("r") || Input.GetKeyDown("joystick button 7"))
+            //操作説明が出ていないとき
+            if (!ExplanationObj.activeSelf)
             {
-                //　ポーズUIのアクティブ、非アクティブを切り替え
-                pauseUI.SetActive(!pauseUI.activeSelf);
-            }
-            //　ポーズUIが表示されてる時は停止
-            if (pauseUI.activeSelf)
-            {
-                Time.timeScale = 0f;
-                //ポーズUIが表示されてなければ通常通り進行
-            }
-            else
-            {
-                Time.timeScale = 1f;
+                if (Input.GetKeyDown("r") || Input.GetKeyDown("joystick button 7"))
+                {
+                    //　ポーズUIのアクティブ、非アクティブを切り替え
+                    pauseUI.SetActive(!pauseUI.activeSelf);
+                }
+                //ポーズUIが表示されてる時は停止
+                if (pauseUI.activeSelf)
+                {
+                    Time.timeScale = 0f;
+                    //ポーズUIが表示されてなければ通常通り進行
+                }
+                else
+                {
+                    Time.timeScale = 1f;
+                }
             }
         }
+        else
+        {
+            Time.timeScale = 1f;
+        }
     }
-
-
 }

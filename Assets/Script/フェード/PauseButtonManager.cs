@@ -11,6 +11,15 @@ public class PauseButtonManager : MonoBehaviour
     public GameObject pauseObj;
     public GameObject ExplanationObj;
     public bool ReturnFlg;
+
+    public Button ReStartButton;
+
+    bool SelectButton;
+    //Button ResetButton;
+    //Button ExplanationButton;
+    //Button ReturnStageSerectButton;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +27,25 @@ public class PauseButtonManager : MonoBehaviour
         ReturnFlg = false;
         FadeObj = GameObject.Find("FadePanel");
         ExplanationObj.SetActive(false);
+        SelectButton = false;
+        //ResetButton = GameObject.Find("ResetButton").GetComponent<Button>();
+        //ExplanationButton = GameObject.Find("ExplanationButton").GetComponent<Button>();
+        //ReturnStageSerectButton = GameObject.Find("ReturnStageSerectButton").GetComponent<Button>();
 
-        // 自分を選択状態にする
-        Selectable sel = GetComponent<Selectable>();
-        sel.Select();
+        // 最初に選択状態にしたいボタンの設定
+    }
+    void Update()
+    {
+ 
+        if (SelectButton == false)
+        {
+            if (pauseObj.activeSelf == true)
+            {
+                ReStartButton.Select();
+                SelectButton = true;
+
+            }
+        }
     }
 
     public void PushReStartButton()

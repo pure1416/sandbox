@@ -105,4 +105,10 @@ public class ReadyManager : MonoBehaviour
         return GameStartFlg;
     }
 
+    //ReadyFlgフラグのSetter
+    public bool GetReadyFlg()
+    {
+        return ReadyFlg;
+    }
+
 }
