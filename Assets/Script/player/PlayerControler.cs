@@ -401,11 +401,15 @@ public class PlayerControler : MonoBehaviour
     //なにかと当たった時
     private void OnCollisionEnter(Collision collision)
     {
-        //高いところから落ちたとき
-        if (PlayerOldVelocity <= FallDeathPos)
+        //流砂
+        if (collision.gameObject.tag == "Block")
         {
-            GameOverAnimFlg = true;
-            GameOverFlg = true;
+            //高いところから落ちたとき
+            if (PlayerOldVelocity <= FallDeathPos)
+            {
+                GameOverAnimFlg = true;
+                GameOverFlg = true;
+            }
         }
     }
 
