@@ -159,7 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3607546145840923526}
   m_Layer: 0
-  m_Name: RenTex
+  m_Name: RenTex1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2781,7 +2781,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8074519026914068499}
   m_Layer: 0
-  m_Name: ClearTexts
+  m_Name: ClearTexts1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2885,7 +2885,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2320154717936948021}
   m_Layer: 0
-  m_Name: StageObjs
+  m_Name: StageObjs1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
