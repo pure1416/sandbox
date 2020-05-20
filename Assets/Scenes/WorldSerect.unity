@@ -896,6 +896,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1027644095}
     m_Modifications:
+    - target: {fileID: 186731339837318829, guid: 8fae7fab39c81454fbe94527cafa3011,
+        type: 3}
+      propertyPath: GoSceneNo
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2288691882212176526, guid: 8fae7fab39c81454fbe94527cafa3011,
         type: 3}
       propertyPath: GoSceneNo
@@ -975,6 +980,16 @@ PrefabInstance:
         type: 3}
       propertyPath: GoSceneNo
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924559997241343676, guid: 8fae7fab39c81454fbe94527cafa3011,
+        type: 3}
+      propertyPath: GoSceneNo
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771024312901917837, guid: 8fae7fab39c81454fbe94527cafa3011,
+        type: 3}
+      propertyPath: GoSceneNo
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8914766897737082190, guid: 8fae7fab39c81454fbe94527cafa3011,
         type: 3}

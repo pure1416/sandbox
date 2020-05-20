@@ -105,6 +105,7 @@ MonoBehaviour:
   PlayerTotalTime: 5
   PlayerDir: {x: 0, y: 0, z: 0}
   ClearFlg: 0
+  PlayerMoveFt: {x: 0, y: 0, z: 0}
   CollisionSand: 0
   CollisionGround: 0
   SandMoveSp: {x: 0, y: 0, z: 0}
@@ -128,7 +129,7 @@ Animator:
   m_GameObject: {fileID: 14840795794604693}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 068b4d16b3e1b3d42ad3dcba22e37ad6, type: 2}
+  m_Controller: {fileID: 9100000, guid: db898b8e69e96564b994b800ce6ca95a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

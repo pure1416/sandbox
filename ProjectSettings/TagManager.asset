@@ -16,6 +16,9 @@ TagManager:
   - SSManager
   - Option
   - WSManager
+  - OptionManager
+  - BGMBar
+  - SEBar
   layers:
   - Default
   - TransparentFX

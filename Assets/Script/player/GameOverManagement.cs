@@ -35,14 +35,15 @@ public class GameOverManagement : MonoBehaviour
         //ゲームオーバーフラグ取得
         GameOverFlg = PlayerObj.GetComponent<PlayerControler>().GetGameOverFlg();
         if (GameOverFlg == true) {
+            //ゲームオーバーテキストを表示
+            GameOverUI.SetActive(true);
             if (ButtonSelectFlg == false)
             {
                 button2.Select();
                 ButtonSelectFlg = true;
             }
 
-            //ゲームオーバーテキストを表示
-            GameOverUI.SetActive(true);
+     
         }
         if (GameOverFlg == false)
         {
