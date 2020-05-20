@@ -19,6 +19,7 @@ TagManager:
   - OptionManager
   - BGMBar
   - SEBar
+  - VerticalQuickSand
   layers:
   - Default
   - TransparentFX
