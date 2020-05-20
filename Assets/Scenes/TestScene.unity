@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.7801602, g: 0.7301508, b: 0.72079116, a: 1}
+  m_IndirectSpecularColor: {r: 0.78016216, g: 0.73014987, b: 0.72078454, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2611,9 +2611,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 6490911115907031095}
-  DistanceToPlayerM: 8
+  DistanceToPlayerM: 10
   SlideDistanceM: 0
-  HeightM: 1.2
+  HeightM: 3
   RotationSensitivity: 100
 --- !u!4 &982709132 stripped
 Transform:
@@ -6392,10 +6392,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PushReturnStageSerectButton
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6307932564873888329, guid: 49b6b8ca17337f04abd04fa0ab370efc, type: 3}
-    - {fileID: 6307932565661998148, guid: 49b6b8ca17337f04abd04fa0ab370efc, type: 3}
-    - {fileID: 6307932566032844380, guid: 49b6b8ca17337f04abd04fa0ab370efc, type: 3}
+    m_RemovedComponents: [{fileID: 6307932564873888329, guid: 49b6b8ca17337f04abd04fa0ab370efc,
+        type: 3}, {fileID: 6307932565661998148, guid: 49b6b8ca17337f04abd04fa0ab370efc,
+        type: 3}, {fileID: 6307932566032844380, guid: 49b6b8ca17337f04abd04fa0ab370efc,
+        type: 3}]
   m_SourcePrefab: {fileID: 100100000, guid: 49b6b8ca17337f04abd04fa0ab370efc, type: 3}
 --- !u!4 &6490911115907031095 stripped
 Transform:
