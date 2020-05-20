@@ -17,6 +17,7 @@ public class SandFragment : MonoBehaviour
     bool P_SandEnpflg;              // プレイヤーの中砂の有無
     bool P_ColFrag;                 // プレイヤーが当たっているかどうか
     Vector3 P_Dir;                  // プレイヤーの向きを保存
+    bool SandCol;                   // 砂に触れているかどうか
 
     // 当たり判定
     Rigidbody rb;
@@ -35,6 +36,8 @@ public class SandFragment : MonoBehaviour
 
         P_SandEnpflg = playercontroler.GetComponent<PlayerControler>().GetPlayerEnpty();
         P_ColFrag = false;
+        SandCol = false;
+
         P_Dir = new Vector3(0.0f,0.0f,0.0f);
 
         rb = this.GetComponent<Rigidbody>();
@@ -49,7 +52,8 @@ public class SandFragment : MonoBehaviour
     {
         // プレイヤーの中砂の有無を常にもってくる
         P_SandEnpflg = playercontroler.GetComponent<PlayerControler>().GetPlayerEnpty();
-        Debug.Log("プレイヤーがあたっているかどうか" + P_ColFrag);
+        //Debug.Log("プレイヤーがあたっているかどうか" + P_ColFrag);
+        Debug.Log("流砂があたっているかどうか" + SandCol);
     }
 
     private void OnCollisionStay(Collision other)
@@ -65,6 +69,8 @@ public class SandFragment : MonoBehaviour
         // 流砂の上にいるときに流砂の移動力を受け取る
         if (other.gameObject.tag == "QuickSand_B")
         {
+            SandCol = true;
+
             SandMoveFtSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
             SandMoveFtSp /= 50;
 
@@ -72,12 +78,18 @@ public class SandFragment : MonoBehaviour
             if (P_SandEnpflg == true)
             {
                 // 中砂がないときに固定する
-                rb.constraints = RigidbodyConstraints.FreezeAll;
+                 rb.constraints = RigidbodyConstraints.FreezeAll;
+                //rb.constraints =
+                //        RigidbodyConstraints.FreezePositionX |
+                //        RigidbodyConstraints.FreezePositionY |
+                //        RigidbodyConstraints.FreezePositionZ |
+                //        RigidbodyConstraints.FreezeRotation;
             }
             // 中砂があるときの処理
             else
             {
                 // 流砂が動いてるときだけ流砂の向きを保存しておく
+
                 SandDir = SandMoveFtSp;
 
                 // 流砂がｙ方向に力がかかっていなければ重力を付ける
@@ -100,25 +112,57 @@ public class SandFragment : MonoBehaviour
                 {
                     P_Dir = playercontroler.GetComponent<PlayerControler>().GetPlayerDir();
 
-                    if (((P_Dir.x > 0.0f) && (SandDir.x > 0.0f)) ||
-                        ((P_Dir.x < 0.0f) && (SandDir.x < 0.0f)) ||
-                        ((P_Dir.z > 0.0f) && (SandDir.z > 0.0f)) ||
-                        ((P_Dir.z < 0.0f) && (SandDir.z < 0.0f)))
-                    {
-                        rb.constraints = RigidbodyConstraints.FreezeAll;
-                    }
+                //    if (((P_Dir.x > 0.0f) && (SandDir.x > 0.0f)) ||
+                //        ((P_Dir.x < 0.0f) && (SandDir.x < 0.0f)) ||
+                //        ((P_Dir.z > 0.0f) && (SandDir.z > 0.0f)) ||
+                //        ((P_Dir.z < 0.0f) && (SandDir.z < 0.0f)))
+                //    {
+                //        //SandMoveFtSp *= 0.5f;
+                //        rb.constraints =
+                //        RigidbodyConstraints.FreezePositionX |
+                //        RigidbodyConstraints.FreezePositionY |
+                //        RigidbodyConstraints.FreezePositionZ |
+                //        RigidbodyConstraints.FreezeRotation;
+                //    }
 
-                    if (((P_Dir.x > 0.0f) && (SandDir.x < 0.0f)) ||
-                        ((P_Dir.x < 0.0f) && (SandDir.x > 0.0f)) ||
-                        ((P_Dir.z > 0.0f) && (SandDir.z < 0.0f)) ||
-                        ((P_Dir.z < 0.0f) && (SandDir.z > 0.0f)))
-                    {
-                        SandMoveFtSp *= 2;
-                    }
+                //    //if (((P_Dir.x > 0.0f) && (SandDir.x == 0.0f)) ||
+                //    //    ((P_Dir.x < 0.0f) && (SandDir.x == 0.0f)))
+                //    //{
+                //    //    rb.constraints =
+                //    //    RigidbodyConstraints.FreezePositionY |
+                //    //    RigidbodyConstraints.FreezePositionZ |
+                //    //    RigidbodyConstraints.FreezeRotation;
+                //    //}
 
-                }
-                else
-                {
+                //    //if (((P_Dir.y > 0.0f) && (SandDir.z == 0.0f)) ||
+                //    //    ((P_Dir.y < 0.0f) && (SandDir.z == 0.0f)))
+                //    //{
+                //    //    rb.constraints =
+                //    //    RigidbodyConstraints.FreezePositionX |
+                //    //    RigidbodyConstraints.FreezePositionZ |
+                //    //    RigidbodyConstraints.FreezeRotation;
+                //    //}
+
+                //    //if (((P_Dir.z > 0.0f) && (SandDir.z == 0.0f)) ||
+                //    //    ((P_Dir.z < 0.0f) && (SandDir.z == 0.0f)))
+                //    //{
+                //    //    rb.constraints =
+                //    //    RigidbodyConstraints.FreezePositionY |
+                //    //    RigidbodyConstraints.FreezePositionX |
+                //    //    RigidbodyConstraints.FreezeRotation;
+                //    //}
+
+                //    if (((P_Dir.x > 0.0f) && (SandDir.x < 0.0f)) ||
+                //        ((P_Dir.x < 0.0f) && (SandDir.x > 0.0f)) ||
+                //        ((P_Dir.z > 0.0f) && (SandDir.z < 0.0f)) ||
+                //        ((P_Dir.z < 0.0f) && (SandDir.z > 0.0f)))
+                //    {
+                //        SandMoveFtSp *= 1.25f;
+                //    }
+
+                //}
+                //else
+                //{
                     if (SandDir.x != 0.0f)
                     {
                         rb.constraints =
@@ -134,6 +178,7 @@ public class SandFragment : MonoBehaviour
                         RigidbodyConstraints.FreezePositionZ |
                         RigidbodyConstraints.FreezeRotation;
                     }
+
                     if (SandDir.z != 0.0f)
                     {
                         rb.constraints =
@@ -141,7 +186,7 @@ public class SandFragment : MonoBehaviour
                         RigidbodyConstraints.FreezePositionX |
                         RigidbodyConstraints.FreezeRotation;
                     }
-                }
+               // }
             }
             this.transform.Translate(SandMoveFtSp);
         }
@@ -248,7 +293,9 @@ public class SandFragment : MonoBehaviour
         }
         if (other.gameObject.tag == "Player")
         {
-            rb.constraints = RigidbodyConstraints.FreezeAll;
+            //rb.constraints = RigidbodyConstraints.FreezePositionX |
+            //                   RigidbodyConstraints.FreezePositionZ |
+            //                   RigidbodyConstraints.FreezeRotation;
             P_ColFrag = false;
         }
     }
