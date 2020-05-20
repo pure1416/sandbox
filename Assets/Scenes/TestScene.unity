@@ -5987,6 +5987,7 @@ MonoBehaviour:
   PlayerTotalTime: 5
   PlayerDir: {x: 0, y: 0, z: 0}
   ClearFlg: 0
+  PlayerRotInvalidTime: 0
   PlayerMoveFt: {x: 0, y: 0, z: 0}
   CollisionSand: 0
   SandMoveSp: {x: 0, y: 0, z: 0}
@@ -6362,6 +6363,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u30DD\u30FC\u30BA"
       objectReference: {fileID: 0}
+    - target: {fileID: 6307932565267377616, guid: 49b6b8ca17337f04abd04fa0ab370efc,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 88cb8130e4b7407468fec1cf122a4b18,
+        type: 3}
+    - target: {fileID: 6307932565267377616, guid: 49b6b8ca17337f04abd04fa0ab370efc,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u30B2\u30FC\u30E0\u3078\u3082\u3069\u308B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6307932565588496942, guid: 49b6b8ca17337f04abd04fa0ab370efc,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 0470619d9b9a3c0498268d4d885411e1,
+        type: 3}
+    - target: {fileID: 6307932565588496942, guid: 49b6b8ca17337f04abd04fa0ab370efc,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u30B9\u30C6\u30FC\u30B8\u305B\u3093\u305F\u304F\u3078"
+      objectReference: {fileID: 0}
     - target: {fileID: 6307932565661998148, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
       propertyPath: button
@@ -6377,6 +6400,23 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PushExplanationButton
       objectReference: {fileID: 0}
+    - target: {fileID: 6307932565846550145, guid: 49b6b8ca17337f04abd04fa0ab370efc,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: fd2e19d4130969349b3fe24902313440,
+        type: 3}
+    - target: {fileID: 6307932565846550145, guid: 49b6b8ca17337f04abd04fa0ab370efc,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u305D\u3046\u3055\u305B\u3064\u3081\u3044"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6307932565924174098, guid: 49b6b8ca17337f04abd04fa0ab370efc,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: caa311b21424d6540b2cd3ec6b8cecd6,
+        type: 3}
     - target: {fileID: 6307932566032844380, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
       propertyPath: button
