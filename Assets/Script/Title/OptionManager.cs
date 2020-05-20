@@ -99,13 +99,13 @@ public class OptionManager : MonoBehaviour
             {
                 //BGM
                 case OPT_BGM:
-                    if (Input.GetKeyDown(KeyCode.RightArrow) || RightInputFlg == true)
+                    if (RightInputFlg == true)
                     {
                         //音量上げ
                         option[NowSelOpt].GetComponent<VolumeChange>().VolUp();
                         RightInputFlg = false;
                     }
-                    else if (Input.GetKeyDown(KeyCode.LeftArrow)|| LeftInputFlg == true)
+                    else if (LeftInputFlg == true)
                     {
                         //音量下げ
                         option[NowSelOpt].GetComponent<VolumeChange>().VolDown();
@@ -115,14 +115,14 @@ public class OptionManager : MonoBehaviour
                     break;
                 //SE
                 case OPT_SE:
-                    if (Input.GetKeyDown(KeyCode.RightArrow) || RightInputFlg == true)
+                    if (RightInputFlg == true)
                     {
                         //音量上げ
                         option[NowSelOpt].GetComponent<VolumeChange>().VolUp();
                         RightInputFlg = false;
 
                     }
-                    else if (Input.GetKeyDown(KeyCode.LeftArrow) || LeftInputFlg == true)
+                    else if (LeftInputFlg == true)
                     {
                         //音量下げ
                         option[NowSelOpt].GetComponent<VolumeChange>().VolDown();
