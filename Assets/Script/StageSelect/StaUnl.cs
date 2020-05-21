@@ -99,7 +99,7 @@ public class StaUnl : MonoBehaviour
         OpenFlg = true;
         CloseFlg = false;
         OpClCnt = 0;
-        StageObj.GetComponent<Animator>().Play("Open");
+        //StageObj.GetComponent<Animator>().Play("Open");
     }
 
     //閉
@@ -109,7 +109,7 @@ public class StaUnl : MonoBehaviour
         OpenFlg = false;
         CloseFlg = true;
         OpClCnt = 0;
-        StageObj.GetComponent<Animator>().Play("Close");
+        //StageObj.GetComponent<Animator>().Play("Close");
     }
 
     //UnlockフラグのSetter
