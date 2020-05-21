@@ -4,6 +4,8 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class WSManager : MonoBehaviour
 {
     //定数宣言
@@ -45,6 +47,11 @@ public class WSManager : MonoBehaviour
     public bool DMSwitch;           //下のをなんやかんやするスイッチ
     public static bool DebugMode;   //デバッグモードにするとワールドが全開放されます
 
+    [SerializeField] AudioClip[] clips;//サウンド
+
+    //SEです。
+    protected AudioSource Source;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +73,9 @@ public class WSManager : MonoBehaviour
 
         //ワールド名設定
         WorldNameText.text = "World-" + (NowSelWorld + 1).ToString() + "\n" + worlds[NowSelWorld].GetComponent<WorUnl>().GetWorldName();
+
+        //サウンド
+        Source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -78,24 +88,35 @@ public class WSManager : MonoBehaviour
         if (FadeObj.GetFadeInFlg() == false && MoveEndFlg)
         {
             //キー操作で操作できるようにする
-            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") > 0)
+            if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") > 0) && GetNextUnlock())
             {
+                //カーソル選択音
+                Source.PlayOneShot(clips[0]);
+
                 //次へ
                 NextAllow.onClick.Invoke();
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") < 0)
+            else if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") < 0) && GetPrevUnlock())
             {
+                //カーソル選択音
+                Source.PlayOneShot(clips[0]);
+
                 //前へ
                 PrevAllow.onClick.Invoke();
             }
             else if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown("joystick button 0"))
             {
+                //決定の際のSE
+                Source.PlayOneShot(clips[1]);
                 //決定
                 GoSceneChange();
                 //OkButton.onClick.Invoke();
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 1"))
             {
+                //戻る際のSE
+                Source.PlayOneShot(clips[2]);
+
                 //戻る
                 Debug.Log("b!");
                 GoBackButton.onClick.Invoke();
