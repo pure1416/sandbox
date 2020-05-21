@@ -33,7 +33,21 @@ public class TitleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //キー操作で操作できるようにする
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxisRaw("Vertical") > 0)
+        {
+           
+                //カーソル選択音
+                Source.PlayOneShot(clips[0]);
+           
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxisRaw("Vertical") < 0)
+        {
+          
+                //カーソル選択音
+                Source.PlayOneShot(clips[0]);
+           
+        }
     }
 
     //初めからボタンを押したとき
