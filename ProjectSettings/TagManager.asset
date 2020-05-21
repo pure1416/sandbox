@@ -18,6 +18,9 @@ TagManager:
   - Fragment
   - WSManager
   - OptionManager
+  - BGMBar
+  - SEBar
+  - VerticalQuickSand
   layers:
   - Default
   - TransparentFX

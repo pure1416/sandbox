@@ -14,7 +14,7 @@ public class GameClearManager : MonoBehaviour
     bool GameClearFlg;
     public Button button;
     bool ButtonSelectFlg;
-
+    float ClearUITime; //クリアUIを出す時間測定
     [Header("ID")]
     [Tooltip("このステージが所属するワールドNo(1~4)")] public int WorldID;     //1~4
     [Tooltip("このステージのステージNo(1~5(ワールド1は1~4))")] public int StageID;  //1~5か1~4
@@ -27,6 +27,7 @@ public class GameClearManager : MonoBehaviour
         ClearUI = GameObject.Find("GameClearUI");
         FadeObject = GameObject.Find("FadePanel");
         ButtonSelectFlg = false;
+        ClearUITime = 0.0f;
         //button = GameObject.Find("NextStage").GetComponent<Button>();
 
 
@@ -38,14 +39,21 @@ public class GameClearManager : MonoBehaviour
         GameClearFlg = PlayerObj.GetComponent<PlayerControler>().GetGameClearFlg();
         if(GameClearFlg == true)
         {
-            ClearUI.SetActive(true);
-            if (ButtonSelectFlg == false)
+            if (ClearUITime < 2.5f)
             {
-                //ステージクリア処理
-                StageClear();
-                //ボタンが選択された状態になる
-                button.Select();
-                ButtonSelectFlg = true;
+                ClearUITime += Time.deltaTime;
+            }
+            if (ClearUITime >= 2.5f)
+            {
+                ClearUI.SetActive(true);
+                if (ButtonSelectFlg == false)
+                {
+                    //ステージクリア処理
+                    StageClear();
+                    //ボタンが選択された状態になる
+                    button.Select();
+                    ButtonSelectFlg = true;
+                }
             }
         }
         else if (GameClearFlg == false)
