@@ -65,18 +65,14 @@ public class OptionManager : MonoBehaviour
         //カーソル移動中は入力できないようにする
         if (OpCM.GetMoveEnd())
         {
-            if (Input.GetAxisRaw("Horizontal") > 0) 
+            if (Input.GetAxisRaw("Horizontal") > 0)
             {
-                //カーソル選択音
-                //Source.PlayOneShot(clips[0]);
 
                 RightInputTime += Time.deltaTime;
             }
             if (Input.GetAxisRaw("Horizontal") < 0)
             {
-                //カーソル選択音
-                //Source.PlayOneShot(clips[0]);
-
+                
                 LeftInputTime += Time.deltaTime;
             }
 
@@ -95,7 +91,7 @@ public class OptionManager : MonoBehaviour
             if (option[OPT_HOWTO].GetComponent<HowToChange>().GetHowToFlg() == false)
             {
                 //キー操作で操作できるようにする
-                if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxisRaw("Vertical") > 0)
+                if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxisRaw("Vertical") > 0) 
                 {
                     if (GetPrevOpt())
                     {
@@ -105,7 +101,7 @@ public class OptionManager : MonoBehaviour
                     //上へ
                     OpCM.GoPrev();
                 }
-                else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxisRaw("Vertical") < 0)
+                else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxisRaw("Vertical") < 0))
                 {
                     if (GetNextOpt())
                     {
