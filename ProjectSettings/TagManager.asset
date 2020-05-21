@@ -21,6 +21,8 @@ TagManager:
   - BGMBar
   - SEBar
   - VerticalQuickSand
+  - Wall
+  - Fragment
   layers:
   - Default
   - TransparentFX
