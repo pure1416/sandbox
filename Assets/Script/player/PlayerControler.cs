@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using Weight;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class PlayerControler : MonoBehaviour
 {
     //変数宣言
@@ -32,6 +34,7 @@ public class PlayerControler : MonoBehaviour
     public bool FtCol;                  // かけらにふれているかどうか
 
     [SerializeField] bool CollisionSand;         //流砂に触れているかどうか
+    [SerializeField] bool CollisionGround;       //床に触れてるかどうか
 
     [SerializeField] Vector3 SandMoveSp;  //流砂の移動力
     [SerializeField] float FallDeathPos;  //どれだけ高いところから落ちたときか
@@ -49,6 +52,11 @@ public class PlayerControler : MonoBehaviour
     float inputVertical;
     Rigidbody rb;                //当たり判定
 
+    //サウンド用
+    [SerializeField] AudioClip[] clips;
+
+    //SEです。
+    protected AudioSource Source;
     //[Header("時間")]
     //[SerializeField]float PlayerSandNomalTime;  //通常に流れる中砂
     //[SerializeField]float PlayerSandBackTime;  //逆に流れる中砂
@@ -63,6 +71,7 @@ public class PlayerControler : MonoBehaviour
         PlayerDir = new Vector3(0.0f, 0.0f, 0.0f);
         SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
         CollisionSand = false;
+        CollisionGround = false;
         ClearFlg = false;
         _rigidbody = this.GetComponent<Rigidbody>();
         GameOverFlg = false;
@@ -85,6 +94,8 @@ public class PlayerControler : MonoBehaviour
         this.transform.position = StartPlayerPos;
         this.transform.position += new Vector3(0, 5.0f, 0);
         rb = GetComponent<Rigidbody>();
+
+        Source = GetComponent<AudioSource>();
     }
 
 
@@ -352,6 +363,17 @@ public class PlayerControler : MonoBehaviour
         {
             FtCol = true;
         }
+
+        //接触したオブジェクトのタグが"Block"のとき(SE用)
+        if (collision.gameObject.tag == "Block")
+        {
+            CollisionGround = true;
+
+        }
+        else
+        {
+            CollisionGround = false;
+        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -487,5 +509,20 @@ public class PlayerControler : MonoBehaviour
     public bool GetFtCol()
     {
         return FtCol;
+    }
+
+    //足音
+    public void PlaySE()
+    {
+        if (CollisionGround == true)
+        {
+            Source.PlayOneShot(clips[0]);
+        }
+    }
+
+    //時間逆行
+    public void PlaySE_Time()
+    {
+        Source.PlayOneShot(clips[2]);
     }
 }
