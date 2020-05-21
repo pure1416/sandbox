@@ -15,6 +15,7 @@ public class Fragment : MonoBehaviour
     public Vector3 FtStartPos;      // かけらの初期位置
     Vector3 SandDir;                // 流砂の向きを保存しておく変数
     bool P_SandEnpflg;              // プレイヤーの中砂の有無
+    bool SandCol;                   // 砂に触れているかどうか
 
     // 当たり判定
     Rigidbody rb;
@@ -30,6 +31,7 @@ public class Fragment : MonoBehaviour
         FtStartPos = this.transform.position;
         SandDir = new Vector3(0.0f, 0.0f,0.0f);
         SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
+        SandCol = false;
 
         P_SandEnpflg = playercontroler.GetComponent<PlayerControler>().GetPlayerEnpty(); ;
 
@@ -50,6 +52,7 @@ public class Fragment : MonoBehaviour
         // 流砂の上にいるときに流砂の移動力を受け取る
         if (other.gameObject.tag == "QuickSand_B")
         {
+            SandCol = true;
             SandMoveFtSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
             SandMoveFtSp /= 50;
             this.transform.Translate(SandMoveFtSp);
@@ -103,6 +106,10 @@ public class Fragment : MonoBehaviour
             }
         }
 
+        if(other.gameObject.tag == "Fragment")
+        {
+
+        }
     }
 
     private void OnTriggerEnter(Collider other)
