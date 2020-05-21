@@ -364,10 +364,7 @@ public class PlayerControler : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Clear")
-        {
-            ClearFlg = true;
-        }
+
 
         //接触したオブジェクトのタグが"Block"のとき(SE用)
         if (collision.gameObject.tag == "Block")
@@ -377,12 +374,13 @@ public class PlayerControler : MonoBehaviour
         }
     }
 
+
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Clear")
-        {
-            ClearFlg = false;
-        }
+        //if (collision.gameObject.tag == "Clear")
+        //{
+        //    ClearFlg = false;
+        //}
     }
 
     //流砂の処理(板ver)とか
@@ -417,7 +415,7 @@ public class PlayerControler : MonoBehaviour
         if (other.gameObject.tag == "VerticalQuickSand")
         {
             CollisionSand = true;
-            SandMoveSp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
+            SandMoveSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
         }
     }
 
@@ -451,6 +449,12 @@ public class PlayerControler : MonoBehaviour
     //なにかと当たった時
     private void OnCollisionEnter(Collision collision)
     {
+        //クリア
+        if (collision.gameObject.tag == "Clear")
+        {
+            ClearFlg = true;
+        }
+
         //流砂
         if (collision.gameObject.tag == "Block")
         {
@@ -495,7 +499,7 @@ public class PlayerControler : MonoBehaviour
     }
 
 
-    //プレイヤーのゲームオーバー判定
+    //プレイヤーのゲームクリア判定
     public bool GetGameClearFlg()
     {
         return ClearFlg;
