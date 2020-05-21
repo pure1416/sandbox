@@ -61,7 +61,11 @@ public class TitleManager : MonoBehaviour
 
             Debug.Log("はじめから　データ初期化");
             //始めからを選択した場合はデータを初期化する
-            PlayerPrefs.DeleteAll();
+            PlayerPrefs.DeleteKey("STAGE_FLAG_1");
+            PlayerPrefs.DeleteKey("STAGE_FLAG_2");
+            PlayerPrefs.DeleteKey("STAGE_FLAG_3");
+            PlayerPrefs.DeleteKey("STAGE_FLAG_4");
+            PlayerPrefs.DeleteKey("WORLD_FLAG");
             FadeObj.GetComponent<FadeManager>().FadeScene(1);
         }
     }
