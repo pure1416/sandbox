@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6397061435367775708}
   - component: {fileID: 3815169168338453584}
   - component: {fileID: 8292428205804466311}
+  - component: {fileID: -6778691295209411388}
   - component: {fileID: 4148356433790475220}
   - component: {fileID: 5574539041617308557}
   m_Layer: 0
@@ -105,6 +106,7 @@ MonoBehaviour:
   PlayerTotalTime: 5
   PlayerDir: {x: 0, y: 0, z: 0}
   ClearFlg: 0
+  PlayerRotInvalidTime: 0
   PlayerMoveFt: {x: 0, y: 0, z: 0}
   CollisionSand: 0
   CollisionGround: 0
@@ -119,6 +121,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 128b82bf9307fe247b605f4b72e21461, type: 3}
   - {fileID: 8300000, guid: 7582b805c8c892841a2a7e0a273bd0c1, type: 3}
   - {fileID: 8300000, guid: 8d1ff1fa46167294aa90ca50f2983cf0, type: 3}
+--- !u!114 &-6778691295209411388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14840795794604693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0d442a970e21d4b9bb1277da213411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SEAudioSource: {fileID: 0}
 --- !u!95 &4148356433790475220
 Animator:
   serializedVersion: 3
