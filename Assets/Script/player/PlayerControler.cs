@@ -28,6 +28,8 @@ public class PlayerControler : MonoBehaviour
 
     GameObject obj; //壊れるモデル
     public Vector3 PlayerMoveFt;        // かけらの上にいるときの変数
+    public bool Wall_Col;               // 壁に触れているかどうか
+    public bool FtCol;                // かけらにふれているかどうか
 
     [SerializeField] bool CollisionSand;         //流砂に触れているかどうか
 
@@ -75,6 +77,8 @@ public class PlayerControler : MonoBehaviour
 
         obj = (GameObject)Resources.Load("Player_Broken");
         PlayerMoveFt　= new Vector3(0.0f, 0.0f, 0.0f);
+        Wall_Col = false;
+        FtCol　=false;
 
         //初期位置設定
         StartPlayerPos = GameObject.Find("StartPlace").transform.position;
@@ -339,6 +343,15 @@ public class PlayerControler : MonoBehaviour
         {
             ClearFlg = true;
         }
+
+        if(collision.gameObject.tag == "Wall")
+        {
+            Wall_Col = true;
+        }
+        if (collision.gameObject.tag == "Fragment")
+        {
+            FtCol = true;
+        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -347,7 +360,16 @@ public class PlayerControler : MonoBehaviour
         {
             ClearFlg = false;
         }
+        if (collision.gameObject.tag == "Wall")
+        {
+            Wall_Col = false;
+        }
+        if (collision.gameObject.tag == "Fragment")
+        {
+            FtCol = false;
+        }
     }
+
 
     //流砂の処理(板ver)とか
     private void OnTriggerStay(Collider other)
@@ -376,7 +398,7 @@ public class PlayerControler : MonoBehaviour
             CollisionSand = true;
             SandMoveSp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
         }
-
+      
     }
 
     //流砂から離れるときに流砂の影響を消す　　とか
@@ -457,4 +479,13 @@ public class PlayerControler : MonoBehaviour
         return PlayerSandBackTime;
     }
 
+    public bool GetWallCol()
+    {
+        return Wall_Col;
+    }
+
+    public bool GetFtCol()
+    {
+        return FtCol;
+    }
 }

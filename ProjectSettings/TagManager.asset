@@ -19,6 +19,8 @@ TagManager:
   - OptionManager
   - BGMBar
   - SEBar
+  - Wall
+  - Fragment
   layers:
   - Default
   - TransparentFX
