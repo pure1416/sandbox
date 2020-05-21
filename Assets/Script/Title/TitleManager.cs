@@ -18,6 +18,7 @@ public class TitleManager : MonoBehaviour
     //SEです。
     protected AudioSource Source;
 
+    public float Select; 
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class TitleManager : MonoBehaviour
         FadeObj = GameObject.Find("FadePanel");
         OptionObj.SetActive(false);
         button.Select();
+        Select = 0;
 
         //サウンド
         Source = GetComponent<AudioSource>();
@@ -33,21 +35,24 @@ public class TitleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ////キー操作で操作できるようにする
-        //if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxisRaw("Vertical") > 0)
-        //{
-           
-        //        //カーソル選択音
-        //        Source.PlayOneShot(clips[0]);
-           
-        //}
-        //else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxisRaw("Vertical") < 0)
-        //{
-          
-        //        //カーソル選択音
-        //        Source.PlayOneShot(clips[0]);
-           
-        //}
+        if (!OptionObj.activeSelf)
+        {
+            //キー操作で操作できるようにする
+            if ((Input.GetAxisRaw("J_Vertical") > 0) || (Input.GetKeyDown(KeyCode.UpArrow)) && Select > 0)
+            {
+                Select -= 1;
+                //カーソル選択音
+                Source.PlayOneShot(clips[0]);
+
+            }
+            else if ((Input.GetAxisRaw("J_Vertical") < 0) || (Input.GetKeyDown(KeyCode.DownArrow)) && Select < 2)
+            {
+                Select += 1;
+                //カーソル選択音
+                Source.PlayOneShot(clips[0]);
+
+            }
+        }
     }
 
     //初めからボタンを押したとき

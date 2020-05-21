@@ -65,23 +65,23 @@ public class OptionManager : MonoBehaviour
         //カーソル移動中は入力できないようにする
         if (OpCM.GetMoveEnd())
         {
-            if (Input.GetAxisRaw("Horizontal") > 0)
+            if (Input.GetAxisRaw("J_Horizontal") > 0) 
             {
 
                 RightInputTime += Time.deltaTime;
             }
-            if (Input.GetAxisRaw("Horizontal") < 0)
+            if (Input.GetAxisRaw("J_Horizontal") < 0) 
             {
                 
                 LeftInputTime += Time.deltaTime;
             }
 
-            if (RightInputTime >= 0.1f)
+            if ((RightInputTime >= 0.1f) || (Input.GetKeyDown(KeyCode.RightArrow)))
             {
                 RightInputFlg = true;
                 RightInputTime = 0.0f;
             }
-            if (LeftInputTime >= 0.1f)
+            if ((LeftInputTime >= 0.1f) || (Input.GetKeyDown(KeyCode.LeftArrow)))
             {
                 LeftInputFlg = true;
                 LeftInputTime = 0.0f;
