@@ -1761,6 +1761,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5132303710580188208}
   - component: {fileID: 3406831673311295502}
+  - component: {fileID: 2909320554075632103}
   - component: {fileID: 2434151339847413568}
   m_Layer: 0
   m_Name: Player_Broken
@@ -1804,6 +1805,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2909320554075632103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6680511239711621074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0d442a970e21d4b9bb1277da213411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SEAudioSource: {fileID: 0}
 --- !u!82 &2434151339847413568
 AudioSource:
   m_ObjectHideFlags: 0
