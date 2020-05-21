@@ -108,6 +108,9 @@ MonoBehaviour:
   ClearFlg: 0
   PlayerRotInvalidTime: 0
   PlayerMoveFt: {x: 0, y: 0, z: 0}
+  Wall_Col: 0
+  FtCol: 0
+  PlayerYSandFlg: 0
   CollisionSand: 0
   CollisionGround: 0
   SandMoveSp: {x: 0, y: 0, z: 0}
