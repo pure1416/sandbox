@@ -24,12 +24,14 @@ public class PlayerControler : MonoBehaviour
     float PlayerOldVelocity;    //プレイヤーの1フレーム前の加速度
     float PlayerGravity;        //プレイヤーの重力
     Animator animator;
-    bool PlayerTurnAnimFlg;
+    bool  PlayerTurnAnimFlg;
     float PlayerTurnAnimTime;
     public float PlayerRotInvalidTime;//回転無効時間
 
     GameObject obj; //壊れるモデル
     public Vector3 PlayerMoveFt;        // かけらの上にいるときの変数
+    public bool Wall_Col;               // 壁に触れているかどうか
+    public bool FtCol;                  // かけらにふれているかどうか
 
     public bool PlayerYSandFlg;        //縦の流砂に触れているフラグ
 
@@ -46,28 +48,23 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] private bool PlayerEnptyFlg;         //中砂が落ちきっているか判定
     [SerializeField] private Vector3 PlayerGameoverPos;         //ゲームオーバーの位置
 
-    //[SerializeField] bool randomizePitch = true;
-    //[SerializeField] float pitchRange = 0.1f;
 
 
     //入力変数
     float inputHorizontal;
     float inputVertical;
     Rigidbody rb;                //当たり判定
-    
+
     //サウンド用
     [SerializeField] AudioClip[] clips;
 
     //SEです。
-    protected AudioSource Source;    
-
+    protected AudioSource Source;
     //[Header("時間")]
     //[SerializeField]float PlayerSandNomalTime;  //通常に流れる中砂
     //[SerializeField]float PlayerSandBackTime;  //逆に流れる中砂
 
     // Start is called before the first frame update
-
-
     void Start()
     {
         //変数初期化
@@ -93,6 +90,8 @@ public class PlayerControler : MonoBehaviour
 
         obj = (GameObject)Resources.Load("Player_Broken");
         PlayerMoveFt　= new Vector3(0.0f, 0.0f, 0.0f);
+        Wall_Col = false;
+        FtCol　=false;
 
         //初期位置設定
         StartPlayerPos = GameObject.Find("StartPlace").transform.position;
@@ -100,7 +99,7 @@ public class PlayerControler : MonoBehaviour
         this.transform.position += new Vector3(0, 5.0f, 0);
         rb = GetComponent<Rigidbody>();
 
-        Source = GetComponent<AudioSource>(); 
+        Source = GetComponent<AudioSource>();
     }
 
 
@@ -122,6 +121,8 @@ public class PlayerControler : MonoBehaviour
         {
             ClearFlg = true;
         }
+
+     
 
         if (Input.GetKeyDown("joystick button 6"))
         {
@@ -160,11 +161,9 @@ public class PlayerControler : MonoBehaviour
             //this.transform.position = new Vector3(this.transform.position.x, PlayerGameoverPos.y, this.transform.position.z);
             animator.SetBool("Run", false);
             animator.SetBool("Rot", false);
-            //Source.PlayOneShot(clips[3]);
 
             if (GameOverAnimFlg == true)
             {
-                Source.PlayOneShot(clips[3]);
                 GameObject instance = (GameObject)Instantiate(obj,
                                                         this.transform.position,
                                                        Quaternion.identity);
@@ -184,13 +183,12 @@ public class PlayerControler : MonoBehaviour
             Debug.Log("上");
             //PlayerAnimation.SetBool("Run", true);
             animator.SetBool("Run", true);
-       
         }
         else
         {
             //  PlayerAnimation.SetBool("Run", false);
         }
-
+        
         //左右移動
         if (Input.GetAxisRaw("Vertical") != 0)
         {
@@ -235,34 +233,31 @@ public class PlayerControler : MonoBehaviour
         if (CollisionSand == true)
         {
             //y軸に力がかかっていないとき
-            //if (SandMoveSp.y == 0.0f)
+            if (SandMoveSp.y == 0.0f)
             {
-                rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
+                this.GetComponent<Rigidbody>().useGravity = true;
+                rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
                 //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f + SandMoveSp * 0.007f;
             }
             //y軸に力がかかっている時
-            //else
-            //{
-            //    this.GetComponent<Rigidbody>().useGravity = false;
-            //    //rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
-            //    rb.velocity = new Vector3(PlayerDir.x * PlayerSp, PlayerDir.y * PlayerSp + SandMoveSp.y, PlayerDir.z * PlayerSp);
-            //    //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f + SandMoveSp * 0.007f;
-            //}
+            else
+            {
+                this.GetComponent<Rigidbody>().useGravity = false;
+                //rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
+                rb.velocity = new Vector3(PlayerDir.x * PlayerSp, PlayerDir.y * PlayerSp + SandMoveSp.y, PlayerDir.z * PlayerSp);
+                //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f + SandMoveSp * 0.007f;
+            }
+            rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
             //this.gameObject.transform.position = PlayerDir * PlayerSp + new Vector3(0, this.gameObject.transform.position.y, 0) + SandMoveSp;
         }
-        //Y軸流砂に触れたとき
-        if (PlayerYSandFlg == true && CollisionSand == false)
-        {
-            rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
-        }
         //流砂に触れていない時
-        if (PlayerYSandFlg == false && CollisionSand == false)  //CollisionSand == false
+        else  //CollisionSand == false
         {
+            this.GetComponent<Rigidbody>().useGravity = true;
             //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f;
-            //rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0);
-        }
+            rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0);
 
-        rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
+        }
 
         // キャラクターの向きを進行方向に
         if (PlayerDir != Vector3.zero)
@@ -276,6 +271,7 @@ public class PlayerControler : MonoBehaviour
             GameOverFlg = true;
         }
 
+
         //=========================================================================================
         //回転処理
         //=========================================================================================
@@ -285,7 +281,6 @@ public class PlayerControler : MonoBehaviour
             if (PlayerTurnAnimFlg == false)
             {
                 PlayerTurnAnimFlg = true;
-
                 //時間逆行から通常へ変換
                 if (PlayerTurn == true)
                 {
@@ -309,7 +304,7 @@ public class PlayerControler : MonoBehaviour
             }
         }
 
-        if (PlayerTurnAnimFlg == true)
+        if(PlayerTurnAnimFlg == true)
         {
             PlayerTurnAnimTime += Time.deltaTime;
             if(PlayerTurnAnimTime >= PlayerRotInvalidTime)
@@ -332,7 +327,7 @@ public class PlayerControler : MonoBehaviour
                 PlayerSandBackTime -= Time.deltaTime;
             }
             //時間逆行の中砂が落ちきった場合
-            if (PlayerSandBackTime <= 0.0f)
+            if(PlayerSandBackTime <= 0.0f)
             {
                 PlayerSandBackTime = 0.0f;
                 PlayerEnptyFlg = true;
@@ -365,7 +360,19 @@ public class PlayerControler : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
+        if (collision.gameObject.tag == "Clear")
+        {
+            ClearFlg = true;
+        }
 
+        if(collision.gameObject.tag == "Wall")
+        {
+            Wall_Col = true;
+        }
+        if (collision.gameObject.tag == "Fragment")
+        {
+            FtCol = true;
+        }
 
         //接触したオブジェクトのタグが"Block"のとき(SE用)
         if (collision.gameObject.tag == "Block")
@@ -379,14 +386,22 @@ public class PlayerControler : MonoBehaviour
         }
     }
 
-
     private void OnCollisionExit(Collision collision)
     {
-        //if (collision.gameObject.tag == "Clear")
-        //{
-        //    ClearFlg = false;
-        //}
+        if (collision.gameObject.tag == "Clear")
+        {
+            ClearFlg = false;
+        }
+        if (collision.gameObject.tag == "Wall")
+        {
+            Wall_Col = false;
+        }
+        if (collision.gameObject.tag == "Fragment")
+        {
+            FtCol = false;
+        }
     }
+
 
     //流砂の処理(板ver)とか
     private void OnTriggerStay(Collider other)
@@ -419,7 +434,6 @@ public class PlayerControler : MonoBehaviour
             CollisionSand = true;
             SandMoveSp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
         }
-
         //ずっと流れる流砂(縦)
         if (other.gameObject.tag == "VerticalQuickSand")
         {
@@ -429,8 +443,6 @@ public class PlayerControler : MonoBehaviour
             SandMoveSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
         }
     }
-
-
 
     //流砂から離れるときに流砂の影響を消す　　とか
     private void OnTriggerExit(Collider other)
@@ -450,35 +462,27 @@ public class PlayerControler : MonoBehaviour
             CollisionSand = false;
             this.GetComponent<Rigidbody>().useGravity = false;
             SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
-        }
 
-        //Y軸流砂
-        if (other.gameObject.tag == "VerticalQuickSand")
-        {
-            PlayerYSandFlg = false;
-            this.GetComponent<Rigidbody>().useGravity = true;
-            SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
+
+            //Y軸流砂
+            if (other.gameObject.tag == "VerticalQuickSand")
+            {
+                PlayerYSandFlg = false;
+                this.GetComponent<Rigidbody>().useGravity = true;
+                SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
+
+            }
+
         }
     }
-
     //なにかと当たった時
     private void OnCollisionEnter(Collision collision)
     {
-        //クリア
-        if (collision.gameObject.tag == "Clear")
+        //高いところから落ちたとき
+        if (PlayerOldVelocity <= FallDeathPos)
         {
-            ClearFlg = true;
-        }
-
-        //流砂
-        if (collision.gameObject.tag == "Block")
-        {
-            //高いところから落ちたとき
-            if (PlayerOldVelocity <= FallDeathPos)
-            {
-                GameOverAnimFlg = true;
-                GameOverFlg = true;
-            }
+            GameOverAnimFlg = true;
+            GameOverFlg = true;
         }
     }
 
@@ -513,7 +517,7 @@ public class PlayerControler : MonoBehaviour
     }
 
 
-    //プレイヤーのゲームクリア判定
+    //プレイヤーのゲームオーバー判定
     public bool GetGameClearFlg()
     {
         return ClearFlg;
@@ -530,6 +534,16 @@ public class PlayerControler : MonoBehaviour
         return PlayerSandBackTime;
     }
 
+    public bool GetWallCol()
+    {
+        return Wall_Col;
+    }
+
+    public bool GetFtCol()
+    {
+        return FtCol;
+    }
+
     //足音
     public void PlaySE()
     {
@@ -538,17 +552,10 @@ public class PlayerControler : MonoBehaviour
             Source.PlayOneShot(clips[0]);
         }
     }
-    
+
     //時間逆行
     public void PlaySE_Time()
     {
         Source.PlayOneShot(clips[2]);
     }
-
-    //壊れる
-    //public void PlaySE_Break()
-    //{
-    //    Source.PlayOneShot(clips[3]);
-    //}
-
 }
