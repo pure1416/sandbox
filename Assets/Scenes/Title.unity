@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -694,7 +694,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 348e0b4e2812f41499dc8018b57f71ec, type: 3}
+  m_Texture: {fileID: 2800000, guid: 5627da74289a2d44db05d46338b44287, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1403,7 +1403,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: a991c41ec0d437a42be995be61b980d7, type: 3}
+  m_Texture: {fileID: 2800000, guid: 4ba831a5689c5b74894cfff777d75fb4, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1619,7 +1619,7 @@ MonoBehaviour:
   button: {fileID: 1201508850}
   clips:
   - {fileID: 8300000, guid: ba5dab5a311e4824cb82515651869072, type: 3}
-  - {fileID: 8300000, guid: d9097d74bbb4f1d40b70ae07c6569027, type: 3}
+  - {fileID: 8300000, guid: 7e336facd4de89647b904b87d19ac94f, type: 3}
   Select: 0
 --- !u!82 &1612177966
 AudioSource:
