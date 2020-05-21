@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.78016216, g: 0.73014987, b: 0.72078454, a: 1}
+  m_IndirectSpecularColor: {r: 0.7801602, g: 0.7301508, b: 0.72079116, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2261,7 +2261,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -6703,6 +6703,8 @@ MonoBehaviour:
   ClearFlg: 0
   PlayerRotInvalidTime: 0
   PlayerMoveFt: {x: 0, y: 0, z: 0}
+  Wall_Col: 0
+  FtCol: 0
   PlayerYSandFlg: 0
   CollisionSand: 0
   CollisionGround: 0
