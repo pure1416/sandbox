@@ -406,6 +406,12 @@ public class PlayerControler : MonoBehaviour
             SandMoveSp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
         }
 
+        //ずっと流れる流砂(縦)
+        if (other.gameObject.tag == "VerticalQuickSand")
+        {
+            CollisionSand = true;
+            SandMoveSp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
+        }
     }
 
 
@@ -425,7 +431,13 @@ public class PlayerControler : MonoBehaviour
         {
             CollisionSand = false;
             SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
+        }
 
+        //ずっと流れる流砂
+        if (other.gameObject.tag == "VerticalQuickSand")
+        {
+            CollisionSand = false;
+            SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
         }
     }
 
