@@ -38,6 +38,7 @@ public class GameClearManager : MonoBehaviour
         GameClearFlg = PlayerObj.GetComponent<PlayerControler>().GetGameClearFlg();
         if(GameClearFlg == true)
         {
+            ClearUI.SetActive(true);
             if (ButtonSelectFlg == false)
             {
                 //ステージクリア処理
@@ -46,7 +47,6 @@ public class GameClearManager : MonoBehaviour
                 button.Select();
                 ButtonSelectFlg = true;
             }
-            ClearUI.SetActive(true);
         }
         else if (GameClearFlg == false)
         {
