@@ -255,7 +255,7 @@ public class PlayerControler : MonoBehaviour
         {
             this.GetComponent<Rigidbody>().useGravity = true;
             //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f;
-            rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0);
+            rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + PlayerMoveFt;
 
         }
 
@@ -369,10 +369,32 @@ public class PlayerControler : MonoBehaviour
         {
             Wall_Col = true;
         }
-        if (collision.gameObject.tag == "Fragment")
+
+         if (collision.gameObject.tag == "Fragment")
         {
-            FtCol = true;
+             FtCol = true;
+
         }
+
+        //if (CollisionSand == false)
+        //{
+        //    if (collision.gameObject.tag == "Fragment")
+        //    {
+        //        bool Ft_SandCol = collision.gameObject.GetComponent<Fragment>().GetSandCol();
+        //        FtCol = true;
+        //        if(Ft_SandCol)
+        //        {
+        //            PlayerMoveFt = collision.gameObject.GetComponent<Fragment>().GetSandMoveFtSp();
+        //            PlayerMoveFt *= 50;
+        //            if (PlayerMoveFt != new Vector3(0.0f, 0.0f, 0.0f))
+        //            {
+        //                ////this.transform.Translate(PlayerMoveFt);
+        //            }
+
+        //        }
+        //    }
+        //}
+
 
         //接触したオブジェクトのタグが"Block"のとき(SE用)
         if (collision.gameObject.tag == "Block")
@@ -399,6 +421,8 @@ public class PlayerControler : MonoBehaviour
         if (collision.gameObject.tag == "Fragment")
         {
             FtCol = false;
+            //PlayerMoveFt = new Vector3(0.0f,0.0f,0.0f);
+
         }
     }
 
