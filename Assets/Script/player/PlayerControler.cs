@@ -114,6 +114,10 @@ public class PlayerControler : MonoBehaviour
 
         Debug.Log(PlayerTurnAnimFlg);
         //Debug.Log(PlayerTurnAnimTime);
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            ClearFlg = true;
+        }
 
         if (Input.GetKeyDown("joystick button 6"))
         {
@@ -137,6 +141,8 @@ public class PlayerControler : MonoBehaviour
             return;
         }
 
+
+        
         //==================================================
         //ゲームオーバー処理
         //==================================================
