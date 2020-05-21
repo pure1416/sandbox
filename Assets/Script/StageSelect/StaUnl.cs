@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class StaUnl : MonoBehaviour
 {
     //定数
-    private const int OPCL_TIME = 20;   //開け閉めの時間
+    private const int OP_TIME = 20;   //開けの時間
+    private const int CL_TIME = 20;   //閉めの時間
 
     [Header("Flags")]
     public bool UnlockFlg;    //アンロックフラグ
@@ -60,10 +61,10 @@ public class StaUnl : MonoBehaviour
         //開閉の時に拡縮する
         if(OpenFlg)
         {
-            if (OpClCnt < OPCL_TIME)
+            if (OpClCnt < OP_TIME)
             {
                 //OPCL_TIMEフレームかけて拡大する
-                this.GetComponent<RectTransform>().localScale += new Vector3(0.0f, 1.0f / OPCL_TIME, 0.0f);
+                this.GetComponent<RectTransform>().localScale += new Vector3(0.0f, 1.0f / OP_TIME, 0.0f);
                 OpClCnt++;
             }
             else
@@ -75,10 +76,10 @@ public class StaUnl : MonoBehaviour
         }
         else if (CloseFlg)
         {
-            if (OpClCnt < OPCL_TIME)
+            if (OpClCnt < CL_TIME)
             {
                 //OPCL_TIMEフレームかけて縮小する
-                this.GetComponent<RectTransform>().localScale -= new Vector3(0.0f, 1.0f / OPCL_TIME, 0.0f);
+                this.GetComponent<RectTransform>().localScale -= new Vector3(0.0f, 1.0f / CL_TIME, 0.0f);
                 OpClCnt++;
             }
             else
@@ -98,7 +99,7 @@ public class StaUnl : MonoBehaviour
         OpenFlg = true;
         CloseFlg = false;
         OpClCnt = 0;
-        //StageObj.Animetor.SetBool(云々);
+        StageObj.GetComponent<Animator>().Play("Open");
     }
 
     //閉
@@ -108,7 +109,7 @@ public class StaUnl : MonoBehaviour
         OpenFlg = false;
         CloseFlg = true;
         OpClCnt = 0;
-        //StageObj.Animetor.SetBool(云々);
+        StageObj.GetComponent<Animator>().Play("Close");
     }
 
     //UnlockフラグのSetter
