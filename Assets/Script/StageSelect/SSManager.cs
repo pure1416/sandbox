@@ -70,6 +70,7 @@ public class SSManager : MonoBehaviour
 
         //無条件解放
         stages[NowSelStage].GetComponent<StaUnl>().SetUnlockFlg(true);
+        stages[NowSelStage].GetComponent<StaUnl>().OpenAnim();
         SSCM.transform.position = stages[NowSelStage].transform.position;
 
         //ステージ名設定
@@ -209,6 +210,8 @@ public class SSManager : MonoBehaviour
         if (stages[NowSelStage + 1].GetComponent<StaUnl>().GetUnlockFlg())
         {
             //次のステージが解放されてたら動かす
+            stages[NowSelStage].GetComponent<StaUnl>().CloseAnim();
+            stages[NowSelStage + 1].GetComponent<StaUnl>().OpenAnim();
             return true;
         }
         else
@@ -230,6 +233,8 @@ public class SSManager : MonoBehaviour
         if (stages[NowSelStage - 1].GetComponent<StaUnl>().GetUnlockFlg())
         {
             //次のステージが解放されてたら動かす
+            stages[NowSelStage].GetComponent<StaUnl>().CloseAnim();
+            stages[NowSelStage - 1].GetComponent<StaUnl>().OpenAnim();
             return true;
         }
         else

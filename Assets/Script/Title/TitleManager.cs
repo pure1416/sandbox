@@ -5,11 +5,18 @@ using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class TitleManager : MonoBehaviour
 {
     private GameObject FadeObj; //フェードのパネル
     public GameObject OptionObj;    //オプションのウインドウ
     public Button button;
+
+    [SerializeField] AudioClip[] clips;//サウンド
+
+    //SEです。
+    protected AudioSource Source;
 
 
     // Start is called before the first frame update
@@ -18,6 +25,9 @@ public class TitleManager : MonoBehaviour
         FadeObj = GameObject.Find("FadePanel");
         OptionObj.SetActive(false);
         button.Select();
+
+        //サウンド
+        Source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -32,9 +42,16 @@ public class TitleManager : MonoBehaviour
         //フェード中入力できなくする処理
         if (FadeObj.GetComponent<FadeManager>().GetFadeInFlg() == false)
         {
+            //決定の際のSE
+            Source.PlayOneShot(clips[1]);
+
             Debug.Log("はじめから　データ初期化");
             //始めからを選択した場合はデータを初期化する
-            PlayerPrefs.DeleteAll();
+            PlayerPrefs.DeleteKey("STAGE_FLAG_1");
+            PlayerPrefs.DeleteKey("STAGE_FLAG_2");
+            PlayerPrefs.DeleteKey("STAGE_FLAG_3");
+            PlayerPrefs.DeleteKey("STAGE_FLAG_4");
+            PlayerPrefs.DeleteKey("WORLD_FLAG");
             FadeObj.GetComponent<FadeManager>().FadeScene(1);
         }
     }
@@ -45,6 +62,9 @@ public class TitleManager : MonoBehaviour
         //フェード中入力できなくする処理
         if (FadeObj.GetComponent<FadeManager>().GetFadeInFlg() == false)
         {
+            //決定の際のSE
+            Source.PlayOneShot(clips[1]);
+
             Debug.Log("つづきから");
             FadeObj.GetComponent<FadeManager>().FadeScene(1);
         }
@@ -56,6 +76,9 @@ public class TitleManager : MonoBehaviour
         //フェード中入力できなくする処理
         if (FadeObj.GetComponent<FadeManager>().GetFadeInFlg() == false)
         {
+            //決定の際のSE
+            Source.PlayOneShot(clips[1]);
+
             Debug.Log("オプションを開く");
             OptionObj.SetActive(true);
         }
