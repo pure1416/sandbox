@@ -29,7 +29,7 @@ public class PlayerControler : MonoBehaviour
     GameObject obj; //壊れるモデル
     public Vector3 PlayerMoveFt;        // かけらの上にいるときの変数
     public bool Wall_Col;               // 壁に触れているかどうか
-    public bool FtCol;                // かけらにふれているかどうか
+    public bool FtCol;                  // かけらにふれているかどうか
 
     [SerializeField] bool CollisionSand;         //流砂に触れているかどうか
 
