@@ -65,17 +65,17 @@ public class OptionManager : MonoBehaviour
         //カーソル移動中は入力できないようにする
         if (OpCM.GetMoveEnd())
         {
-            if (Input.GetAxisRaw("Horizontal") > 0)
+            if (Input.GetAxisRaw("Horizontal") > 0) 
             {
                 //カーソル選択音
-                Source.PlayOneShot(clips[0]);
+                //Source.PlayOneShot(clips[0]);
 
                 RightInputTime += Time.deltaTime;
             }
             if (Input.GetAxisRaw("Horizontal") < 0)
             {
                 //カーソル選択音
-                Source.PlayOneShot(clips[0]);
+                //Source.PlayOneShot(clips[0]);
 
                 LeftInputTime += Time.deltaTime;
             }
@@ -97,17 +97,21 @@ public class OptionManager : MonoBehaviour
                 //キー操作で操作できるようにする
                 if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxisRaw("Vertical") > 0)
                 {
-                    //カーソル選択音
-                    Source.PlayOneShot(clips[0]);
-
+                    if (GetPrevOpt())
+                    {
+                        //カーソル選択音
+                        Source.PlayOneShot(clips[0]);
+                    }
                     //上へ
                     OpCM.GoPrev();
                 }
                 else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxisRaw("Vertical") < 0)
                 {
-                    //カーソル選択音
-                    Source.PlayOneShot(clips[0]);
-
+                    if (GetNextOpt())
+                    {
+                        //カーソル選択音
+                        Source.PlayOneShot(clips[0]);
+                    }
                     //下へ
                     OpCM.GoNext();
                 }

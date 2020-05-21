@@ -25,7 +25,7 @@ public class BGMVolumeInspecter : MonoBehaviour
     public void BGMVolChange()
     {
         float vol;
-        vol = (float)PlayerPrefs.GetInt("VOLUME_SE", 5);
+        vol = (float)PlayerPrefs.GetInt("VOLUME_BGM", 5);
         BGMAudioSource.volume = vol * 0.1f;                //0.0~1.0なので、0~10に0.1を掛ける
     }
 }
