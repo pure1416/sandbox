@@ -43,8 +43,6 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] private bool PlayerEnptyFlg;         //中砂が落ちきっているか判定
     [SerializeField] private Vector3 PlayerGameoverPos;         //ゲームオーバーの位置
 
-    //サウンド用
-    [SerializeField] AudioClip[] clips;
     //[SerializeField] bool randomizePitch = true;
     //[SerializeField] float pitchRange = 0.1f;
 
@@ -53,12 +51,12 @@ public class PlayerControler : MonoBehaviour
     float inputHorizontal;
     float inputVertical;
     Rigidbody rb;                //当たり判定
+    
+    //サウンド用
+    [SerializeField] AudioClip[] clips;
 
     //SEです。
     protected AudioSource Source;    
-    //private AudioSource sound2;    
-    //private AudioSource sound3;    
-    //private AudioSource sound4;   
 
     //[Header("時間")]
     //[SerializeField]float PlayerSandNomalTime;  //通常に流れる中砂
@@ -97,9 +95,6 @@ public class PlayerControler : MonoBehaviour
         this.transform.position = StartPlayerPos;
         this.transform.position += new Vector3(0, 5.0f, 0);
         rb = GetComponent<Rigidbody>();
-
-        //Componentを取得
-        //AudioSource[] audioSources = GetComponents<AudioSource>();
 
         Source = GetComponent<AudioSource>(); 
     }
@@ -155,9 +150,11 @@ public class PlayerControler : MonoBehaviour
             //this.transform.position = new Vector3(this.transform.position.x, PlayerGameoverPos.y, this.transform.position.z);
             animator.SetBool("Run", false);
             animator.SetBool("Rot", false);
+            //Source.PlayOneShot(clips[3]);
 
             if (GameOverAnimFlg == true)
             {
+                Source.PlayOneShot(clips[3]);
                 GameObject instance = (GameObject)Instantiate(obj,
                                                         this.transform.position,
                                                        Quaternion.identity);
@@ -177,14 +174,7 @@ public class PlayerControler : MonoBehaviour
             Debug.Log("上");
             //PlayerAnimation.SetBool("Run", true);
             animator.SetBool("Run", true);
-            if (CollisionGround == true)
-            {
-                //sound1.PlayOneShot(sound1.clip);
-                //if (randomizePitch)
-                ///  Source.pitch = 1.0f + Random.Range(-pitchRange, pitchRange);
-                //Source.PlayOneShot(clips[(0, clips.Length)]);
-                //Source.PlayOneShot(clips[0]);
-            }
+       
         }
         else
         {
@@ -283,7 +273,6 @@ public class PlayerControler : MonoBehaviour
             if (PlayerTurnAnimFlg == false)
             {
                 PlayerTurnAnimFlg = true;
-                Source.PlayOneShot(clips[2]);
 
                 //時間逆行から通常へ変換
                 if (PlayerTurn == true)
@@ -375,6 +364,10 @@ public class PlayerControler : MonoBehaviour
             CollisionGround = true;
 
         }
+        else
+        {
+            CollisionGround = false;
+        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -447,7 +440,6 @@ public class PlayerControler : MonoBehaviour
             {
                 GameOverAnimFlg = true;
                 GameOverFlg = true;
-                Source.PlayOneShot(clips[3]);
             }
         }
     }
@@ -499,5 +491,26 @@ public class PlayerControler : MonoBehaviour
     {
         return PlayerSandBackTime;
     }
+
+    //足音
+    public void PlaySE()
+    {
+        if (CollisionGround == true)
+        {
+            Source.PlayOneShot(clips[0]);
+        }
+    }
+    
+    //時間逆行
+    public void PlaySE_Time()
+    {
+        Source.PlayOneShot(clips[2]);
+    }
+
+    //壊れる
+    //public void PlaySE_Break()
+    //{
+    //    Source.PlayOneShot(clips[3]);
+    //}
 
 }

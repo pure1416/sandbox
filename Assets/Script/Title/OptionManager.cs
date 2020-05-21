@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class OptionManager : MonoBehaviour
 {
     //定数宣言
@@ -18,12 +20,14 @@ public class OptionManager : MonoBehaviour
     [Header("現在選択されているオプション")]
     [SerializeField] public int NowSelOpt;
 
+
     [Header("各種オブジェクト")]
     public GameObject[] option; //オプションオブジェクト
     public GameObject cursor; //カーソル部品　本体
     public GameObject cursorL; //カーソル部品　L
     public GameObject cursorR; //カーソル部品　R
     [SerializeField] private OptCorsorMove OpCM; //カーソル動かすコンポネ
+
 
     public Button button;
 
@@ -35,6 +39,12 @@ public class OptionManager : MonoBehaviour
     private bool RightInputFlg;
     private bool LeftInputFlg;
 
+    [SerializeField] AudioClip[] clips;//サウンド
+
+    //SEです。
+    protected AudioSource Source;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +54,9 @@ public class OptionManager : MonoBehaviour
         LeftInputTime = 0.0f;
         RightInputFlg = false;
         LeftInputFlg = false;
+
+        //サウンド
+        Source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -54,10 +67,16 @@ public class OptionManager : MonoBehaviour
         {
             if (Input.GetAxisRaw("Horizontal") > 0)
             {
+                //カーソル選択音
+                Source.PlayOneShot(clips[0]);
+
                 RightInputTime += Time.deltaTime;
             }
             if (Input.GetAxisRaw("Horizontal") < 0)
             {
+                //カーソル選択音
+                Source.PlayOneShot(clips[0]);
+
                 LeftInputTime += Time.deltaTime;
             }
 
@@ -78,16 +97,25 @@ public class OptionManager : MonoBehaviour
                 //キー操作で操作できるようにする
                 if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxisRaw("Vertical") > 0)
                 {
+                    //カーソル選択音
+                    Source.PlayOneShot(clips[0]);
+
                     //上へ
                     OpCM.GoPrev();
                 }
                 else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxisRaw("Vertical") < 0)
                 {
+                    //カーソル選択音
+                    Source.PlayOneShot(clips[0]);
+
                     //下へ
                     OpCM.GoNext();
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 1"))
                 {
+                    //戻る際のSE
+                    Source.PlayOneShot(clips[2]);
+
                     //戻る
                     button.Select();
                     this.gameObject.SetActive(false);
@@ -135,11 +163,17 @@ public class OptionManager : MonoBehaviour
                 case OPT_HOWTO:
                     if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
                     {
+                        //決定の際のSE
+                        Source.PlayOneShot(clips[1]);
+
                         //決定
                         option[NowSelOpt].GetComponent<HowToChange>().HowToOpen();
                     }
                     else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 1"))
                     {
+                        //戻る際のSE
+                        Source.PlayOneShot(clips[2]);
+
                         //閉じる
                         option[NowSelOpt].GetComponent<HowToChange>().HowToClose();
                     }
@@ -149,6 +183,9 @@ public class OptionManager : MonoBehaviour
                 case OPT_TITLE:
                     if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
                     {
+                        //戻る際のSE
+                        Source.PlayOneShot(clips[2]);
+
                         //決定ボタンでオプション消す
                         button.Select();
                         this.gameObject.SetActive(false);
