@@ -32,11 +32,14 @@ public class VolumeChange : MonoBehaviour
     void Update()
     {
         TargetBar.value = NowVolume;
+    }
 
-        //NowVolumeが変化していたら
-        if (NowVolume != OldVolume)
+    //ボリュームUp
+    public void VolUp()
+    {
+        if (NowVolume < 10)
         {
-            OldVolume = NowVolume;
+            NowVolume += 1.0f;
 
             if (this.tag == "BGMBar")
             {
@@ -51,21 +54,23 @@ public class VolumeChange : MonoBehaviour
         }
     }
 
-    //ボリュームUp
-    public void VolUp()
-    {
-        if (NowVolume < 10)
-        {
-            NowVolume += 1.0f;
-        }
-    }
-
     //ボリュームDown
     public void VolDown()
     {
         if (NowVolume > 0)
         {
             NowVolume -= 1.0f;
+
+            if (this.tag == "BGMBar")
+            {
+                PlayerPrefs.SetInt("VOLUME_BGM", (int)NowVolume);
+            }
+            else if (this.tag == "SEBar")
+            {
+                PlayerPrefs.SetInt("VOLUME_SE", (int)NowVolume);
+            }
+
+            PlayerPrefs.Save();
         }
     }
 }

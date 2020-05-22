@@ -27,7 +27,9 @@ public class OptionManager : MonoBehaviour
     public GameObject cursorL; //カーソル部品　L
     public GameObject cursorR; //カーソル部品　R
     [SerializeField] private OptCorsorMove OpCM; //カーソル動かすコンポネ
-
+    public SEVolumeInspecter se1;   //TitleUIの方
+    public SEVolumeInspecter se2;   //Optionsの方
+    public BGMVolumeInspecter bgm;  //BGM
 
     public Button button;
 
@@ -44,8 +46,6 @@ public class OptionManager : MonoBehaviour
     //SEです。
     protected AudioSource Source;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +57,7 @@ public class OptionManager : MonoBehaviour
 
         //サウンド
         Source = GetComponent<AudioSource>();
+        se1 = this.GetComponent<SEVolumeInspecter>();
     }
 
     // Update is called once per frame
@@ -131,12 +132,16 @@ public class OptionManager : MonoBehaviour
                     {
                         //音量上げ
                         option[NowSelOpt].GetComponent<VolumeChange>().VolUp();
+                        bgm.BGMVolChange();
+                        Source.PlayOneShot(clips[0]);
                         RightInputFlg = false;
                     }
                     else if (LeftInputFlg == true)
                     {
                         //音量下げ
                         option[NowSelOpt].GetComponent<VolumeChange>().VolDown();
+                        bgm.BGMVolChange();
+                        Source.PlayOneShot(clips[0]);
                         LeftInputFlg = false;
                     }
 
@@ -147,6 +152,9 @@ public class OptionManager : MonoBehaviour
                     {
                         //音量上げ
                         option[NowSelOpt].GetComponent<VolumeChange>().VolUp();
+                        se1.SEVolChange();
+                        se2.SEVolChange();
+                        Source.PlayOneShot(clips[0]);
                         RightInputFlg = false;
 
                     }
@@ -154,6 +162,9 @@ public class OptionManager : MonoBehaviour
                     {
                         //音量下げ
                         option[NowSelOpt].GetComponent<VolumeChange>().VolDown();
+                        se1.SEVolChange();
+                        se2.SEVolChange();
+                        Source.PlayOneShot(clips[0]);
                         LeftInputFlg = false;
 
                     }
