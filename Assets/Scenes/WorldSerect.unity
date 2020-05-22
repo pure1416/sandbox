@@ -122,12 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &6463105 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2288691883255022754, guid: 8fae7fab39c81454fbe94527cafa3011,
-    type: 3}
-  m_PrefabInstance: {fileID: 2288691883257289251}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &70214502 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8809264325540069806, guid: 471efd5c870c05e428cdf6a23fae4f2e,
@@ -686,7 +680,7 @@ MonoBehaviour:
   worlds:
   - {fileID: 2107356676}
   - {fileID: 497988103}
-  - {fileID: 6463105}
+  - {fileID: 1486837403}
   - {fileID: 281929896}
   NextAllow: {fileID: 1290669468}
   PrevAllow: {fileID: 1246390534}
@@ -851,6 +845,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1486837403 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2707156787370453485, guid: 8fae7fab39c81454fbe94527cafa3011,
+    type: 3}
+  m_PrefabInstance: {fileID: 2288691883257289251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1690947901 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1074606550946619587, guid: e54408bb1f1b5eb4f91bc3c616482b71,
