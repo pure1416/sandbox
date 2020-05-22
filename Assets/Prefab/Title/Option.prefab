@@ -2468,11 +2468,14 @@ MonoBehaviour:
   cursorL: {fileID: 3576919944525866301}
   cursorR: {fileID: 3576919944169593035}
   OpCM: {fileID: 0}
+  se1: {fileID: 0}
+  se2: {fileID: 0}
+  bgm: {fileID: 0}
   button: {fileID: 0}
   dist: 200
   clips:
   - {fileID: 8300000, guid: ba5dab5a311e4824cb82515651869072, type: 3}
-  - {fileID: 8300000, guid: d9097d74bbb4f1d40b70ae07c6569027, type: 3}
+  - {fileID: 8300000, guid: 7e336facd4de89647b904b87d19ac94f, type: 3}
   - {fileID: 8300000, guid: 324f0b4768c024d45811fc8149d37913, type: 3}
 --- !u!114 &3741833486032987079
 MonoBehaviour:
