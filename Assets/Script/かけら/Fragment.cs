@@ -20,7 +20,7 @@ public class Fragment : MonoBehaviour
     // 当たり判定
     Rigidbody rb;
 
-    [SerializeField] Vector3 SandMoveFtSp;  // 流砂の移動力
+    [SerializeField] public Vector3 SandMoveFtSp;  // 流砂の移動力
 
     // Start is called before the first frame update
     void Start()
@@ -126,16 +126,25 @@ public class Fragment : MonoBehaviour
         //流砂から流砂へ移動するときに一旦SandMobeFtSpを初期化する
         if (other.gameObject.tag == "QuickSand_B")
         {
+            SandCol = false;
             SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
             this.GetComponent<Rigidbody>().useGravity = true;
         }
         //流砂から流砂へ移動するときに一旦SandMobeFtSpを初期化する
         if (other.gameObject.tag == "Mud")
         {
+            SandCol = false;
             SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
             this.GetComponent<Rigidbody>().useGravity = true;
         }
     }
 
-
+    public Vector3 GetSandMoveFtSp()
+    {
+        return SandMoveFtSp;
+    }
+    public bool GetSandCol()
+    {
+        return SandCol;
+    }
 }
