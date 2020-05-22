@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.27069414, g: 0.16652143, b: 0.044558592, a: 1}
+  m_IndirectSpecularColor: {r: 0.2864039, g: 0.17625433, b: 0.047628313, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -631,7 +631,7 @@ PrefabInstance:
         type: 3}
       propertyPath: clips.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: d9097d74bbb4f1d40b70ae07c6569027, type: 3}
+      objectReference: {fileID: 8300000, guid: 7e336facd4de89647b904b87d19ac94f, type: 3}
     - target: {fileID: 5467900425311527006, guid: 724f309241feefb4bb2e8da8ac546c1d,
         type: 3}
       propertyPath: clips.Array.data[0]
@@ -1630,6 +1630,7 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: ba5dab5a311e4824cb82515651869072, type: 3}
   - {fileID: 8300000, guid: 7e336facd4de89647b904b87d19ac94f, type: 3}
+  - {fileID: 8300000, guid: 87f736cc05bed17409b68e7957deed8a, type: 3}
   Select: 0
 --- !u!82 &1612177966
 AudioSource:

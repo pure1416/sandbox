@@ -35,6 +35,13 @@ public class OptionManager : MonoBehaviour
 
     public float dist;      //距離
 
+    //タイム計測用
+    public bool time_option;
+    public bool time;
+    public float time_Out = 0.3f;
+    private float timer;
+
+
     private float RightInputTime;
     private float LeftInputTime;
 
@@ -54,6 +61,8 @@ public class OptionManager : MonoBehaviour
         LeftInputTime = 0.0f;
         RightInputFlg = false;
         LeftInputFlg = false;
+        time = false;
+        time_option = false;
 
         //サウンド
         Source = GetComponent<AudioSource>();
@@ -66,14 +75,14 @@ public class OptionManager : MonoBehaviour
         //カーソル移動中は入力できないようにする
         if (OpCM.GetMoveEnd())
         {
-            if (Input.GetAxisRaw("J_Horizontal") > 0) 
+            if (Input.GetAxisRaw("J_Horizontal") > 0)
             {
 
                 RightInputTime += Time.deltaTime;
             }
-            if (Input.GetAxisRaw("J_Horizontal") < 0) 
+            if (Input.GetAxisRaw("J_Horizontal") < 0)
             {
-                
+
                 LeftInputTime += Time.deltaTime;
             }
 
@@ -92,7 +101,7 @@ public class OptionManager : MonoBehaviour
             if (option[OPT_HOWTO].GetComponent<HowToChange>().GetHowToFlg() == false)
             {
                 //キー操作で操作できるようにする
-                if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxisRaw("Vertical") > 0) 
+                if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxisRaw("Vertical") > 0)
                 {
                     if (GetPrevOpt())
                     {
@@ -114,13 +123,34 @@ public class OptionManager : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 1"))
                 {
+                    Debug.Log("A");
+                    time = true;
                     //戻る際のSE
                     Source.PlayOneShot(clips[2]);
+                }
+                if (time)
+                {
+                    timer += Time.deltaTime;
 
-                    //戻る
+                }
+                if (timer >= time_Out)
+                {
+                    Debug.Log("A");
+                    time = false;
+                    timer = 0;
+
+                    //決定ボタンでオプション消す
                     button.Select();
                     this.gameObject.SetActive(false);
                 }
+
+                ////戻る際のSE
+                //Source.PlayOneShot(clips[2]);
+
+                ////戻る
+                //button.Select();
+                //this.gameObject.SetActive(false);
+
             }
 
             //選んでいる項目によって操作を変える
@@ -172,7 +202,7 @@ public class OptionManager : MonoBehaviour
                     break;
                 //操作説明
                 case OPT_HOWTO:
-                    if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
+                    if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
                     {
                         //決定の際のSE
                         Source.PlayOneShot(clips[1]);
@@ -180,33 +210,50 @@ public class OptionManager : MonoBehaviour
                         //決定
                         option[NowSelOpt].GetComponent<HowToChange>().HowToOpen();
                     }
-                    else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 1"))
+                    else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown("joystick button 1") )
                     {
-                        //戻る際のSE
-                        Source.PlayOneShot(clips[2]);
-
+                        if (!time)
+                        {
+                            Debug.Log("B");
+                            //戻る際のSE
+                            Source.PlayOneShot(clips[2]);
+                        }
                         //閉じる
                         option[NowSelOpt].GetComponent<HowToChange>().HowToClose();
                     }
 
-                        break;
+                    break;
                 //タイトルに戻る
                 case OPT_TITLE:
                     if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
                     {
+                        time_option = true;
                         //戻る際のSE
                         Source.PlayOneShot(clips[2]);
+                    }
+                    else if (time_option)
+                    {
+                        timer += Time.deltaTime;
+
+                    }
+                    if (timer >= time_Out)
+                    {
+                        Debug.Log("C");
+                        time_option = false;
+                        timer = 0;
 
                         //決定ボタンでオプション消す
                         button.Select();
                         this.gameObject.SetActive(false);
                     }
+
                     break;
                 default:
                     break;
             }
         }
     }
+
 
     //NowSelOptの設定
     public void SetNowSelOpt(int OptNo)
