@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 8cb7b6b53d98ad74a98653eb8258e982, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 02c521b39cfb04b49872e1f2382c2d37, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -637,6 +637,16 @@ PrefabInstance:
       propertyPath: clips.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: ba5dab5a311e4824cb82515651869072, type: 3}
+    - target: {fileID: 5467900425311527006, guid: 724f309241feefb4bb2e8da8ac546c1d,
+        type: 3}
+      propertyPath: se2
+      value: 
+      objectReference: {fileID: 1612177967}
+    - target: {fileID: 5467900425311527006, guid: 724f309241feefb4bb2e8da8ac546c1d,
+        type: 3}
+      propertyPath: bgm
+      value: 
+      objectReference: {fileID: 1736602787}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 724f309241feefb4bb2e8da8ac546c1d, type: 3}
 --- !u!1 &883801458
@@ -1730,6 +1740,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SEAudioSource: {fileID: 0}
+--- !u!114 &1736602787 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2006390624204606009, guid: 3f5cb38d3cc893246884307d9980ca04,
+    type: 3}
+  m_PrefabInstance: {fileID: 1878694163}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa9639be976d10e499411d0606a0cb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1878694163
 PrefabInstance:
   m_ObjectHideFlags: 0
