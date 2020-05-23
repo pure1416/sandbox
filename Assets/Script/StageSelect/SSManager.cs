@@ -238,7 +238,8 @@ public class SSManager : MonoBehaviour
         }
         else
         {
-            //ここに「まだ解放されていません」的なのを出す処理を書く予定
+            //未開放時の動き
+            stages[NowSelStage + 1].GetComponent<StaUnl>().LockedMove();
             return false;
         }
     }
