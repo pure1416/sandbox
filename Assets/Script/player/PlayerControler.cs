@@ -22,11 +22,13 @@ public class PlayerControler : MonoBehaviour
     bool GameOverAnimFlg;       //ゲームオーバーアニメーションフラグ
     bool PlayerFloatFlg;        //プレイヤーが浮いているか
     float PlayerOldVelocity;    //プレイヤーの1フレーム前の加速度
-    float PlayerGravity;        //プレイヤーの重力
+    Vector3 PlayerGravity;        //プレイヤーの重力
     Animator animator;
     bool PlayerTurnAnimFlg;
     float PlayerTurnAnimTime;
     public float PlayerRotInvalidTime;//回転無効時間
+    float PlayerGrabity;    //プレイヤーの重力
+    bool BlockFlg;
 
     GameObject obj; //壊れるモデル
     public Vector3 PlayerMoveFt;        // かけらの上にいるときの変数
@@ -81,13 +83,13 @@ public class PlayerControler : MonoBehaviour
         GameOverAnimFlg = false;
         PlayerFloatFlg = false;
         PlayerOldVelocity = 0.0f;
-        PlayerGravity = 0.098f;
+        PlayerGravity = new Vector3(0.0f, -9.8f, 0.0f); 
         animator = GetComponent<Animator>();
         PlayerTurnAnimFlg = false;
         PlayerTurnAnimTime = 0.0f;
         PlayerRotInvalidTime = 1.0f;
         PlayerYSandFlg = false;
-
+        BlockFlg = true;
         obj = (GameObject)Resources.Load("Player_Broken");
         PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
         Wall_Col = false;
@@ -107,15 +109,22 @@ public class PlayerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //ポーズ画面処理
+        if (Mathf.Approximately(Time.timeScale, 0f)) //時間が止まっていたら、Update処理をしない処理
+        {
+            return;
+        }
+
         //入力処理
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
 
         //デバッグ
-        Debug.Log("時間" + PlayerTurnAnimTime);
+        //Debug.Log("時間" + PlayerTurnAnimTime);
         //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
 
-        Debug.Log(PlayerTurnAnimFlg);
+
         //Debug.Log(PlayerTurnAnimTime);
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
@@ -133,11 +142,6 @@ public class PlayerControler : MonoBehaviour
         }
 
 
-        //ポーズ画面処理
-        if (Mathf.Approximately(Time.timeScale, 0f)) //時間が止まっていたら、Update処理をしない処理
-        {
-            return;
-        }
 
         //クリアしたら移動しないようにする
         if (ClearFlg == true)
@@ -180,8 +184,7 @@ public class PlayerControler : MonoBehaviour
         //上下移動
         if (Input.GetAxisRaw("Horizontal") != 0)
         {
-            Debug.Log("上");
-            //PlayerAnimation.SetBool("Run", true);
+            //Debug.Log("上");
             animator.SetBool("Run", true);
         }
         else
@@ -192,9 +195,8 @@ public class PlayerControler : MonoBehaviour
         //左右移動
         if (Input.GetAxisRaw("Vertical") != 0)
         {
-            //  PlayerAnimation.SetBool("Run", true);
             animator.SetBool("Run", true);
-            Debug.Log("下");
+           // Debug.Log("下");
         }
         else
         {
@@ -206,17 +208,6 @@ public class PlayerControler : MonoBehaviour
             animator.SetBool("Run", false);
 
         }
-
-
-        //if (Input.GetButtonDown("Controler_Right"))
-        //{
-        //    Debug.Log("右");
-        //}
-        //if (Input.GetButtonDown("Controler_Left"))
-        //{
-        //    Debug.Log("左");
-        //}
-
 
         //=========================================================================================
         //移動処理
@@ -270,6 +261,8 @@ public class PlayerControler : MonoBehaviour
         {
             GameOverFlg = true;
         }
+
+
 
 
         //=========================================================================================
@@ -352,6 +345,59 @@ public class PlayerControler : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        ////ポーズ画面とreadystartの時動かなくする処理
+        //if (Mathf.Approximately(Time.timeScale, 0f) || ClearFlg == true) //時間が止まっていたら、Update処理をしない処理
+        //{
+        //    animator.SetBool("Run", false);
+        //    return;
+        //}
+
+        //// 回転しない設定
+        //_rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+        ////======================================================================================================
+        ////移動処理
+        ////======================================================================================================
+        ////カメラの方向から、X-Z平面の単位ベクトルを取得
+        //Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
+
+        //// 方向キーの入力値とカメラの向きから、移動方向を決定
+        //PlayerDir = cameraForward * inputVertical + Camera.main.transform.right * inputHorizontal;
+
+        ////プレイヤーを移動させる
+        //if ((BlockFlg == false && CollisionSand == false))
+        //{
+        //    Debug.Log("A");
+        //    this.gameObject.transform.position += (PlayerDir * PlayerSp + PlayerGravity) * Time.deltaTime;
+        //}
+        //else if (CollisionSand == true && PlayerEnptyFlg == true)
+        //{
+        //    Debug.Log("B");
+
+        //    this.gameObject.transform.position += (PlayerDir * PlayerSp + SandMoveSp + PlayerGravity) * Time.deltaTime;
+        //}
+        //else if(CollisionSand == true)
+        //{
+        //    Debug.Log("C");
+
+        //    this.gameObject.transform.position += (PlayerDir * PlayerSp + SandMoveSp) * Time.deltaTime;
+        //}
+        //else if (BlockFlg == true)
+        //{
+        //    Debug.Log("D");
+
+        //    this.gameObject.transform.position += (PlayerDir * PlayerSp + PlayerGravity) * Time.deltaTime;
+
+        //}
+        //// キャラクターの向きを進行方向に
+        //if (PlayerDir != Vector3.zero)
+        //{
+        //    transform.rotation = Quaternion.LookRotation(PlayerDir);
+        //}
+    }
+
+
     //１F前の加速度を取得
     void LateUpdate()
     {
@@ -400,11 +446,6 @@ public class PlayerControler : MonoBehaviour
         if (collision.gameObject.tag == "Block")
         {
             CollisionGround = true;
-
-        }
-        else
-        {
-            CollisionGround = false;
         }
     }
 
@@ -422,10 +463,12 @@ public class PlayerControler : MonoBehaviour
         {
             FtCol = false;
             //PlayerMoveFt = new Vector3(0.0f,0.0f,0.0f);
-
+        }
+        if (collision.gameObject.tag == "Block")
+        {
+            CollisionGround = false;
         }
     }
-
 
     //流砂の処理(板ver)とか
     private void OnTriggerStay(Collider other)
@@ -433,8 +476,6 @@ public class PlayerControler : MonoBehaviour
         //流砂
         if (other.gameObject.tag == "QuickSand_B")
         {
-            this.GetComponent<Rigidbody>().useGravity = true;
-
             CollisionSand = true;
 
             Vector3 tmp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
@@ -449,22 +490,31 @@ public class PlayerControler : MonoBehaviour
                 SandMoveSp = tmp;
             }
             SandMoveSp = new Vector3(tmp.x, SandMoveSp.y, tmp.z);
-            SandMoveSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
+            //SandMoveSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
         }
         //ずっと流れる流砂
-        if (other.gameObject.tag == "Mud")
+        else if (other.gameObject.tag == "Mud")
         {
-            this.GetComponent<Rigidbody>().useGravity = true;
             CollisionSand = true;
-            SandMoveSp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
-        }
-        //ずっと流れる流砂(縦)
-        if (other.gameObject.tag == "VerticalQuickSand")
-        {
-            PlayerYSandFlg = true;
-            this.GetComponent<Rigidbody>().useGravity = false;
 
-            SandMoveSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
+            Vector3 tmp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
+            //yが大きい時に優先する
+            if (SandMoveSp.y < tmp.y)
+            {
+                SandMoveSp.y = tmp.y;
+            }
+            //空っぽの時
+            else if (PlayerEnptyFlg)
+            {
+                SandMoveSp = tmp;
+            }
+            SandMoveSp = new Vector3(tmp.x, SandMoveSp.y, tmp.z);
+            //SandMoveSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
+        }
+
+        if (other.gameObject.tag == "Block")
+        {
+                BlockFlg = true;
         }
     }
 
@@ -486,19 +536,12 @@ public class PlayerControler : MonoBehaviour
             CollisionSand = false;
             this.GetComponent<Rigidbody>().useGravity = false;
             SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
-
         }
-        //Y軸流砂
-        if (other.gameObject.tag == "VerticalQuickSand")
+        if (other.gameObject.tag == "Block")
         {
-            PlayerYSandFlg = false;
-            this.GetComponent<Rigidbody>().useGravity = true;
-            SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
-
+            BlockFlg = false;
         }
-
-
-    } 
+    }
     //なにかと当たった時
     private void OnCollisionEnter(Collision collision)
     {

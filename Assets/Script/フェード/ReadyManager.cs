@@ -46,7 +46,7 @@ public class ReadyManager : MonoBehaviour
     void Update()
     {
         FadeInFlg = FadeObj.GetComponent<FadeManager>().GetFadeInFlg();
-        Debug.Log(FadeInFlg);
+        //Debug.Log(FadeInFlg);
 
         if (FadeInFlg == false)
         {

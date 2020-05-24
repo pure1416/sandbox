@@ -23,6 +23,7 @@ TagManager:
   - VerticalQuickSand
   - Wall
   - Fragment
+  - VerticalMudSand
   layers:
   - Default
   - TransparentFX

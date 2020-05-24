@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6999528982311191848}
   m_Layer: 0
   m_Name: Vertical_Sand_Ver
-  m_TagString: VerticalQuickSand
+  m_TagString: QuickSand_B
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -6075,7 +6075,7 @@ PrefabInstance:
     - target: {fileID: 8945232372142028570, guid: e44e62e5ff51aab4dbccedd483346d46,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -168.5
+      value: -168.09
       objectReference: {fileID: 0}
     - target: {fileID: 8945232372142028570, guid: e44e62e5ff51aab4dbccedd483346d46,
         type: 3}
@@ -7097,7 +7097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956612878dd93b4488ea0d2a8ef66ad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerSp: 5
+  PlayerSp: 0
   PlayerTurn: 0
   PlayerTotalTime: 5
   PlayerDir: {x: 0, y: 0, z: 0}
@@ -7262,11 +7262,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3159650612941310803, guid: f73d8f6e4e8c4b247bd72205cd490451,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237220928102712553, guid: f73d8f6e4e8c4b247bd72205cd490451,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 5238025088699505482, guid: f73d8f6e4e8c4b247bd72205cd490451,
         type: 3}
       propertyPath: PlayerControler
       value: 
       objectReference: {fileID: 4574916485393589468}
+    - target: {fileID: 8292428205804466311, guid: f73d8f6e4e8c4b247bd72205cd490451,
+        type: 3}
+      propertyPath: PlayerSp
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9051242879033351261, guid: f73d8f6e4e8c4b247bd72205cd490451,
         type: 3}
       propertyPath: m_LocalPosition.x
