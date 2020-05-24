@@ -47,13 +47,14 @@ public class Fragment : MonoBehaviour
 
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnCollisionStay(Collision collision)
     {
         // 流砂の上にいるときに流砂の移動力を受け取る
-        if (other.gameObject.tag == "QuickSand_B")
+        if (collision.gameObject.tag == "QuickSand_B")
         {
+            Debug.Log("乗ってるお");
             SandCol = true;
-            SandMoveFtSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
+            SandMoveFtSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
             SandMoveFtSp /= 50;
             this.transform.Translate(SandMoveFtSp);
 
@@ -88,9 +89,9 @@ public class Fragment : MonoBehaviour
             }
         }
 
-        if (other.gameObject.tag == "Mud")
+        if (collision.gameObject.tag == "Mud")
         {
-            SandMoveFtSp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
+            SandMoveFtSp = collision.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
             SandMoveFtSp /= 50;
             this.transform.Translate(SandMoveFtSp);
 
@@ -106,32 +107,32 @@ public class Fragment : MonoBehaviour
             }
         }
 
-        if(other.gameObject.tag == "Fragment")
+        if(collision.gameObject.tag == "Fragment")
         {
 
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {    
         // かけらが落下したときに初期に戻る
-        if(other.gameObject.tag == "fallcol")
+        if(collision.gameObject.tag == "fallcol")
         {
             this.transform.position = FtStartPos;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
         //流砂から流砂へ移動するときに一旦SandMobeFtSpを初期化する
-        if (other.gameObject.tag == "QuickSand_B")
+        if (collision.gameObject.tag == "QuickSand_B")
         {
             SandCol = false;
             SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
             this.GetComponent<Rigidbody>().useGravity = true;
         }
         //流砂から流砂へ移動するときに一旦SandMobeFtSpを初期化する
-        if (other.gameObject.tag == "Mud")
+        if (collision.gameObject.tag == "Mud")
         {
             SandCol = false;
             SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);

@@ -29,6 +29,7 @@ public class PlayerControler : MonoBehaviour
     public float PlayerRotInvalidTime;//回転無効時間
     float PlayerGrabity;    //プレイヤーの重力
     bool BlockFlg;
+    Vector3 SandSptmp;
 
     GameObject obj; //壊れるモデル
     public Vector3 PlayerMoveFt;        // かけらの上にいるときの変数
@@ -36,7 +37,9 @@ public class PlayerControler : MonoBehaviour
     public bool FtCol;                  // かけらにふれているかどうか
 
     public bool PlayerYSandFlg;        //縦の流砂に触れているフラグ
-
+    public bool PlayerXSandFlg;        //横の流砂に触れているフラグ
+    bool PlayerYSandAddFlg;
+    bool CollisionFlowSand;
 
     [SerializeField] bool CollisionSand;         //流砂に触れているかどうか
     [SerializeField] bool CollisionGround;       //床に触れてるかどうか
@@ -75,7 +78,9 @@ public class PlayerControler : MonoBehaviour
         PlayerSandNomalTime = PlayerTotalTime;
         PlayerDir = new Vector3(0.0f, 0.0f, 0.0f);
         SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
+        SandSptmp = new Vector3(0.0f, 0.0f, 0.0f);
         CollisionSand = false;
+        CollisionFlowSand = false;
         CollisionGround = false;
         ClearFlg = false;
         _rigidbody = this.GetComponent<Rigidbody>();
@@ -89,6 +94,9 @@ public class PlayerControler : MonoBehaviour
         PlayerTurnAnimTime = 0.0f;
         PlayerRotInvalidTime = 1.0f;
         PlayerYSandFlg = false;
+        PlayerXSandFlg = false;
+        PlayerYSandAddFlg = false;
+
         BlockFlg = true;
         obj = (GameObject)Resources.Load("Player_Broken");
         PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
@@ -121,10 +129,12 @@ public class PlayerControler : MonoBehaviour
         inputVertical = Input.GetAxisRaw("Vertical");
 
         //デバッグ
-        //Debug.Log("時間" + PlayerTurnAnimTime);
         //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
+        Debug.Log("Y:" + PlayerYSandFlg);
+        Debug.Log("X:" + PlayerXSandFlg);
+        //Debug.Log(PlayerDir * PlayerSp + SandMoveSp);
 
-
+        
         //Debug.Log(PlayerTurnAnimTime);
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
@@ -143,13 +153,18 @@ public class PlayerControler : MonoBehaviour
 
 
 
-        //クリアしたら移動しないようにする
-        if (ClearFlg == true)
+        ////クリアしたら移動しないようにする
+        //if (ClearFlg == true)
+        //{
+        //    animator.SetBool("Run", false);
+        //    return;
+        //}
+        //ポーズ画面とreadystartの時動かなくする処理
+        if (Mathf.Approximately(Time.timeScale, 0f) || ClearFlg == true) //時間が止まっていたら、Update処理をしない処理
         {
             animator.SetBool("Run", false);
             return;
         }
-
 
 
         //==================================================
@@ -223,33 +238,142 @@ public class PlayerControler : MonoBehaviour
         //X軸流砂に触れている時
         if (CollisionSand == true)
         {
-            //y軸に力がかかっていないとき
-            if (SandMoveSp.y == 0.0f)
+            //y軸の流砂上かつX軸上でないとき
+            if (PlayerYSandFlg && !PlayerXSandFlg)
             {
-                this.GetComponent<Rigidbody>().useGravity = true;
-                rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
+                //中砂が入っている時
+                if (PlayerEnptyFlg == false)
+                {
+                    //Y軸に力がかかっている時
+                    if (SandMoveSp.y != 0)
+                    {
+                        this.GetComponent<Rigidbody>().useGravity = false;
+                        rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
+                        PlayerYSandAddFlg = true;
+                    }
+                    //X軸とY軸に力がかかっている時
+                    else if (PlayerYSandAddFlg == true && (SandMoveSp.x != 0 || SandMoveSp.z != 0))
+                    {
+                        Debug.Log("やあ");
+                        rb.velocity = new Vector3(0, 10, 0);
+                        PlayerYSandAddFlg = false;
+                    }
+                    //X軸に力がかかっている時
+                    else if (PlayerYSandAddFlg == false &&(SandMoveSp.x != 0 || SandMoveSp.z != 0))
+                    {
+                        Debug.Log("Yの横！！");
+                    
+                        this.GetComponent<Rigidbody>().useGravity = false;
+                        rb.velocity =　PlayerDir * PlayerSp + SandMoveSp;
+                        PlayerYSandAddFlg = false;
+                    }
+                }
+                //中砂が入っていないとき
+                else
+                {
+                    PlayerYSandAddFlg = false;
+                    Debug.Log("ひん");
+
+                    this.GetComponent<Rigidbody>().useGravity = true;
+                    //rb.velocity = PlayerDir * PlayerSp;
+                }
                 //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f + SandMoveSp * 0.007f;
             }
+
+          
             //y軸に力がかかっている時
-            else
+            //else
+            //{
+            //    if (PlayerEnptyFlg == false)
+            //    {
+            //        this.GetComponent<Rigidbody>().useGravity = false;
+            //    }
+            //    //rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
+            //    rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
+            //    //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f + SandMoveSp * 0.007f;
+            //}
+
+            //X軸の流砂上かつY軸上でない時
+            if (PlayerXSandFlg && !PlayerYSandFlg)
             {
-                this.GetComponent<Rigidbody>().useGravity = false;
-                //rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
-                rb.velocity = new Vector3(PlayerDir.x * PlayerSp, PlayerDir.y * PlayerSp + SandMoveSp.y, PlayerDir.z * PlayerSp);
-                //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f + SandMoveSp * 0.007f;
+                Debug.Log("やるお");
+
+                this.GetComponent<Rigidbody>().useGravity = false;                
+                rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
             }
-            rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + SandMoveSp;
+
+            //X軸の流砂上かつY軸上の時
+            if (PlayerXSandFlg && PlayerYSandFlg)
+            {
+                if (CollisionSand)
+                {
+                    //中砂が入っている時
+                    if (PlayerEnptyFlg == false)
+                    {
+                        this.GetComponent<Rigidbody>().useGravity = false;
+                        rb.velocity = PlayerDir * PlayerSp + SandMoveSp + new Vector3(0, 5, 0);
+                    }
+                    //中砂が入ってないとき
+                    else
+                    {
+                        this.GetComponent<Rigidbody>().useGravity = true;
+                        rb.velocity = PlayerDir * PlayerSp;
+                    }
+                }
+            }
+            //rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
             //this.gameObject.transform.position = PlayerDir * PlayerSp + new Vector3(0, this.gameObject.transform.position.y, 0) + SandMoveSp;
         }
-        //流砂に触れていない時
-        else  //CollisionSand == false
-        {
-            this.GetComponent<Rigidbody>().useGravity = true;
-            //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f;
-            rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + PlayerMoveFt;
 
+        //流れ続ける砂
+        if (CollisionFlowSand == true)
+        {
+            //Y軸に力がかかっている時
+            if (SandMoveSp.y != 0)
+            {
+                this.GetComponent<Rigidbody>().useGravity = false;
+                rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
+                PlayerYSandAddFlg = true;
+            }
+            //X軸とY軸に力がかかっている時
+            else if (PlayerYSandAddFlg == true && (SandMoveSp.x != 0 || SandMoveSp.z != 0))
+            {
+                Debug.Log("やあ");
+                rb.velocity = new Vector3(0, 10, 0);
+                PlayerYSandAddFlg = false;
+            }
+            //X軸に力がかかっている時
+            else if (PlayerYSandAddFlg == false && (SandMoveSp.x != 0 || SandMoveSp.z != 0))
+            {
+                Debug.Log("やらないおー");
+
+                this.GetComponent<Rigidbody>().useGravity = false;
+                rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
+                PlayerYSandAddFlg = false;
+            }
+
+            //X軸の流砂上かつY軸上の時
+            if (PlayerXSandFlg && PlayerYSandFlg)
+            {
+                this.GetComponent<Rigidbody>().useGravity = false;
+                rb.velocity = PlayerDir * PlayerSp + SandMoveSp + new Vector3(0, 5, 0);
+            }
         }
 
+        //流砂に触れていない時
+        if(!CollisionFlowSand && !CollisionSand)
+        {
+            this.GetComponent<Rigidbody>().useGravity = false;
+            //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f;
+            rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + PlayerMoveFt;
+        }
+
+        //流砂に触れていないとき
+        if (!PlayerXSandFlg && !PlayerYSandFlg)
+        {
+            this.GetComponent<Rigidbody>().useGravity = true;
+
+        }
         // キャラクターの向きを進行方向に
         if (PlayerDir != Vector3.zero)
         {
@@ -441,6 +565,71 @@ public class PlayerControler : MonoBehaviour
         //    }
         //}
 
+        //流砂
+        if (collision.gameObject.tag == "QuickSand_B")
+        {
+            CollisionSand = true;
+
+            //Vector3 tmp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
+            //Debug.Log(other.gameObject.GetComponent<Quicksand>().GetSandMove());
+
+            ////yが大きい時に優先する
+            //if (SandMoveSp.y < tmp.y)
+            //{
+            //    SandMoveSp.y = tmp.y;
+            //}
+            ////空っぽの時
+            //else if (PlayerEnptyFlg)
+            //{
+            //    SandMoveSp = tmp;
+            //}
+            //傾いてないとき
+            if (collision.gameObject.GetComponent<Quicksand>().GetRotSand().x % 180.0f == 0.0f &&
+            collision.gameObject.GetComponent<Quicksand>().GetRotSand().z % 180.0f == 0.0f)
+            {
+                PlayerXSandFlg = true;
+            }
+            else
+            {
+                PlayerYSandFlg = true;
+            }
+            SandMoveSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
+        }
+        //ずっと流れる流砂
+        if (collision.gameObject.tag == "Mud")
+        {
+            CollisionFlowSand = true;
+
+            //Vector3 tmp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
+            ////yが大きい時に優先する
+            //if (SandMoveSp.y < tmp.y)
+            //{
+            //    SandMoveSp.y = tmp.y;
+            //}
+            ////空っぽの時
+            //else if (PlayerEnptyFlg)
+            //{
+            //    SandMoveSp = tmp;
+            //}
+            if (collision.gameObject.GetComponent<FlowingSand>().GetRotFlowingSand().x % 180.0f == 0.0f &&
+            collision.gameObject.GetComponent<FlowingSand>().GetRotFlowingSand().z % 180.0f == 0.0f)
+            {
+                PlayerXSandFlg = true;
+            }
+            else
+            {
+                PlayerYSandFlg = true;
+            }
+
+            SandMoveSp = collision.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
+
+            //SandMoveSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
+        }
+
+        //if (collision.gameObject.tag == "Block")
+        //{
+        //    BlockFlg = true;
+        //}
 
         //接触したオブジェクトのタグが"Block"のとき(SE用)
         if (collision.gameObject.tag == "Block")
@@ -468,79 +657,78 @@ public class PlayerControler : MonoBehaviour
         {
             CollisionGround = false;
         }
+        //流砂
+        if (collision.gameObject.tag == "QuickSand_B")
+        {
+            //this.GetComponent<Rigidbody>().useGravity = true;
+
+            //Debug.Log("流はなれ");
+            CollisionSand = false;
+            SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
+
+            if (collision.gameObject.GetComponent<Quicksand>().GetRotSand().x % 180.0f == 0.0f &&
+            collision.gameObject.GetComponent<Quicksand>().GetRotSand().z % 180.0f == 0.0f)
+            {
+                PlayerXSandFlg = false;
+            }
+            else
+            {
+                PlayerYSandFlg = false;
+            }
+        }
+
+        //ずっと流れる流砂
+        if (collision.gameObject.tag == "Mud")
+        {
+            CollisionFlowSand = false;
+            SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
+
+            if (collision.gameObject.GetComponent<FlowingSand>().GetRotFlowingSand().x % 180.0f == 0.0f &&
+            collision.gameObject.GetComponent<FlowingSand>().GetRotFlowingSand().z % 180.0f == 0.0f)
+            {
+                PlayerXSandFlg = false;
+            }
+            else
+            {
+                PlayerYSandFlg = false;
+            }
+        }
+
+        if (collision.gameObject.tag == "Block")
+        {
+            BlockFlg = false;
+        }
     }
 
     //流砂の処理(板ver)とか
-    private void OnTriggerStay(Collider other)
+    private void OnCollisionStay(Collider other)
     {
-        //流砂
-        if (other.gameObject.tag == "QuickSand_B")
-        {
-            CollisionSand = true;
 
-            Vector3 tmp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
-            //yが大きい時に優先する
-            if (SandMoveSp.y < tmp.y)
-            {
-                SandMoveSp.y = tmp.y;
-            }
-            //空っぽの時
-            else if (PlayerEnptyFlg)
-            {
-                SandMoveSp = tmp;
-            }
-            SandMoveSp = new Vector3(tmp.x, SandMoveSp.y, tmp.z);
-            //SandMoveSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
-        }
-        //ずっと流れる流砂
-        else if (other.gameObject.tag == "Mud")
-        {
-            CollisionSand = true;
-
-            Vector3 tmp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
-            //yが大きい時に優先する
-            if (SandMoveSp.y < tmp.y)
-            {
-                SandMoveSp.y = tmp.y;
-            }
-            //空っぽの時
-            else if (PlayerEnptyFlg)
-            {
-                SandMoveSp = tmp;
-            }
-            SandMoveSp = new Vector3(tmp.x, SandMoveSp.y, tmp.z);
-            //SandMoveSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
-        }
-
-        if (other.gameObject.tag == "Block")
-        {
-                BlockFlg = true;
-        }
     }
 
     //流砂から離れるときに流砂の影響を消す　　とか
     private void OnTriggerExit(Collider other)
     {
-        //流砂
-        if (other.gameObject.tag == "QuickSand_B")
-        {
-            this.GetComponent<Rigidbody>().useGravity = true;
+        ////流砂
+        //if (other.gameObject.tag == "QuickSand_B")
+        //{
+        //    //this.GetComponent<Rigidbody>().useGravity = true;
 
-            //Debug.Log("流はなれ");
-            CollisionSand = false;
-            SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
-        }
-        //ずっと流れる流砂
-        if (other.gameObject.tag == "Mud")
-        {
-            CollisionSand = false;
-            this.GetComponent<Rigidbody>().useGravity = false;
-            SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
-        }
-        if (other.gameObject.tag == "Block")
-        {
-            BlockFlg = false;
-        }
+        //    //Debug.Log("流はなれ");
+        //    CollisionSand = false;
+        //    SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
+        //}
+        ////ずっと流れる流砂
+        //if (other.gameObject.tag == "Mud")
+        //{
+        //    CollisionSand = false;
+        //    //this.GetComponent<Rigidbody>().useGravity = false;
+        //    SandMoveSp = new Vector3(0.0f, 0.0f, 0.0f);
+        //}
+        //if (other.gameObject.tag == "Block")
+        //{
+        //    BlockFlg = false;
+        //}
     }
     //なにかと当たった時
     private void OnCollisionEnter(Collision collision)

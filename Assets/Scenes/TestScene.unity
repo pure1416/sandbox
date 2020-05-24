@@ -480,6 +480,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1284293995}
     m_Modifications:
+    - target: {fileID: 1207106313320878168, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878171, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -594,6 +599,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1284293995}
     m_Modifications:
+    - target: {fileID: 1207106313320878168, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207106313320878169, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878171, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1793,7 +1808,7 @@ PrefabInstance:
     - target: {fileID: 3094477897170046098, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: SandSpd
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
@@ -2101,6 +2116,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: QuickSand_B
       objectReference: {fileID: 0}
+    - target: {fileID: 1207106313320878173, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
         type: 3}
       propertyPath: SandDir.z
@@ -2110,6 +2130,11 @@ PrefabInstance:
         type: 3}
       propertyPath: SandSpd
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207106313320878175, guid: dfcfcbb67a154fb4b9910d664a9f4961,
+        type: 3}
+      propertyPath: SandDir.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcfcbb67a154fb4b9910d664a9f4961, type: 3}
@@ -2399,7 +2424,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 8.67e-43, y: -0.0000000016981119, z: 8.67e-43, w: 4.6e-44}
+  m_BoundingSphereOverride: {x: 8.25e-43, y: 7.1e-44, z: 0, w: 6.815769}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -2410,13 +2435,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.45955917, y: 0.19147998, z: -0.10217636, w: 0.86122054}
+  m_LocalPosition: {x: 0, y: 24.8, z: -26.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 56.17, y: 25.07, z: 0}
 --- !u!1001 &723096574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3484,7 +3509,7 @@ PrefabInstance:
     - target: {fileID: 3094477897170046098, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: SandSpd
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
@@ -3756,6 +3781,11 @@ PrefabInstance:
         type: 3}
       propertyPath: SandSpd
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094477897170046101, guid: aa056d853b036204ebb8cc7bd4125217,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
@@ -4290,7 +4320,7 @@ PrefabInstance:
     - target: {fileID: 3094477897170046098, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: SandSpd
-      value: 3
+      value: 15.21
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
@@ -4494,12 +4524,17 @@ PrefabInstance:
     - target: {fileID: 3094477897170046098, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: SandDir.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046098, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: SandDir.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094477897170046098, guid: aa056d853b036204ebb8cc7bd4125217,
+        type: 3}
+      propertyPath: SandDir.z
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
@@ -4519,22 +4554,22 @@ PrefabInstance:
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.5
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
@@ -4544,17 +4579,17 @@ PrefabInstance:
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa056d853b036204ebb8cc7bd4125217, type: 3}
@@ -4642,18 +4677,34 @@ PrefabInstance:
     - target: {fileID: 3094477897170046098, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: SandSpd
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046098, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: SandDir.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046098, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: SandDir.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3094477897170046098, guid: aa056d853b036204ebb8cc7bd4125217,
+        type: 3}
+      propertyPath: SandDir.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094477897170046101, guid: aa056d853b036204ebb8cc7bd4125217,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094477897170046101, guid: aa056d853b036204ebb8cc7bd4125217,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 332594678a3d8ff44952433e0211d7d4,
+        type: 2}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4672,22 +4723,22 @@ PrefabInstance:
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.5
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
@@ -4697,17 +4748,17 @@ PrefabInstance:
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa056d853b036204ebb8cc7bd4125217, type: 3}
@@ -5790,7 +5841,7 @@ PrefabInstance:
     - target: {fileID: 3094477897170046098, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
       propertyPath: SandSpd
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3094477897170046102, guid: aa056d853b036204ebb8cc7bd4125217,
         type: 3}
@@ -7107,6 +7158,7 @@ MonoBehaviour:
   Wall_Col: 0
   FtCol: 0
   PlayerYSandFlg: 0
+  PlayerXSandFlg: 0
   CollisionSand: 0
   CollisionGround: 0
   SandMoveSp: {x: 0, y: 0, z: 0}
@@ -7271,6 +7323,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237220928102712553, guid: f73d8f6e4e8c4b247bd72205cd490451,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237220928102712553, guid: f73d8f6e4e8c4b247bd72205cd490451,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237220928102712553, guid: f73d8f6e4e8c4b247bd72205cd490451,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 5238025088699505482, guid: f73d8f6e4e8c4b247bd72205cd490451,
         type: 3}
