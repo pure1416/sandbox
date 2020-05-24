@@ -896,7 +896,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5dbef35e73251744fa84b6f5248712a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd20edb12e9d6cd4fa559662e14867b1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -969,7 +969,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fd44334c7698fbd4f816697275267ce2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 014d88ab77f2df2409dd526358dc517d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1287,7 +1287,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4880f1c5a6d0d05489e9ab4aa073eb87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 95a8d462e1aa90a4fbe3ce5471692b1d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2468,11 +2468,17 @@ MonoBehaviour:
   cursorL: {fileID: 3576919944525866301}
   cursorR: {fileID: 3576919944169593035}
   OpCM: {fileID: 0}
+  se1: {fileID: 0}
+  se2: {fileID: 0}
+  bgm: {fileID: 0}
   button: {fileID: 0}
   dist: 200
+  time_option: 0
+  time: 0
+  time_Out: 0.3
   clips:
   - {fileID: 8300000, guid: ba5dab5a311e4824cb82515651869072, type: 3}
-  - {fileID: 8300000, guid: d9097d74bbb4f1d40b70ae07c6569027, type: 3}
+  - {fileID: 8300000, guid: 7e336facd4de89647b904b87d19ac94f, type: 3}
   - {fileID: 8300000, guid: 324f0b4768c024d45811fc8149d37913, type: 3}
 --- !u!114 &3741833486032987079
 MonoBehaviour:
@@ -2717,7 +2723,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fd44334c7698fbd4f816697275267ce2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 014d88ab77f2df2409dd526358dc517d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
