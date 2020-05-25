@@ -258,6 +258,12 @@ public class PlayerControler : MonoBehaviour
                         rb.velocity = new Vector3(0, 10, 0);
                         PlayerYSandAddFlg = false;
                     }
+                    else if (PlayerYSandAddFlg == true && PlayerYSandFlg && !PlayerXSandFlg && (SandMoveSp.x != 0.0f || SandMoveSp.z != 0.0f))
+                    {
+                        Debug.Log("これこれ！！");
+                        rb.velocity = new Vector3(0, 10, 0);
+                        PlayerYSandAddFlg = false;
+                    }
                     //X軸に力がかかっている時
                     else if (PlayerYSandAddFlg == false &&(SandMoveSp.x != 0 || SandMoveSp.z != 0))
                     {
@@ -267,12 +273,7 @@ public class PlayerControler : MonoBehaviour
                         rb.velocity =　PlayerDir * PlayerSp + SandMoveSp;
                         PlayerYSandAddFlg = false;
                     }
-                    else if(PlayerYSandAddFlg == true && PlayerYSandFlg && !PlayerXSandFlg && (SandMoveSp.x != 0.0f || SandMoveSp.z != 0.0f))
-                    {
-                        Debug.Log("これこれ！！");
-                        rb.velocity = new Vector3(0, 10, 0);
-                        PlayerYSandAddFlg = false;
-                    }
+
                 }
                 //中砂が入っていないとき
                 else
