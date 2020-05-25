@@ -273,9 +273,11 @@ public class PlayerControler : MonoBehaviour
                 {
                     PlayerYSandAddFlg = false;
                     Debug.Log("ひん");
+                    //rb.velocity = PlayerDir * PlayerSp;
 
                     this.GetComponent<Rigidbody>().useGravity = true;
-                    //rb.velocity = PlayerDir * PlayerSp;
+                    //Physics.gravity = new Vector3(0, -20, 0);
+
                 }
                 //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f + SandMoveSp * 0.007f;
             }
