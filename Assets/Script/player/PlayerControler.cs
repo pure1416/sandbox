@@ -132,7 +132,7 @@ public class PlayerControler : MonoBehaviour
         //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
         Debug.Log("Y:" + PlayerYSandFlg);
         Debug.Log("X:" + PlayerXSandFlg);
-        //Debug.Log(PlayerDir * PlayerSp + SandMoveSp);
+        Debug.Log(PlayerYSandAddFlg);
 
         
         //Debug.Log(PlayerTurnAnimTime);
@@ -265,6 +265,12 @@ public class PlayerControler : MonoBehaviour
                     
                         this.GetComponent<Rigidbody>().useGravity = false;
                         rb.velocity =　PlayerDir * PlayerSp + SandMoveSp;
+                        PlayerYSandAddFlg = false;
+                    }
+                    else if(PlayerYSandAddFlg == true && PlayerYSandFlg && !PlayerXSandFlg && (SandMoveSp.x != 0.0f || SandMoveSp.z != 0.0f))
+                    {
+                        Debug.Log("これこれ！！");
+                        rb.velocity = new Vector3(0, 10, 0);
                         PlayerYSandAddFlg = false;
                     }
                 }
