@@ -280,6 +280,12 @@ public class SSManager : MonoBehaviour
         return stages[NowSelStage - 1].transform.position;
     }
 
+    //WorldNumのGetter
+    public int GetWorldNum()
+    {
+        return WorldNum;
+    }
+
     //シーンチェンジ
     public void SSGoSceneChange()
     {

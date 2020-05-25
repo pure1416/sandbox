@@ -16,7 +16,7 @@ public class StaUnl : MonoBehaviour
     [Header("Text & Model")]
     public Text ClearText;    //クリアテキスト
     public GameObject StageObj; //ステージオブジェクト
-    public Image LockChain;     //ロックされてる時の画像
+    public GameObject Locks;     //ロックされてる時の画像
 
     [Header("Name")]
     public string StageName;
@@ -35,6 +35,7 @@ public class StaUnl : MonoBehaviour
         //UnlockFlg = ClearFlg = false;
         //見えないようにする
         this.GetComponent<RectTransform>().localScale = new Vector3(0.75f, 0.0f, 1.0f);
+        Locks.GetComponent<LockLook>().SetWorldNum(this.transform.root.GetComponent<SSManager>().GetWorldNum());
     }
 
     // Update is called once per frame
@@ -43,7 +44,7 @@ public class StaUnl : MonoBehaviour
         if (UnlockFlg)
         {
             //アンロックなら鎖を消す
-            LockChain.transform.parent.gameObject.SetActive(false);
+            Locks.transform.parent.gameObject.SetActive(false);
             if (ClearFlg)
             {
                 //クリアしてたらクリアを出す
@@ -57,7 +58,7 @@ public class StaUnl : MonoBehaviour
         else
         {
             //アンロックされていない場合は上張りを張ってクリアフラグを切る
-            LockChain.transform.parent.gameObject.SetActive(true);
+            Locks.transform.parent.gameObject.SetActive(true);
             ClearText.enabled = false;
             ClearFlg = false;
         }
@@ -119,7 +120,7 @@ public class StaUnl : MonoBehaviour
     //ロックされているときの動き
     public void LockedMove()
     {
-        LockChain.GetComponent<Animator>().Play("ChainMove");
+        Locks.GetComponent<LockLook>().LockMove();
     }
 
     //UnlockフラグのSetter
