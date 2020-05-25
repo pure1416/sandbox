@@ -15,7 +15,6 @@ TagManager:
   - fallcol
   - SSManager
   - Option
-  - Fragment
   - WSManager
   - OptionManager
   - BGMBar
@@ -23,6 +22,7 @@ TagManager:
   - VerticalQuickSand
   - Wall
   - Fragment
+  - VerticalMudSand
   layers:
   - Default
   - TransparentFX

@@ -18,7 +18,7 @@ public class TitleManager : MonoBehaviour
     //SEです。
     protected AudioSource Source;
 
-    public float Select; 
+    public float Select;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +35,11 @@ public class TitleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!OptionObj.activeSelf)
+        if (OptionObj.activeSelf)
+        {
+              Select = 0;
+        }
+        else if (!OptionObj.activeSelf)
         {
             //キー操作で操作できるようにする
             if ((Input.GetAxisRaw("J_Vertical") > 0) || (Input.GetKeyDown(KeyCode.UpArrow)) && Select > 0)
@@ -93,7 +97,7 @@ public class TitleManager : MonoBehaviour
     public void PushOptionButton()
     {
         //フェード中入力できなくする処理
-        if (FadeObj.GetComponent<FadeManager>().GetFadeInFlg() == false)
+        if ((FadeObj.GetComponent<FadeManager>().GetFadeInFlg() == false) && (!OptionObj.activeSelf))
         {
             //決定の際のSE
             Source.PlayOneShot(clips[1]);

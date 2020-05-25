@@ -150,9 +150,9 @@ public class FlowingSand : MonoBehaviour
             }
             else
             {
-                if (FlowingSandMove.y < 0.0f)
+                if (FlowingSandMove.y == 0.0f)
                 {
-                    return new Vector3(FlowingSandMove.x, 0.0f, FlowingSandMove.z);
+                    return FlowingSandMove;
                 }
             }
         }
@@ -164,6 +164,12 @@ public class FlowingSand : MonoBehaviour
     public Vector3 GetFlowingSandDir()
     {
         return FlowingSandDir;
+    }
+
+    //方向のGetter
+    public Vector3 GetRotFlowingSand()
+    {
+        return this.transform.eulerAngles;
     }
 
     //スピードのGetter

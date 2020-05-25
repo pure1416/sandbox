@@ -10,26 +10,31 @@
 	}
     SubShader
     {
-		Tags { "RenderType" = "Transparent" "Opaque" = "Transparent"}
+		Tags { "RenderType" = "Opaque"}
 		LOD 100
 		Cull off
-		Blend SrcAlpha OneMinusSrcAlpha
 
         Pass
         {
+			//Tags { "LightMode" = "FowardBase"}
+
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+			#pragma multi_compile_fwdbase nolightmap nodirlightmap nodynlightmap novertexlight
             // make fog work
             #pragma multi_compile_fog
 
             #include "UnityCG.cginc"
+			#include "Lighting.cginc" 
+			#include "AutoLight.cginc"
 
 			#define PI 3.141592		//π
 
             struct appdata
             {
                 float4 vertex : POSITION;
+				float3 normal : NORMAL;
                 float2 uv : TEXCOORD0;
             };
 
@@ -37,7 +42,9 @@
             {
                 float2 uv : TEXCOORD0;
                 UNITY_FOG_COORDS(1)
-                float4 vertex : SV_POSITION;
+				fixed4 diff : COLOR0;
+                float4 pos : SV_POSITION;
+				SHADOW_COORDS(1)
             };
 
             sampler2D _MainTex;		//テクスチャ
@@ -51,8 +58,14 @@
             v2f vert (appdata v)
             {
                 v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
+                o.pos = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+
+				half3 worldNormal = UnityObjectToWorldNormal(v.normal);
+				half NdotL = saturate(dot(worldNormal, _WorldSpaceLightPos0.xyz));
+				o.diff = NdotL * _LightColor0;
+				TRANSFER_SHADOW(o)
+
                 UNITY_TRANSFER_FOG(o,o.vertex);
                 return o;
             }
@@ -80,11 +93,46 @@
 				}
 
                 fixed4 col = tex2D(_MainTex, i.uv);
+
+				fixed4 shadow = SHADOW_ATTENUATION(i) * 1.3f;
+				col *= i.diff * shadow;
+
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
             }
             ENDCG
         }
+
+		//影落とす用のPass
+		Pass
+		{
+			Name "CastShadow"
+			Tags { "LightMode" = "ShadowCaster" }
+
+			CGPROGRAM
+			#pragma vertex vert
+			#pragma fragment frag
+			#pragma multi_compile_shadowcaster
+			#include "UnityCG.cginc"
+
+			struct v2f
+			{
+				V2F_SHADOW_CASTER;
+			};
+
+			v2f vert(appdata_base v)
+			{
+				v2f o;
+				TRANSFER_SHADOW_CASTER(o)
+				return o;
+			}
+
+			float4 frag(v2f i) : COLOR
+			{
+				SHADOW_CASTER_FRAGMENT(i)
+			}
+			ENDCG
+		}
     }
 }

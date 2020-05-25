@@ -180,20 +180,19 @@ public class Quicksand : MonoBehaviour
             }
             else
             {
-                if (SandMove.y < 0.0f)
+                if (SandMove.y == 0.0f)
                 {
-                    return new Vector3(SandMove.x, 0.0f, SandMove.z);
+                    return SandMove;
                 }
             }
         }
-
         return SandMove;
     }
 
     //方向のGetter
     public Vector3 GetSandDir()
     {
-        if(!IsInverse)
+        if (!IsInverse)
         {
             return SandDir;
         }
@@ -207,6 +206,13 @@ public class Quicksand : MonoBehaviour
     public float GetSandSpeed()
     {
         return SandSpd;
+    }
+
+
+    //方向のGetter
+    public Vector3 GetRotSand()
+    {
+        return this.transform.eulerAngles;
     }
 
     //インスペクタで値が変更された時に発動する関数

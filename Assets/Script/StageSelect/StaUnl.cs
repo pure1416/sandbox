@@ -16,6 +16,7 @@ public class StaUnl : MonoBehaviour
     [Header("Text & Model")]
     public Text ClearText;    //クリアテキスト
     public GameObject StageObj; //ステージオブジェクト
+    public Image LockChain;     //ロックされてる時の画像
 
     [Header("Name")]
     public string StageName;
@@ -33,7 +34,7 @@ public class StaUnl : MonoBehaviour
     {
         //UnlockFlg = ClearFlg = false;
         //見えないようにする
-        this.GetComponent<RectTransform>().localScale = new Vector3(1.0f, 0.0f, 1.0f);
+        this.GetComponent<RectTransform>().localScale = new Vector3(0.75f, 0.0f, 1.0f);
     }
 
     // Update is called once per frame
@@ -41,6 +42,8 @@ public class StaUnl : MonoBehaviour
     {
         if (UnlockFlg)
         {
+            //アンロックなら鎖を消す
+            LockChain.transform.parent.gameObject.SetActive(false);
             if (ClearFlg)
             {
                 //クリアしてたらクリアを出す
@@ -54,6 +57,7 @@ public class StaUnl : MonoBehaviour
         else
         {
             //アンロックされていない場合は上張りを張ってクリアフラグを切る
+            LockChain.transform.parent.gameObject.SetActive(true);
             ClearText.enabled = false;
             ClearFlg = false;
         }
@@ -64,7 +68,7 @@ public class StaUnl : MonoBehaviour
             if (OpClCnt < OP_TIME)
             {
                 //OPCL_TIMEフレームかけて拡大する
-                this.GetComponent<RectTransform>().localScale += new Vector3(0.0f, 1.0f / OP_TIME, 0.0f);
+                this.GetComponent<RectTransform>().localScale += new Vector3(0.25f / OP_TIME, 1.0f / OP_TIME, 0.0f);
                 OpClCnt++;
             }
             else
@@ -79,13 +83,13 @@ public class StaUnl : MonoBehaviour
             if (OpClCnt < CL_TIME)
             {
                 //OPCL_TIMEフレームかけて縮小する
-                this.GetComponent<RectTransform>().localScale -= new Vector3(0.0f, 1.0f / CL_TIME, 0.0f);
+                this.GetComponent<RectTransform>().localScale -= new Vector3(0.25f / CL_TIME, 1.0f / CL_TIME, 0.0f);
                 OpClCnt++;
             }
             else
             {
-                //拡大終了
-                this.GetComponent<RectTransform>().localScale = new Vector3(1.0f, 0.0f, 1.0f);
+                //縮小終了
+                this.GetComponent<RectTransform>().localScale = new Vector3(0.75f, 0.0f, 1.0f);
                 CloseFlg = false;
             }
         }
@@ -95,7 +99,7 @@ public class StaUnl : MonoBehaviour
     //開
     public void OpenAnim()
     {
-        Debug.Log(StageName + "：Open");
+        //Debug.Log(StageName + "：Open");
         OpenFlg = true;
         CloseFlg = false;
         OpClCnt = 0;
@@ -105,11 +109,17 @@ public class StaUnl : MonoBehaviour
     //閉
     public void CloseAnim()
     {
-        Debug.Log(StageName + "：Close");
+        //Debug.Log(StageName + "：Close");
         OpenFlg = false;
         CloseFlg = true;
         OpClCnt = 0;
         StageObj.GetComponent<Animator>().Play("Close");
+    }
+
+    //ロックされているときの動き
+    public void LockedMove()
+    {
+        LockChain.GetComponent<Animator>().Play("ChainMove");
     }
 
     //UnlockフラグのSetter
