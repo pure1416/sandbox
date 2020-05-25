@@ -13,6 +13,10 @@ public class TitleManager : MonoBehaviour
     public GameObject OptionObj;    //オプションのウインドウ
     public Button button;
 
+    float time_Title;
+    float time_Title_MAX = 0.45f;
+    bool TITLE_Lag;
+
     [SerializeField] AudioClip[] clips;//サウンド
 
     //SEです。
@@ -30,6 +34,8 @@ public class TitleManager : MonoBehaviour
 
         //サウンド
         Source = GetComponent<AudioSource>();
+        time_Title = 0;
+        TITLE_Lag = false;
     }
 
     // Update is called once per frame
@@ -42,19 +48,32 @@ public class TitleManager : MonoBehaviour
         else if (!OptionObj.activeSelf)
         {
             //キー操作で操作できるようにする
-            if ((Input.GetAxisRaw("J_Vertical") > 0) || (Input.GetKeyDown(KeyCode.UpArrow)) && Select > 0)
+            if (((Input.GetAxisRaw("Vertical") > 0) || (Input.GetKeyDown(KeyCode.UpArrow)) && Select > 0) && (!TITLE_Lag)) 
             {
+                Debug.Log("傾けたタイトル");
                 Select -= 1;
                 //カーソル選択音
                 Source.PlayOneShot(clips[0]);
+                TITLE_Lag = true;
 
             }
-            else if ((Input.GetAxisRaw("J_Vertical") < 0) || (Input.GetKeyDown(KeyCode.DownArrow)) && Select < 2)
+            else if (((Input.GetAxisRaw("Vertical") < 0) || (Input.GetKeyDown(KeyCode.DownArrow)) && Select < 1)&& (!TITLE_Lag)) 
             {
+                Debug.Log("タイトル傾けた");
+
                 Select += 1;
                 //カーソル選択音
                 Source.PlayOneShot(clips[0]);
-
+                TITLE_Lag = true;
+            }
+            if(TITLE_Lag)
+            {
+                time_Title += Time.deltaTime;
+            }
+            if(time_Title >= time_Title_MAX)
+            {
+                time_Title = 0;
+                TITLE_Lag = false;
             }
         }
     }

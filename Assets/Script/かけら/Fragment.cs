@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Weight;
 
+//サウンド用
+[RequireComponent(typeof(AudioSource))]
 
 public class Fragment : MonoBehaviour
 {
@@ -17,11 +19,21 @@ public class Fragment : MonoBehaviour
     bool P_SandEnpflg;              // プレイヤーの中砂の有無
     bool SandCol;                   // 砂に触れているかどうか
 
+    //サウンド用
+    float time_SE;
+    float time_MAX = 2;
+    bool SE_Lag;
+    bool Player_Hit;
+
     // 当たり判定
     Rigidbody rb;
 
     [SerializeField] public Vector3 SandMoveFtSp;  // 流砂の移動力
-
+    
+    //サウンド用
+    [SerializeField] AudioClip[] clips;
+    protected AudioSource Source;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +50,12 @@ public class Fragment : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
 
+        Source = GetComponent<AudioSource>();
+
+        Player_Hit = false;
+        SE_Lag = false;
+        time_SE = 0;
+
     }
     // Update is called once per frame
     void Update()
@@ -45,6 +63,35 @@ public class Fragment : MonoBehaviour
         // プレイヤーの中砂の有無を常にもってくる
         P_SandEnpflg = playercontroler.GetComponent<PlayerControler>().GetPlayerEnpty();
 
+        //サウンド用
+        //if (Player_Hit)
+        //{
+        //    if (!GetComponent<Rigidbody>().IsSleeping())
+        //    {
+        //        //欠片が押されている際のSE
+        //        Source.PlayOneShot(clips[0]);
+        //    }
+
+        //}
+        //サウンド用改
+        if ((Player_Hit) && (!SE_Lag))
+        {
+            if (!GetComponent<Rigidbody>().IsSleeping())
+            {
+                SE_Lag = true;
+                //欠片が押されている際のSE
+                Source.PlayOneShot(clips[0]);
+            }
+        }
+        if (SE_Lag)
+        {
+            time_SE += Time.deltaTime;
+        }
+        if (time_SE >= time_MAX)
+        {
+            time_SE = 0;
+            SE_Lag = false;
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -110,6 +157,16 @@ public class Fragment : MonoBehaviour
         if(collision.gameObject.tag == "Fragment")
         {
 
+        }
+
+        //サウンド用
+        if (collision.gameObject.tag == "Player")
+        {
+            Player_Hit = true;
+        }
+        else
+        {
+            Player_Hit = false;
         }
     }
 
