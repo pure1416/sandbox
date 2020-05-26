@@ -456,7 +456,7 @@ public class PlayerControler : MonoBehaviour
             {
                 PlayerTurnAnimTime = 0.0f;
                 animator.SetBool("Rot", false);
-
+                
                 PlayerTurnAnimFlg = false;
             }
         }
@@ -825,6 +825,11 @@ public class PlayerControler : MonoBehaviour
     public bool GetFtCol()
     {
         return FtCol;
+    }
+
+    public bool GetPlayerTurnAnimFlg()
+    {
+        return PlayerTurnAnimFlg;
     }
 
     //足音
