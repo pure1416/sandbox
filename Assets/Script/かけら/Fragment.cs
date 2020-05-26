@@ -19,6 +19,7 @@ public class Fragment : MonoBehaviour
     bool P_SandEnpflg;              // プレイヤーの中砂の有無
     bool SandCol;                   // 砂に触れているかどうか
     bool Respawnflg;                // リスポーンフラグ
+    bool WallCol;                   // 壁に触れているかどうか
 
     //サウンド用
     float time_SE;
@@ -46,7 +47,7 @@ public class Fragment : MonoBehaviour
         SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
         SandCol = false;
         Respawnflg = false;
-
+        WallCol = false;
         P_SandEnpflg = playercontroler.GetComponent<PlayerControler>().GetPlayerEnpty(); ;
 
         rb = this.GetComponent<Rigidbody>();
@@ -161,9 +162,9 @@ public class Fragment : MonoBehaviour
             }
         }
 
-        if(collision.gameObject.tag == "Fragment")
+        if(collision.gameObject.tag == "Wall")
         {
-
+            WallCol = true;
         }
 
         //サウンド用
@@ -204,10 +205,10 @@ public class Fragment : MonoBehaviour
             SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
             this.GetComponent<Rigidbody>().useGravity = true;
         }
-        //if (collision.gameObject.tag == "fallcol")
-        //{
-        //    Respawnflg = false;
-        //}
+        if (collision.gameObject.tag == "Wall")
+        {
+            WallCol = false;
+        }
     }
 
     public Vector3 GetSandMoveFtSp()
@@ -217,5 +218,9 @@ public class Fragment : MonoBehaviour
     public bool GetSandCol()
     {
         return SandCol;
+    }
+    public bool GetWallCol()
+    {
+        return WallCol;
     }
 }
