@@ -572,26 +572,26 @@ public class PlayerControler : MonoBehaviour
         {
              FtCol = true;
 
+            if (CollisionSand == false)
+            {
+
+                bool Ft_SandCol = collision.gameObject.GetComponent<Fragment>().GetSandCol();
+                bool Ft_WallCol = collision.gameObject.GetComponent<Fragment>().GetWallCol();
+                if (Ft_SandCol)
+                {
+                    PlayerMoveFt = collision.gameObject.GetComponent<Fragment>().GetSandMoveFtSp();
+                    PlayerMoveFt *= 50;
+                    if ((PlayerMoveFt.y != 0.0f)||(Ft_WallCol))
+                    {
+                        PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
+                    }
+
+                }
+
+            }
         }
 
-        //if (CollisionSand == false)
-        //{
-        //    if (collision.gameObject.tag == "Fragment")
-        //    {
-        //        bool Ft_SandCol = collision.gameObject.GetComponent<Fragment>().GetSandCol();
-        //        FtCol = true;
-        //        if(Ft_SandCol)
-        //        {
-        //            PlayerMoveFt = collision.gameObject.GetComponent<Fragment>().GetSandMoveFtSp();
-        //            PlayerMoveFt *= 50;
-        //            if (PlayerMoveFt != new Vector3(0.0f, 0.0f, 0.0f))
-        //            {
-        //                ////this.transform.Translate(PlayerMoveFt);
-        //            }
 
-        //        }
-        //    }
-        //}
 
         //流砂
         if (collision.gameObject.tag == "QuickSand_B")
