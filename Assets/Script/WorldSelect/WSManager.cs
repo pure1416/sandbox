@@ -85,7 +85,7 @@ public class WSManager : MonoBehaviour
         FlgCheck(wf);
 
         //フェード中と選択中入力できなくする処理
-        if (FadeObj.GetFadeInFlg() == false && MoveEndFlg)
+        if (FadeObj.GetFadeInFlg() == false && FadeObj.GetFadeOutFlg() == false && MoveEndFlg)
         {
             //キー操作で操作できるようにする
             if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") > 0) && GetNextUnlock())
