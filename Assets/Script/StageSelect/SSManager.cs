@@ -95,7 +95,7 @@ public class SSManager : MonoBehaviour
         FlgCheck(sf);
 
         //フェード中とカーソル移動中に入力できなくする処理
-        if (FadeObj.GetFadeInFlg() == false && SSCM.GetMoveEnd())
+        if (FadeObj.GetFadeInFlg() == false && FadeObj.GetFadeOutFlg() == false && SSCM.GetMoveEnd())
         {
             //キー操作で操作できるようにする
             if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") > 0) && GetNextUnlock())
