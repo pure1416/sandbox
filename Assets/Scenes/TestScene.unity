@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.2864039, g: 0.17625433, b: 0.047628313, a: 1}
+  m_IndirectSpecularColor: {r: 0.28647336, g: 0.17631266, b: 0.04759129, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -458,7 +458,7 @@ PrefabInstance:
     - target: {fileID: 9166240586620850366, guid: c4706062370e9534fb3c0c2126f6e5dd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 53
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 9166240586620850366, guid: c4706062370e9534fb3c0c2126f6e5dd,
         type: 3}
@@ -3946,6 +3946,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SandFt_large
       objectReference: {fileID: 0}
+    - target: {fileID: 2625386414613997127, guid: c07852c9a426e9a48b2aee5a4aa4446e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Fragment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c07852c9a426e9a48b2aee5a4aa4446e, type: 3}
 --- !u!1001 &1258032175
@@ -6243,6 +6248,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ft_large
       objectReference: {fileID: 0}
+    - target: {fileID: 6305399646874902036, guid: 4b331641e1340da4583c9a05eef2135a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Fragment
+      objectReference: {fileID: 0}
     - target: {fileID: 7050981472618736647, guid: 4b331641e1340da4583c9a05eef2135a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7332,7 +7342,7 @@ PrefabInstance:
     - target: {fileID: 9166240586620850366, guid: c4706062370e9534fb3c0c2126f6e5dd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 52
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 9166240586620850366, guid: c4706062370e9534fb3c0c2126f6e5dd,
         type: 3}
