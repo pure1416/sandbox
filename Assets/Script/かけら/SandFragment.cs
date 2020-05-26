@@ -281,7 +281,7 @@ public class SandFragment : MonoBehaviour
     }
 
     
-    private void OnCollisionEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         // かけらが落下したときに初期に戻る
         if (other.gameObject.tag == "fallcol")
