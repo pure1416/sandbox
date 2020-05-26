@@ -18,6 +18,7 @@ public class Fragment : MonoBehaviour
     Vector3 SandDir;                // 流砂の向きを保存しておく変数
     bool P_SandEnpflg;              // プレイヤーの中砂の有無
     bool SandCol;                   // 砂に触れているかどうか
+    bool Respawnflg;                // リスポーンフラグ
 
     //サウンド用
     float time_SE;
@@ -44,6 +45,7 @@ public class Fragment : MonoBehaviour
         SandDir = new Vector3(0.0f, 0.0f,0.0f);
         SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
         SandCol = false;
+        Respawnflg = false;
 
         P_SandEnpflg = playercontroler.GetComponent<PlayerControler>().GetPlayerEnpty(); ;
 
@@ -92,6 +94,11 @@ public class Fragment : MonoBehaviour
             time_SE = 0;
             SE_Lag = false;
         }
+
+        //if(Respawnflg)
+        //{
+        //    this.gameObject.SetActive(true);
+        //}
     }
 
     private void OnCollisionStay(Collision collision)
@@ -176,6 +183,8 @@ public class Fragment : MonoBehaviour
         if(collision.gameObject.tag == "fallcol")
         {
             this.transform.position = FtStartPos;
+            //Respawnflg = true;
+            //this.gameObject.SetActive(false);
         }
     }
 
@@ -195,6 +204,10 @@ public class Fragment : MonoBehaviour
             SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
             this.GetComponent<Rigidbody>().useGravity = true;
         }
+        //if (collision.gameObject.tag == "fallcol")
+        //{
+        //    Respawnflg = false;
+        //}
     }
 
     public Vector3 GetSandMoveFtSp()
