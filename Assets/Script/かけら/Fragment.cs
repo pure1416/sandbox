@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Weight;
 
+//サウンド用
+[RequireComponent(typeof(AudioSource))]
 
 public class Fragment : MonoBehaviour
 {
@@ -16,12 +18,24 @@ public class Fragment : MonoBehaviour
     Vector3 SandDir;                // 流砂の向きを保存しておく変数
     bool P_SandEnpflg;              // プレイヤーの中砂の有無
     bool SandCol;                   // 砂に触れているかどうか
+    bool Respawnflg;                // リスポーンフラグ
+    bool WallCol;                   // 壁に触れているかどうか
+
+    //サウンド用
+    float time_SE;
+    float time_MAX = 2;
+    bool SE_Lag;
+    bool Player_Hit;
 
     // 当たり判定
     Rigidbody rb;
 
     [SerializeField] public Vector3 SandMoveFtSp;  // 流砂の移動力
-
+    
+    //サウンド用
+    [SerializeField] AudioClip[] clips;
+    protected AudioSource Source;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -32,11 +46,18 @@ public class Fragment : MonoBehaviour
         SandDir = new Vector3(0.0f, 0.0f,0.0f);
         SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
         SandCol = false;
-
+        Respawnflg = false;
+        WallCol = false;
         P_SandEnpflg = playercontroler.GetComponent<PlayerControler>().GetPlayerEnpty(); ;
 
         rb = this.GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
+
+        Source = GetComponent<AudioSource>();
+
+        Player_Hit = false;
+        SE_Lag = false;
+        time_SE = 0;
 
     }
     // Update is called once per frame
@@ -45,6 +66,40 @@ public class Fragment : MonoBehaviour
         // プレイヤーの中砂の有無を常にもってくる
         P_SandEnpflg = playercontroler.GetComponent<PlayerControler>().GetPlayerEnpty();
 
+        //サウンド用
+        //if (Player_Hit)
+        //{
+        //    if (!GetComponent<Rigidbody>().IsSleeping())
+        //    {
+        //        //欠片が押されている際のSE
+        //        Source.PlayOneShot(clips[0]);
+        //    }
+
+        //}
+        //サウンド用改
+        if ((Player_Hit) && (!SE_Lag))
+        {
+            if (!GetComponent<Rigidbody>().IsSleeping())
+            {
+                SE_Lag = true;
+                //欠片が押されている際のSE
+                Source.PlayOneShot(clips[0]);
+            }
+        }
+        if (SE_Lag)
+        {
+            time_SE += Time.deltaTime;
+        }
+        if (time_SE >= time_MAX)
+        {
+            time_SE = 0;
+            SE_Lag = false;
+        }
+
+        //if(Respawnflg)
+        //{
+        //    this.gameObject.SetActive(true);
+        //}
     }
 
     private void OnCollisionStay(Collision collision)
@@ -107,9 +162,19 @@ public class Fragment : MonoBehaviour
             }
         }
 
-        if(collision.gameObject.tag == "Fragment")
+        if(collision.gameObject.tag == "Wall")
         {
+            WallCol = true;
+        }
 
+        //サウンド用
+        if (collision.gameObject.tag == "Player")
+        {
+            Player_Hit = true;
+        }
+        else
+        {
+            Player_Hit = false;
         }
     }
 
@@ -119,6 +184,8 @@ public class Fragment : MonoBehaviour
         if(collision.gameObject.tag == "fallcol")
         {
             this.transform.position = FtStartPos;
+            //Respawnflg = true;
+            //this.gameObject.SetActive(false);
         }
     }
 
@@ -138,6 +205,10 @@ public class Fragment : MonoBehaviour
             SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
             this.GetComponent<Rigidbody>().useGravity = true;
         }
+        if (collision.gameObject.tag == "Wall")
+        {
+            WallCol = false;
+        }
     }
 
     public Vector3 GetSandMoveFtSp()
@@ -147,5 +218,9 @@ public class Fragment : MonoBehaviour
     public bool GetSandCol()
     {
         return SandCol;
+    }
+    public bool GetWallCol()
+    {
+        return WallCol;
     }
 }

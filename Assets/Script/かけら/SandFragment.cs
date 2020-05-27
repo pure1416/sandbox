@@ -66,13 +66,10 @@ public class SandFragment : MonoBehaviour
             Sft_WallCol = true;
         }
 
-    }
-    private void OnTriggerStay(Collider other)
-    {
         // 流砂の上にいるときに流砂の移動力を受け取る
-        if (other.gameObject.tag == "QuickSand_B")
+        if (collision.gameObject.tag == "QuickSand_B")
         {
-            SandMoveFtSp = other.gameObject.GetComponent<Quicksand>().GetSandMove();
+            SandMoveFtSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
             SandMoveFtSp /= 50;
 
             // プレイヤーの中砂がないときの処理
@@ -177,14 +174,16 @@ public class SandFragment : MonoBehaviour
                 }
             }
             this.transform.Translate(SandMoveFtSp);
+            //rb.velocity = SandMoveFtSp;
+
         }
 
         // 無視砂の処理
-        if (other.gameObject.tag == "Mud")
+        if (collision.gameObject.tag == "Mud")
         {
-            SandMoveFtSp = other.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
+            SandMoveFtSp = collision.gameObject.GetComponent<FlowingSand>().GetFlowingSandMove();
             SandMoveFtSp /= 50;
-          
+
             // 流砂が動いてるときだけ流砂の向きを保存しておく
             SandDir = SandMoveFtSp;
 
@@ -278,9 +277,11 @@ public class SandFragment : MonoBehaviour
             }
         }
         this.transform.Translate(SandMoveFtSp);
+
     }
+
     
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         // かけらが落下したときに初期に戻る
         if (other.gameObject.tag == "fallcol")
@@ -289,30 +290,6 @@ public class SandFragment : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        //流砂から流砂へ移動するときに一旦SandMobeFtSpを初期化する
-        if (other.gameObject.tag == "QuickSand_B")
-        {
-            SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
-            this.GetComponent<Rigidbody>().useGravity = true;
-            rb.constraints = RigidbodyConstraints.FreezePositionX |
-                    RigidbodyConstraints.FreezePositionZ |
-                    RigidbodyConstraints.FreezeRotation;
-
-        }
-        //流砂から流砂へ移動するときに一旦SandMobeFtSpを初期化する
-        if (other.gameObject.tag == "Mud")
-        {
-            SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
-            this.GetComponent<Rigidbody>().useGravity = true;
-            rb.constraints = RigidbodyConstraints.FreezePositionX |
-                    RigidbodyConstraints.FreezePositionZ |
-                    RigidbodyConstraints.FreezeRotation;
-
-        }
-        
-    }
 
     private void OnCollisionExit(Collision collision)
     {
@@ -320,5 +297,27 @@ public class SandFragment : MonoBehaviour
         {
             Sft_WallCol = false;
         }
+
+        //流砂から流砂へ移動するときに一旦SandMobeFtSpを初期化する
+        if (collision.gameObject.tag == "QuickSand_B")
+        {
+            SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
+            this.GetComponent<Rigidbody>().useGravity = true;
+            rb.constraints = RigidbodyConstraints.FreezePositionX |
+                    RigidbodyConstraints.FreezePositionZ |
+                    RigidbodyConstraints.FreezeRotation;
+
+        }
+        //流砂から流砂へ移動するときに一旦SandMobeFtSpを初期化する
+        if (collision.gameObject.tag == "Mud")
+        {
+            SandMoveFtSp = new Vector3(0.0f, 0.0f, 0.0f);
+            this.GetComponent<Rigidbody>().useGravity = true;
+            rb.constraints = RigidbodyConstraints.FreezePositionX |
+                    RigidbodyConstraints.FreezePositionZ |
+                    RigidbodyConstraints.FreezeRotation;
+
+        }
+
     }
 }

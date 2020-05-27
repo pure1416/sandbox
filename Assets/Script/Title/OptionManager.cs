@@ -63,6 +63,7 @@ public class OptionManager : MonoBehaviour
         LeftInputFlg = false;
         time = false;
         time_option = false;
+        timer = 0;
 
         //サウンド
         Source = GetComponent<AudioSource>();
@@ -75,12 +76,12 @@ public class OptionManager : MonoBehaviour
         //カーソル移動中は入力できないようにする
         if (OpCM.GetMoveEnd())
         {
-            if (Input.GetAxisRaw("J_Horizontal") > 0)
+            if (Input.GetAxisRaw("Horizontal") > 0)
             {
 
                 RightInputTime += Time.deltaTime;
             }
-            if (Input.GetAxisRaw("J_Horizontal") < 0)
+            if (Input.GetAxisRaw("Horizontal") < 0)
             {
 
                 LeftInputTime += Time.deltaTime;
