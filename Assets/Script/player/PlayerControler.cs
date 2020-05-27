@@ -258,13 +258,11 @@ public class PlayerControler : MonoBehaviour
                     else if (PlayerYSandAddFlg == true && PlayerYSandFlg && !PlayerXSandFlg && (SandMoveSp.x != 0.0f || SandMoveSp.z != 0.0f))
                     {
                         PlayerVeloFlg = true;
-                        Debug.Log("これこれああああああああああああああああああああああああああああああああああああああああ！！");
                         PlayerYSandAddFlg = false;
                     }
                     //X軸に力がかかっている時
                     else if (PlayerYSandAddFlg == false && !PlayerXSandFlg && (SandMoveSp.x != 0 || SandMoveSp.z != 0))
                     {
-                        Debug.Log("Yの横！！");
                     
                         this.GetComponent<Rigidbody>().useGravity = false;
                         rb.velocity =　PlayerDir * PlayerSp + SandMoveSp;
@@ -275,7 +273,6 @@ public class PlayerControler : MonoBehaviour
                 else
                 {
                     PlayerYSandAddFlg = false;
-                    Debug.Log("ひん");
                     //rb.velocity = PlayerDir * PlayerSp;
 
                     this.GetComponent<Rigidbody>().useGravity = true;
@@ -286,7 +283,6 @@ public class PlayerControler : MonoBehaviour
             }
             if (PlayerYSandAddFlg == true && PlayerYSandFlg && PlayerXSandFlg && (SandMoveSp.x != 0 || SandMoveSp.z != 0))
             {
-                Debug.Log("やあ");
                 rb.velocity = new Vector3(0, 10, 0);
                 PlayerYSandAddFlg = false;
             }
@@ -306,7 +302,6 @@ public class PlayerControler : MonoBehaviour
             //X軸の流砂上かつY軸上でない時
             if (PlayerXSandFlg && !PlayerYSandFlg)
             {
-                Debug.Log("やるお");
 
                 this.GetComponent<Rigidbody>().useGravity = false;                
                 rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
@@ -334,7 +329,6 @@ public class PlayerControler : MonoBehaviour
             //rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
             //this.gameObject.transform.position = PlayerDir * PlayerSp + new Vector3(0, this.gameObject.transform.position.y, 0) + SandMoveSp;
         }
-        Debug.Log("だあ！！");
 
         //流れ続ける砂
         if (CollisionFlowSand == true)
@@ -349,14 +343,12 @@ public class PlayerControler : MonoBehaviour
             //X軸とY軸に力がかかっている時
             else if (PlayerYSandAddFlg == true && (SandMoveSp.x != 0 || SandMoveSp.z != 0))
             {
-                Debug.Log("やあ");
                 rb.velocity = new Vector3(0, 10, 0);
                 PlayerYSandAddFlg = false;
             }
             //X軸に力がかかっているかつ横流砂の時
             else if (PlayerYSandAddFlg == false && PlayerXSandFlg　&& (SandMoveSp.x != 0 || SandMoveSp.z != 0))
             {
-                Debug.Log("やらないおー");
 
                 this.GetComponent<Rigidbody>().useGravity = false;
                 rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
@@ -364,7 +356,6 @@ public class PlayerControler : MonoBehaviour
             }
             else if (PlayerYSandAddFlg == true && PlayerXSandFlg && PlayerYSandFlg && (SandMoveSp.x != 0 || SandMoveSp.z != 0))
             {
-                Debug.Log("やらないおー");
 
                 this.GetComponent<Rigidbody>().useGravity = false;
                 rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
@@ -379,12 +370,19 @@ public class PlayerControler : MonoBehaviour
             }
         }
 
-        //流砂に触れていない時
-        if(!CollisionFlowSand && !CollisionSand)
+        if (!CollisionFlowSand && !CollisionSand && FtCol)
         {
             this.GetComponent<Rigidbody>().useGravity = false;
             //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f;
             rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0) + PlayerMoveFt;
+        }
+
+        //流砂とかけらに触れていない時
+        if (!CollisionFlowSand && !CollisionSand && !FtCol)
+        {
+            this.GetComponent<Rigidbody>().useGravity = false;
+            //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f;
+            rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0);
         }
 
         //流砂に触れていないとき
@@ -412,7 +410,6 @@ public class PlayerControler : MonoBehaviour
         }
         if (PlayerMovevelo >= 90)
         {
-            Debug.Log("わだｓだだ");
             PlayerVeloFlg = false;
             PlayerMovevelo = 0;
         }
