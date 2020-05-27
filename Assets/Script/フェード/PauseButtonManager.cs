@@ -10,6 +10,8 @@ public class PauseButtonManager : MonoBehaviour
     private GameObject FadeObj; //フェードのパネル
     public GameObject pauseObj;
     public GameObject ExplanationObj;
+    private GameObject GameoverObj; //フェードのパネル
+
     public bool ReturnFlg;
 
     public Button ReStartButton;
@@ -26,6 +28,7 @@ public class PauseButtonManager : MonoBehaviour
         //初期化
         ReturnFlg = false;
         FadeObj = GameObject.Find("FadePanel");
+        GameoverObj = GameObject.Find("Gameover");
         ExplanationObj.SetActive(false);
         SelectButton = false;
         //ResetButton = GameObject.Find("ResetButton").GetComponent<Button>();
@@ -43,7 +46,6 @@ public class PauseButtonManager : MonoBehaviour
             {
                 ReStartButton.Select();
                 SelectButton = true;
-
             }
         }
     }
@@ -64,7 +66,8 @@ public class PauseButtonManager : MonoBehaviour
         {
             Debug.Log("ステージ選択に戻る");
             pauseObj.SetActive(false);
-            FadeObj.GetComponent<FadeManager>().FadeScene(1);
+      
+            FadeObj.GetComponent<FadeManager>().FadeScene(GameoverObj.GetComponent<GameOverManagement>().GetWorldID() + 1);
             //SceneManager.LoadScene("WorldSerect");
         }
     }
