@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1536843348388774632}
   - component: {fileID: 1536843348388774633}
   m_Layer: 5
-  m_Name: UI_Allow
+  m_Name: Allow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 1536843348589242836}
   - component: {fileID: 1536843348589242837}
   m_Layer: 5
-  m_Name: UI_Base
+  m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 1536843348692852205}
   - component: {fileID: 1536843348692852206}
   m_Layer: 5
-  m_Name: UI_Button
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 1536843349147272516}
   - component: {fileID: 1536843349147272517}
   m_Layer: 5
-  m_Name: UI_Glass_Bottom
+  m_Name: Glass_Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 1536843349460700525}
   - component: {fileID: 1536843349460700526}
   m_Layer: 5
-  m_Name: UI_Sand_Top
+  m_Name: Sand_Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 1536843349829688473}
   - component: {fileID: 1536843349829688471}
   m_Layer: 5
-  m_Name: UI_Frame
+  m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 1536843349948249217}
   - component: {fileID: 1536843349948249218}
   m_Layer: 5
-  m_Name: UI_Glass_Top
+  m_Name: Glass_Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -699,7 +699,7 @@ GameObject:
   - component: {fileID: 1536843350427800256}
   - component: {fileID: 1536843350427800257}
   m_Layer: 5
-  m_Name: UI_Sand_Bottom
+  m_Name: Sand_Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 1536843350504727176}
   - component: {fileID: 1536843350504727177}
   m_Layer: 5
-  m_Name: UI_ButtonBase
+  m_Name: ButtonBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
