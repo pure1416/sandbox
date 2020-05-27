@@ -16,6 +16,7 @@ public class Fragment : MonoBehaviour
     // 変数宣言
     public Vector3 FtStartPos;      // かけらの初期位置
     Vector3 SandDir;                // 流砂の向きを保存しておく変数
+    Vector3 SandRot;                // 流砂の向きを保存しておく変数
     bool P_SandEnpflg;              // プレイヤーの中砂の有無
     bool SandCol;                   // 砂に触れているかどうか
     bool Respawnflg;                // リスポーンフラグ
@@ -50,6 +51,7 @@ public class Fragment : MonoBehaviour
         WallCol = false;
         P_SandEnpflg = playercontroler.GetComponent<PlayerControler>().GetPlayerEnpty(); ;
 
+        SandRot = new Vector3(0.0f,0.0f,0.0f);
         rb = this.GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
 
@@ -107,27 +109,14 @@ public class Fragment : MonoBehaviour
         // 流砂の上にいるときに流砂の移動力を受け取る
         if (collision.gameObject.tag == "QuickSand_B")
         {
-            Debug.Log("乗ってるお");
             SandCol = true;
+            SandRot = collision.transform.localEulerAngles;
             SandMoveFtSp = collision.gameObject.GetComponent<Quicksand>().GetSandMove();
-            SandMoveFtSp /= 50;
-            this.transform.Translate(SandMoveFtSp);
 
-            // 流砂がｙ方向に力がかかっていなければ重力を付ける
-            if (SandMoveFtSp.y == 0.0f)
-            {
-                this.GetComponent<Rigidbody>().useGravity = true;
-            }
-            // 流砂がｙ方向に力がかかっていたら重力を切る
-            else
-            {
-                this.GetComponent<Rigidbody>().useGravity = false;
-            }
 
             // プレイヤーの中砂がないときの処理
             if (P_SandEnpflg == true)
             {
-                // 流砂がｙ方向に力が入ってなければ沈んでいく処理
                 if (SandDir.y != 0.0f)
                 {
                     rb.constraints = RigidbodyConstraints.FreezeAll;
@@ -136,12 +125,24 @@ public class Fragment : MonoBehaviour
             // 中砂があるときの処理
             else
             {
+                SandMoveFtSp /= 50;
                 // 流砂が動いてるときだけ流砂の向きを保存しておく
-                 SandDir = SandMoveFtSp;
+                SandDir = SandMoveFtSp;
+                // 流砂が地面に敷かれているときは重力をかける
+                if (SandRot == new Vector3(0.0f, 0.0f, 0.0f))
+                {
+                    this.GetComponent<Rigidbody>().useGravity = true;
+                }
+                // 流砂が壁に貼られているときは重力を切る
+                else
+                {
+                    this.GetComponent<Rigidbody>().useGravity = false;
+                }
 
                 // 位置固定を外して回転固定のみにする
-                 rb.constraints = RigidbodyConstraints.FreezeRotation;
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
             }
+            this.transform.Translate(SandMoveFtSp);
         }
 
         if (collision.gameObject.tag == "Mud")
