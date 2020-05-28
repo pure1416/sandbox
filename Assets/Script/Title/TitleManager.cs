@@ -14,7 +14,7 @@ public class TitleManager : MonoBehaviour
     public Button button;
 
     float time_Title;
-    float time_Title_MAX = 0.45f;
+    float time_Title_MAX = 1f;
     bool TITLE_Lag;
 
     [SerializeField] AudioClip[] clips;//サウンド
