@@ -30,11 +30,19 @@ public class ClearMotionManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             p0 = Rupee.transform.position;
-            p1 = PlayerObg.transform.position + ((Rupee.transform.position - PlayerObg.transform.position) / 3);
-            p2 = PlayerObg.transform.position + ((Rupee.transform.position - PlayerObg.transform.position) / 3) * 2;
-            p3 = PlayerObg.transform.position;
+            p1 =(Rupee.transform.position - PlayerObg.transform.position) / 2;
+            p2 = PlayerObg.transform.position;
+
+
+
+
+
             testbejie = true;
         }
+        //Debug.Log("P0"+p0);
+        //Debug.Log("P1"+p1);
+        //Debug.Log("P2"+p2);
+        //Debug.Log("P3"+p3);
         GameClearFlg = PlayerObg.GetComponent<PlayerControler>().GetGameClearFlg();
         if(GameClearFlg == true)
         {
@@ -48,15 +56,12 @@ public class ClearMotionManager : MonoBehaviour
 
         if (testbejie == true)
         {
-            t += Time.deltaTime;
-            Vector3 a = Vector3.Lerp(p0, p1, t); // 緑色の点1
-            Vector3 b = Vector3.Lerp(p1, p2, t); // 緑色の点2
-            Vector3 c = Vector3.Lerp(p2, p3, t); // 緑色の点3
+            t += Time.deltaTime / 3;
+            Vector3 Q0 = Vector3.Lerp(p0, p1, t);
+            Vector3 Q1 = Vector3.Lerp(p1, p2, t);
+            Vector3 Q2 = Vector3.Lerp(Q0, Q1, t);
 
-            Vector3 d = Vector3.Lerp(a, b, t);   // 青色の点1
-            Vector3 e = Vector3.Lerp(b, c, t);   // 青色の点2
-
-            Rupee.transform.position += Vector3.Lerp(d / 100, e / 100, t / 100);    // 黒色の点
+            Rupee.transform.position = Q2;    // 黒色の点
         }
      }
 }

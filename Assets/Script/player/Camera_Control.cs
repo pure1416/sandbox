@@ -32,7 +32,6 @@ public class Camera_Control : MonoBehaviour
     {
         DistanceToPlayerM = 15f;    // カメラとプレイヤーとの距離[m]
         HeightM = 3.0f;            // 注視点の高さ[m]
-
         if (Target == null)
         {
             Debug.LogError("ターゲットが設定されていない");
