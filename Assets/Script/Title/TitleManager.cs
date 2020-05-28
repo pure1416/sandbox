@@ -63,7 +63,7 @@ public class TitleManager : MonoBehaviour
             }
             else if ((Input.GetAxisRaw("Vertical") < 0) || (Input.GetKeyDown(KeyCode.DownArrow)))
             {
-                if ((Select < 2) && (!TITLE_Lag))
+                if ((Select < 4) && (!TITLE_Lag))
                 {
                     Debug.Log("タイトル傾けた");
 
@@ -136,6 +136,7 @@ public class TitleManager : MonoBehaviour
     //ゲーム終了を押したとき
     public void PushExitButton()
     {
+
 #if UNITY_EDITOR
 		UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_WEBPLAYER
