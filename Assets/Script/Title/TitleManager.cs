@@ -14,7 +14,7 @@ public class TitleManager : MonoBehaviour
     public Button button;
 
     float time_Title;
-    float time_Title_MAX = 1f;
+    float time_Title_MAX = 0.5f;
     bool TITLE_Lag;
 
     [SerializeField] AudioClip[] clips;//サウンド
@@ -43,34 +43,41 @@ public class TitleManager : MonoBehaviour
     {
         if (OptionObj.activeSelf)
         {
-              Select = 0;
+            Select = 0;
         }
         else if (!OptionObj.activeSelf)
         {
             //キー操作で操作できるようにする
-            if (((Input.GetAxisRaw("Vertical") > 0) || (Input.GetKeyDown(KeyCode.UpArrow)) && Select > 0) && (!TITLE_Lag)) 
+            if ((Input.GetAxisRaw("Vertical") > 0) || (Input.GetKeyDown(KeyCode.UpArrow)))
             {
-                Debug.Log("傾けたタイトル");
-                Select -= 1;
-                //カーソル選択音
-                Source.PlayOneShot(clips[0]);
-                TITLE_Lag = true;
+                if ((Select > 0) && (!TITLE_Lag))
+                {
+
+                    Debug.Log("傾けたタイトル");
+                    Select -= 1;
+                    //カーソル選択音
+                    Source.PlayOneShot(clips[0]);
+                    TITLE_Lag = true;
+                }
 
             }
-            else if (((Input.GetAxisRaw("Vertical") < 0) || (Input.GetKeyDown(KeyCode.DownArrow)) && Select < 1)&& (!TITLE_Lag)) 
+            else if ((Input.GetAxisRaw("Vertical") < 0) || (Input.GetKeyDown(KeyCode.DownArrow)))
             {
-                Debug.Log("タイトル傾けた");
+                if ((Select < 2) && (!TITLE_Lag))
+                {
+                    Debug.Log("タイトル傾けた");
 
-                Select += 1;
-                //カーソル選択音
-                Source.PlayOneShot(clips[0]);
-                TITLE_Lag = true;
+                    Select += 1;
+                    //カーソル選択音
+                    Source.PlayOneShot(clips[0]);
+                    TITLE_Lag = true;
+                }
             }
-            if(TITLE_Lag)
+            if (TITLE_Lag)
             {
                 time_Title += Time.deltaTime;
             }
-            if(time_Title >= time_Title_MAX)
+            if (time_Title >= time_Title_MAX)
             {
                 time_Title = 0;
                 TITLE_Lag = false;
