@@ -572,9 +572,10 @@ public class PlayerControler : MonoBehaviour
             if (CollisionSand == false)
             {
 
-                bool Ft_SandCol = collision.gameObject.GetComponent<Fragment>().GetSandCol();
+                bool Ft_SandCol_X = collision.gameObject.GetComponent<Fragment>().GetSandCol_X();
+                bool Ft_SandCol_Y = collision.gameObject.GetComponent<Fragment>().GetSandCol_Y();
                 bool Ft_WallCol = collision.gameObject.GetComponent<Fragment>().GetWallCol();
-                if (Ft_SandCol)
+                if (Ft_SandCol_X)
                 {
                     PlayerMoveFt = collision.gameObject.GetComponent<Fragment>().GetSandMoveFtSp();
                     PlayerMoveFt *= 50;
