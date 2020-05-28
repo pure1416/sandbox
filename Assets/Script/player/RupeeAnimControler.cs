@@ -64,9 +64,9 @@ public class RupeeAnimControler : MonoBehaviour
 
             this.transform.position = Q2;
 
-            if (this.transform.localScale.y <= 0.0f)
+            if (this.transform.localScale.y >= 0)
             {
-                //this.transform.localScale -= new Vector3(t * 10 , t * 10, t * 10);
+                this.transform.localScale = new Vector3(8 - t * 8, 6.5f - t * 6.5f, 6.5f - t * 6.5f);
             }
             if (this.transform.position == PlayerObg.transform.position)
             {
