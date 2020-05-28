@@ -34,7 +34,7 @@ public class RupeeAnimControler : MonoBehaviour
     void Update()
     {
         RupeeAnimFlg = TreasureboxObj.GetComponent<ClearMotionManager>().GetRupeeAnimFlg();
-            Debug.Log(this.transform.localPosition);
+            Debug.Log(this.transform.localScale);
 
         if (RupeeAnimFlg == true)
         {
@@ -62,7 +62,12 @@ public class RupeeAnimControler : MonoBehaviour
             Vector3 Q1 = Vector3.Lerp(p1, p2, t);
             Vector3 Q2 = Vector3.Lerp(Q0, Q1, t);
 
-            this.transform.position = Q2;    // 黒色の点
+            this.transform.position = Q2;
+
+            if (this.transform.localScale.y >= 0)
+            {
+                this.transform.localScale = new Vector3(8 - t * 8, 6.5f - t * 6.5f, 6.5f - t * 6.5f);
+            }
             if (this.transform.position == PlayerObg.transform.position)
             {
                 this.gameObject.SetActive(false);
