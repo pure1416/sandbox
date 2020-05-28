@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2864039, g: 0.17625433, b: 0.047628313, a: 1}
+  m_IndirectSpecularColor: {r: 0.2717761, g: 0.16714421, b: 0.04453996, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1012,6 +1012,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b932374e71a3edb45a167f5f374e5d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charaLookAtPosition: {fileID: 0}
+  cameraMoveSpeed: 2
+  cameraRotateSpeed: 90
+  basePos: {x: 0, y: 0, z: 2}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
   Target: {fileID: 501793340}
   DistanceToPlayerM: 8
   SlideDistanceM: 0
@@ -1209,7 +1216,7 @@ Transform:
   - {fileID: 1201593259}
   - {fileID: 1171519398}
   m_Father: {fileID: 770526603}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &182563793 stripped
 Transform:
@@ -2687,8 +2694,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 142476331}
   - {fileID: 180864558}
+  - {fileID: 142476331}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
