@@ -136,13 +136,15 @@ public class TitleManager : MonoBehaviour
     //ゲーム終了を押したとき
     public void PushExitButton()
     {
-
+        //フェード中入力できなくする処理
+        if ((FadeObj.GetComponent<FadeManager>().GetFadeInFlg() == false) && (!OptionObj.activeSelf))
+        {
 #if UNITY_EDITOR
 		UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_WEBPLAYER
-		Application.OpenURL("http://www.yahoo.co.jp/");
 #else
-        Application.Quit();
+            Application.Quit();
 #endif
+        }
     }
 }
