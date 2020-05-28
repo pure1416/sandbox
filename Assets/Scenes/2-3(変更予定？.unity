@@ -561,14 +561,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6439906}
-  - {fileID: 373167784}
+  - {fileID: 405826545}
   - {fileID: 1584934279}
   - {fileID: 515811886}
   - {fileID: 1800804383}
-  - {fileID: 697535293}
   - {fileID: 396896399}
   - {fileID: 637362150}
-  - {fileID: 405826545}
+  - {fileID: 373167784}
+  - {fileID: 697535293}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6442,7 +6442,7 @@ PrefabInstance:
     - target: {fileID: 2602479727975021578, guid: 9fc4ed3be9e17ab47a16029ceb4b33c0,
         type: 3}
       propertyPath: m_Name
-      value: Treasurebox (1)
+      value: Treasurebox
       objectReference: {fileID: 0}
     - target: {fileID: 2602479727975021590, guid: 9fc4ed3be9e17ab47a16029ceb4b33c0,
         type: 3}

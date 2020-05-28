@@ -2623,7 +2623,7 @@ PrefabInstance:
     - target: {fileID: 2602479727975021578, guid: 9fc4ed3be9e17ab47a16029ceb4b33c0,
         type: 3}
       propertyPath: m_Name
-      value: Treasurebox (1)
+      value: Treasurebox
       objectReference: {fileID: 0}
     - target: {fileID: 2602479727975021590, guid: 9fc4ed3be9e17ab47a16029ceb4b33c0,
         type: 3}
