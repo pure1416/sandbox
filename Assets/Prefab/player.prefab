@@ -68,6 +68,7 @@ MonoBehaviour:
   Wall_Col: 0
   FtCol: 0
   PlayerYSandFlg: 0
+  PlayerXSandFlg: 0
   CollisionSand: 0
   CollisionGround: 0
   SandMoveSp: {x: 0, y: 0, z: 0}
@@ -78,9 +79,8 @@ MonoBehaviour:
   PlayerGameoverPos: {x: 0, y: -19, z: 0}
   clips:
   - {fileID: 8300000, guid: a301686a8c76c6e45b1038ca8f416c76, type: 3}
-  - {fileID: 8300000, guid: 128b82bf9307fe247b605f4b72e21461, type: 3}
-  - {fileID: 8300000, guid: 7582b805c8c892841a2a7e0a273bd0c1, type: 3}
-  - {fileID: 8300000, guid: 8d1ff1fa46167294aa90ca50f2983cf0, type: 3}
+  - {fileID: 8300000, guid: 87bec0e0289a7c8409426ac00c54c383, type: 3}
+  - {fileID: 8300000, guid: 11c1229f567e9b0468e63112ae3b628e, type: 3}
 --- !u!114 &-6778691295209411388
 MonoBehaviour:
   m_ObjectHideFlags: 0
