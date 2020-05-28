@@ -12333,6 +12333,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6307932564486734778, guid: 49b6b8ca17337f04abd04fa0ab370efc,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 88cb8130e4b7407468fec1cf122a4b18,
+        type: 3}
+    - target: {fileID: 6307932564486734778, guid: 49b6b8ca17337f04abd04fa0ab370efc,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u30DD\u30FC\u30BA"
+      objectReference: {fileID: 0}
     - target: {fileID: 6307932564615982252, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
       propertyPath: button
@@ -12528,12 +12539,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 0470619d9b9a3c0498268d4d885411e1,
+      objectReference: {fileID: 12800000, guid: 88cb8130e4b7407468fec1cf122a4b18,
         type: 3}
     - target: {fileID: 6307932565588496942, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
       propertyPath: m_Text
-      value: "\u30B9\u30C6\u30FC\u30B8\u305B\u3093\u305F\u304F\u3078"
+      value: "\u3051\u3063\u3066\u3044"
       objectReference: {fileID: 0}
     - target: {fileID: 6307932565661998148, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
@@ -12554,7 +12565,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: fd2e19d4130969349b3fe24902313440,
+      objectReference: {fileID: 12800000, guid: 88cb8130e4b7407468fec1cf122a4b18,
         type: 3}
     - target: {fileID: 6307932565846550145, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
@@ -12565,7 +12576,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: caa311b21424d6540b2cd3ec6b8cecd6,
+      objectReference: {fileID: 12800000, guid: 88cb8130e4b7407468fec1cf122a4b18,
         type: 3}
     - target: {fileID: 6307932566032844380, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
