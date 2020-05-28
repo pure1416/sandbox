@@ -34,7 +34,7 @@ public class RupeeAnimControler : MonoBehaviour
     void Update()
     {
         RupeeAnimFlg = TreasureboxObj.GetComponent<ClearMotionManager>().GetRupeeAnimFlg();
-            Debug.Log(this.transform.localScale);
+        Debug.Log(this.transform.localScale);
 
         if (RupeeAnimFlg == true)
         {
