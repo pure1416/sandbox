@@ -565,31 +565,52 @@ public class PlayerControler : MonoBehaviour
             Wall_Col = true;
         }
 
-         if (collision.gameObject.tag == "Fragment")
+        if (collision.gameObject.tag == "Fragment")
         {
-             FtCol = true;
+            FtCol = true;
 
+            // 流砂に触れていなくて、かけらに触れているとき（乗り時）
             if (CollisionSand == false)
             {
-
+                // 床・壁の砂に触れているかどうか
                 bool Ft_SandCol_X = collision.gameObject.GetComponent<Fragment>().GetSandCol_X();
                 bool Ft_SandCol_Y = collision.gameObject.GetComponent<Fragment>().GetSandCol_Y();
+
+                // かけらが壁に触れているか
                 bool Ft_WallCol = collision.gameObject.GetComponent<Fragment>().GetWallCol();
-                if (Ft_SandCol_X)
+
+                // 壁に触れているかけらに触れているかどうか
+                bool Ft_WallColFt = collision.gameObject.GetComponent<Fragment>().GetWallColFt();
+
+                bool SandColFt = collision.gameObject.GetComponent<Fragment>().GetFt_Col();
+
+                // 床の流砂に流れてる欠片の処理
+                if ((Ft_SandCol_X))
                 {
                     PlayerMoveFt = collision.gameObject.GetComponent<Fragment>().GetSandMoveFtSp();
                     PlayerMoveFt *= 50;
-                    if ((PlayerMoveFt.y != 0.0f)||(Ft_WallCol))
+
+                    // 壁の流砂・かけらが壁に触れてる・壁に触れてるかけらに乗ってる時に流されないようにする処理
+                    if ((Ft_SandCol_Y) || (Ft_WallCol) || Ft_WallColFt)
+                    {
+                        PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
+                    }
+                }
+
+                // かけらの上のかけらに乗っているときの処理
+                if (SandColFt)
+                {
+                    PlayerMoveFt = collision.gameObject.GetComponent<Fragment>().GetFragmentMoveFt();
+                    PlayerMoveFt *= 50;
+                    // 壁の流砂・かけらが壁に触れてる・壁に触れてるかけらに乗ってる時に流されないようにする処理
+                    if ((Ft_SandCol_Y) || (Ft_WallCol) || Ft_WallColFt)
                     {
                         PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
                     }
 
                 }
-
             }
         }
-
-
 
         //流砂
         if (collision.gameObject.tag == "QuickSand_B")

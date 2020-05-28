@@ -122,8 +122,8 @@ GameObject:
   - component: {fileID: 3967026842864084971}
   - component: {fileID: 3967026842864084970}
   m_Layer: 0
-  m_Name: debris_small (1)
-  m_TagString: Untagged
+  m_Name: Ft_small
+  m_TagString: Fragment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -187,4 +187,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playercontroler: {fileID: 0}
   FtStartPos: {x: 0, y: 0, z: 0}
+  SandDir: {x: 0, y: 0, z: 0}
+  FragmentMoveFt: {x: 0, y: 0, z: 0}
+  SandCol_X: 0
+  SandCol_Y: 0
+  Ft_Col: 0
   SandMoveFtSp: {x: 0, y: 0, z: 0}
+  clips: []
