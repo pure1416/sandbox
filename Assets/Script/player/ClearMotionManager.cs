@@ -11,6 +11,8 @@ public class ClearMotionManager : MonoBehaviour
     Animator animator;
     private Vector3 p0,p1, p2, p3;
     bool RupeeAnimFlg;
+    bool RupeePosSetFlg;
+
     float t;
 
     bool testbejie;
@@ -23,20 +25,13 @@ public class ClearMotionManager : MonoBehaviour
         ClearModelAnimTime = 0.0f;
         t = 0.0f;
         testbejie = false;
+        RupeeAnimFlg = false;
+        RupeePosSetFlg = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            
-
-
-
-
-
-        }
         Debug.Log("P0"+p0);
         Debug.Log("P1"+p1);
         Debug.Log("P2"+p2);
@@ -49,20 +44,35 @@ public class ClearMotionManager : MonoBehaviour
         }
         if (ClearModelAnimTime >= 1.5f)
         {
-            p0 = Rupee.transform.position;
-            p1 = (Rupee.transform.position + PlayerObg.transform.position) / 2;
-            p1.y += Rupee.transform.position.y + 5.0f;
-            p2 = PlayerObg.transform.position;
+            RupeeAnimFlg = true;
+
         }
-
-        if (testbejie == true)
+        if (RupeeAnimFlg == true)
         {
-            t += Time.deltaTime / 3;
-            Vector3 Q0 = Vector3.Lerp(p0, p1, t);
-            Vector3 Q1 = Vector3.Lerp(p1, p2, t);
-            Vector3 Q2 = Vector3.Lerp(Q0, Q1, t);
+            if (Rupee.transform.position.y <= 1.5f)
+            {
+                Rupee.transform.position.y += 0.1f;
+            }
+            if (RupeePosSetFlg == false)
+            {
+                if (Rupee.transform.position.y >= 1.5f)
+                {
+                    p0 = Rupee.transform.position;
+                    p1 = (Rupee.transform.position + PlayerObg.transform.position) / 2;
+                    p1.y += Rupee.transform.position.y + 5.0f;
+                    p2 = PlayerObg.transform.position;
+                    RupeePosSetFlg = true;
+                }
+            }
+            if (RupeePosSetFlg == true)
+            {
+                t += Time.deltaTime / 3;
+                Vector3 Q0 = Vector3.Lerp(p0, p1, t);
+                Vector3 Q1 = Vector3.Lerp(p1, p2, t);
+                Vector3 Q2 = Vector3.Lerp(Q0, Q1, t);
 
-            Rupee.transform.position = Q2;    // 黒色の点
+                Rupee.transform.position = Q2;    // 黒色の点
+            }
         }
      }
 }
