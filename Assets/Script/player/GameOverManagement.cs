@@ -67,4 +67,10 @@ public class GameOverManagement : MonoBehaviour
 
         FadeObj.GetComponent<FadeManager>().FadeScene(WorldID + 1);
     }
+
+    public int GetWorldID()
+    {
+        return WorldID; 
+    }
+
 }

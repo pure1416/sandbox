@@ -39,11 +39,11 @@ public class GameClearManager : MonoBehaviour
         GameClearFlg = PlayerObj.GetComponent<PlayerControler>().GetGameClearFlg();
         if(GameClearFlg == true)
         {
-            if (ClearUITime < 2.5f)
+            if (ClearUITime < 4.5f)
             {
                 ClearUITime += Time.deltaTime;
             }
-            if (ClearUITime >= 2.5f)
+            if (ClearUITime >= 4.5f)
             {
                 ClearUI.SetActive(true);
                 if (ButtonSelectFlg == false)
