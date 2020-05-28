@@ -12632,6 +12632,11 @@ PrefabInstance:
       propertyPath: m_Text
       value: "\u30B9\u30C6\u30FC\u30B8\u305B\u3093\u305F\u304F\u3078"
       objectReference: {fileID: 0}
+    - target: {fileID: 6307932565434914667, guid: 49b6b8ca17337f04abd04fa0ab370efc,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
     - target: {fileID: 6307932565661998148, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
       propertyPath: button
