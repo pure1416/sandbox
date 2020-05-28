@@ -132,4 +132,16 @@ public class TitleManager : MonoBehaviour
             OptionObj.SetActive(true);
         }
     }
+
+    //ゲーム終了を押したとき
+    public void PushExitButton()
+    {
+#if UNITY_EDITOR
+		UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBPLAYER
+		Application.OpenURL("http://www.yahoo.co.jp/");
+#else
+        Application.Quit();
+#endif
+    }
 }
