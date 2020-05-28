@@ -10,6 +10,7 @@ public class ClearMotionManager : MonoBehaviour
     float ClearModelAnimTime;
     Animator animator;
     private Vector3 p0,p1, p2, p3;
+    bool RupeeAnimFlg;
     float t;
 
     bool testbejie;
@@ -29,20 +30,17 @@ public class ClearMotionManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            p0 = Rupee.transform.position;
-            p1 =(Rupee.transform.position - PlayerObg.transform.position) / 2;
-            p2 = PlayerObg.transform.position;
+            
 
 
 
 
 
-            testbejie = true;
         }
-        //Debug.Log("P0"+p0);
-        //Debug.Log("P1"+p1);
-        //Debug.Log("P2"+p2);
-        //Debug.Log("P3"+p3);
+        Debug.Log("P0"+p0);
+        Debug.Log("P1"+p1);
+        Debug.Log("P2"+p2);
+        
         GameClearFlg = PlayerObg.GetComponent<PlayerControler>().GetGameClearFlg();
         if(GameClearFlg == true)
         {
@@ -51,7 +49,10 @@ public class ClearMotionManager : MonoBehaviour
         }
         if (ClearModelAnimTime >= 1.5f)
         {
-           
+            p0 = Rupee.transform.position;
+            p1 = (Rupee.transform.position + PlayerObg.transform.position) / 2;
+            p1.y += Rupee.transform.position.y + 5.0f;
+            p2 = PlayerObg.transform.position;
         }
 
         if (testbejie == true)
