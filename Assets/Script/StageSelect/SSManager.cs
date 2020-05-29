@@ -200,7 +200,7 @@ public class SSManager : MonoBehaviour
         else
         {
             //ワールド１専用　Stage_4クリア済み
-            if ((sf & StageFlags.Stage_5) == StageFlags.Stage_5)
+            if ((sf & StageFlags.Stage_4) == StageFlags.Stage_4)
             {
                 stages[3].GetComponent<StaUnl>().SetClearFlg(true);
             }
