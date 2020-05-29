@@ -21,17 +21,17 @@ public class Camera_Control : MonoBehaviour
     private LayerMask obstacleLayer;
 
     public Transform Target;
-    public float DistanceToPlayerM = 15f;    // カメラとプレイヤーとの距離[m]
+    public float DistanceToPlayerM = 25f;    // カメラとプレイヤーとの距離[m]
     public float SlideDistanceM = 0f;       // カメラを横にスライドさせる；プラスの時右へ，マイナスの時左へ[m]
-    public float HeightM = 3.0f;            // 注視点の高さ[m]
+    public float HeightM = 5.0f;            // 注視点の高さ[m]
     public float RotationSensitivity = 100f;// 感度
     float rotX;
     float rotY;
 
     void Start()
     {
-        DistanceToPlayerM = 15f;    // カメラとプレイヤーとの距離[m]
-        HeightM = 3.0f;            // 注視点の高さ[m]
+        DistanceToPlayerM = 25f;    // カメラとプレイヤーとの距離[m]
+        HeightM = 5.0f;            // 注視点の高さ[m]
         if (Target == null)
         {
             Debug.LogError("ターゲットが設定されていない");
