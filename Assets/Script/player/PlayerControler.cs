@@ -94,7 +94,7 @@ public class PlayerControler : MonoBehaviour
         animator = GetComponent<Animator>();
         PlayerTurnAnimFlg = false;
         PlayerTurnAnimTime = 0.0f;
-        PlayerRotInvalidTime = 1.0f;
+        PlayerRotInvalidTime = 0.8f;
         PlayerYSandFlg = false;
         PlayerXSandFlg = false;
         PlayerYSandAddFlg = false;
