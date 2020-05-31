@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
         //プレイヤコントローラを取る
         PLCon = GameObject.FindWithTag("Player").GetComponent<PlayerControler>();
 
-        //FillOriginを下にする
+        //FillOriginを設定
         UI_Sand[0].fillOrigin = UI_Sand[1].fillOrigin = (int)Image.OriginVertical.Bottom;
     }
 
