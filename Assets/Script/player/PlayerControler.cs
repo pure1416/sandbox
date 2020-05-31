@@ -135,7 +135,7 @@ public class PlayerControler : MonoBehaviour
         //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
         Debug.Log("Y:" + PlayerYSandFlg);
         Debug.Log("X:" + PlayerXSandFlg);
-        Debug.Log(PlayerYSandAddFlg);
+        //Debug.Log(rb.velocity);
 
         
         //Debug.Log(PlayerTurnAnimTime);
@@ -273,7 +273,7 @@ public class PlayerControler : MonoBehaviour
                 else
                 {
                     PlayerYSandAddFlg = false;
-                    //rb.velocity = PlayerDir * PlayerSp;
+                    rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0);
 
                     this.GetComponent<Rigidbody>().useGravity = true;
                     //Physics.gravity = new Vector3(0, -20, 0);
@@ -281,12 +281,12 @@ public class PlayerControler : MonoBehaviour
                 }
                 //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f + SandMoveSp * 0.007f;
             }
+            //
             if (PlayerYSandAddFlg == true && PlayerYSandFlg && PlayerXSandFlg && (SandMoveSp.x != 0 || SandMoveSp.z != 0))
             {
                 rb.velocity = new Vector3(0, 10, 0);
                 PlayerYSandAddFlg = false;
             }
-
             //y軸に力がかかっている時
             //else
             //{
@@ -302,9 +302,17 @@ public class PlayerControler : MonoBehaviour
             //X軸の流砂上かつY軸上でない時
             if (PlayerXSandFlg && !PlayerYSandFlg)
             {
+                if (PlayerEnptyFlg == false)
+                {
+                    this.GetComponent<Rigidbody>().useGravity = false;
+                    rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
+                }
+                else
+                {
+                    this.GetComponent<Rigidbody>().useGravity = true;
+                    rb.velocity = PlayerDir * PlayerSp;
 
-                this.GetComponent<Rigidbody>().useGravity = false;                
-                rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
+                }
             }
 
             //X軸の流砂上かつY軸上の時
@@ -395,6 +403,8 @@ public class PlayerControler : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(PlayerDir);
         }
+
+
 
         //画面外に落ちたとき
         if (this.transform.position.y <= PlayerGameoverPos.y)
