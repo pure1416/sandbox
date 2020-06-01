@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956612878dd93b4488ea0d2a8ef66ad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerSp: 5
+  PlayerSp: 10
   PlayerTurn: 0
   PlayerTotalTime: 5
   PlayerDir: {x: 0, y: 0, z: 0}

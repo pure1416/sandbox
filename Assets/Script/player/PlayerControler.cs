@@ -94,7 +94,7 @@ public class PlayerControler : MonoBehaviour
         animator = GetComponent<Animator>();
         PlayerTurnAnimFlg = false;
         PlayerTurnAnimTime = 0.0f;
-        PlayerRotInvalidTime = 1.0f;
+        PlayerRotInvalidTime = 0.8f;
         PlayerYSandFlg = false;
         PlayerXSandFlg = false;
         PlayerYSandAddFlg = false;
@@ -135,7 +135,7 @@ public class PlayerControler : MonoBehaviour
         //Debug.Log("速度ベクトル: " + _rigidbody.velocity);
         Debug.Log("Y:" + PlayerYSandFlg);
         Debug.Log("X:" + PlayerXSandFlg);
-        Debug.Log(PlayerYSandAddFlg);
+        //Debug.Log(rb.velocity);
 
         
         //Debug.Log(PlayerTurnAnimTime);
@@ -273,7 +273,7 @@ public class PlayerControler : MonoBehaviour
                 else
                 {
                     PlayerYSandAddFlg = false;
-                    //rb.velocity = PlayerDir * PlayerSp;
+                    rb.velocity = PlayerDir * PlayerSp + new Vector3(0, rb.velocity.y, 0);
 
                     this.GetComponent<Rigidbody>().useGravity = true;
                     //Physics.gravity = new Vector3(0, -20, 0);
@@ -281,12 +281,12 @@ public class PlayerControler : MonoBehaviour
                 }
                 //this.gameObject.transform.position += PlayerDir * PlayerSp * 0.007f + SandMoveSp * 0.007f;
             }
+            //
             if (PlayerYSandAddFlg == true && PlayerYSandFlg && PlayerXSandFlg && (SandMoveSp.x != 0 || SandMoveSp.z != 0))
             {
                 rb.velocity = new Vector3(0, 10, 0);
                 PlayerYSandAddFlg = false;
             }
-
             //y軸に力がかかっている時
             //else
             //{
@@ -302,9 +302,17 @@ public class PlayerControler : MonoBehaviour
             //X軸の流砂上かつY軸上でない時
             if (PlayerXSandFlg && !PlayerYSandFlg)
             {
+                if (PlayerEnptyFlg == false)
+                {
+                    this.GetComponent<Rigidbody>().useGravity = false;
+                    rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
+                }
+                else
+                {
+                    this.GetComponent<Rigidbody>().useGravity = true;
+                    rb.velocity = PlayerDir * PlayerSp;
 
-                this.GetComponent<Rigidbody>().useGravity = false;                
-                rb.velocity = PlayerDir * PlayerSp + SandMoveSp;
+                }
             }
 
             //X軸の流砂上かつY軸上の時
@@ -395,6 +403,8 @@ public class PlayerControler : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(PlayerDir);
         }
+
+
 
         //画面外に落ちたとき
         if (this.transform.position.y <= PlayerGameoverPos.y)
@@ -565,31 +575,52 @@ public class PlayerControler : MonoBehaviour
             Wall_Col = true;
         }
 
-         if (collision.gameObject.tag == "Fragment")
+        if (collision.gameObject.tag == "Fragment")
         {
-             FtCol = true;
+            FtCol = true;
 
+            // 流砂に触れていなくて、かけらに触れているとき（乗り時）
             if (CollisionSand == false)
             {
-
+                // 床・壁の砂に触れているかどうか
                 bool Ft_SandCol_X = collision.gameObject.GetComponent<Fragment>().GetSandCol_X();
                 bool Ft_SandCol_Y = collision.gameObject.GetComponent<Fragment>().GetSandCol_Y();
+
+                // かけらが壁に触れているか
                 bool Ft_WallCol = collision.gameObject.GetComponent<Fragment>().GetWallCol();
-                if (Ft_SandCol_X)
+
+                // 壁に触れているかけらに触れているかどうか
+                bool Ft_WallColFt = collision.gameObject.GetComponent<Fragment>().GetWallColFt();
+
+                bool SandColFt = collision.gameObject.GetComponent<Fragment>().GetFt_Col();
+
+                // 床の流砂に流れてる欠片の処理
+                if ((Ft_SandCol_X))
                 {
                     PlayerMoveFt = collision.gameObject.GetComponent<Fragment>().GetSandMoveFtSp();
                     PlayerMoveFt *= 50;
-                    if ((PlayerMoveFt.y != 0.0f)||(Ft_WallCol))
+
+                    // 壁の流砂・かけらが壁に触れてる・壁に触れてるかけらに乗ってる時に流されないようにする処理
+                    if ((Ft_SandCol_Y) || (Ft_WallCol) || Ft_WallColFt)
+                    {
+                        PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
+                    }
+                }
+
+                // かけらの上のかけらに乗っているときの処理
+                if (SandColFt)
+                {
+                    PlayerMoveFt = collision.gameObject.GetComponent<Fragment>().GetFragmentMoveFt();
+                    PlayerMoveFt *= 50;
+                    // 壁の流砂・かけらが壁に触れてる・壁に触れてるかけらに乗ってる時に流されないようにする処理
+                    if ((Ft_SandCol_Y) || (Ft_WallCol) || Ft_WallColFt)
                     {
                         PlayerMoveFt = new Vector3(0.0f, 0.0f, 0.0f);
                     }
 
                 }
-
             }
         }
-
-
 
         //流砂
         if (collision.gameObject.tag == "QuickSand_B")

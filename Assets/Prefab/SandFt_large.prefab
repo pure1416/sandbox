@@ -92,8 +92,8 @@ GameObject:
   - component: {fileID: 4165080464788815021}
   - component: {fileID: 706472988537011739}
   m_Layer: 0
-  m_Name: debris_large (2)
-  m_TagString: Untagged
+  m_Name: SandFt_large
+  m_TagString: Fragment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
