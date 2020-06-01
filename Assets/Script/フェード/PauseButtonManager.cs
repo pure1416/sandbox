@@ -283,6 +283,10 @@ public class PauseButtonManager : MonoBehaviour
                 //Debug.Log("ゲームに戻る");
                 //pauseObj.SetActive(false);
             }
+            //// 現在のScene名を取得する
+            //Scene loadScene = SceneManager.GetActiveScene();
+            //// Sceneの読み直し
+            //SceneManager.LoadScene(loadScene.name);
         }
 
         //操作説明が出ていないとき
