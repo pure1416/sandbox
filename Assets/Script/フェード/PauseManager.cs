@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class PauseManager : MonoBehaviour
 {
     //　ポーズした時に表示するUI
@@ -13,6 +15,10 @@ public class PauseManager : MonoBehaviour
     private GameObject GameClearObj;
     private GameObject GameOverObj;
 
+    [SerializeField] AudioClip[] clips;//サウンド
+
+    //SEです。
+    protected AudioSource Source;
 
 
     void Start()
@@ -23,6 +29,10 @@ public class PauseManager : MonoBehaviour
 
         pauseUI.SetActive(false);
         Time.timeScale = 1f;
+
+        //サウンド
+        Source = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -35,6 +45,8 @@ public class PauseManager : MonoBehaviour
             {
                 if (Input.GetKeyDown("r") || Input.GetKeyDown("joystick button 7"))
                 {
+                    Source.PlayOneShot(clips[0]);
+
                     //　ポーズUIのアクティブ、非アクティブを切り替え
                     pauseUI.SetActive(!pauseUI.activeSelf);
                 }
