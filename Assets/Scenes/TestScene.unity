@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.27170664, g: 0.16708729, b: 0.04457716, a: 1}
+  m_IndirectSpecularColor: {r: 0.2717761, g: 0.16714421, b: 0.04453996, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3279,8 +3279,6 @@ MonoBehaviour:
   SandCol_X: 0
   SandCol_Y: 0
   Ft_Col: 0
-  SandDir: {x: 0, y: 0, z: 0}
-  SandRot: {x: 0, y: 0, z: 0}
   SandMoveFtSp: {x: 0, y: 0, z: 0}
   clips: []
 --- !u!65 &1030972717
@@ -7359,7 +7357,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 0.03
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -7423,7 +7421,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0
+          value: 1
           inSlope: 6.5810804
           outSlope: 6.5810804
           tangentMode: 0
@@ -7432,7 +7430,7 @@ ParticleSystem:
           outWeight: 0.10251182
         - serializedVersion: 3
           time: 1
-          value: 0
+          value: 1
           inSlope: -5.854096
           outSlope: -5.854096
           tangentMode: 0
@@ -11139,7 +11137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951351123}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0, y: -2.33, z: -0.26}
+  m_LocalPosition: {x: 0, y: -2.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6490911115907031095}
@@ -12197,7 +12195,7 @@ PrefabInstance:
     - target: {fileID: 587065601527127320, guid: f73d8f6e4e8c4b247bd72205cd490451,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 587065601527127320, guid: f73d8f6e4e8c4b247bd72205cd490451,
         type: 3}
@@ -12526,6 +12524,11 @@ PrefabInstance:
       propertyPath: m_Text
       value: "\u30B2\u30FC\u30E0\u3078\u3082\u3069\u308B"
       objectReference: {fileID: 0}
+    - target: {fileID: 6307932565434914667, guid: 49b6b8ca17337f04abd04fa0ab370efc,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
     - target: {fileID: 6307932565588496942, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
       propertyPath: m_FontData.m_Font
@@ -12536,11 +12539,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: "\u30B9\u30C6\u30FC\u30B8\u305B\u3093\u305F\u304F\u3078"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6307932565434914667, guid: 49b6b8ca17337f04abd04fa0ab370efc,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.5019608
       objectReference: {fileID: 0}
     - target: {fileID: 6307932565661998148, guid: 49b6b8ca17337f04abd04fa0ab370efc,
         type: 3}
@@ -12834,7 +12832,7 @@ PrefabInstance:
     - target: {fileID: 7816779724232572090, guid: b7736fce52851094ea3d221c9d99fdf5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7736fce52851094ea3d221c9d99fdf5, type: 3}
